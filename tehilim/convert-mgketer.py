@@ -1,3 +1,4 @@
+import common
 import re
 
 def clean(data):
@@ -15,13 +16,19 @@ def clean(data):
 	data = re.sub('\<span[^>]+class="mila kri">([^<]+)\</span>', '\\1', data)
 	data = re.sub('\<span[^>]+class="mila ktiv">([^<]+)\</span>', '[\\1]', data)
 	data = re.sub('\<span[^>]+class="sfpsk"[^>]+>([^<]+)\</span>\r\n', '\u05c3', data)
-	data = re.sub('\<span id="PS[^>]+>\r\n([^<]+)\</span>\r\n', '\\1\n', data)#, flags=re.M)
+	data = re.sub('\<span id="PS[^>]+>\r\n([^<]+)\</span>\r\n', '\\1\n', data)
+	data = re.sub('\<span class="parashia-header">\[([^]]+)\]\</span>', '{\\1}', data)
+	data = re.sub('\<span class="parasha-header">{פרשת ([^}]+)}\</span>', '{{\\1}}', data)
 	data = re.sub('\r\n', ' ', data)
 	data = re.sub('( )$', '', data)
 	return data
 
-for i in range(1, 151):
-	print (i)
-	data = open('mgketer/%s'%i, newline='').read()
-	data = clean(data)
-	open('src/%s'%i, 'w').write(data)
+for i in range(len(common.books)):
+	name, chapters, hname = common.books[i]
+	for c in range(1, chapters + 1):
+		src = 'mgketer/%02d.%03d.html'%(i + 1, c)
+		dst = 'src/%02d.%03d.txt'%(i + 1, c)
+		data = open(src, newline='').read()
+		data = clean(data)
+		open(dst, 'w').write(data)
+		print (src, dst)
