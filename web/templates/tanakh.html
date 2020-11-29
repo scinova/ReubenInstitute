@@ -2,11 +2,11 @@
 {% block title %}תנך{% endblock %}
 {% block content %}
 <h1>תנך</h1>
-{% for book in books %}
+{% for book in bible %}
 	{% set oloop = loop %}
-	<h2>{{book.2}}</h2>
-	{% for c in range(1, book.1 + 1) %}
-		<a href="/tanakh/{{oloop.index}}/{{c}}">{{numbers[c]}}</a>
+	<h2>{{book.hname}}</h2>
+	{% for chapter in book.chapters %}
+		<a href="/tanakh/{{book.ind}}/{{chapter.no}}">{{chapter.hno}}</a>
 	{% endfor %}
 	<br />
 {% endfor %}

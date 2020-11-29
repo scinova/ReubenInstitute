@@ -26,13 +26,44 @@ def main():
 
 @app.route('/tanakh/')
 def tanakh():
-	return render_template('tanakh.html', books=common.books, numbers=numbers)
+#	books = []
+#	for x in range(len(common.books)):
+#		name, num_chapters, hname = common.books[x]
+#		book = common.Book(name, hname, x + 1)
+#		for c in range(1, num_chapters + 1):
+#			chapter = common.Chapter(c)
+#			book.chapters.append(chapter)
+#		books.append(book)
+	return render_template('tanakh.html', bible=common.Bible)
 
-@app.route('/tanakh/<int:book>/<int:chapter>')
-def view_chapter(book, chapter):
-	data = open('../db/tanakh/%02d.%03d.txt'%(book, chapter)).read()
-	return render_template('tanakh-chapter.html', data=data, re=re)
+@app.route('/tanakh/<int:book_ind>/<int:chapter_no>')
+def view_chapter(book_ind, chapter_no):
+	book = common.Bible[book_ind - 1]
+	data = open('../db/tanakh/%02d.%03d.txt'%(book_ind, chapter_no)).read()
+	data = re.sub('{{[^}]+}} ', '', data)
+	lines = data.split('\n')
+	chapter = common.Chapter(chapter_no)
+	for l in range(1, len(lines) + 1):
+		verse = common.Verse(l, lines[l - 1])
+		chapter.verses.append(verse)
+	return render_template('tanakh-chapter.html', chapter=chapter, book=book)
 
 @app.route('/mishnah/')
 def mishnah():
-	return render_template('mishnah.html', orders=common.mishnah)
+	return render_template('mishnah.html', mishnah=common.Mishnah)
+
+@app.route('/mishnah/<int:order_no>/<int:tractate_no>')
+def view_tractate(order_no, tractate_no):
+	data = open('../db/mishnah/%1d.%02d.txt'%(order_no, tractate_no)).read()
+	order = common.Mishnah[order_no -1]
+	tractate = order.books[tractate_no - 1]
+	chapters = []
+	parags = data.split('\n\n')
+	for c in range(len(parags)):
+		chapter = common.Chapter(c + 1)
+		verses = parags[c].split('\n')
+		for v in range(len(verses)):
+			verse = common.Verse(v + 1, verses[v])
+			chapter.verses.append(verse)
+		chapters.append(chapter)
+	return render_template('mishnah-tractate.html', chapters=chapters, order=order, tractate=tractate)

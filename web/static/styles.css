@@ -19,7 +19,45 @@
 	font-size: 20px;
 	}
 
+html {
+	background-color: #eee;
+	}
+
+body {
+	padding: 10px;
+	max-width: 800px;
+	margin: 0 auto;
+	}
+
+div#content {
+	border: 1px solid #999;
+	padding: 20px;
+	background-color: #fff;
+	}
+
+h1 {
+	font-size: 30px;
+	}
+
+h2 {
+	font-size: 20px;
+	}
+
 a {
-	color: blue;
+	color: #0099cc;
 	text-decoration: none;
+	}
+
+a:hover {
+	text-decoration: underline;
+	}
+
+p {
+	border: 0px solid red;
+	margin-bottom: 15px;
+	text-align: justify;
+	}
+
+span.verseno {
+	color: silver}
 	}

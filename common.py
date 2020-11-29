@@ -1,5 +1,7 @@
+import hebrew_numbers
+import re
 
-mishnah = [
+mishnah_arr = [
 	['Zeraim', 'זְרָעִים', [
 		['Berakhot', 'בְּרָכוֹת'],
 		['Peah', 'פֵּאָה'],
@@ -77,8 +79,7 @@ mishnah = [
 		]]
 	]
 
-
-books = [
+bible_arr = [
 	['Genesis', 50, 'בראשית'],
 	['Exodus', 40, 'שמות'],
 	['Leviticus', 27, 'ויקרא'],
@@ -87,10 +88,10 @@ books = [
 
 	['Joshua', 24, 'יהושע'],
 	['Judges', 21, 'שופטים'],
-	['Samuel 1', 31,  'שמואל 1'],
-	['Samuel 2', 24, 'שמואל 2'],
-	['Kings 1', 22, 'מלכים 1'],
-	['Kings 2', 25, 'מלכים 2'],
+	['Samuel 1', 31,  'שמואל א׳'],
+	['Samuel 2', 24, 'שמואל ב׳'],
+	['Kings 1', 22, 'מלכים א׳'],
+	['Kings 2', 25, 'מלכים ב׳'],
 
 	['Isaiah', 66, 'ישעיה'],
 	['Jeremiah', 52, 'ירמיה'],
@@ -122,6 +123,56 @@ books = [
 	['Daniel', 12, 'דניאל'],
 	['Ezra', 10, 'עזרא'],
 	['Nehemiah', 13, 'נחמיה'],
-	['Chronicles 1', 29, 'דברי הימים 1'],
-	['Chronicles 2', 36, 'דברי הימים 2']
+	['Chronicles 1', 29, 'דברי הימים א׳'],
+	['Chronicles 2', 36, 'דברי הימים ב׳']
 	]
+
+class Verse:
+	def __init__(self, no, text):
+		self.no = no
+		self.hno = hebrew_numbers.int_to_gematria(no, gershayim=False)
+		self.hnog = hebrew_numbers.int_to_gematria(no)
+		self.text = text
+
+class Chapter:
+	def __init__(self, no):
+		self.no = no
+		self.hno = hebrew_numbers.int_to_gematria(no, gershayim=False)
+		self.hnog = hebrew_numbers.int_to_gematria(no)
+		self.verses = []
+
+class Book:
+	def __init__(self, name, hname, ind):
+		self.name = name
+		self.hname = hname
+		self.ind = ind
+		self.chapters = []
+
+#class Collection:
+#	def __init__(self):
+#		self.books = []
+
+class Order:
+	def __init__(self, name, hname):
+		self.name = name
+		self.hname = hname
+		self.books = []
+
+Bible = []
+for x in range(len(bible_arr)):
+	name, num_chapters, hname = bible_arr[x]
+	book = Book(name, hname, x + 1)
+	for c in range(1, num_chapters + 1):
+		chapter = Chapter(c)
+		book.chapters.append(chapter)
+	Bible.append(book)
+
+Mishnah = []
+for x in range (len(mishnah_arr)):
+	name, hname, tractate_arr = mishnah_arr[x]
+	order = Order(name, hname)
+	for t in range(len(tractate_arr)):
+		tractate_name, tractate_hname = tractate_arr[t]
+		tractate = Book(tractate_name, tractate_hname, t + 1)
+		order.books.append(tractate)
+	Mishnah.append(order)

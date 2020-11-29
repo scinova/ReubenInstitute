@@ -1,8 +1,10 @@
 {% extends "base.html" %}
 {% block title %}{% endblock %}
 {% block content %}
-	{% set data = re.sub('{{[^}]+}} ', '', data) %}
-	{% for line in data.split('\n') %}
-		{{line}}<br />
+	<h1>{{book.hname}}, פרק {{chapter.hnog}}</h1>
+	<p>
+	{% for verse in chapter.verses %}
+		<span class="verseno">{{verse.hno}}</span> {{verse.text}}
 	{% endfor %}
+	</p>
 {% endblock %}

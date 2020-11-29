@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}{% endblock %}
+{% block content %}
+	<h1>סדר {{order.hname}}, מסכת {{tractate.hname}}</h1>
+	{% for chapter in chapters %}
+		<h2>פרק {{chapter.hnog}}</h2>
+		{% for verse in chapter.verses %}
+			<p><span class="verseno">{{verse.hno}}</span> {{verse.text}}</p>
+		{% endfor %}
+	{% endfor %}
+{% endblock %}
