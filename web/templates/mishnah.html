@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}משנה{% endblock %}
+{% block content %}
+<h1>משנה</h1>
+{% for order in orders %}
+	{% set oloop = loop %}
+	<h2>סדר {{order.1}}</h2>
+	{% for tractate in order[2] %}
+		<a href="">{{tractate.1}}</a>
+	{% endfor %}
+	<br />
+{% endfor %}
+{% endblock %}

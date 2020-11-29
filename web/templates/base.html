@@ -1,0 +1,18 @@
+<!doctype html>
+<html dir="rtl">
+<head>
+	{% block head %}
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="/@@/styles.css">
+	<title>{% block title %}{% endblock %} - מכון ראובן</title>
+	{% endblock %}
+</head>
+<body>
+	<div id="content">{% block content %}{% endblock %}</div>
+	<div id="footer">
+		{% block footer %}
+		&copy; 2020 מכון ראובן
+		{% endblock %}
+	</div>
+</body>
+</html>

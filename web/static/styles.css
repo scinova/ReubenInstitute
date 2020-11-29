@@ -1,0 +1,25 @@
+@font-face {
+	font-family: 'regular';
+	src: url('/@@/fonts/TaameyFrankCLM-Medium.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'script';
+	src: url('/@@/fonts/SBL_Hbrw.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+* {
+	spacing: 0;
+	margin: 0;
+	font-family: script;
+	font-size: 20px;
+	}
+
+a {
+	color: blue;
+	text-decoration: none;
+	}
