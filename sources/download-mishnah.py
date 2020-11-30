@@ -3,9 +3,9 @@ sys.path.append('..')
 import common
 import os
 
-for i in range(len(common.mishnah)):
-	for t in common.mishnah[i][2]:
-		name = t[0]
+for i in range(len(common.Mishnah)):
+	for t in common.Mishnah[i].books:
+		name = t.name
 		if name == 'Avot':
 			prefix = 'Pirkei'
 		else:
