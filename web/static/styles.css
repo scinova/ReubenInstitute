@@ -58,6 +58,16 @@ p {
 	text-align: justify;
 	}
 
+p.poem {
+	text-align: center;
+	margin-bottom: 5px;
+	}
+
+
 span.verseno {
-	color: silver}
+	color: silver;
+	}
+
+span.portion {
+	color: silver;
 	}

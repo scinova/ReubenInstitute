@@ -38,7 +38,7 @@ def view_chapter(book_ind, chapter_no):
 	for l in range(1, len(lines) + 1):
 		verse = common.Verse(l, lines[l - 1])
 		chapter.verses.append(verse)
-	return render_template('tanakh-chapter.html', chapter=chapter, book=book)
+	return render_template('tanakh-chapter.html', chapter=chapter, book=book, re=re)
 
 @app.route('/mishnah/')
 def mishnah():

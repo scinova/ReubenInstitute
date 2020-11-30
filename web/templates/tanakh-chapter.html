@@ -2,9 +2,20 @@
 {% block title %}{% endblock %}
 {% block content %}
 	<h1>{{book.hname}}, פרק {{chapter.hnog}}</h1>
-	<p>
+	{% if book.ind in [27, 28, 29, 30] %}
+		{% set poem = True %}
+	{% endif %}
+	{% if not poem %}<p>{% endif %}
 	{% for verse in chapter.verses %}
-		<span class="verseno">{{verse.hno}}</span> {{verse.text}}
+		{% set text = verse.text %}
+		{% if verse == chapter.verses[-1] %}
+			{% set text = re.sub('{פ}', ' <span class="portion">פ</span>', text) %}
+		{% endif %}
+		{% set text = re.sub('{פ}', ' <span class="portion">פ</span><br /><br />', text) %}
+		{% set text = re.sub('{ס}', ' <span class="portion">ס</span><br />', text) %}
+		{% if poem %}<p class="poem">{% endif %}
+		<span class="verseno">{{verse.hno}}</span> {{text|safe}}
+		{% if poem %}</p>{% endif %}
 	{% endfor %}
-	</p>
+	{% if not poem %}</p>{% endif %}
 {% endblock %}
