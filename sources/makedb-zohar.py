@@ -40,5 +40,5 @@ for b in range(len(common.zohar_arr)):
 		out = ''.join([unicodedata.normalize('NFD', l) for l in out])
 		dst = '../db/zohar/%1d.%02d.txt'%(b + 1, chapter.no)
 		print ('----', b + 1, chapter.no, start_page, start_verse, end_page, end_verse,
-				len(out_verses), len(out), dst)
+				len(out_verses), len(out), dst, hname)
 		open(dst, 'w').write(out)
