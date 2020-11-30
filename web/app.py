@@ -26,14 +26,6 @@ def main():
 
 @app.route('/tanakh/')
 def tanakh():
-#	books = []
-#	for x in range(len(common.books)):
-#		name, num_chapters, hname = common.books[x]
-#		book = common.Book(name, hname, x + 1)
-#		for c in range(1, num_chapters + 1):
-#			chapter = common.Chapter(c)
-#			book.chapters.append(chapter)
-#		books.append(book)
 	return render_template('tanakh.html', bible=common.Bible)
 
 @app.route('/tanakh/<int:book_ind>/<int:chapter_no>')
@@ -41,7 +33,7 @@ def view_chapter(book_ind, chapter_no):
 	book = common.Bible[book_ind - 1]
 	data = open('../db/tanakh/%02d.%03d.txt'%(book_ind, chapter_no)).read()
 	data = re.sub('{{[^}]+}} ', '', data)
-	lines = data.split('\n')
+	lines = data.split('\n')[:-1]
 	chapter = common.Chapter(chapter_no)
 	for l in range(1, len(lines) + 1):
 		verse = common.Verse(l, lines[l - 1])
