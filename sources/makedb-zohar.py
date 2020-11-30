@@ -2,6 +2,7 @@ import sys
 sys.path.append('..')
 import common
 import re
+import unicodedata
 
 for b in range(len(common.zohar_arr)):
 	if b in [0, 1, 2]:
@@ -36,6 +37,7 @@ for b in range(len(common.zohar_arr)):
 				else:
 					out_verses.append(verses[v])
 		out = '\n'.join(out_verses)
+		out = ''.join([unicodedata.normalize('NFD', l) for l in out])
 		dst = '../db/zohar/%1d.%02d.txt'%(b + 1, chapter.no)
 		print ('----', b + 1, chapter.no, start_page, start_verse, end_page, end_verse,
 				len(out_verses), len(out), dst)

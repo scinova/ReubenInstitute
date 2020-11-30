@@ -2,6 +2,7 @@ import sys
 sys.path.append('..')
 import common
 import re
+import unicodedata
 
 def clean(data):
 	data = re.sub('\<span class="perek-header">[^<]+\</span>', '', data)
@@ -25,12 +26,13 @@ def clean(data):
 	data = re.sub('( )$', '', data)
 	return data
 
-for i in range(len(common.books)):
-	name, chapters, hname = common.books[i]
-	for c in range(1, chapters + 1):
+for i in range(len(common.Bible)):
+	book = common.Bible[i]
+	for c in range(1, len(book.chapters) + 1):
 		src = 'tanakh/%02d.%03d.html'%(i + 1, c)
 		dst = '../db/tanakh/%02d.%03d.txt'%(i + 1, c)
 		data = open(src, newline='').read()
 		data = clean(data)
+		data = ''.join([unicodedata.normalize('NFD', l) for l in data])
 		open(dst, 'w').write(data)
 		print (src, dst)
