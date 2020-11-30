@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block title %}{% endblock %}
+{% block content %}
+	<h1>{{book.hname}}, {{chapter.hname}}</h1>
+	{% for verse in chapter.verses %}
+		<p><span class="verseno">{{verse.hno}}</span> {{verse.text}}</p>
+	{% endfor %}
+{% endblock %}

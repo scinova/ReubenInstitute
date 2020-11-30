@@ -55,7 +55,7 @@ def mishnah():
 @app.route('/mishnah/<int:order_no>/<int:tractate_no>')
 def view_tractate(order_no, tractate_no):
 	data = open('../db/mishnah/%1d.%02d.txt'%(order_no, tractate_no)).read()
-	order = common.Mishnah[order_no -1]
+	order = common.Mishnah[order_no - 1]
 	tractate = order.books[tractate_no - 1]
 	chapters = []
 	parags = data.split('\n\n')
@@ -67,3 +67,18 @@ def view_tractate(order_no, tractate_no):
 			chapter.verses.append(verse)
 		chapters.append(chapter)
 	return render_template('mishnah-tractate.html', chapters=chapters, order=order, tractate=tractate)
+
+@app.route('/zohar/')
+def zohar():
+	return render_template('zohar.html', zohar=common.Zohar)
+
+@app.route('/zohar/<int:book_ind>/<int:chapter_no>')
+def view_zohar_chapter(book_ind, chapter_no):
+	book = common.Zohar[book_ind - 1]
+	data = open('../db/zohar/%1d.%02d.txt'%(book_ind, chapter_no)).read()
+	chapter = book.chapters[chapter_no - 1]#common.Chapter(1)
+	verses = data.split('\n')
+	for x in range(len(verses)):
+		verse = common.Verse(x + 1, verses[x])
+		chapter.verses.append(verse)
+	return render_template('zohar-chapter.html', chapter=chapter, book=book)
