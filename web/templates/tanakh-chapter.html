@@ -18,4 +18,13 @@
 		{% if poem %}</p>{% endif %}
 	{% endfor %}
 	{% if not poem %}</p>{% endif %}
+	{% if book.ind in [1, 2, 3, 4, 5] %}
+		<h2>אונקלוס</h2>
+		<p>
+		{% for verse in onkelos.verses %}
+			<span class="verseno">{{verse.hno}}</span> {{verse.text}}
+		{% endfor %}
+		</p> 
+	{% endif %}
+
 {% endblock %}

@@ -38,7 +38,13 @@ def view_chapter(book_ind, chapter_no):
 	for l in range(1, len(lines) + 1):
 		verse = common.Verse(l, lines[l - 1])
 		chapter.verses.append(verse)
-	return render_template('tanakh-chapter.html', chapter=chapter, book=book, re=re)
+	data = open('../db/onkelos/%1d.%02d.txt'%(book_ind, chapter_no)).read()
+	lines = data.split('\n')[:-1]
+	onkelos = common.Chapter(chapter_no)
+	for l in range(1, len(lines) + 1):
+		verse = common.Verse(l, lines[l - 1])
+		onkelos.verses.append(verse)
+	return render_template('tanakh-chapter.html', chapter=chapter, onkelos=onkelos, book=book, re=re)
 
 @app.route('/mishnah/')
 def mishnah():
