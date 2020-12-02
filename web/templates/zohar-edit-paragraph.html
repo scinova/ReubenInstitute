@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}{% endblock %}
+{% block content %}
+<h1></h1>
+<form method="post">
+<div class="right">
+	<div class="verse">
+		<textarea name="ar_text">{{ar_text}}</textarea>
+	</div>
+</div>
+<div class="left">
+	<div class="verse">
+		<textarea name="he_text">{{he_text}}</textarea>
+	</div>
+</div>
+<div class="clear"></div>
+	<button type="submit">שמור</button>
+<form>
+{% endblock %}
