@@ -2,7 +2,9 @@
 {% block title %}זהר{% endblock %}
 {% block content %}
 <h1>זוהר</h1>
-{% for article in articles %}
-	<a href="/zohar/1/01/{{loop.index}}">{{article}}</a><br />
+{% for i in articles %}
+	{% for article in articles[i] %}
+		<a href="/zohar/{{i|replace('.', '/')}}/{{loop.index}}">{{article}}</a><br />
+	{% endfor %}
 {% endfor %}
 {% endblock %}

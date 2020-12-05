@@ -73,8 +73,10 @@ def zohar():
 
 @app.route('/zohar-articles')
 def zohar_articles():
-	data = open('../db/zohar/1.01/00.txt').read().split('\n')
-	articles = data
+	articles = {}
+	for i in ['1.01', '3.28']:
+		data = open('../db/zohar/%s/00.txt'%i).read().split('\n')
+		articles[i] = data
 	return render_template('zohar-articles.html', articles=articles)
 
 @app.route('/zohar/<int:book_ind>/<int:chapter_no>/<int:article_no>')
