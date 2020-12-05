@@ -102,7 +102,15 @@ def edit_zohar_paragraph(book_ind, chapter_no, article_no, paragraph_no):
 		ar_texts[paragraph_no - 1] = request.form['ar_text'].replace('\r\n', '\n')
 		he_texts[paragraph_no - 1] = request.form['he_text'].replace('\r\n', '\n')
 		ar_text = '\n\n\n'.join(ar_texts)
+		t = ''
+		for i in range(len(ar_text)):
+			t += unicodedata.normalize('NFD', ar_text[i])
+		ar_text = t
 		he_text = '\n\n\n'.join(he_texts)
+		t = ''
+		for i in range(len(he_text)):
+			t += unicodedata.normalize('NFD', he_text[i])
+		he_text = t
 		f = '../db/zohar/%1d.%02d/%02d.txt'%(book_ind, chapter_no, article_no)
 		open(f, 'w').write(ar_text)
 		f = '../db/zohar/%1d.%02d/%02dt.txt'%(book_ind, chapter_no, article_no)
