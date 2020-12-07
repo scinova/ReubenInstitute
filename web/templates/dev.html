@@ -6,6 +6,20 @@
 		<a href="/dev/{{l}}/">{{l}}</a>
 	{% endfor %}
 	</div>
+
+	<h1>{{mispunctuations|length}} mispunctuations</h1>
+	{% for m in mispunctuations %}
+		<a href="/zohar/{{m.book_ind}}/{{m.chapter_no}}/{{m.article_no}}/edit/{{m.paragraph_no}}">
+		 {{m.article.title}}
+		{# {{m.book_ind}} {{m.chapter_no}} {{m.article_no}} {{m.paragraph_no}}#}</a>
+		 <br />
+		 <span style="font-size:200%">{{m.x}}<br />
+		 {{m.y}}</span>
+		
+		<br />
+	{% endfor %}
+	{{mispunctuations|length}}
+
 	{% if letter %}
 		{% for word in words %}
 			{{word}}

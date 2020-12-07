@@ -198,30 +198,76 @@ def dev(letter=None):
 	chars = []
 	outwords = []
 	links = {}
+	sentences = {}
+	mispunctuations = []
+	for book in common.Zohar:
+		sentences[book.ind] = {}
+		for chapter in book.chapters:
+			sentences[book.ind][chapter.no] = {}
+			for article in chapter.articles:
+				sentences[book.ind][chapter.no][article.no] = {}
+				ar_data = open('../db/zohar/%1d.%02d/%02d.txt'%(book.ind, chapter.no, article.no)).read()
+				he_data = open('../db/zohar/%1d.%02d/%02dt.txt'%(book.ind, chapter.no, article.no)).read()
+				ar_paragraphs = ar_data.split('\n\n\n')
+				he_paragraphs = he_data.split('\n\n\n')
+				for p in range(len(ar_paragraphs)):
+					t = ar_paragraphs[p]
+					#####
+					t = re.sub('[\u2018\u2019]', "'", t)
+					t = re.sub('[\u201c\u201d]', '"', t)
+					#####
+					for b in common.Bible:
+						t = re.sub('\(' + b.hname.replace('\u05f3', '') + '[^\)]+\)', '', t)
+					t = re.sub('{[^}]+}', '', t)
+					t = re.sub('"[^"]+"', '', t)
+					t = re.sub('[~\'\=\:\u2022\u2026\-\u2013\(\)]', '', t)
+					t = re.sub('[\s]+', ' ', t)
+					ar_text = t
+
+					t = he_paragraphs[p]
+					#####
+					t = re.sub('[\u2018\u2019]', "'", t)
+					t = re.sub('[\u201c\u201d]', '"', t)
+					#####
+					for b in common.Bible:
+						t = re.sub('\(' + b.hname.replace('\u05f3', '') + '[^\)]+\)', '', t)
+					t = re.sub('{[^}]+}', '', t)
+					t = re.sub('"[^"]+"', '', t)
+					t = re.sub('[~\'\=\:\u2022\u2026\-\u2013\(\)]', '', t)
+					t = re.sub('[\s]+', ' ', t)
+					he_text = t
+
+					x = ''
+					y = ''
+					for c in range(len(ar_text)):
+						pass # this is the character index
+						if ar_text[c] in ',.;!?':
+							x += ar_text[c]
+					for c in range(len(he_text)):
+						if he_text[c] in ',.;!?':
+							y += he_text[c]
+					if x != y:
+						mispunctuations.append({
+								'book_ind':book.ind,
+								'chapter_no': chapter.no,
+								'article_no': article.no,
+								'paragraph_no': p + 1,
+								'x': x,
+								'y': y,
+								'article': article
+								})
+
+					t = re.sub('\?\!', 'X', t)
+					t = re.sub('[\?\.\!\;]', 'X', t)
+					sentences[book.ind][chapter.no][article.no][p] = t.split('X')
+
 	for book in common.Zohar:
 		for chapter in book.chapters:
 			for article in chapter.articles:
-				p = '../db/zohar/%1d.%02d/%02d.txt'%(book.ind, chapter.no, article.no)
-				data = open(p).read()
-				paragraphs = data.split('\n\n\n')
-				for p in range(len(paragraphs)):
-					paragraph = paragraphs[p]
-					#####
-					paragraph = re.sub('[\u2018\u2019]', "'", paragraph)
-					paragraph = re.sub('[\u201c\u201d]', '"', paragraph)
-					#####
-					for b in common.Bible:
-						paragraph = re.sub('\(' + b.hname.replace('\u05f3', '') + '[^\)]+\)', '', paragraph)
-					paragraph = re.sub('{[^}]+}', '', paragraph)
-					paragraph = re.sub('"[^"]+"', '', paragraph)
-					paragraph = re.sub('[~\'\=\,\:\u2022\u2026\-\u2013\(\)]', '', paragraph)
-					paragraph = re.sub('\?\!', 'X', paragraph)
-					paragraph = re.sub('[\?\.\!\;]', 'X', paragraph)
-					paragraph = re.sub('[\s]+', ' ', paragraph)
-					sentences = paragraph.split('X')
-					
-					for s in range(len(sentences)):
-						sentence = sentences[s]
+				for p in range(len(sentences[book.ind][chapter.no][article.no])):
+					#print (book.ind, chapter.no, article.no, p, sentences[3].keys())
+					for s in range(len(sentences[book.ind][chapter.no][article.no][p])):
+						sentence = sentences[book.ind][chapter.no][article.no][p][s]
 						for c in sentence:
 							if c not in chars:
 								chars.append(c)
@@ -238,5 +284,6 @@ def dev(letter=None):
 	outwords.sort(key=lambda word: remove_diacritics(remove_cantillation(word)))
 	chars.sort()
 	chars = [{'name':unicodedata.name(c), 'code':'%04X'%ord(c)} for c in chars]
-	return render_template('dev.html', chars=chars, words=outwords, links=links, letter=letter)
+	return render_template('dev.html', chars=chars, words=outwords, links=links, letter=letter,
+			mispunctuations=mispunctuations)
 
