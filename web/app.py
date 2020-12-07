@@ -193,7 +193,8 @@ def devel():
 	return render_template('devel.html', words = words)
 
 @app.route('/dev/')
-def dev():
+@app.route('/dev/<string:letter>/')
+def dev(letter=None):
 	chars = []
 	outwords = []
 	links = {}
@@ -228,6 +229,8 @@ def dev():
 						for word in words:
 							if not len(word):
 								continue
+							if letter and not word.startswith(letter):
+								continue
 							if word not in outwords:
 								outwords.append(word)
 								links[word] = []
@@ -235,5 +238,5 @@ def dev():
 	outwords.sort(key=lambda word: remove_diacritics(remove_cantillation(word)))
 	chars.sort()
 	chars = [{'name':unicodedata.name(c), 'code':'%04X'%ord(c)} for c in chars]
-	return render_template('dev.html', chars=chars, words=outwords, links=links)
+	return render_template('dev.html', chars=chars, words=outwords, links=links, letter=letter)
 
