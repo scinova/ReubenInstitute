@@ -276,12 +276,9 @@ for x in range(len(zohar_arr)):
 		chapter = Chapter(c + 1)
 		chapter.hname = hname
 		path = '../db/zohar/%1d.%02d/00.txt'%(book.ind, chapter.no)
-		print (os.getcwd(), path, os.path.exists(path))
 		if os.path.exists(path):
-			print ("ARTICLS")
 			names = open(path).read().split('\n')[:-1]
 			for a in range(len(names)):
-				print ("xxxx", names[a])
 				article = Article(a + 1, names[a], names[a])
 				chapter.articles.append(article)
 		book.chapters.append(chapter)
