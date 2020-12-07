@@ -83,6 +83,7 @@ def zohar_articles():
 def view_zohar_article(book_ind, chapter_no, article_no):
 	book = common.Zohar[book_ind - 1]
 	chapter = book.chapters[chapter_no - 1]
+	print (chapter.hname)
 	t = open('../db/zohar/%1d.%02d/%02d.txt'%(book_ind, chapter_no, article_no)).read()
 	t = re.sub('"([^"]+)"', '“\\1”', t)
 	t = re.sub("'([^']+)'", '‘\\1’', t)
@@ -127,18 +128,24 @@ def edit_zohar_paragraph(book_ind, chapter_no, article_no, paragraph_no):
 @app.route('/zohar/<int:book_ind>/<int:chapter_no>')
 def view_zohar_chapter(book_ind, chapter_no):
 	book = common.Zohar[book_ind - 1]
-	data = open('../db/zohar/%1d.%02d.txt'%(book_ind, chapter_no)).read()
 	chapter = book.chapters[chapter_no - 1]
-	verses = data.split('\n')
-	for x in range(len(verses)):
-		verse = common.Verse(x + 1, verses[x])
-		chapter.verses.append(verse)
+	print (chapter.articles)
+	if not len(chapter.articles):
+		print ("no artices")
+		data = open('../db/zohar/%1d.%02d.txt'%(book_ind, chapter_no)).read()
+		verses = data.split('\n')
+		for x in range(len(verses)):
+			verse = common.Verse(x + 1, verses[x])
+			chapter.verses.append(verse)
 	return render_template('zohar-chapter.html', chapter=chapter, book=book)
 
 def remove_cantillation(text):
 	return re.sub('[\u0591-\u05af\u05bd]', '', text)
 
 def remove_punctuation(text):
+	return re.sub('[\u05b0-\u05bc\u05c1\u05c2\u05c7]', '', text)
+
+def remove_diacritics(text):
 	return re.sub('[\u05b0-\u05bc\u05c1\u05c2\u05c7]', '', text)
 
 @app.route('/devel/')
@@ -184,3 +191,49 @@ def devel():
 #	print (numbers)
 	words.sort(key=remove_punctuation)
 	return render_template('devel.html', words = words)
+
+@app.route('/dev/')
+def dev():
+	chars = []
+	outwords = []
+	links = {}
+	for book in common.Zohar:
+		for chapter in book.chapters:
+			for article in chapter.articles:
+				p = '../db/zohar/%1d.%02d/%02d.txt'%(book.ind, chapter.no, article.no)
+				data = open(p).read()
+				paragraphs = data.split('\n\n\n')
+				for p in range(len(paragraphs)):
+					paragraph = paragraphs[p]
+					#####
+					paragraph = re.sub('[\u2018\u2019]', "'", paragraph)
+					paragraph = re.sub('[\u201c\u201d]', '"', paragraph)
+					#####
+					for b in common.Bible:
+						paragraph = re.sub('\(' + b.hname.replace('\u05f3', '') + '[^\)]+\)', '', paragraph)
+					paragraph = re.sub('{[^}]+}', '', paragraph)
+					paragraph = re.sub('"[^"]+"', '', paragraph)
+					paragraph = re.sub('[~\'\=\,\:\u2022\u2026\-\u2013\(\)]', '', paragraph)
+					paragraph = re.sub('\?\!', 'X', paragraph)
+					paragraph = re.sub('[\?\.\!\;]', 'X', paragraph)
+					paragraph = re.sub('[\s]+', ' ', paragraph)
+					sentences = paragraph.split('X')
+					
+					for s in range(len(sentences)):
+						sentence = sentences[s]
+						for c in sentence:
+							if c not in chars:
+								chars.append(c)
+						words = sentence.split(' ')
+						for word in words:
+							if not len(word):
+								continue
+							if word not in outwords:
+								outwords.append(word)
+								links[word] = []
+							links[word].append([book.ind, chapter.no, article.no, p + 1])
+	outwords.sort(key=lambda word: remove_diacritics(remove_cantillation(word)))
+	chars.sort()
+	chars = [{'name':unicodedata.name(c), 'code':'%04X'%ord(c)} for c in chars]
+	return render_template('dev.html', chars=chars, words=outwords, links=links)
+

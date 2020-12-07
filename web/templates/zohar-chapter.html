@@ -1,8 +1,16 @@
 {% extends "base.html" %}
 {% block title %}{% endblock %}
 {% block content %}
-	<h1>{{book.hname}}, {{chapter.hname}}</h1>
-	{% for verse in chapter.verses %}
-		<p><span class="verseno">{{verse.hno}}</span> {{verse.text}}</p>
-	{% endfor %}
+	<a href="/zohar">זהר</a>
+	<br />
+	<h1>{{chapter.hname}}</h1>
+	{% if chapter.articles %}
+		{% for article in chapter.articles %}
+			<a href="/zohar/{{book.ind}}/{{chapter.no}}/{{article.no}}">{{article.title}}</a><br />
+		{% endfor %}
+	{% else %}
+		{% for verse in chapter.verses %}
+			<p><span class="verseno">{{verse.hno}}</span> {{verse.text}}</p>
+		{% endfor %}
+	{% endif %}
 {% endblock %}

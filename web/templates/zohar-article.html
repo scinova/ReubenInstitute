@@ -1,6 +1,9 @@
 {% extends "base.html" %}
 {% block title %}{% endblock %}
 {% block content %}
+<a href="/zohar">זהר</a>
+{{book.hname}}
+<a href="/zohar/{{book.ind}}/{{chapter.no}}">{{chapter.hname}}</a><br />
 <h1></h1>
 {% for i in range(ar_texts|length) %}
 	<a href="/zohar/{{book.ind}}/{{chapter.no}}/{{article_no}}/edit/{{loop.index}}">edit</a><br />

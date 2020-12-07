@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}{% endblock %}
+{% block content %}
+	{% for word in words[:1000] %}
+		{{word}}
+		{% for link in links[word] %}
+			<a href="/zohar/{{link.0}}/{{link.1}}/{{link.2}}/edit/{{link.3}}">{{link.0}}.{{link.1}}.{{link.2}}.{{link.3}}</a>
+		{% endfor %}
+		</br />
+	{% endfor %}
+	<div dir="ltr">
+	{% for char in chars %}
+		{{char.code}} {{char.name}}<br />
+	{% endfor %}
+	</div>
+{% endblock %}

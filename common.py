@@ -1,4 +1,5 @@
 import hebrew_numbers
+import os
 import re
 
 mishnah_arr = [
@@ -107,7 +108,7 @@ bible_arr = [
 	['Habakkuk', 3, 'חבקוק'],
 	['Zephaniah', 3,  'צפניה'],
 	['Haggai', 2, 'חגי'],
-	['Zechariah', 14,  'זכאיה'],
+	['Zechariah', 14,  'זכריה'],
 	['Malachi', 3, 'מלאכי'],
 
 	['Psalms', 150, 'תהלים'],
@@ -130,7 +131,7 @@ bible_arr = [
 a = 1
 b = 2
 zohar_arr = [
-	['זהר על התורה - בראשית', [
+	['על התורה - בראשית', [
 		[1, a, 1, 14, b, 7, 'הקדמה'],
 		[15, a, 1, 59, a, 7, 'בראשית'],
 		[59, b, 1, 76, b, 4, 'נח'],
@@ -145,7 +146,7 @@ zohar_arr = [
 		[205, a, 10, 211, b, 5, 'ויגש'],
 		[211, b, 5, 251, a, 5, 'ויחי']
 		]],
-	['זהר על התורה - שמות', [
+	['על התורה - שמות', [
 		[1, b, 1, 22, b, 2, 'שמות'],
 		[22, a, 3, 32, a, 10, 'וארא'],
 		[32, b, 1, 43, b, 11, 'בא'],
@@ -159,7 +160,7 @@ zohar_arr = [
 		[194, b, 7, 220, a, 7, 'ויקהל'],
 		[220, a, 8, 268, b, 11, 'פיקודי']
 		]],
-	['זהר על התורה - ויקרא, במדבר, דברים', [
+	['על התורה - ויקרא, במדבר, דברים', [
 		[2, a, 1, 26, a, 5, 'ויקרא'],
 		[26, a, 6, 35, b, 7, 'צו'],
 		[35, b, 8, 42, a, 7, 'שמיני'],
@@ -200,6 +201,21 @@ zohar_arr = [
 		]]
 	]
 
+class Article:
+	def __init__(self, no, title, he_title):
+		self.no = no
+		self.hno = hebrew_numbers.int_to_gematria(no, gershayim=False)
+		self.hnog = hebrew_numbers.int_to_gematria(no)
+		self.title = title
+		self.he_title = he_title
+
+class ZoharChapter:
+	def __init__(self, no):
+		self.no = no
+		self.hno = hebrew_numbers.int_to_gematria(no, gershayim=False)
+		self.hnog = hebrew_numbers.int_to_gematria(no)
+		self.articles = []
+
 class Verse:
 	def __init__(self, no, text):
 		self.no = no
@@ -213,6 +229,7 @@ class Chapter:
 		self.hno = hebrew_numbers.int_to_gematria(no, gershayim=False)
 		self.hnog = hebrew_numbers.int_to_gematria(no)
 		self.verses = []
+		self.articles = []
 
 class Book:
 	def __init__(self, name, hname, ind):
@@ -258,5 +275,14 @@ for x in range(len(zohar_arr)):
 		start_daf, start_amud, start_verse, end_daf, end_amud, end_verse, hname = chapter_arr[c]
 		chapter = Chapter(c + 1)
 		chapter.hname = hname
+		path = '../db/zohar/%1d.%02d/00.txt'%(book.ind, chapter.no)
+		print (os.getcwd(), path, os.path.exists(path))
+		if os.path.exists(path):
+			print ("ARTICLS")
+			names = open(path).read().split('\n')[:-1]
+			for a in range(len(names)):
+				print ("xxxx", names[a])
+				article = Article(a + 1, names[a], names[a])
+				chapter.articles.append(article)
 		book.chapters.append(chapter)
 	Zohar.append(book)
