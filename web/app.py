@@ -196,21 +196,34 @@ def devel():
 @app.route('/dev/<string:letter>/')
 def dev(letter=None):
 	chars = []
-	outwords = []
-	links = {}
-	sentences = {}
+	ar_words = []
+	he_words = []
+	ar_links = {}
+	he_links = {}
+	ar_sentences = {}
+	he_sentences = {}
 	mispunctuations = []
+	misparagraphs = []
 	for book in common.Zohar:
-		sentences[book.ind] = {}
+		ar_sentences[book.ind] = {}
+		he_sentences[book.ind] = {}
 		for chapter in book.chapters:
-			sentences[book.ind][chapter.no] = {}
+			ar_sentences[book.ind][chapter.no] = {}
+			he_sentences[book.ind][chapter.no] = {}
 			for article in chapter.articles:
-				sentences[book.ind][chapter.no][article.no] = {}
+				ar_sentences[book.ind][chapter.no][article.no] = {}
+				he_sentences[book.ind][chapter.no][article.no] = {}
 				ar_data = open('../db/zohar/%1d.%02d/%02d.txt'%(book.ind, chapter.no, article.no)).read()
 				he_data = open('../db/zohar/%1d.%02d/%02dt.txt'%(book.ind, chapter.no, article.no)).read()
 				ar_paragraphs = ar_data.split('\n\n\n')
 				he_paragraphs = he_data.split('\n\n\n')
+				if len(ar_paragraphs) != len(he_paragraphs):
+					misparagraphs.append({
+							'book':book,
+							'chapter': chapter,
+							'article': article})
 				for p in range(len(ar_paragraphs)):
+					# AR PARAGRAPHS
 					t = ar_paragraphs[p]
 					#####
 					t = re.sub('[\u2018\u2019]', "'", t)
@@ -220,11 +233,13 @@ def dev(letter=None):
 						t = re.sub('\(' + b.hname.replace('\u05f3', '') + '[^\)]+\)', '', t)
 					t = re.sub('{[^}]+}', '', t)
 					t = re.sub('"[^"]+"', '', t)
-					t = re.sub('[~\'\=\:\u2022\u2026\-\u2013\(\)]', '', t)
-					t = re.sub('[\s]+', ' ', t)
+					t = re.sub('[~\'\=\u2022\u2026\u2013\(\)]', '', t)
 					ar_text = t
-
-					t = he_paragraphs[p]
+					# HE PARAGRAPHS
+					try:
+						t = he_paragraphs[p]
+					except IndexError:
+						t = 'AAA'
 					#####
 					t = re.sub('[\u2018\u2019]', "'", t)
 					t = re.sub('[\u201c\u201d]', '"', t)
@@ -233,19 +248,17 @@ def dev(letter=None):
 						t = re.sub('\(' + b.hname.replace('\u05f3', '') + '[^\)]+\)', '', t)
 					t = re.sub('{[^}]+}', '', t)
 					t = re.sub('"[^"]+"', '', t)
-					t = re.sub('[~\'\=\:\u2022\u2026\-\u2013\(\)]', '', t)
-					t = re.sub('[\s]+', ' ', t)
+					t = re.sub('[~\'\=\u2022\u2026\u2013\(\)]', '', t)
 					he_text = t
-
+					# MISPUNCTUATIONS
 					x = ''
 					y = ''
 					for c in range(len(ar_text)):
-						pass # this is the character index
-						if ar_text[c] in ',.;!?':
-							x += ar_text[c]
+						if ar_text[c] in ',.:;!?-\n':
+							x += ar_text[c].replace('\n', 'ח')
 					for c in range(len(he_text)):
-						if he_text[c] in ',.;!?':
-							y += he_text[c]
+						if he_text[c] in ',.:;!?-\n':
+							y += he_text[c].replace('\n', 'ח')
 					if x != y:
 						mispunctuations.append({
 								'book_ind':book.ind,
@@ -256,18 +269,28 @@ def dev(letter=None):
 								'y': y,
 								'article': article
 								})
-
+					# AR SENTENCES
+					t = ar_text
+					t = re.sub('[\s]+', ' ', t)
+					t = re.sub(',', '', t)
 					t = re.sub('\?\!', 'X', t)
-					t = re.sub('[\?\.\!\;]', 'X', t)
-					sentences[book.ind][chapter.no][article.no][p] = t.split('X')
+					t = re.sub('[\?\.\!\;\:]', 'X', t)
+					ar_sentences[book.ind][chapter.no][article.no][p] = t.split('X')
+					# HE SENTENCES
+					t = he_text
+					t = re.sub('[\s]+', ' ', t)
+					t = re.sub(',', '', t)
+					t = re.sub('\?\!', 'X', t)
+					t = re.sub('[\?\.\!\;\:]', 'X', t)
+					he_sentences[book.ind][chapter.no][article.no][p] = t.split('X')
 
 	for book in common.Zohar:
 		for chapter in book.chapters:
 			for article in chapter.articles:
-				for p in range(len(sentences[book.ind][chapter.no][article.no])):
+				for p in range(len(ar_sentences[book.ind][chapter.no][article.no])):
 					#print (book.ind, chapter.no, article.no, p, sentences[3].keys())
-					for s in range(len(sentences[book.ind][chapter.no][article.no][p])):
-						sentence = sentences[book.ind][chapter.no][article.no][p][s]
+					for s in range(len(ar_sentences[book.ind][chapter.no][article.no][p])):
+						sentence = ar_sentences[book.ind][chapter.no][article.no][p][s]
 						for c in sentence:
 							if c not in chars:
 								chars.append(c)
@@ -277,13 +300,68 @@ def dev(letter=None):
 								continue
 							if letter and not word.startswith(letter):
 								continue
-							if word not in outwords:
-								outwords.append(word)
-								links[word] = []
-							links[word].append([book.ind, chapter.no, article.no, p + 1])
-	outwords.sort(key=lambda word: remove_diacritics(remove_cantillation(word)))
+							if word not in ar_words:
+								ar_words.append(word)
+								ar_links[word] = []
+							ar_links[word].append([book.ind, chapter.no, article.no, p + 1])
+				for p in range(len(he_sentences[book.ind][chapter.no][article.no])):
+					#print (book.ind, chapter.no, article.no, p, sentences[3].keys())
+					for s in range(len(he_sentences[book.ind][chapter.no][article.no][p])):
+						sentence = he_sentences[book.ind][chapter.no][article.no][p][s]
+						for c in sentence:
+							if c not in chars:
+								chars.append(c)
+						words = sentence.split(' ')
+						for word in words:
+							if not len(word):
+								continue
+							if letter and not word.startswith(letter):
+								continue
+							if word not in he_words:
+								he_words.append(word)
+								he_links[word] = []
+							he_links[word].append([book.ind, chapter.no, article.no, p + 1])
+	ar_words.sort(key=lambda word: remove_diacritics(remove_cantillation(word)))
+	he_words.sort(key=lambda word: remove_diacritics(remove_cantillation(word)))
+
+	ar_cleans = {}
+	for word in ar_words:
+		c = remove_diacritics(remove_cantillation(word))
+		if c not in ar_cleans:
+			ar_cleans[c] = []
+		if word not in ar_cleans[c]:
+			ar_cleans[c].append(word)
+	for word in [k for k in ar_cleans.keys()]:
+		if word in ar_cleans[word] and len(ar_cleans[word]) == 2:
+			pass
+		else:
+			del ar_cleans[word]
+	he_cleans = {}
+	for word in he_words:
+		c = remove_diacritics(remove_cantillation(word))
+		if c not in he_cleans:
+			he_cleans[c] = []
+		if word not in he_cleans[c]:
+			he_cleans[c].append(word)
+	replacements = []
+	for word in [k for k in he_cleans.keys()]:
+		c = remove_diacritics(remove_cantillation(word))
+		if word == c and len(he_cleans[c]) == 2 and c in he_cleans[c]:
+			replacements.append([c, [x for x in he_cleans[word] if x != c][0]])
+#		if word in he_cleans[word] and len(he_cleans[word]) == 2:
+#			pass
+#		else:
+#			del he_cleans[word]
+
+	out = '\n'.join(['%s %s'%(x[0], x[1]) for x in replacements])
+	open('replacements.txt', 'w').write(out)
+
+
+
+
 	chars.sort()
 	chars = [{'name':unicodedata.name(c), 'code':'%04X'%ord(c)} for c in chars]
-	return render_template('dev.html', chars=chars, words=outwords, links=links, letter=letter,
-			mispunctuations=mispunctuations)
+	return render_template('dev.html', chars=chars, ar_words=ar_words, ar_links=ar_links,
+			he_words=he_words, he_links=he_links, letter=letter, mispunctuations=mispunctuations, ar_cleans=ar_cleans, he_cleans=he_cleans,
+			replacements=replacements)
 

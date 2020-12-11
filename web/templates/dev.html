@@ -7,32 +7,62 @@
 	{% endfor %}
 	</div>
 
-	<h1>{{mispunctuations|length}} mispunctuations</h1>
-	{% for m in mispunctuations %}
-		<a href="/zohar/{{m.book_ind}}/{{m.chapter_no}}/{{m.article_no}}/edit/{{m.paragraph_no}}">
-		 {{m.article.title}}
-		{# {{m.book_ind}} {{m.chapter_no}} {{m.article_no}} {{m.paragraph_no}}#}</a>
-		 <br />
-		 <span style="font-size:200%">{{m.x}}<br />
-		 {{m.y}}</span>
-		
-		<br />
-	{% endfor %}
-	{{mispunctuations|length}}
-
 	{% if letter %}
-		{% for word in words %}
+		<div class="right">
+		{% for word in ar_words %}
 			{{word}}
-			{% for link in links[word] %}
+			{% for link in ar_links[word] %}
 				<a href="/zohar/{{link.0}}/{{link.1}}/{{link.2}}/edit/{{link.3}}">{{link.0}}.{{link.1}}.{{link.2}}.{{link.3}}</a>
 			{% endfor %}
 			</br />
 		{% endfor %}
-	{% else %}
-		<div dir="ltr">
-		{% for char in chars %}
-			{{char.code}} {{char.name}}<br />
+		</div>
+		<div class="left">
+		{% for word in he_words %}
+			{{word}}
+			{% for link in he_links[word] %}
+				<a href="/zohar/{{link.0}}/{{link.1}}/{{link.2}}/edit/{{link.3}}">{{link.0}}.{{link.1}}.{{link.2}}.{{link.3}}</a>
+			{% endfor %}
+			</br />
 		{% endfor %}
+		</div>
+		<div class="clear"></div>
+	{% else %}
+		<div>
+
+			{% for w, r in replacements %}
+				{{w}} {{r}}<br />
+			{% endfor %}
+
+			{% for w in he_cleans %}
+				{{w}} {{he_cleans[w]|length}} {{he_cleans[w]}}<br />
+			{% endfor %}
+			{% for w in ar_cleans %}
+				{{w}} {{ar_cleans[w]|length}} {{ar_cleans[w]}}<br />
+			{% endfor %}
+		
+		
+			<h1>{{misparagraphs|length}}</h1>
+			{% for m in misparagraphs %}
+				{{m.book.ind}} {{m.chapter.no}} {{m.article_no}}<br />
+			{% endfor %}
+
+			<h1>{{mispunctuations|length}} mispunctuations</h1>
+			{% for m in mispunctuations %}
+				<a href="/zohar/{{m.book_ind}}/{{m.chapter_no}}/{{m.article_no}}/edit/{{m.paragraph_no}}">
+				{{m.article.title}}
+				{# {{m.book_ind}} {{m.chapter_no}} {{m.article_no}} {{m.paragraph_no}}#}</a>
+				<br />
+				<span style="font-size:200%">{{m.x}}<br />
+				{{m.y}}</span>
+				<br />
+			{% endfor %}
+			{{mispunctuations|length}}
+		</div>
+		<div dir="ltr">
+			{% for char in chars %}
+				{{char.code}} {{char.name}}<br />
+			{% endfor %}
 		</div>
 	{% endif %}
 {% endblock %}
