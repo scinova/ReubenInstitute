@@ -119,9 +119,26 @@ def edit_zohar_paragraph(book_ind, chapter_no, article_no, paragraph_no):
 		f = '../db/zohar/%1d.%02d/%02dt.txt'%(book_ind, chapter_no, article_no)
 		open(f, 'w').write(he_text)
 		return redirect('/zohar/%d/%d/%d#v%d'%(book_ind, chapter_no, article_no, paragraph_no))
-	if request.method == 'GET':
+#	if request.method == 'GET':
+	if True:
+		translate = request.args.get('t') == '1'
+		data = open('dictionary.txt').read().split('\n')[:-1]
+		dictionary = {}
+		for line in data:
+			words = line.split(' ')
+			print (line, len(words))
+			key = words[0]
+			trs = words[1:len(words)]
+			dictionary[key] = trs
+			print (key, trs, len(words))
+	#	print (dictionary)
 		ar_text = ar_texts[paragraph_no - 1]
 		he_text = he_texts[paragraph_no - 1]
+		if not he_text:
+			he_text = ar_text
+			for key in dictionary:
+				#print (key, dictionary[key])
+				he_text = re.sub(' ' + key + '(?!=[\u0591-\u05bd\u05bf-\u05c7א-ת])', ' ' + dictionary[key][0], he_text)
 		return render_template('zohar-edit-paragraph.html', ar_text=ar_text, he_text=he_text, re=re,
 				book=book, chapter=chapter, article_no=article_no, paragraph_no=paragraph_no)
 

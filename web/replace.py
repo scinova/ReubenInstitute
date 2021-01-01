@@ -17,12 +17,11 @@ for book in common.Zohar:
 			data = open(f).read()
 			ll = len(data)
 			for src, dst in replacements:
-#				for item in reversed(tuple(re.finditer('(?<=[\s\(\,\.\:\;\)\'\"~])(%s)(?=[\s\,\.\:\!\?\;\'\")~])'%src, data, flags=re.M))):
-				items = list(reversed(tuple(re.finditer(						'^(%s)(?=[\s\,\.\:\!\?\;\'\")~_])'%src, data, flags=re.M)))) +\
-					list(reversed(tuple(re.finditer('(?<=[\s\(\,\.\:\;\?\)\'\"~_])(%s)(?=[\s\,\.\:\!\?\;\'\")~_])'%src, data, flags=re.M)))) +\
-					list(reversed(tuple(re.finditer('(?<=[\s\(\,\.\:\;\?\)\'\"~_])(%s)$'%src, data, flags=re.M))))
+				items = list(reversed(tuple(re.finditer('(?<=[^\u0591-\u05ea])(%s)(?=[^\u0591-\u05ea])'%src, data, flags=re.M))))
+#				items = list(reversed(tuple(re.finditer(						'^(%s)(?=[\s\,\.\:\!\?\;\'\")~_])'%src, data, flags=re.M)))) +\
+#					list(reversed(tuple(re.finditer('(?<=[\s\(\,\.\:\;\?\)\'\"~_])(%s)(?=[\s\,\.\:\!\?\;\'\")~_])'%src, data, flags=re.M)))) +\
+#					list(reversed(tuple(re.finditer('(?<=[\s\(\,\.\:\;\?\)\'\"~_])(%s)$'%src, data, flags=re.M))))
 				for item in items:
-#				for item in reversed(tuple(re.finditer('(?<=\s|\(|\,|\.|\:|\;|\)|\'|\"|~)(%s)(?:^|[\s\,\.\:\!\?\;\'\")~])'%src, data, flags=re.M))):
 					orig = data[item.start() : item.end()]
 					print (src, item.start(), item.end(), 'x%sy'%(orig), dst)
 					data = data[:item.start()] + dst + data[item.end():]
