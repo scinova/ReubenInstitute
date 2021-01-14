@@ -1,0 +1,1078 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SCRIBUSUTF8NEW Version="1.5.5">
+    <DOCUMENT ANZPAGES="9" PAGEWIDTH="419.527559055118" PAGEHEIGHT="595.275590551181" BORDERLEFT="25.511811023622" BORDERRIGHT="25.511811023622" BORDERTOP="56.6929133858268" BORDERBOTTOM="25.511811023622" PRESET="0" BleedTop="0" BleedLeft="0" BleedRight="0" BleedBottom="0" ORIENTATION="0" PAGESIZE="A5" FIRSTNUM="1" BOOK="1" AUTOTEXT="1" AUTOSPALTEN="1" ABSTSPALTEN="11" UNITS="1" DFONT="DejaVu Sans Book" DSIZE="12" DCOL="1" DGAP="0" TabFill="" TabWidth="36" TextDistLeft="0" TextDistRight="0" TextDistBottom="0" TextDistTop="0" AUTHOR="" COMMENTS="" KEYWORDS="" PUBLISHER="" DOCDATE="" DOCTYPE="" DOCFORMAT="" DOCIDENT="" DOCSOURCE="" DOCLANGINFO="" DOCRELATION="" DOCCOVER="" DOCRIGHTS="" DOCCONTRIB="" TITLE="" SUBJECT="" VHOCH="33" VHOCHSC="66" VTIEF="33" VTIEFSC="66" VKAPIT="75" BASEGRID="15" BASEO="0" AUTOL="100" UnderlinePos="-1" UnderlineWidth="-1" StrikeThruPos="-1" StrikeThruWidth="-1" GROUPC="1" HCMS="0" DPSo="0" DPSFo="0" DPuse="0" DPgam="0" DPbla="1" DPPr="ISO Coated v2 300% (basICColor)" DPIn="sRGB display profile (ICC v2.2)" DPInCMYK="ISO Coated v2 300% (basICColor)" DPIn2="sRGB display profile (ICC v2.2)" DPIn3="ISO Coated v2 300% (basICColor)" DISc="1" DIIm="0" ALAYER="0" LANGUAGE="he" AUTOMATIC="1" AUTOCHECK="0" GUIDELOCK="0" SnapToGuides="1" SnapToGrid="0" SnapToElement="0" MINGRID="20.0012598425197" MAJGRID="100.00062992126" SHOWGRID="0" SHOWGUIDES="1" showcolborders="1" SHOWFRAME="1" SHOWControl="0" SHOWLAYERM="0" SHOWMARGIN="1" SHOWBASE="0" SHOWPICT="1" SHOWLINK="1" rulerMode="1" showrulers="1" showBleed="1" rulerXoffset="0" rulerYoffset="0" GuideRad="10" GRAB="4" POLYC="4" POLYF="0.502045814642449" POLYR="0" POLYIR="0" POLYCUR="0" POLYOCUR="0" POLYS="0" arcStartAngle="30" arcSweepAngle="300" spiralStartAngle="0" spiralEndAngle="1080" spiralFactor="1.2" AutoSave="1" AutoSaveTime="600000" AutoSaveCount="1" AutoSaveKeep="0" AUtoSaveInDocDir="1" AutoSaveDir="" ScratchBottom="20.0012598425197" ScratchLeft="100.00062992126" ScratchRight="100.00062992126" ScratchTop="20.0012598425197" GapHorizontal="0" GapVertical="39.9996850393701" StartArrow="0" EndArrow="0" PEN="Black" BRUSH="None" PENLINE="Black" PENTEXT="Black" StrokeText="Black" TextBackGround="None" TextLineColor="None" TextBackGroundShade="100" TextLineShade="100" TextPenShade="100" TextStrokeShade="100" STIL="1" STILLINE="1" WIDTH="1" WIDTHLINE="1" PENSHADE="100" LINESHADE="100" BRUSHSHADE="100" CPICT="None" PICTSHADE="100" CSPICT="None" PICTSSHADE="100" PICTSCX="1" PICTSCY="1" PSCALE="1" PASPECT="1" EmbeddedPath="0" HalfRes="1" dispX="10.0006299212598" dispY="10.0006299212598" constrain="15" MINORC="#00ff00" MAJORC="#00ff00" GuideC="#000080" BaseC="#c0c0c0" renderStack="0 4 1 3 2" GridType="1" PAGEC="#ffffff" MARGC="#0000ff" RANDF="0" currentProfile="PDF 1.4" calligraphicPenFillColor="Black" calligraphicPenLineColor="Black" calligraphicPenFillColorShade="100" calligraphicPenLineColorShade="100" calligraphicPenLineWidth="1" calligraphicPenAngle="0" calligraphicPenWidth="10" calligraphicPenStyle="1">
+        <CheckProfile Name="PDF 1.3" ignoreErrors="0" autoCheck="1" checkGlyphs="1" checkOrphans="1" checkOverflow="1" checkPictures="1" checkPartFilledImageFrames="0" checkResolution="1" checkTransparency="1" minResolution="144" maxResolution="2400" checkAnnotations="0" checkRasterPDF="1" checkForGIF="1" ignoreOffLayers="0" checkNotCMYKOrSpot="0" checkDeviceColorsAndOutputIntent="0" checkFontNotEmbedded="1" checkFontIsOpenType="1" checkAppliedMasterDifferentSide="1" checkEmptyTextFrames="1"/>
+        <CheckProfile Name="PDF 1.4" ignoreErrors="0" autoCheck="1" checkGlyphs="1" checkOrphans="1" checkOverflow="1" checkPictures="1" checkPartFilledImageFrames="0" checkResolution="1" checkTransparency="0" minResolution="144" maxResolution="2400" checkAnnotations="0" checkRasterPDF="1" checkForGIF="1" ignoreOffLayers="0" checkNotCMYKOrSpot="0" checkDeviceColorsAndOutputIntent="0" checkFontNotEmbedded="1" checkFontIsOpenType="1" checkAppliedMasterDifferentSide="1" checkEmptyTextFrames="1"/>
+        <CheckProfile Name="PDF 1.5" ignoreErrors="0" autoCheck="1" checkGlyphs="1" checkOrphans="1" checkOverflow="1" checkPictures="1" checkPartFilledImageFrames="0" checkResolution="1" checkTransparency="0" minResolution="144" maxResolution="2400" checkAnnotations="0" checkRasterPDF="1" checkForGIF="1" ignoreOffLayers="0" checkNotCMYKOrSpot="0" checkDeviceColorsAndOutputIntent="0" checkFontNotEmbedded="1" checkFontIsOpenType="1" checkAppliedMasterDifferentSide="1" checkEmptyTextFrames="1"/>
+        <CheckProfile Name="PDF/X-1a" ignoreErrors="0" autoCheck="1" checkGlyphs="1" checkOrphans="1" checkOverflow="1" checkPictures="1" checkPartFilledImageFrames="0" checkResolution="1" checkTransparency="1" minResolution="144" maxResolution="2400" checkAnnotations="1" checkRasterPDF="1" checkForGIF="1" ignoreOffLayers="0" checkNotCMYKOrSpot="1" checkDeviceColorsAndOutputIntent="0" checkFontNotEmbedded="1" checkFontIsOpenType="1" checkAppliedMasterDifferentSide="1" checkEmptyTextFrames="1"/>
+        <CheckProfile Name="PDF/X-3" ignoreErrors="0" autoCheck="1" checkGlyphs="1" checkOrphans="1" checkOverflow="1" checkPictures="1" checkPartFilledImageFrames="0" checkResolution="1" checkTransparency="1" minResolution="144" maxResolution="2400" checkAnnotations="1" checkRasterPDF="1" checkForGIF="1" ignoreOffLayers="0" checkNotCMYKOrSpot="0" checkDeviceColorsAndOutputIntent="1" checkFontNotEmbedded="1" checkFontIsOpenType="1" checkAppliedMasterDifferentSide="1" checkEmptyTextFrames="1"/>
+        <CheckProfile Name="PDF/X-4" ignoreErrors="0" autoCheck="1" checkGlyphs="1" checkOrphans="1" checkOverflow="1" checkPictures="1" checkPartFilledImageFrames="0" checkResolution="1" checkTransparency="0" minResolution="144" maxResolution="2400" checkAnnotations="1" checkRasterPDF="1" checkForGIF="1" ignoreOffLayers="0" checkNotCMYKOrSpot="0" checkDeviceColorsAndOutputIntent="1" checkFontNotEmbedded="1" checkFontIsOpenType="0" checkAppliedMasterDifferentSide="1" checkEmptyTextFrames="1"/>
+        <CheckProfile Name="PostScript" ignoreErrors="0" autoCheck="1" checkGlyphs="1" checkOrphans="1" checkOverflow="1" checkPictures="1" checkPartFilledImageFrames="0" checkResolution="1" checkTransparency="1" minResolution="144" maxResolution="2400" checkAnnotations="0" checkRasterPDF="1" checkForGIF="1" ignoreOffLayers="0" checkNotCMYKOrSpot="0" checkDeviceColorsAndOutputIntent="0" checkFontNotEmbedded="0" checkFontIsOpenType="0" checkAppliedMasterDifferentSide="1" checkEmptyTextFrames="1"/>
+        <COLOR NAME="Black" SPACE="CMYK" C="0" M="0" Y="0" K="100"/>
+        <COLOR NAME="Blue" SPACE="RGB" R="0" G="0" B="255"/>
+        <COLOR NAME="Cool Black" SPACE="CMYK" C="60" M="0" Y="0" K="100"/>
+        <COLOR NAME="Cyan" SPACE="CMYK" C="100" M="0" Y="0" K="0"/>
+        <COLOR NAME="DarkGrey" SPACE="RGB" R="169" G="169" B="169"/>
+        <COLOR NAME="Green" SPACE="RGB" R="0" G="255" B="0"/>
+        <COLOR NAME="LightGrey" SPACE="RGB" R="211" G="211" B="211"/>
+        <COLOR NAME="Magenta" SPACE="CMYK" C="0" M="100" Y="0" K="0"/>
+        <COLOR NAME="Red" SPACE="RGB" R="255" G="0" B="0"/>
+        <COLOR NAME="Registration" SPACE="CMYK" C="100" M="100" Y="100" K="100" Register="1"/>
+        <COLOR NAME="Rich Black" SPACE="CMYK" C="60" M="40" Y="40" K="100"/>
+        <COLOR NAME="Warm Black" SPACE="CMYK" C="0" M="60" Y="29.8039215686275" K="100"/>
+        <COLOR NAME="White" SPACE="CMYK" C="0" M="0" Y="0" K="0"/>
+        <COLOR NAME="Yellow" SPACE="CMYK" C="0" M="0" Y="100" K="0"/>
+        <HYPHEN/>
+        <STYLE NAME="Default Paragraph Style" DefaultStyle="1" ALIGN="3" DIRECTION="1" LINESPMode="2" LINESP="15" INDENT="0" RMARGIN="0" FIRST="0" VOR="0" NACH="0" ParagraphEffectOffset="0" DROP="0" DROPLIN="2" Bullet="0" Numeration="0" HyphenConsecutiveLines="2" BCOLOR="None" BSHADE="100" FONT="SBL Hebrew Regular" FONTFEATURES="-clig,-liga">
+            <Tabs Type="0" Pos="56.6929133858268" Fill=""/>
+        </STYLE>
+        <CHARSTYLE CNAME="Default Character Style" DefaultStyle="1" FONT="SBL Hebrew Regular" FONTSIZE="12" FONTFEATURES="-clig,-liga" FEATURES="inherit" FCOLOR="Black" FSHADE="100" HyphenWordMin="3" SCOLOR="Black" BGCOLOR="None" BGSHADE="100" SSHADE="100" TXTSHX="5" TXTSHY="-5" TXTOUT="1" TXTULP="-0.1" TXTULW="-0.1" TXTSTP="-0.1" TXTSTW="-0.1" SCALEH="100" SCALEV="100" BASEO="0" KERN="0" LANGUAGE="he"/>
+        <CHARSTYLE CNAME="verse no" FONT="SBL Hebrew Regular" FONTSIZE="10" FONTFEATURES="-clig,-liga" FEATURES="" FCOLOR="Blue" TXTSHX="5" TXTSHY="-5" TXTOUT="1" TXTULP="-0.1" TXTULW="-0.1" TXTSTP="-0.1" TXTSTW="-0.1" LANGUAGE="he"/>
+        <CHARSTYLE CNAME="chapter no" FONT="SBL Hebrew Regular" FONTSIZE="18" FONTFEATURES="-clig,-liga" FCOLOR="Red" LANGUAGE="he"/>
+        <CHARSTYLE CNAME="regular" FONT="SBL Hebrew Regular" FONTSIZE="12" FONTFEATURES="-clig,-liga" LANGUAGE="he"/>
+        <CHARSTYLE CNAME="cantillation" FONT="SBL Hebrew Regular" FONTSIZE="12" FONTFEATURES="-clig,-liga" FCOLOR="Red" LANGUAGE="he"/>
+        <CHARSTYLE CNAME="page no" FONT="SBL Hebrew Regular" FONTSIZE="12" LANGUAGE="he"/>
+        <CHARSTYLE CNAME="reading" FONT="Linux Libertine O Regular" FONTSIZE="12" FONTFEATURES="-clig" FCOLOR="Black" FSHADE="100" LANGUAGE="he"/>
+        <CHARSTYLE CNAME="major" FONT="SBL Hebrew Regular" FONTSIZE="16" FONTFEATURES="-clig,-liga" LANGUAGE="he"/>
+        <CHARSTYLE CNAME="minor" FONT="SBL Hebrew Regular" FONTSIZE="10" FONTFEATURES="-clig,-liga" LANGUAGE="he"/>
+        <CHARSTYLE CNAME="portion" FONT="SBL Hebrew Regular" FONTSIZE="12" FONTFEATURES="-clig,-liga" FCOLOR="DarkGrey" FSHADE="100" LANGUAGE="he"/>
+        <TableStyle NAME="Default Table Style" DefaultStyle="1" FillColor="None" FillShade="100">
+            <TableBorderLeft>
+                <TableBorderLine Width="1" PenStyle="1" Color="Black" Shade="100"/>
+            </TableBorderLeft>
+            <TableBorderRight>
+                <TableBorderLine Width="1" PenStyle="1" Color="Black" Shade="100"/>
+            </TableBorderRight>
+            <TableBorderTop>
+                <TableBorderLine Width="1" PenStyle="1" Color="Black" Shade="100"/>
+            </TableBorderTop>
+            <TableBorderBottom>
+                <TableBorderLine Width="1" PenStyle="1" Color="Black" Shade="100"/>
+            </TableBorderBottom>
+        </TableStyle>
+        <CellStyle NAME="Default Cell Style" DefaultStyle="1" FillColor="None" FillShade="100" LeftPadding="1" RightPadding="1" TopPadding="1" BottomPadding="1">
+            <TableBorderLeft>
+                <TableBorderLine Width="1" PenStyle="1" Color="Black" Shade="100"/>
+            </TableBorderLeft>
+            <TableBorderRight>
+                <TableBorderLine Width="1" PenStyle="1" Color="Black" Shade="100"/>
+            </TableBorderRight>
+            <TableBorderTop>
+                <TableBorderLine Width="1" PenStyle="1" Color="Black" Shade="100"/>
+            </TableBorderTop>
+            <TableBorderBottom>
+                <TableBorderLine Width="1" PenStyle="1" Color="Black" Shade="100"/>
+            </TableBorderBottom>
+        </CellStyle>
+        <LAYERS NUMMER="0" LEVEL="0" NAME="Background" SICHTBAR="1" DRUCKEN="1" EDIT="1" SELECT="0" FLOW="1" TRANS="1" BLEND="0" OUTL="0" LAYERC="#000000"/>
+        <Printer firstUse="1" toFile="0" useAltPrintCommand="0" outputSeparations="0" useSpotColors="0" useColor="0" mirrorH="0" mirrorV="0" useICC="0" doGCR="1" doClip="1" setDevParam="1" useDocBleeds="1" cropMarks="1" bleedMarks="1" registrationMarks="0" colorMarks="0" includePDFMarks="1" PSLevel="3" PDLanguage="3" markLength="9.34605715974972e-307" markOffset="0" BleedTop="0" BleedLeft="0" BleedRight="0" BleedBottom="0" printer="" filename="" separationName="" printerCommand=""/>
+        <PDF firstUse="0" Thumbnails="0" Articles="0" Bookmarks="0" Compress="1" CMethod="0" Quality="0" EmbedPDF="0" MirrorH="0" MirrorV="0" Clip="0" rangeSel="0" rangeTxt="" RotateDeg="0" PresentMode="0" RecalcPic="0" FontEmbedding="0" Grayscale="0" RGBMode="1" UseProfiles="0" UseProfiles2="0" Binding="0" PicRes="300" Resolution="300" Version="14" Intent="1" Intent2="0" SolidP="sRGB display profile (ICC v2.2)" ImageP="sRGB display profile (ICC v2.2)" PrintP="ISO Coated v2 300% (basICColor)" InfoString="" BTop="0" BLeft="0" BRight="0" BBottom="0" useDocBleeds="0" cropMarks="0" bleedMarks="0" registrationMarks="0" colorMarks="0" docInfoMarks="0" markLength="20.0012598425197" markOffset="0" ImagePr="0" PassOwner="" PassUser="" Permissions="-4" Encrypt="0" UseLayers="0" UseLpi="0" UseSpotColors="1" doMultiFile="0" displayBookmarks="0" displayFullscreen="0" displayLayers="0" displayThumbs="0" hideMenuBar="0" hideToolBar="0" fitWindow="0" openAfterExport="0" PageLayout="0" openAction="">
+            <Fonts Name="Shlomo Bold Bold"/>
+            <Fonts Name="Shlomo Regular"/>
+            <Fonts Name="Taamey Frank CLM Bold"/>
+            <LPI Color="" Frequency="10" Angle="0" SpotFunction="0"/>
+            <LPI Color="Black" Frequency="133" Angle="45" SpotFunction="3"/>
+            <LPI Color="Cyan" Frequency="133" Angle="105" SpotFunction="3"/>
+            <LPI Color="Magenta" Frequency="133" Angle="75" SpotFunction="3"/>
+            <LPI Color="Yellow" Frequency="133" Angle="90" SpotFunction="3"/>
+        </PDF>
+        <DocItemAttributes/>
+        <TablesOfContents/>
+        <NotesStyles>
+            <notesStyle Name="Default" Start="1" Endnotes="0" Type="Type_1_2_3" Range="0" Prefix="" Suffix=")" AutoHeight="1" AutoWidth="1" AutoRemove="1" AutoWeld="1" SuperNote="1" SuperMaster="1" MarksStyle="" NotesStyle=""/>
+        </NotesStyles>
+        <NotesFrames/>
+        <PageSets>
+            <Set Name="Single Page" FirstPage="0" Rows="1" Columns="1"/>
+            <Set Name="Facing Pages" FirstPage="1" Rows="1" Columns="2">
+                <PageNames Name="Left Page"/>
+                <PageNames Name="Right Page"/>
+            </Set>
+            <Set Name="3-Fold" FirstPage="0" Rows="1" Columns="3">
+                <PageNames Name="Left Page"/>
+                <PageNames Name="Middle"/>
+                <PageNames Name="Right Page"/>
+            </Set>
+            <Set Name="4-Fold" FirstPage="0" Rows="1" Columns="4">
+                <PageNames Name="Left Page"/>
+                <PageNames Name="Middle Left"/>
+                <PageNames Name="Middle Right"/>
+                <PageNames Name="Right Page"/>
+            </Set>
+        </PageSets>
+        <Sections>
+            <Section Number="0" Name="0" From="1" To="8" Type="Type_Hebrew" Start="1" Reversed="0" Active="1" FillChar="0" FieldWidth="0"/>
+        </Sections>
+        <MASTERPAGE PAGEXPOS="100.00062992126" PAGEYPOS="20.0012598425197" PAGEWIDTH="419.527559055118" PAGEHEIGHT="595.275590551181" BORDERLEFT="25.511811023622" BORDERRIGHT="25.511811023622" BORDERTOP="34.0157480314961" BORDERBOTTOM="25.511811023622" NUM="0" NAM="Normal Left" MNAM="" Size="A5" Orientation="0" LEFT="1" PRESET="0" VerticalGuides="" HorizontalGuides="" AGhorizontalAutoGap="0" AGverticalAutoGap="0" AGhorizontalAutoCount="0" AGverticalAutoCount="0" AGhorizontalAutoRefer="0" AGverticalAutoRefer="0" AGSelection="0 0 0 0" pageEffectDuration="1" pageViewDuration="1" effectType="0" Dm="0" M="0" Di="0"/>
+        <MASTERPAGE PAGEXPOS="100.00062992126" PAGEYPOS="20.0012598425197" PAGEWIDTH="419.527559055118" PAGEHEIGHT="595.275590551181" BORDERLEFT="25.511811023622" BORDERRIGHT="25.511811023622" BORDERTOP="34.0157480314961" BORDERBOTTOM="25.511811023622" NUM="1" NAM="Normal Right" MNAM="" Size="A5" Orientation="0" LEFT="0" PRESET="0" VerticalGuides="" HorizontalGuides="" AGhorizontalAutoGap="0" AGverticalAutoGap="0" AGhorizontalAutoCount="0" AGverticalAutoCount="0" AGhorizontalAutoRefer="0" AGverticalAutoRefer="0" AGSelection="0 0 0 0" pageEffectDuration="1" pageViewDuration="1" effectType="0" Dm="0" M="0" Di="0"/>
+        <MASTERPAGE PAGEXPOS="100.00062992126" PAGEYPOS="20.0012598425197" PAGEWIDTH="419.527559055118" PAGEHEIGHT="595.275590551181" BORDERLEFT="25.511811023622" BORDERRIGHT="25.511811023622" BORDERTOP="34.0157480314961" BORDERBOTTOM="25.511811023622" NUM="2" NAM="o" MNAM="" Size="A5" Orientation="0" LEFT="0" PRESET="0" VerticalGuides="" HorizontalGuides="" AGhorizontalAutoGap="0" AGverticalAutoGap="0" AGhorizontalAutoCount="0" AGverticalAutoCount="0" AGhorizontalAutoRefer="0" AGverticalAutoRefer="0" AGSelection="0 0 0 0" pageEffectDuration="1" pageViewDuration="1" effectType="0" Dm="0" M="0" Di="0"/>
+        <PAGE PAGEXPOS="519.528188976378" PAGEYPOS="20.0012598425197" PAGEWIDTH="419.527559055118" PAGEHEIGHT="595.275590551181" BORDERLEFT="25.511811023622" BORDERRIGHT="25.511811023622" BORDERTOP="34.0157480314961" BORDERBOTTOM="25.511811023622" NUM="0" NAM="" MNAM="o" Size="A5" Orientation="0" LEFT="0" PRESET="0" VerticalGuides="" HorizontalGuides="" AGhorizontalAutoGap="0" AGverticalAutoGap="0" AGhorizontalAutoCount="0" AGverticalAutoCount="0" AGhorizontalAutoRefer="0" AGverticalAutoRefer="0" AGSelection="0 0 0 0" pageEffectDuration="1" pageViewDuration="1" effectType="0" Dm="0" M="0" Di="0"/>
+        <PAGE PAGEXPOS="100.00062992126" PAGEYPOS="655.276535433071" PAGEWIDTH="419.527559055118" PAGEHEIGHT="595.275590551181" BORDERLEFT="25.511811023622" BORDERRIGHT="25.511811023622" BORDERTOP="34.0157480314961" BORDERBOTTOM="25.511811023622" NUM="1" NAM="" MNAM="Normal Left" Size="A5" Orientation="0" LEFT="0" PRESET="0" VerticalGuides="" HorizontalGuides="" AGhorizontalAutoGap="0" AGverticalAutoGap="0" AGhorizontalAutoCount="0" AGverticalAutoCount="0" AGhorizontalAutoRefer="0" AGverticalAutoRefer="0" AGSelection="0 0 0 0" pageEffectDuration="1" pageViewDuration="1" effectType="0" Dm="0" M="0" Di="0"/>
+        <PAGE PAGEXPOS="519.528188976378" PAGEYPOS="655.276535433071" PAGEWIDTH="419.527559055118" PAGEHEIGHT="595.275590551181" BORDERLEFT="25.511811023622" BORDERRIGHT="25.511811023622" BORDERTOP="34.0157480314961" BORDERBOTTOM="25.511811023622" NUM="2" NAM="" MNAM="Normal Right" Size="A5" Orientation="0" LEFT="0" PRESET="0" VerticalGuides="" HorizontalGuides="" AGhorizontalAutoGap="0" AGverticalAutoGap="0" AGhorizontalAutoCount="0" AGverticalAutoCount="0" AGhorizontalAutoRefer="0" AGverticalAutoRefer="0" AGSelection="0 0 0 0" pageEffectDuration="1" pageViewDuration="1" effectType="0" Dm="0" M="0" Di="0"/>
+        <PAGE PAGEXPOS="100.00062992126" PAGEYPOS="1290.55181102362" PAGEWIDTH="419.527559055118" PAGEHEIGHT="595.275590551181" BORDERLEFT="25.511811023622" BORDERRIGHT="25.511811023622" BORDERTOP="34.0157480314961" BORDERBOTTOM="25.511811023622" NUM="3" NAM="" MNAM="Normal Left" Size="A5" Orientation="0" LEFT="0" PRESET="0" VerticalGuides="" HorizontalGuides="" AGhorizontalAutoGap="0" AGverticalAutoGap="0" AGhorizontalAutoCount="0" AGverticalAutoCount="0" AGhorizontalAutoRefer="0" AGverticalAutoRefer="0" AGSelection="0 0 0 0" pageEffectDuration="1" pageViewDuration="1" effectType="0" Dm="0" M="0" Di="0"/>
+        <PAGE PAGEXPOS="519.528188976378" PAGEYPOS="1290.55181102362" PAGEWIDTH="419.527559055118" PAGEHEIGHT="595.275590551181" BORDERLEFT="25.511811023622" BORDERRIGHT="25.511811023622" BORDERTOP="34.0157480314961" BORDERBOTTOM="25.511811023622" NUM="4" NAM="" MNAM="Normal Right" Size="A5" Orientation="0" LEFT="0" PRESET="0" VerticalGuides="" HorizontalGuides="" AGhorizontalAutoGap="0" AGverticalAutoGap="0" AGhorizontalAutoCount="0" AGverticalAutoCount="0" AGhorizontalAutoRefer="0" AGverticalAutoRefer="0" AGSelection="0 0 0 0" pageEffectDuration="1" pageViewDuration="1" effectType="0" Dm="0" M="0" Di="0"/>
+        <PAGE PAGEXPOS="100.00062992126" PAGEYPOS="1925.82708661417" PAGEWIDTH="419.527559055118" PAGEHEIGHT="595.275590551181" BORDERLEFT="25.511811023622" BORDERRIGHT="25.511811023622" BORDERTOP="34.0157480314961" BORDERBOTTOM="25.511811023622" NUM="5" NAM="" MNAM="Normal Left" Size="A5" Orientation="0" LEFT="0" PRESET="0" VerticalGuides="" HorizontalGuides="" AGhorizontalAutoGap="0" AGverticalAutoGap="0" AGhorizontalAutoCount="0" AGverticalAutoCount="0" AGhorizontalAutoRefer="0" AGverticalAutoRefer="0" AGSelection="0 0 0 0" pageEffectDuration="1" pageViewDuration="1" effectType="0" Dm="0" M="0" Di="0"/>
+        <PAGE PAGEXPOS="519.528188976378" PAGEYPOS="1925.82708661417" PAGEWIDTH="419.527559055118" PAGEHEIGHT="595.275590551181" BORDERLEFT="25.511811023622" BORDERRIGHT="25.511811023622" BORDERTOP="34.0157480314961" BORDERBOTTOM="25.511811023622" NUM="6" NAM="" MNAM="Normal Right" Size="A5" Orientation="0" LEFT="0" PRESET="0" VerticalGuides="" HorizontalGuides="" AGhorizontalAutoGap="0" AGverticalAutoGap="0" AGhorizontalAutoCount="0" AGverticalAutoCount="0" AGhorizontalAutoRefer="0" AGverticalAutoRefer="0" AGSelection="0 0 0 0" pageEffectDuration="1" pageViewDuration="1" effectType="0" Dm="0" M="0" Di="0"/>
+        <PAGE PAGEXPOS="100.00062992126" PAGEYPOS="2561.10236220472" PAGEWIDTH="419.527559055118" PAGEHEIGHT="595.275590551181" BORDERLEFT="25.511811023622" BORDERRIGHT="25.511811023622" BORDERTOP="34.0157480314961" BORDERBOTTOM="25.511811023622" NUM="7" NAM="" MNAM="Normal Left" Size="A5" Orientation="0" LEFT="0" PRESET="0" VerticalGuides="" HorizontalGuides="" AGhorizontalAutoGap="0" AGverticalAutoGap="0" AGhorizontalAutoCount="0" AGverticalAutoCount="0" AGhorizontalAutoRefer="0" AGverticalAutoRefer="0" AGSelection="0 0 0 0" pageEffectDuration="1" pageViewDuration="1" effectType="0" Dm="0" M="0" Di="0"/>
+        <PAGE PAGEXPOS="519.528188976378" PAGEYPOS="2561.10236220472" PAGEWIDTH="419.527559055118" PAGEHEIGHT="595.275590551181" BORDERLEFT="25.511811023622" BORDERRIGHT="25.511811023622" BORDERTOP="34.0157480314961" BORDERBOTTOM="25.511811023622" NUM="8" NAM="" MNAM="Normal Right" Size="A5" Orientation="0" LEFT="0" PRESET="0" VerticalGuides="" HorizontalGuides="" AGhorizontalAutoGap="0" AGverticalAutoGap="0" AGhorizontalAutoCount="0" AGverticalAutoCount="0" AGhorizontalAutoRefer="0" AGverticalAutoRefer="0" AGSelection="0 0 0 0" pageEffectDuration="1" pageViewDuration="1" effectType="0" Dm="0" M="0" Di="0"/>
+        <MASTEROBJECT XPOS="125.512440944882" YPOS="54.0170078740158" OwnPage="1" ItemID="638449651" PTYPE="4" WIDTH="368.503937007874" HEIGHT="22.6771653543307" FRTYPE="0" CLIPEDIT="0" PWIDTH="1" PLINEART="1" ANNAME="RightHeader" LOCALSCX="1" LOCALSCY="1" LOCALX="0" LOCALY="0" LOCALROT="0" PICART="1" SCALETYPE="1" RATIO="1" COLUMNS="1" COLGAP="0" AUTOTEXT="0" EXTRA="0" TEXTRA="0" BEXTRA="0" REXTRA="0" VAlign="0" FLOP="0" PLTSHOW="0" BASEOF="0" textPathType="0" textPathFlipped="0" path="M0 0 L368.504 0 L368.504 22.6772 L0 22.6772 L0 0 Z" copath="M0 0 L368.504 0 L368.504 22.6772 L0 22.6772 L0 0 Z" OnMasterPage="Normal Right" gXpos="115165055.27663" gYpos="860524884.071396" gWidth="0" gHeight="0" ALIGN="0" LAYER="0" NEXTITEM="-1" BACKITEM="-1">
+            <StoryText>
+                <DefaultStyle ALIGN="0" CPARENT="page no"/>
+                <var name="pgno" CPARENT="page no"/>
+                <trail ALIGN="0" DIRECTION="1" LINESPMode="2"/>
+            </StoryText>
+        </MASTEROBJECT>
+        <MASTEROBJECT XPOS="125.512440944882" YPOS="54.0170078740158" OwnPage="0" ItemID="642080131" PTYPE="4" WIDTH="368.503937007874" HEIGHT="22.6771653543307" FRTYPE="0" CLIPEDIT="0" PWIDTH="1" PLINEART="1" ANNAME="LeftHeader" LOCALSCX="1" LOCALSCY="1" LOCALX="0" LOCALY="0" LOCALROT="0" PICART="1" SCALETYPE="1" RATIO="1" COLUMNS="1" COLGAP="0" AUTOTEXT="0" EXTRA="0" TEXTRA="0" BEXTRA="0" REXTRA="0" VAlign="0" FLOP="0" PLTSHOW="0" BASEOF="0" textPathType="0" textPathFlipped="0" path="M0 0 L368.504 0 L368.504 22.6772 L0 22.6772 L0 0 Z" copath="M0 0 L368.504 0 L368.504 22.6772 L0 22.6772 L0 0 Z" OnMasterPage="Normal Left" gXpos="3157070.39433021" gYpos="892744775.498672" gWidth="0" gHeight="0" ALIGN="2" LAYER="0" NEXTITEM="-1" BACKITEM="-1">
+            <StoryText>
+                <DefaultStyle ALIGN="2" CPARENT="page no"/>
+                <var name="pgno" CPARENT="page no"/>
+                <trail ALIGN="2" DIRECTION="1"/>
+            </StoryText>
+        </MASTEROBJECT>
+        <PAGEOBJECT XPOS="125.512440944882" YPOS="711.969448818898" OwnPage="1" ItemID="637674883" PTYPE="4" WIDTH="368.503937007874" HEIGHT="513.070866141732" FRTYPE="0" CLIPEDIT="0" PWIDTH="1" PLINEART="1" LOCALSCX="1" LOCALSCY="1" LOCALX="0" LOCALY="0" LOCALROT="0" PICART="1" SCALETYPE="1" RATIO="1" COLUMNS="1" COLGAP="11" AUTOTEXT="0" EXTRA="0" TEXTRA="0" BEXTRA="0" REXTRA="0" VAlign="0" FLOP="0" PLTSHOW="0" BASEOF="0" textPathType="0" textPathFlipped="0" path="M0 0 L368.504 0 L368.504 513.071 L0 513.071 L0 0 Z" copath="M0 0 L368.504 0 L368.504 513.071 L0 513.071 L0 0 Z" gXpos="125.512440944882" gYpos="711.969448818898" gWidth="0" gHeight="0" LAYER="0" NEXTITEM="652686611" BACKITEM="-1">
+            <StoryText>
+                <DefaultStyle LINESPMode="2" CPARENT="regular">
+                    <Tabs Type="1" Pos="143.346456692913" Fill=""/>
+                </DefaultStyle>
+                <ITEXT CPARENT="verse no" CH="א"/>
+                <ITEXT CPARENT="regular" CH=" וַיֹּ֤אמֶר יְהוָה֙ אֶל־אַבְרָ֔ם לֶךְ־לְךָ֛ מֵאַרְצְךָ֥ וּמִמּֽוֹלַדְתְּךָ֖ וּמִבֵּ֣ית אָבִ֑יךָ אֶל־הָאָ֖רֶץ אֲשֶׁ֥ר אַרְאֶֽךָּ׃ "/>
+                <ITEXT CPARENT="verse no" CH="ב"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וְאֶֽעֶשְׂךָ֙ לְג֣וֹי גָּד֔וֹל וַאֲבָ֣רֶכְךָ֔ וַאֲגַדְּלָ֖ה שְׁמֶ֑ךָ וֶהְיֵ֖ה בְּרָכָֽה׃ "/>
+                <ITEXT CPARENT="verse no" CH="ג"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וַאֲבָֽרֲכָה֙ מְבָ֣רְכֶ֔יךָ וּמְקַלֶּלְךָ֖ אָאֹ֑ר וְנִבְרְכ֣וּ בְךָ֔ כֹּ֖ל מִשְׁפְּחֹ֥ת הָאֲדָמָֽה׃ "/>
+                <ITEXT CPARENT="verse no" CH="ד"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וַיֵּ֣לֶךְ אַבְרָ֗ם כַּאֲשֶׁ֨ר דִּבֶּ֤ר אֵלָיו֙ יְהוָ֔ה וַיֵּ֥לֶךְ אִתּ֖וֹ ל֑וֹט וְאַבְרָ֗ם בֶּן־חָמֵ֤שׁ שָׁנִים֙ וְשִׁבְעִ֣ים שָׁנָ֔ה בְּצֵאת֖וֹ מֵחָרָֽן׃ "/>
+                <ITEXT CPARENT="verse no" CH="ה"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וַיִּקַּ֣ח אַבְרָם֩ אֶת־שָׂרַ֨י אִשְׁתּ֜וֹ וְאֶת־ל֣וֹט בֶּן־אָחִ֗יו וְאֶת־כָּל־רְכוּשָׁם֙ אֲשֶׁ֣ר רָכָ֔שׁוּ וְאֶת־הַנֶּ֖פֶשׁ אֲשֶׁר־עָשׂ֣וּ בְחָרָ֑ן וַיֵּצְא֗וּ לָלֶ֙כֶת֙ אַ֣רְצָה כְּנַ֔עַן וַיָּבֹ֖אוּ אַ֥רְצָה כְּנָֽעַן׃ "/>
+                <ITEXT CPARENT="verse no" CH="ו"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וַיַּעֲבֹ֤ר אַבְרָם֙ בָּאָ֔רֶץ עַ֚ד מְק֣וֹם שְׁכֶ֔ם עַ֖ד אֵל֣וֹן מוֹרֶ֑ה וְהַֽכְּנַעֲנִ֖י אָ֥ז בָּאָֽרֶץ׃ "/>
+                <ITEXT CPARENT="verse no" CH="ז"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וַיֵּרָ֤א יְהוָה֙ אֶל־אַבְרָ֔ם וַיֹּ֕אמֶר לְזַ֨רְעֲךָ֔ אֶתֵּ֖ן אֶת־הָאָ֣רֶץ הַזֹּ֑את וַיִּ֤בֶן שָׁם֙ מִזְבֵּ֔חַ לַיהוָ֖ה הַנִּרְאֶ֥ה אֵלָֽיו׃ "/>
+                <ITEXT CPARENT="verse no" CH="ח"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וַיַּעְתֵּ֨ק מִשָּׁ֜ם הָהָ֗רָה מִקֶּ֛דֶם לְבֵֽית־אֵ֖ל וַיֵּ֣ט אָהֳלֹ֑ה בֵּֽית־אֵ֤ל מִיָּם֙ וְהָעַ֣י מִקֶּ֔דֶם וַיִּֽבֶן־שָׁ֤ם מִזְבֵּ֙חַ֙ לַֽיהוָ֔ה וַיִּקְרָ֖א בְּשֵׁ֥ם יְהוָֽה׃ "/>
+                <ITEXT CPARENT="verse no" CH="ט"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וַיִּסַּ֣ע אַבְרָ֔ם הָל֥וֹךְ וְנָס֖וֹעַ הַנֶּֽגְבָּה׃"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="portion" CH="פ"/>
+                <para LINESPMode="2"/>
+                <para LINESPMode="2"/>
+                <ITEXT CPARENT="verse no" CH="י"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וַיְהִ֥י רָעָ֖ב בָּאָ֑רֶץ וַיֵּ֨רֶד אַבְרָ֤ם מִצְרַ֙יְמָה֙ לָג֣וּר שָׁ֔ם כִּֽי־כָבֵ֥ד הָרָעָ֖ב בָּאָֽרֶץ׃ "/>
+                <ITEXT CPARENT="verse no" CH="יא"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וַיְהִ֕י כַּאֲשֶׁ֥ר הִקְרִ֖יב לָב֣וֹא מִצְרָ֑יְמָה וַיֹּ֙אמֶר֙ אֶל־שָׂרַ֣י אִשְׁתּ֔וֹ הִנֵּה־נָ֣א יָדַ֔עְתִּי כִּ֛י אִשָּׁ֥ה יְפַת־מַרְאֶ֖ה אָֽתְּ׃ "/>
+                <ITEXT CPARENT="verse no" CH="יב"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וְהָיָ֗ה כִּֽי־יִרְא֤וּ אֹתָךְ֙ הַמִּצְרִ֔ים וְאָמְר֖וּ אִשְׁתּ֣וֹ זֹ֑את וְהָרְג֥וּ אֹתִ֖י וְאֹתָ֥ךְ יְחַיּֽוּ׃ "/>
+                <ITEXT CPARENT="verse no" CH="יג"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="אִמְרִי־נָ֖א אֲחֹ֣תִי אָ֑תְּ לְמַ֙עַן֙ יִֽיטַב־לִ֣י בַעֲבוּרֵ֔ךְ וְחָיְתָ֥ה נַפְשִׁ֖י בִּגְלָלֵֽךְ׃ "/>
+                <ITEXT CPARENT="verse no" CH="יד"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וַיְהִ֕י כְּב֥וֹא אַבְרָ֖ם מִצְרָ֑יְמָה וַיִּרְא֤וּ הַמִּצְרִים֙ אֶת־הָ֣אִשָּׁ֔ה כִּֽי־יָפָ֥ה הִ֖וא מְאֹֽד׃ "/>
+                <ITEXT CPARENT="verse no" CH="טו"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וַיִּרְא֤וּ אֹתָהּ֙ שָׂרֵ֣י פַרְעֹ֔ה וַיְהַֽלְל֥וּ אֹתָ֖הּ אֶל־פַּרְעֹ֑ה וַתֻּקַּ֥ח הָאִשָּׁ֖ה בֵּ֥ית פַּרְעֹֽה׃ "/>
+                <ITEXT CPARENT="verse no" CH="טז"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וּלְאַבְרָ֥ם הֵיטִ֖יב בַּעֲבוּרָ֑הּ וַֽיְהִי־ל֤וֹ צֹאן־וּבָקָר֙ וַחֲמֹרִ֔ים וַעֲבָדִים֙ וּשְׁפָחֹ֔ת וַאֲתֹנֹ֖ת וּגְמַלִּֽים׃ "/>
+                <ITEXT CPARENT="verse no" CH="יז"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וַיְנַגַּ֨ע יְהוָ֧ה ׀ אֶת־פַּרְעֹ֛ה נְגָעִ֥ים גְּדֹלִ֖ים וְאֶת־בֵּית֑וֹ עַל־דְּבַ֥ר שָׂרַ֖י אֵ֥שֶׁת אַבְרָֽם׃ "/>
+                <ITEXT CPARENT="verse no" CH="יח"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וַיִּקְרָ֤א פַרְעֹה֙ לְאַבְרָ֔ם וַיֹּ֕אמֶר מַה־זֹּ֖את עָשִׂ֣יתָ לִּ֑י לָ֚מָּה לֹא־הִגַּ֣דְתָּ לִּ֔י כִּ֥י אִשְׁתְּךָ֖ הִֽוא׃ "/>
+                <ITEXT CPARENT="verse no" CH="יט"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="לָמָ֤ה אָמַ֙רְתָּ֙ אֲחֹ֣תִי הִ֔וא וָאֶקַּ֥ח אֹתָ֛הּ לִ֖י לְאִשָּׁ֑ה וְעַתָּ֕ה הִנֵּ֥ה אִשְׁתְּךָ֖ קַ֥ח וָלֵֽךְ׃ "/>
+                <ITEXT CPARENT="verse no" CH="כ"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וַיְצַ֥ו עָלָ֛יו פַּרְעֹ֖ה אֲנָשִׁ֑ים וַֽיְשַׁלְּח֥וּ אֹת֛וֹ וְאֶת־אִשְׁתּ֖וֹ וְאֶת־כָּל־אֲשֶׁר־לֽוֹ׃"/>
+                <ITEXT CH=" "/>
+                <ITEXT CPARENT="chapter no" CH="יג"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="verse no" CH="א"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וַיַּעַל֩ אַבְרָ֨ם מִמִּצְרַ֜יִם ה֠וּא וְאִשְׁתּ֧וֹ וְכָל־אֲשֶׁר־ל֛וֹ וְל֥וֹט עִמּ֖וֹ הַנֶּֽגְבָּה׃ "/>
+                <ITEXT CPARENT="verse no" CH="ב"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וְאַבְרָ֖ם כָּבֵ֣ד מְאֹ֑ד בַּמִּקְנֶ֕ה בַּכֶּ֖סֶף וּבַזָּהָֽב׃ "/>
+                <ITEXT CPARENT="verse no" CH="ג"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וַיֵּ֙לֶךְ֙ לְמַסָּעָ֔יו מִנֶּ֖גֶב וְעַד־בֵּֽית־אֵ֑ל עַד־הַמָּק֗וֹם אֲשֶׁר־הָ֨יָה שָׁ֤ם אָֽהֳלוֹ֙* בַּתְּחִלָּ֔ה בֵּ֥ין בֵּֽית־אֵ֖ל וּבֵ֥ין הָעָֽי׃ "/>
+                <ITEXT CPARENT="verse no" CH="ד"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="אֶל־מְקוֹם֙ הַמִּזְבֵּ֔חַ אֲשֶׁר־עָ֥שָׂה שָׁ֖ם בָּרִאשֹׁנָ֑ה וַיִּקְרָ֥א שָׁ֛ם אַבְרָ֖ם בְּשֵׁ֥ם יְהוָֽה׃ "/>
+                <ITEXT CPARENT="verse no" CH="ה"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וְגַם־לְל֔וֹט הַהֹלֵ֖ךְ אֶת־אַבְרָ֑ם הָיָ֥ה צֹאן־וּבָקָ֖ר וְאֹהָלִֽים׃ "/>
+                <ITEXT CPARENT="verse no" CH="ו"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וְלֹא־נָשָׂ֥א אֹתָ֛ם הָאָ֖רֶץ לָשֶׁ֣בֶת יַחְדָּ֑ו כִּֽי־הָיָ֤ה רְכוּשָׁם֙ רָ֔ב וְלֹ֥א יָֽכְל֖וּ לָשֶׁ֥בֶת יַחְדָּֽו׃ "/>
+                <ITEXT CPARENT="verse no" CH="ז"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וַֽיְהִי־רִ֗יב בֵּ֚ין רֹעֵ֣י מִקְנֵֽה־אַבְרָ֔ם וּבֵ֖ין רֹעֵ֣י מִקְנֵה־ל֑וֹט וְהַֽכְּנַעֲנִי֙ וְהַפְּרִזִּ֔י אָ֖ז יֹשֵׁ֥ב בָּאָֽרֶץ׃ "/>
+                <ITEXT CPARENT="verse no" CH="ח"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וַיֹּ֨אמֶר אַבְרָ֜ם אֶל־ל֗וֹט אַל־נָ֨א תְהִ֤י מְרִיבָה֙ בֵּינִ֣י וּבֵינֶ֔יךָ וּבֵ֥ין רֹעַ֖י וּבֵ֣ין רֹעֶ֑יךָ כִּֽי־אֲנָשִׁ֥ים אַחִ֖ים אֲנָֽחְנוּ׃ "/>
+                <ITEXT CPARENT="verse no" CH="ט"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="הֲלֹ֤א כָל־הָאָ֙רֶץ֙ לְפָנֶ֔יךָ הִפָּ֥רֶד נָ֖א מֵעָלָ֑י אִם־הַשְּׂמֹ֣אל וְאֵימִ֔נָה וְאִם־הַיָּמִ֖ין וְאַשְׂמְאִֽילָה׃ "/>
+                <ITEXT CPARENT="verse no" CH="י"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וַיִּשָּׂא־ל֣וֹט אֶת־עֵינָ֗יו וַיַּרְא֙ אֶת־כָּל־כִּכַּ֣ר הַיַּרְדֵּ֔ן כִּ֥י כֻלָּ֖הּ מַשְׁקֶ֑ה לִפְנֵ֣י ׀ שַׁחֵ֣ת יְהוָ֗ה אֶת־סְדֹם֙ וְאֶת־עֲמֹרָ֔ה כְּגַן־יְהוָה֙ כְּאֶ֣רֶץ מִצְרַ֔יִם בֹּאֲכָ֖ה צֹֽעַר׃ "/>
+                <ITEXT CPARENT="verse no" CH="יא"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וַיִּבְחַר־ל֣וֹ ל֗וֹט אֵ֚ת כָּל־כִּכַּ֣ר הַיַּרְדֵּ֔ן וַיִּסַּ֥ע ל֖וֹט מִקֶּ֑דֶם וַיִּפָּ֣רְד֔וּ אִ֖ישׁ מֵעַ֥ל אָחִֽיו׃ "/>
+                <ITEXT CPARENT="verse no" CH="יב"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="אַבְרָ֖ם יָשַׁ֣ב בְּאֶֽרֶץ־כְּנָ֑עַן וְל֗וֹט יָשַׁב֙ בְּעָרֵ֣י הַכִּכָּ֔ר וַיֶּאֱהַ֖ל עַד־סְדֹֽם׃ "/>
+                <ITEXT CPARENT="verse no" CH="יג"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וְאַנְשֵׁ֣י סְדֹ֔ם רָעִ֖ים וְחַטָּאִ֑ים לַיהוָ֖ה מְאֹֽד׃ "/>
+                <ITEXT CPARENT="verse no" CH="יד"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וַֽיהוָ֞ה אָמַ֣ר אֶל־אַבְרָ֗ם אַחֲרֵי֙ הִפָּֽרֶד־ל֣וֹט מֵֽעִמּ֔וֹ שָׂ֣א נָ֤א עֵינֶ֙יךָ֙ וּרְאֵ֔ה מִן־הַמָּק֖וֹם אֲשֶׁר־אַתָּ֣ה שָׁ֑ם צָפֹ֥נָה וָנֶ֖גְבָּה וָקֵ֥דְמָה וָיָֽמָּה׃ "/>
+                <ITEXT CPARENT="verse no" CH="טו"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="כִּ֧י אֶת־כָּל־הָאָ֛רֶץ אֲשֶׁר־אַתָּ֥ה רֹאֶ֖ה לְךָ֣ אֶתְּנֶ֑נָּה וּֽלְזַרְעֲךָ֖ עַד־עוֹלָֽם׃ "/>
+                <ITEXT CPARENT="verse no" CH="טז"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וְשַׂמְתִּ֥י אֶֽת־זַרְעֲךָ֖ כַּעֲפַ֣ר הָאָ֑רֶץ אֲשֶׁ֣ר ׀ אִם־יוּכַ֣ל אִ֗ישׁ לִמְנוֹת֙ אֶת־עֲפַ֣ר הָאָ֔רֶץ גַּֽם־זַרְעֲךָ֖ יִמָּנֶֽה׃ "/>
+                <ITEXT CPARENT="verse no" CH="יז"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="ק֚וּם הִתְהַלֵּ֣ךְ בָּאָ֔רֶץ לְאָרְכָּ֖הּ וּלְרָחְבָּ֑הּ כִּ֥י לְךָ֖ אֶתְּנֶֽנָּה׃ "/>
+                <ITEXT CPARENT="verse no" CH="יח"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וַיֶּאֱהַ֣ל אַבְרָ֗ם וַיָּבֹ֛א וַיֵּ֛שֶׁב בְּאֵלֹנֵ֥י מַמְרֵ֖א אֲשֶׁ֣ר בְּחֶבְר֑וֹן וַיִּֽבֶן־שָׁ֥ם מִזְבֵּ֖חַ לַֽיהוָֽה׃"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="portion" CH="פ"/>
+                <para LINESPMode="2"/>
+                <para LINESPMode="2"/>
+                <ITEXT CPARENT="chapter no" CH="יד"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="verse no" CH="א"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וַיְהִ֗י בִּימֵי֙ אַמְרָפֶ֣ל מֶֽלֶךְ־שִׁנְעָ֔ר אַרְי֖וֹךְ מֶ֣לֶךְ אֶלָּסָ֑ר כְּדָרְלָעֹ֙מֶר֙ מֶ֣לֶךְ עֵילָ֔ם וְתִדְעָ֖ל מֶ֥לֶךְ גּוֹיִֽם׃ "/>
+                <ITEXT CPARENT="verse no" CH="ב"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="עָשׂ֣וּ מִלְחָמָ֗ה אֶת־בֶּ֙רַע֙ מֶ֣לֶךְ סְדֹ֔ם וְאֶת־בִּרְשַׁ֖ע מֶ֣לֶךְ עֲמֹרָ֑ה שִׁנְאָ֣ב ׀ מֶ֣לֶךְ אַדְמָ֗ה וְשֶׁמְאֵ֙בֶר֙ מֶ֣לֶךְצְבוֹיִ֔ים* וּמֶ֥לֶךְ בֶּ֖לַע הִיא־צֹֽעַר׃ "/>
+                <ITEXT CPARENT="verse no" CH="ג"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="כָּל־אֵ֙לֶּה֙ חָֽבְר֔וּ אֶל־עֵ֖מֶק הַשִּׂדִּ֑ים ה֖וּא יָ֥ם הַמֶּֽלַח׃ דשְׁתֵּ֤ים עֶשְׂרֵה֙ שָׁנָ֔ה עָבְד֖וּ אֶת־כְּדָרְלָעֹ֑מֶר וּשְׁלֹשׁ־עֶשְׂרֵ֥ה שָׁנָ֖ה מָרָֽדוּ׃ "/>
+                <ITEXT CPARENT="verse no" CH="ה"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וּבְאַרְבַּע֩ עֶשְׂרֵ֨ה שָׁנָ֜ה בָּ֣א כְדָרְלָעֹ֗מֶר וְהַמְּלָכִים֙ אֲשֶׁ֣ר אִתּ֔וֹ וַיַּכּ֤וּ אֶת־רְפָאִים֙ בְּעַשְׁתְּרֹ֣ת קַרְנַ֔יִם וְאֶת־הַזּוּזִ֖ים בְּהָ֑ם וְאֵת֙ הָֽאֵימִ֔ים בְּשָׁוֵ֖ה קִרְיָתָֽיִם׃ "/>
+                <ITEXT CPARENT="verse no" CH="ו"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וְאֶת־הַחֹרִ֖י בְּהַרְרָ֣ם שֵׂעִ֑יר עַ֚ד אֵ֣יל פָּארָ֔ן אֲשֶׁ֖ר עַל־הַמִּדְבָּֽר׃ "/>
+                <ITEXT CPARENT="verse no" CH="ז"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וַ֠יָּשֻׁבוּ וַיָּבֹ֜אוּ אֶל־עֵ֤ין מִשְׁפָּט֙ הִ֣וא קָדֵ֔שׁ וַיַּכּ֕וּ אֶֽת־כָּל־שְׂדֵ֖ה הָעֲמָלֵקִ֑י וְגַם֙ אֶת־הָ֣אֱמֹרִ֔י הַיֹּשֵׁ֖ב בְּחַֽצְצֹ֥ן תָּמָֽר׃ "/>
+                <ITEXT CPARENT="verse no" CH="ח"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וַיֵּצֵ֨א מֶֽלֶךְ־סְדֹ֜ם וּמֶ֣לֶךְ עֲמֹרָ֗ה וּמֶ֤לֶךְ אַדְמָה֙ וּמֶ֣לֶךְ צְבוֹיִ֔ם* וּמֶ֥לֶךְ בֶּ֖לַע הִוא־צֹ֑עַר וַיַּֽעַרְכ֤וּ אִתָּם֙ מִלְחָמָ֔ה בְּעֵ֖מֶק הַשִּׂדִּֽים׃ "/>
+                <ITEXT CPARENT="verse no" CH="ט"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="אֵ֣ת כְּדָרְלָעֹ֜מֶר מֶ֣לֶךְ עֵילָ֗ם וְתִדְעָל֙ מֶ֣לֶךְ גּוֹיִ֔ם וְאַמְרָפֶל֙ מֶ֣לֶךְ שִׁנְעָ֔ר וְאַרְי֖וֹךְ מֶ֣לֶךְ אֶלָּסָ֑ר אַרְבָּעָ֥ה מְלָכִ֖ים אֶת־הַחֲמִשָּֽׁה׃ "/>
+                <ITEXT CPARENT="verse no" CH="י"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וְעֵ֣מֶק הַשִׂדִּ֗ים בֶּֽאֱרֹ֤ת בֶּאֱרֹת֙ חֵמָ֔ר וַיָּנֻ֛סוּ מֶֽלֶךְ־סְדֹ֥ם וַעֲמֹרָ֖ה וַיִּפְּלוּ־שָׁ֑מָּה וְהַנִּשְׁאָרִ֖ים הֶ֥רָה נָּֽסוּ׃ "/>
+                <ITEXT CPARENT="verse no" CH="יא"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וַ֠יִּקְחוּ אֶת־כָּל־רְכֻ֨שׁ סְדֹ֧ם וַעֲמֹרָ֛ה וְאֶת־כָּל־אָכְלָ֖ם וַיֵּלֵֽכוּ׃ "/>
+                <ITEXT CPARENT="verse no" CH="יב"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וַיִּקְח֨וּ אֶת־ל֧וֹט וְאֶת־רְכֻשׁ֛וֹ בֶּן־אֲחִ֥י אַבְרָ֖ם וַיֵּלֵ֑כוּ וְה֥וּא יֹשֵׁ֖ב בִּסְדֹֽם׃ "/>
+                <ITEXT CPARENT="verse no" CH="יג"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וַיָּבֹא֙ הַפָּלִ֔יט וַיַּגֵּ֖ד לְאַבְרָ֣ם הָעִבְרִ֑י וְהוּא֩ שֹׁכֵ֨ן בְּאֵֽלֹנֵ֜י מַמְרֵ֣א הָאֱמֹרִ֗י אֲחִ֤י אֶשְׁכֹּל֙ וַאֲחִ֣י עָנֵ֔ר וְהֵ֖ם בַּעֲלֵ֥י בְרִית־אַבְרָֽם׃ "/>
+                <ITEXT CPARENT="verse no" CH="יד"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וַיִּשְׁמַ֣ע אַבְרָ֔ם כִּ֥י נִשְׁבָּ֖ה אָחִ֑יו וַיָּ֨רֶק אֶת־חֲנִיכָ֜יו יְלִידֵ֣י בֵית֗וֹ שְׁמֹנָ֤ה עָשָׂר֙ וּשְׁלֹ֣שׁ מֵא֔וֹת וַיִּרְדֹּ֖ף עַד־דָּֽן׃ "/>
+                <ITEXT CPARENT="verse no" CH="טו"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וַיֵּחָלֵ֨ק עֲלֵיהֶ֧ם ׀ לַ֛יְלָה ה֥וּא וַעֲבָדָ֖יו וַיַּכֵּ֑ם וַֽיִּרְדְּפֵם֙ עַד־חוֹבָ֔ה אֲשֶׁ֥ר מִשְּׂמֹ֖אל לְדַמָּֽשֶׂק׃ "/>
+                <ITEXT CPARENT="verse no" CH="טז"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וַיָּ֕שֶׁב אֵ֖ת כָּל־הָרְכֻ֑שׁ וְגַם֩ אֶת־ל֨וֹט אָחִ֤יו וּרְכֻשׁוֹ֙ הֵשִׁ֔יב וְגַ֥ם אֶת־הַנָּשִׁ֖ים וְאֶת־הָעָֽם׃ "/>
+                <ITEXT CPARENT="verse no" CH="יז"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וַיֵּצֵ֣א מֶֽלֶךְ־סְדֹם֮ לִקְרָאתוֹ֒ אַחֲרֵ֣י שׁוּב֗וֹ מֵֽהַכּוֹת֙ אֶת־כְּדָרלָעֹ֔מֶר וְאֶת־הַמְּלָכִ֖ים אֲשֶׁ֣ר אִתּ֑וֹ אֶל־עֵ֣מֶק שָׁוֵ֔ה ה֖וּא עֵ֥מֶק הַמֶּֽלֶךְ׃ "/>
+                <ITEXT CPARENT="verse no" CH="יח"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וּמַלְכִּי־צֶ֙דֶק֙ מֶ֣לֶךְ שָׁלֵ֔ם הוֹצִ֖יא לֶ֣חֶם וָיָ֑יִן וְה֥וּא כֹהֵ֖ן לְאֵ֥ל עֶלְיֽוֹן׃ "/>
+                <ITEXT CPARENT="verse no" CH="יט"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וַֽיְבָרְכֵ֖הוּ וַיֹּאמַ֑ר בָּר֤וּךְ אַבְרָם֙ לְאֵ֣ל עֶלְי֔וֹן קֹנֵ֖ה שָׁמַ֥יִם וָאָֽרֶץ׃ "/>
+                <ITEXT CPARENT="verse no" CH="כ"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וּבָרוּךְ֙ אֵ֣ל עֶלְי֔וֹן אֲשֶׁר־מִגֵּ֥ן צָרֶ֖יךָ בְּיָדֶ֑ךָ וַיִּתֶּן־ל֥וֹ מַעֲשֵׂ֖ר מִכֹּֽל׃ "/>
+                <ITEXT CPARENT="verse no" CH="כא"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וַיֹּ֥אמֶר מֶֽלֶךְ־סְדֹ֖ם אֶל־אַבְרָ֑ם תֶּן־לִ֣י הַנֶּ֔פֶשׁ וְהָרְכֻ֖שׁ קַֽח־לָֽךְ׃ "/>
+                <ITEXT CPARENT="verse no" CH="כב"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וַיֹּ֥אמֶר אַבְרָ֖ם אֶל־מֶ֣לֶךְ סְדֹ֑ם הֲרִימֹ֨תִי יָדִ֤י אֶל־יְהוָה֙ אֵ֣ל עֶלְי֔וֹן קֹנֵ֖ה שָׁמַ֥יִם וָאָֽרֶץ׃ "/>
+                <ITEXT CPARENT="verse no" CH="כג"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="אִם־מִחוּט֙ וְעַ֣ד שְׂרֽוֹךְ־נַ֔עַל וְאִם־אֶקַּ֖ח מִכָּל־אֲשֶׁר־לָ֑ךְ וְלֹ֣א תֹאמַ֔ר אֲנִ֖י הֶעֱשַׁ֥רְתִּי אֶת־אַבְרָֽם׃ "/>
+                <ITEXT CPARENT="verse no" CH="כד"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="בִּלְעָדַ֗י רַ֚ק אֲשֶׁ֣ר אָֽכְל֣וּ הַנְּעָרִ֔ים וְחֵ֙לֶק֙ הָֽאֲנָשִׁ֔ים אֲשֶׁ֥ר הָלְכ֖וּ אִתִּ֑י עָנֵר֙ אֶשְׁכֹּ֣ל וּמַמְרֵ֔א הֵ֖ם יִקְח֥וּ חֶלְקָֽם׃"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="portion" CH="ס"/>
+                <para LINESPMode="2"/>
+                <ITEXT CPARENT="chapter no" CH="טו"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="verse no" CH="א"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="אַחַ֣ר ׀ הַדְּבָרִ֣ים הָאֵ֗לֶּה הָיָ֤ה דְבַר־יְהוָה֙ אֶל־אַבְרָ֔ם בַּֽמַּחֲזֶ֖ה לֵאמֹ֑ר אַל־תִּירָ֣א אַבְרָ֗ם אָנֹכִי֙ מָגֵ֣ן לָ֔ךְ שְׂכָרְךָ֖ הַרְבֵּ֥ה מְאֹֽד׃ "/>
+                <ITEXT CPARENT="verse no" CH="ב"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וַיֹּ֣אמֶר אַבְרָ֗ם אֲדֹנָ֤י יֱהוִה֙ מַה־תִּתֶּן־לִ֔י וְאָנֹכִ֖י הוֹלֵ֣ךְ עֲרִירִ֑י וּבֶן־מֶ֣שֶׁק בֵּיתִ֔י ה֖וּא דַּמֶּ֥שֶׂק אֱלִיעֶֽזֶר׃ "/>
+                <ITEXT CPARENT="verse no" CH="ג"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וַיֹּ֣אמֶר אַבְרָ֔ם הֵ֣ן לִ֔י לֹ֥א נָתַ֖תָּה זָ֑רַע וְהִנֵּ֥ה בֶן־בֵּיתִ֖י יוֹרֵ֥שׁ אֹתִֽי׃ "/>
+                <ITEXT CPARENT="verse no" CH="ד"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וְהִנֵּ֨ה דְבַר־יְהוָ֤ה אֵלָיו֙ לֵאמֹ֔ר לֹ֥א יִֽירָשְׁךָ֖ זֶ֑ה כִּי־אִם֙ אֲשֶׁ֣ר יֵצֵ֣א מִמֵּעֶ֔יךָ ה֖וּא יִֽירָשֶֽׁךָ׃ "/>
+                <ITEXT CPARENT="verse no" CH="ה"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וַיּוֹצֵ֨א אֹת֜וֹ הַח֗וּצָה וַיֹּ֙אמֶר֙ הַבֶּט־נָ֣א הַשָּׁמַ֗יְמָה וּסְפֹר֙ הַכּ֣וֹכָבִ֔ים אִם־תּוּכַ֖ל לִסְפֹּ֣ר אֹתָ֑ם וַיֹּ֣אמֶר ל֔וֹ כֹּ֥ה יִהְיֶ֖ה זַרְעֶֽךָ׃ "/>
+                <ITEXT CPARENT="verse no" CH="ו"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וְהֶאֱמִ֖ן בַּֽיהוָ֑ה וַיַּחְשְׁבֶ֥הָ לּ֖וֹ צְדָקָֽה׃ "/>
+                <ITEXT CPARENT="verse no" CH="ז"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וַיֹּ֖אמֶר אֵלָ֑יו אֲנִ֣י יְהוָ֗ה אֲשֶׁ֤ר הוֹצֵאתִ֙יךָ֙ מֵא֣וּר כַּשְׂדִּ֔ים לָ֧תֶת לְךָ֛ אֶת־הָאָ֥רֶץ הַזֹּ֖את לְרִשְׁתָּֽהּ׃ "/>
+                <ITEXT CPARENT="verse no" CH="ח"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וַיֹּאמַ֑ר אֲדֹנָ֣י יֱהוִ֔ה בַּמָּ֥ה אֵדַ֖ע כִּ֥י אִֽירָשֶֽׁנָּה׃ "/>
+                <ITEXT CPARENT="verse no" CH="ט"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וַיֹּ֣אמֶר אֵלָ֗יו קְחָ֥ה לִי֙ עֶגְלָ֣ה מְשֻׁלֶּ֔שֶׁת וְעֵ֥ז מְשֻׁלֶּ֖שֶׁת וְאַ֣יִל מְשֻׁלָּ֑שׁ וְתֹ֖ר וְגוֹזָֽל׃ "/>
+                <ITEXT CPARENT="verse no" CH="י"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וַיִּֽקַּֽח־ל֣וֹ אֶת־כָּל־אֵ֗לֶּה וַיְבַתֵּ֤ר אֹתָם֙ בַּתָּ֔וֶךְ וַיִּתֵּ֥ן אִישׁ־בִּתְר֖וֹ לִקְרַ֣את רֵעֵ֑הוּ וְאֶת־הַצִפֹּ֖ר לֹ֥א בָתָֽר׃ "/>
+                <ITEXT CPARENT="verse no" CH="יא"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וַיֵּ֥רֶד הָעַ֖יִט עַל־הַפְּגָרִ֑ים וַיַּשֵּׁ֥ב אֹתָ֖ם אַבְרָֽם׃ "/>
+                <ITEXT CPARENT="verse no" CH="יב"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וַיְהִ֤י הַשֶּׁ֙מֶשׁ֙ לָב֔וֹא וְתַרְדֵּמָ֖ה נָפְלָ֣ה עַל־אַבְרָ֑ם וְהִנֵּ֥ה אֵימָ֛ה חֲשֵׁכָ֥ה גְדֹלָ֖ה נֹפֶ֥לֶת עָלָֽיו׃ "/>
+                <ITEXT CPARENT="verse no" CH="יג"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וַיֹּ֣אמֶר לְאַבְרָ֗ם יָדֹ֨עַ תֵּדַ֜ע כִּי־גֵ֣ר ׀ יִהְיֶ֣ה זַרְעֲךָ֗ בְּאֶ֙רֶץ֙ לֹ֣א לָהֶ֔ם וַעֲבָד֖וּם וְעִנּ֣וּ אֹתָ֑ם אַרְבַּ֥ע מֵא֖וֹת שָׁנָֽה׃ "/>
+                <ITEXT CPARENT="verse no" CH="יד"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וְגַ֧ם אֶת־הַגּ֛וֹי אֲשֶׁ֥ר יַעֲבֹ֖דוּ דָּ֣ן אָנֹ֑כִי וְאַחֲרֵי־כֵ֥ן יֵצְא֖וּ בִּרְכֻ֥שׁ גָּדֽוֹל׃ "/>
+                <ITEXT CPARENT="verse no" CH="טו"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וְאַתָּ֛ה תָּב֥וֹא אֶל־אֲבֹתֶ֖יךָ בְּשָׁל֑וֹם תִּקָּבֵ֖ר בְּשֵׂיבָ֥ה טוֹבָֽה׃ "/>
+                <ITEXT CPARENT="verse no" CH="טז"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וְד֥וֹר רְבִיעִ֖י יָשׁ֣וּבוּ הֵ֑נָּה כִּ֧י לֹא־שָׁלֵ֛ם עֲוֺ֥ן הָאֱמֹרִ֖י עַד־הֵֽנָּה׃ "/>
+                <ITEXT CPARENT="verse no" CH="יז"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וַיְהִ֤י הַשֶּׁ֙מֶשׁ֙ בָּ֔אָה וַעֲלָטָ֖ה הָיָ֑ה וְהִנֵּ֨ה תַנּ֤וּר עָשָׁן֙ וְלַפִּ֣יד אֵ֔שׁ אֲשֶׁ֣ר עָבַ֔ר בֵּ֖ין הַגְּזָרִ֥ים הָאֵֽלֶּה׃ "/>
+                <ITEXT CPARENT="verse no" CH="יח"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="בַּיּ֣וֹם הַה֗וּא כָּרַ֧ת יְהוָ֛ה אֶת־אַבְרָ֖ם בְּרִ֣ית לֵאמֹ֑ר לְזַרְעֲךָ֗ נָתַ֙תִּי֙ אֶת־הָאָ֣רֶץ הַזֹּ֔את מִנְּהַ֣ר מִצְרַ֔יִם עַד־הַנָּהָ֥ר הַגָּדֹ֖ל נְהַר־פְּרָֽת׃ "/>
+                <ITEXT CPARENT="verse no" CH="יט"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="אֶת־הַקֵּינִי֙ וְאֶת־הַקְּנִזִּ֔י וְאֵ֖ת הַקַּדְמֹנִֽי׃ "/>
+                <ITEXT CPARENT="verse no" CH="כ"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וְאֶת־הַחִתִּ֥י וְאֶת־הַפְּרִזִּ֖י וְאֶת־הָרְפָאִֽים׃ "/>
+                <ITEXT CPARENT="verse no" CH="כא"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וְאֶת־הָֽאֱמֹרִי֙ וְאֶת־הַֽכְּנַעֲנִ֔י וְאֶת־הַגִּרְגָּשִׁ֖י וְאֶת־הַיְבוּסִֽי׃"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="portion" CH="ס"/>
+                <para LINESPMode="2"/>
+                <ITEXT CPARENT="chapter no" CH="טז"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="verse no" CH="א"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וְשָׂרַי֙ אֵ֣שֶׁת אַבְרָ֔ם לֹ֥א יָלְדָ֖ה ל֑וֹ וְלָ֛הּ שִׁפְחָ֥ה מִצְרִ֖ית וּשְׁמָ֥הּ הָגָֽר׃ "/>
+                <ITEXT CPARENT="verse no" CH="ב"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וַתֹּ֨אמֶר שָׂרַ֜י אֶל־אַבְרָ֗ם הִנֵּה־נָ֞א עֲצָרַ֤נִי יְהוָה֙ מִלֶּ֔דֶת בֹּא־נָא֙ אֶל־שִׁפְחָתִ֔י אוּלַ֥י אִבָּנֶ֖ה מִמֶּ֑נָּה וַיִּשְׁמַ֥ע אַבְרָ֖ם לְק֥וֹל שָׂרָֽי׃ "/>
+                <ITEXT CPARENT="verse no" CH="ג"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וַתִּקַּ֞ח שָׂרַ֣י אֵֽשֶׁת־אַבְרָ֗ם אֶת־הָגָ֤ר הַמִּצְרִית֙ שִׁפְחָתָ֔הּ מִקֵּץ֙ עֶ֣שֶׂר שָׁנִ֔ים לְשֶׁ֥בֶת אַבְרָ֖ם בְּאֶ֣רֶץ כְּנָ֑עַן וַתִּתֵּ֥ן אֹתָ֛הּ לְאַבְרָ֥ם אִישָׁ֖הּ ל֥וֹ לְאִשָּֽׁה׃ "/>
+                <ITEXT CPARENT="verse no" CH="ד"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וַיָּבֹ֥א אֶל־הָגָ֖ר וַתַּ֑הַר וַתֵּ֙רֶא֙ כִּ֣י הָרָ֔תָה וַתֵּקַ֥ל גְּבִרְתָּ֖הּ בְּעֵינֶֽיהָ׃ "/>
+                <ITEXT CPARENT="verse no" CH="ה"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וַתֹּ֨אמֶר שָׂרַ֣י אֶל־אַבְרָם֮ חֲמָסִ֣י עָלֶיךָ֒ אָנֹכִ֗י נָתַ֤תִּי שִׁפְחָתִי֙ בְּחֵיקֶ֔ךָ וַתֵּ֙רֶא֙ כִּ֣י הָרָ֔תָה וָאֵקַ֖ל בְּעֵינֶ֑יהָ יִשְׁפֹּ֥ט יְהוָ֖ה בֵּינִ֥י וּבֵינֶֽיׄךָ׃ "/>
+                <ITEXT CPARENT="verse no" CH="ו"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וַיֹּ֨אמֶר אַבְרָ֜ם אֶל־שָׂרַ֗י הִנֵּ֤ה שִׁפְחָתֵךְ֙ בְּיָדֵ֔ךְ עֲשִׂי־לָ֖הּ הַטּ֣וֹב בְּעֵינָ֑יִךְ וַתְּעַנֶּ֣הָ שָׂרַ֔י וַתִּבְרַ֖ח מִפָּנֶֽיהָ׃ "/>
+                <ITEXT CPARENT="verse no" CH="ז"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וַֽיִּמְצָאָ֞הּ מַלְאַ֧ךְ יְהוָ֛ה עַל־עֵ֥ין הַמַּ֖יִם בַּמִּדְבָּ֑ר עַל־הָעַ֖יִן בְּדֶ֥רֶךְ שֽׁוּר׃ "/>
+                <ITEXT CPARENT="verse no" CH="ח"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וַיֹּאמַ֗ר הָגָ֞ר שִׁפְחַ֥ת שָׂרַ֛י אֵֽי־מִזֶּ֥ה בָ֖את וְאָ֣נָה תֵלֵ֑כִי וַתֹּ֕אמֶר מִפְּנֵי֙ שָׂרַ֣י גְּבִרְתִּ֔י אָנֹכִ֖י בֹּרַֽחַת׃ "/>
+                <ITEXT CPARENT="verse no" CH="ט"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וַיֹּ֤אמֶר לָהּ֙ מַלְאַ֣ךְ יְהוָ֔ה שׁ֖וּבִי אֶל־גְּבִרְתֵּ֑ךְ וְהִתְעַנִּ֖י תַּ֥חַת יָדֶֽיהָ׃ "/>
+                <ITEXT CPARENT="verse no" CH="י"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וַיֹּ֤אמֶר לָהּ֙ מַלְאַ֣ךְ יְהוָ֔ה הַרְבָּ֥ה אַרְבֶּ֖ה אֶת־זַרְעֵ֑ךְ וְלֹ֥א יִסָּפֵ֖ר מֵרֹֽב׃ "/>
+                <ITEXT CPARENT="verse no" CH="יא"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וַיֹּ֤אמֶר לָהּ֙ מַלְאַ֣ךְ יְהוָ֔ה הִנָּ֥ךְ הָרָ֖ה וְיֹלַ֣דְתְּ בֵּ֑ן וְקָרָ֤את שְׁמוֹ֙ יִשְׁמָעֵ֔אל כִּֽי־שָׁמַ֥ע יְהוָ֖ה אֶל־עָנְיֵֽךְ׃ "/>
+                <ITEXT CPARENT="verse no" CH="יב"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וְה֤וּא יִהְיֶה֙ פֶּ֣רֶא אָדָ֔ם יָד֣וֹ בַכֹּ֔ל וְיַ֥ד כֹּ֖ל בּ֑וֹ וְעַל־פְּנֵ֥י כָל־אֶחָ֖יו יִשְׁכֹּֽן׃ "/>
+                <ITEXT CPARENT="verse no" CH="יג"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וַתִּקְרָ֤א שֵׁם־יְהוָה֙ הַדֹּבֵ֣ר אֵלֶ֔יהָ אַתָּ֖ה אֵ֣ל רֳאִ֑י כִּ֣י אָֽמְרָ֗ה הֲגַ֥ם הֲלֹ֛ם רָאִ֖יתִי אַחֲרֵ֥י רֹאִֽי׃ "/>
+                <ITEXT CPARENT="verse no" CH="יד"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="עַל־כֵּן֙ קָרָ֣א לַבְּאֵ֔ר בְּאֵ֥ר לַחַ֖י רֹאִ֑י הִנֵּ֥ה בֵין־קָדֵ֖שׁ וּבֵ֥ין בָּֽרֶד׃ "/>
+                <ITEXT CPARENT="verse no" CH="טו"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וַתֵּ֧לֶד הָגָ֛ר לְאַבְרָ֖ם בֵּ֑ן וַיִּקְרָ֨א אַבְרָ֧ם שֶׁם־בְּנ֛וֹ אֲשֶׁר־יָלְדָ֥ה הָגָ֖ר יִשְׁמָעֵֽאל׃ "/>
+                <ITEXT CPARENT="verse no" CH="טז"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וְאַבְרָ֕ם בֶּן־שְׁמֹנִ֥ים שָׁנָ֖ה וְשֵׁ֣שׁ שָׁנִ֑ים בְּלֶֽדֶת־הָגָ֥ר אֶת־יִשְׁמָעֵ֖אל לְאַבְרָֽם׃"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="portion" CH="ס"/>
+                <para LINESPMode="2"/>
+                <ITEXT CPARENT="chapter no" CH="יז"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="verse no" CH="א"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וַיְהִ֣י אַבְרָ֔ם בֶּן־תִּשְׁעִ֥ים שָׁנָ֖ה וְתֵ֣שַׁע שָׁנִ֑ים וַיֵּרָ֨א יְהוָ֜ה אֶל־אַבְרָ֗ם וַיֹּ֤אמֶר אֵלָיו֙ אֲנִי־אֵ֣ל שַׁדַּ֔י הִתְהַלֵּ֥ךְ לְפָנַ֖י וֶהְיֵ֥ה תָמִֽים׃ "/>
+                <ITEXT CPARENT="verse no" CH="ב"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וְאֶתְּנָ֥ה בְרִיתִ֖י בֵּינִ֣י וּבֵינֶ֑ךָ וְאַרְבֶּ֥ה אוֹתְךָ֖ בִּמְאֹ֥ד מְאֹֽד׃ "/>
+                <ITEXT CPARENT="verse no" CH="ג"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וַיִּפֹּ֥ל אַבְרָ֖ם עַל־פָּנָ֑יו וַיְדַבֵּ֥ר אִתּ֛וֹ אֱלֹהִ֖ים לֵאמֹֽר׃ "/>
+                <ITEXT CPARENT="verse no" CH="ד"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="אֲנִ֕י הִנֵּ֥ה בְרִיתִ֖י אִתָּ֑ךְ וְהָיִ֕יתָ לְאַ֖ב הֲמ֥וֹן גּוֹיִֽם׃ "/>
+                <ITEXT CPARENT="verse no" CH="ה"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וְלֹא־יִקָּרֵ֥א ע֛וֹד אֶת־שִׁמְךָ֖ אַבְרָ֑ם וְהָיָ֤ה שִׁמְךָ֙ אַבְרָהָ֔ם כִּ֛י אַב־הֲמ֥וֹן גּוֹיִ֖ם נְתַתִּֽיךָ׃ "/>
+                <ITEXT CPARENT="verse no" CH="ו"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וְהִפְרֵתִ֤י אֹֽתְךָ֙ בִּמְאֹ֣ד מְאֹ֔ד וּנְתַתִּ֖יךָ לְגוֹיִ֑ם וּמְלָכִ֖ים מִמְּךָ֥ יֵצֵֽאוּ׃ "/>
+                <ITEXT CPARENT="verse no" CH="ז"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וַהֲקִמֹתִ֨י אֶת־בְּרִיתִ֜י בֵּינִ֣י וּבֵינֶ֗ךָ וּבֵ֨ין זַרְעֲךָ֧ אַחֲרֶ֛יךָ לְדֹרֹתָ֖ם לִבְרִ֣ית עוֹלָ֑ם לִהְי֤וֹת לְךָ֙ לֵֽאלֹהִ֔ים וּֽלְזַרְעֲךָ֖ אַחֲרֶֽיךָ׃ "/>
+                <ITEXT CPARENT="verse no" CH="ח"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וְנָתַתִּ֣י לְ֠ךָ וּלְזַרְעֲךָ֨ אַחֲרֶ֜יךָ אֵ֣ת ׀ אֶ֣רֶץ מְגֻרֶ֗יךָ אֵ֚ת כָּל־אֶ֣רֶץ כְּנַ֔עַן לַאֲחֻזַּ֖ת עוֹלָ֑ם וְהָיִ֥יתִי לָהֶ֖ם לֵאלֹהִֽים׃ "/>
+                <ITEXT CPARENT="verse no" CH="ט"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וַיֹּ֤אמֶר אֱלֹהִים֙ אֶל־אַבְרָהָ֔ם וְאַתָּ֖ה אֶת־בְּרִיתִ֣י תִשְׁמֹ֑ר אַתָּ֛ה וְזַרְעֲךָ֥ אַֽחֲרֶ֖יךָ לְדֹרֹתָֽם׃ "/>
+                <ITEXT CPARENT="verse no" CH="י"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="זֹ֣את בְּרִיתִ֞י אֲשֶׁ֣ר תִּשְׁמְר֗וּ בֵּינִי֙ וּבֵ֣ינֵיכֶ֔ם וּבֵ֥ין זַרְעֲךָ֖ אַחֲרֶ֑יךָ הִמּ֥וֹל לָכֶ֖ם כָּל־זָכָֽר׃ "/>
+                <ITEXT CPARENT="verse no" CH="יא"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וּנְמַלְתֶּ֕ם אֵ֖ת בְּשַׂ֣ר עָרְלַתְכֶ֑ם וְהָיָה֙ לְא֣וֹת בְּרִ֔ית בֵּינִ֖י וּבֵינֵיכֶֽם׃ "/>
+                <ITEXT CPARENT="verse no" CH="יב"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וּבֶן־שְׁמֹנַ֣ת יָמִ֗ים יִמּ֥וֹל לָכֶ֛ם כָּל־זָכָ֖ר לְדֹרֹתֵיכֶ֑ם יְלִ֣יד בָּ֔יִת וּמִקְנַת־כֶּ֙סֶף֙ מִכֹּ֣ל בֶּן־נֵכָ֔ר אֲשֶׁ֛ר לֹ֥א מִֽזַּרְעֲךָ֖ הֽוּא׃ "/>
+                <ITEXT CPARENT="verse no" CH="יג"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="הִמּ֧וֹל ׀ יִמּ֛וֹל יְלִ֥יד בֵּֽיתְךָ֖ וּמִקְנַ֣ת כַּסְפֶּ֑ךָ וְהָיְתָ֧ה בְרִיתִ֛י בִּבְשַׂרְכֶ֖ם לִבְרִ֥ית עוֹלָֽם׃ "/>
+                <ITEXT CPARENT="verse no" CH="יד"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וְעָרֵ֣ל ׀ זָכָ֗ר אֲשֶׁ֤ר לֹֽא־יִמּוֹל֙ אֶת־בְּשַׂ֣ר עָרְלָת֔וֹ וְנִכְרְתָ֛ה הַנֶּ֥פֶשׁ הַהִ֖וא מֵעַמֶּ֑יהָ אֶת־בְּרִיתִ֖י הֵפַֽר׃"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="portion" CH="ס"/>
+                <para LINESPMode="2"/>
+                <ITEXT CPARENT="verse no" CH="טו"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וַיֹּ֤אמֶר אֱלֹהִים֙ אֶל־אַבְרָהָ֔ם שָׂרַ֣י אִשְׁתְּךָ֔ לֹא־תִקְרָ֥א אֶת־שְׁמָ֖הּ שָׂרָ֑י כִּ֥י שָׂרָ֖ה שְׁמָֽהּ׃ "/>
+                <ITEXT CPARENT="verse no" CH="טז"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וּבֵרַכְתִּ֣י אֹתָ֔הּ וְגַ֨ם נָתַ֧תִּי מִמֶּ֛נָּה לְךָ֖ בֵּ֑ן וּבֵֽרַכְתִּ֙יהָ֙ וְהָֽיְתָ֣ה לְגוֹיִ֔ם מַלְכֵ֥י עַמִּ֖ים מִמֶּ֥נָּה יִהְיֽוּ׃ "/>
+                <ITEXT CPARENT="verse no" CH="יז"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וַיִּפֹּ֧ל אַבְרָהָ֛ם עַל־פָּנָ֖יו וַיִּצְחָ֑ק וַיֹּ֣אמֶר בְּלִבּ֗וֹ הַלְּבֶ֤ן מֵאָֽה־שָׁנָה֙ יִוָּלֵ֔ד וְאִ֨ם־שָׂרָ֔ה הֲבַת־תִּשְׁעִ֥ים שָׁנָ֖ה תֵּלֵֽד׃ "/>
+                <ITEXT CPARENT="verse no" CH="יח"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וַיֹּ֥אמֶר אַבְרָהָ֖ם אֶל־הָֽאֱלֹהִ֑ים ל֥וּ יִשְׁמָעֵ֖אל יִחְיֶ֥ה לְפָנֶֽיךָ׃ "/>
+                <ITEXT CPARENT="verse no" CH="יט"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וַיֹּ֣אמֶר אֱלֹהִ֗ים אֲבָל֙ שָׂרָ֣ה אִשְׁתְּךָ֗ יֹלֶ֤דֶת לְךָ֙ בֵּ֔ן וְקָרָ֥אתָ אֶת־שְׁמ֖וֹ יִצְחָ֑ק וַהֲקִמֹתִ֨י אֶת־בְּרִיתִ֥י אִתּ֛וֹ לִבְרִ֥ית עוֹלָ֖ם לְזַרְע֥וֹ אַחֲרָֽיו׃ "/>
+                <ITEXT CPARENT="verse no" CH="כ"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וּֽלְיִשְׁמָעֵ֘אל שְׁמַעְתִּיךָ֒ הִנֵּ֣ה ׀ בֵּרַ֣כְתִּי אֹת֗וֹ וְהִפְרֵיתִ֥י אֹת֛וֹ וְהִרְבֵּיתִ֥י אֹת֖וֹ בִּמְאֹ֣ד מְאֹ֑ד שְׁנֵים־עָשָׂ֤ר נְשִׂיאִם֙ יוֹלִ֔יד וּנְתַתִּ֖יו לְג֥וֹי גָּדֽוֹל׃ "/>
+                <ITEXT CPARENT="verse no" CH="כא"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וְאֶת־בְּרִיתִ֖י אָקִ֣ים אֶת־יִצְחָ֑ק אֲשֶׁר֩ תֵּלֵ֨ד לְךָ֤ שָׂרָה֙ לַמּוֹעֵ֣ד הַזֶּ֔ה בַּשָּׁנָ֖ה הָאַחֶֽרֶת׃ "/>
+                <ITEXT CPARENT="verse no" CH="כב"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וַיְכַ֖ל לְדַבֵּ֣ר אִתּ֑וֹ וַיַּ֣עַל אֱלֹהִ֔ים מֵעַ֖ל אַבְרָהָֽם׃ "/>
+                <ITEXT CPARENT="verse no" CH="כג"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וַיִּקַּ֨ח אַבְרָהָ֜ם אֶת־יִשְׁמָעֵ֣אל בְּנ֗וֹ וְאֵ֨ת כָּל־יְלִידֵ֤י בֵיתוֹ֙ וְאֵת֙ כָּל־מִקְנַ֣ת כַּסְפּ֔וֹ כָּל־זָכָ֕ר בְּאַנְשֵׁ֖י בֵּ֣ית אַבְרָהָ֑ם וַיָּ֜מָל אֶת־בְּשַׂ֣ר עָרְלָתָ֗ם בְּעֶ֙צֶם֙ הַיּ֣וֹם הַזֶּ֔ה כַּאֲשֶׁ֛ר דִּבֶּ֥ר אִתּ֖וֹ אֱלֹהִֽים׃ "/>
+                <ITEXT CPARENT="verse no" CH="כד"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וְאַ֨בְרָהָ֔ם בֶּן־תִּשְׁעִ֥ים וָתֵ֖שַׁע שָׁנָ֑ה בְּהִמֹּל֖וֹ בְּשַׂ֥ר עָרְלָתֽוֹ׃ "/>
+                <ITEXT CPARENT="verse no" CH="כה"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וְיִשְׁמָעֵ֣אל בְּנ֔וֹ בֶּן־שְׁלֹ֥שׁ עֶשְׂרֵ֖ה שָׁנָ֑ה בְּהִ֨מֹּל֔וֹ אֵ֖ת בְּשַׂ֥ר עָרְלָתֽוֹ׃ "/>
+                <ITEXT CPARENT="verse no" CH="כו"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="בְּעֶ֙צֶם֙ הַיּ֣וֹם הַזֶּ֔ה נִמּ֖וֹל אַבְרָהָ֑ם וְיִשְׁמָעֵ֖אל בְּנֽוֹ׃ "/>
+                <ITEXT CPARENT="verse no" CH="כז"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וְכָל־אַנְשֵׁ֤י בֵיתוֹ֙ יְלִ֣יד בָּ֔יִת וּמִקְנַת־כֶּ֖סֶף מֵאֵ֣ת בֶּן־נֵכָ֑ר נִמֹּ֖לוּ אִתּֽוֹ׃"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="portion" CH="פ"/>
+                <para/>
+            </StoryText>
+        </PAGEOBJECT>
+        <PAGEOBJECT XPOS="545.04" YPOS="711.969448818898" OwnPage="2" ItemID="640106419" PTYPE="4" WIDTH="368.503937007874" HEIGHT="513.070866141732" FRTYPE="0" CLIPEDIT="0" PWIDTH="1" PLINEART="1" LOCALSCX="1" LOCALSCY="1" LOCALX="0" LOCALY="0" LOCALROT="0" PICART="1" SCALETYPE="1" RATIO="1" COLUMNS="1" COLGAP="11" AUTOTEXT="1" EXTRA="0" TEXTRA="0" BEXTRA="0" REXTRA="0" VAlign="0" FLOP="0" PLTSHOW="0" BASEOF="0" textPathType="0" textPathFlipped="0" path="M0 0 L368.504 0 L368.504 513.071 L0 513.071 L0 0 Z" copath="M0 0 L368.504 0 L368.504 513.071 L0 513.071 L0 0 Z" gXpos="545.04" gYpos="711.969448818898" gWidth="0" gHeight="0" LAYER="0" NEXTITEM="641135459" BACKITEM="-1">
+            <StoryText>
+                <DefaultStyle LINESPMode="1"/>
+                <ITEXT CPARENT="verse no" CH="א"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וַאֲמַר יְיָ לְאַבְרָם אִיזֵל לָךְ מֵאַרְעָךְ וּמִיַּלָּדוּתָךְ וּמִבֵּית אֲבוּךְ לְאַרְעָא דִּי אַחֲזִנָּךְ:"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="verse no" CH="ב"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וְאֶעְבְּדִנָּךְ לְעַם סַגִּי וֶאֱבָרֵכִנָּךְ וַאֲרַבֵּי שְׁמָךְ וּתְהֵא מְבָרָךְ:"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="verse no" CH="ג"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וֶאֱבָרֵךְ מְבָרְכָךְ וּמְלַטְטָךְ אֵילוּט וְיִתְבָּרֲכוּן בְּדִילָךְ כֹּל זַרְעֲיַת אַרְעָא:"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="verse no" CH="ד"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וַאֲזַל אַבְרָם כְּמָא דִמַלֵּיל עִמֵּיהּ יְיָ וַאֲזַל עִמֵּיהּ לוֹט וְאַבְרָם בַּר שִׁבְעִין וַחֲמֵשׁ שְׁנִין בְּמִפְּקֵיהּ מֵחָרָן:"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="verse no" CH="ה"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וּדְבַר אַבְרָם יָת שָׂרַי אִתְּתֵיהּ וְיָת לוֹט בַּר אֲחוּהִי וְיָת כָּל קִנְיָנְהוֹן דִּי קְנוֹ וְיָת נַפְשָׁתָא דְּשַׁעְבִּידוּ לְאוֹרַיְתָא בְחָרָן וּנְפָקוּ לְמֵיזַל לְאַרְעָא דִכְנַעַן וַאֲתוֹ לְאַרְעָא דִכְנָעַן:"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="verse no" CH="ו"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וַעֲבַר אַבְרָם בְּאַרְעָא עַד אֲתַר שְׁכֶם עַד מֵישַׁר מוֹרֶה וּכְנַעֲנָאָה בְּכֵן בְּאַרְעָא:"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="verse no" CH="ז"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וְאִתְגְּלִי יְיָ לְאַבְרָם וַאֲמַר לִבְנָךְ אֶתֵּן יָת אַרְעָא הָדָא וּבְנָא תַמָּן מִדְבְּחָא קֳדָם יְיָ דְּאִתְגְּלִי לֵיהּ:"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="verse no" CH="ח"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וְאִסְתַּלַּק מִתַּמָּן לְטוּרָא מִמַּדְנַח לְבֵית אֵל וּפְרַס מַשְׁכְּנֵיהּ בֵּית אֵל מִמַּעַרְבָא וְעַי מִמָּדִינְחָא וּבְנָא תַמָּן מִדְבְּחָא קֳדָם יְיָ וְצַלִּי בִּשְׁמָא דַיְיָ:"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="verse no" CH="ט"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וּנְטַל אַבְרָם אָזֵל וְנָטֵל לְדָרוֹמָא:"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="portion" CH="פ"/>
+                <para LINESPMode="2"/>
+                <para LINESPMode="2" MinWordTrack="0.02" wordTrack="0.98"/>
+                <ITEXT CPARENT="verse no" SCALEH="100" CH="י"/>
+                <nbspace CPARENT="regular" SCALEH="100"/>
+                <ITEXT CPARENT="regular" SCALEH="100" CH="וַהֲוָה כַפְנָא בְּאַרְעָא וּנְחַת אַבְרָם לְמִצְרַיִם לְאִתּוֹתָבָא תַמָּן אֲרֵי תַקִּיף כַּפְנָא בְּאַרְעָא:"/>
+                <nbspace CPARENT="regular" SCALEH="100"/>
+                <ITEXT CPARENT="verse no" SCALEH="100" CH="יא"/>
+                <nbspace CPARENT="regular" SCALEH="100"/>
+                <ITEXT CPARENT="regular" SCALEH="100" CH="וַהֲוָה כַּד * קְרֵיב לְמֵיעַל לְמִצְרָיִם וַאֲמַר לְשָׂרַי אִתְּתֵיהּ הָא כְעַן יְדָעִית אֲרֵי אִתְּתָא שַׁפִּירַת חֵיזוּ אָתְּ:"/>
+                <nbspace CPARENT="regular" SCALEH="100"/>
+                <ITEXT CPARENT="verse no" SCALEH="100" CH="יב"/>
+                <nbspace CPARENT="regular" SCALEH="100"/>
+                <ITEXT CPARENT="regular" SCALEH="100" CH="וִיהֵי כַּד יֶחֱזוּן יָתִיךְ מִצְרָאֵי וְיֵימְרוּן אִתְּתֵיהּ דָּא וְיִקְטְלוּן יָתִי וְיָתִיךְ יְקַיְמוּן:"/>
+                <nbspace CPARENT="regular" SCALEH="100"/>
+                <ITEXT CPARENT="verse no" SCALEH="100" CH="יג"/>
+                <nbspace CPARENT="regular" SCALEH="100"/>
+                <ITEXT CPARENT="regular" SCALEH="100" CH="אִמְרִי כְעַן אֲחָתִי אָתְּ בְּדִיל דְּיֵיטַב לִי בְּדִילָךְ וְתִתְקַיֵּם נַפְשִׁי בְּפִתְגָּמָיְכִי:"/>
+                <nbspace CPARENT="regular" SCALEH="100"/>
+                <ITEXT CPARENT="verse no" SCALEH="100" CH="יד"/>
+                <nbspace CPARENT="regular" SCALEH="100"/>
+                <ITEXT CPARENT="regular" SCALEH="100" CH="וַהֲוָה כַּד עַל אַבְרָם לְמִצְרָיִם וַחֲזוֹ מִצְרָאֵי יָת אִתְּתָא אֲרֵי שַׁפִּירָא הִיא לַחֲדָא:"/>
+                <nbspace CPARENT="regular" SCALEH="100"/>
+                <ITEXT CPARENT="verse no" SCALEH="100" CH="טו"/>
+                <nbspace CPARENT="regular" SCALEH="100"/>
+                <ITEXT CPARENT="regular" SCALEH="100" CH="וַחֲזוֹ יָתַהּ רַבְרְבֵי פַרְעֹה וְשַׁבָּחוּ יָתַהּ לְפַרְעֹה וְאִדַּבָּרַת אִתְּתָא לְבֵית פַּרְעֹה:"/>
+                <nbspace CPARENT="regular" SCALEH="100"/>
+                <ITEXT CPARENT="verse no" SCALEH="100" CH="טז"/>
+                <nbspace CPARENT="regular" SCALEH="100"/>
+                <ITEXT CPARENT="regular" SCALEH="100" CH="וּלְאַבְרָם אוֹטִיב בְּדִילַהּ וַהֲווֹ לֵיהּ עָאן וְתוֹרִין וַחֲמָרִין וְעַבְדִין וְאַמְהָן וְאַתְנָן וְגַמְלִין:"/>
+                <nbspace CPARENT="regular" SCALEH="100"/>
+                <ITEXT CPARENT="verse no" SCALEH="100" CH="יז"/>
+                <nbspace CPARENT="regular" SCALEH="100"/>
+                <ITEXT CPARENT="regular" SCALEH="100" CH="וְאַיְתִי יְיָ עַל פַּרְעֹה מַכְתָּשִׁין רַבְרְבִין וְעַל אֱנַשׁ בֵּיתֵיהּ עַל עֵיסַק שָׂרַי אִתַּת אַבְרָם:"/>
+                <nbspace CPARENT="regular" SCALEH="100"/>
+                <ITEXT CPARENT="verse no" SCALEH="100" CH="יח"/>
+                <nbspace CPARENT="regular" SCALEH="100"/>
+                <ITEXT CPARENT="regular" SCALEH="100" CH="וּקְרָא פַרְעֹה לְאַבְרָם וַאֲמַר מָה דָא עֲבַדְתְּ לִי לְמָא לָא חַוֵּיתָא לִי אֲרֵי אִתְּתָךְ הִיא:"/>
+                <nbspace CPARENT="regular" SCALEH="100"/>
+                <ITEXT CPARENT="verse no" SCALEH="100" CH="יט"/>
+                <nbspace CPARENT="regular" SCALEH="100"/>
+                <ITEXT CPARENT="regular" SCALEH="100" CH="לְמָא אֲמַרְתְּ אֲחָתִי הִיא וּדְבָרִית יָתַהּ לִי לְאִתּוּ וּכְעַן הָא אִתְּתָךְ דְּבַר וְאִיזֵיל:"/>
+                <nbspace CPARENT="regular" SCALEH="100"/>
+                <ITEXT CPARENT="verse no" SCALEH="100" CH="כ"/>
+                <nbspace CPARENT="regular" SCALEH="100"/>
+                <ITEXT CPARENT="regular" SCALEH="100" CH="וּפַקֵּיד עֲלוֹהִי פַּרְעֹה גּוּבְרִין וְאַלְוִיאוּ יָתֵיהּ וְיָת אִתְּתֵיהּ וְיָת כָּל דִּילֵיהּ:"/>
+                <nbspace CPARENT="regular" SCALEH="100"/>
+                <ITEXT CPARENT="chapter no" SCALEH="100" CH="יג"/>
+                <nbspace CPARENT="regular" SCALEH="100"/>
+                <ITEXT CPARENT="verse no" SCALEH="100" CH="א"/>
+                <nbspace CPARENT="regular" SCALEH="100"/>
+                <ITEXT CPARENT="regular" SCALEH="100" CH="וּסְלִיק אַבְרָם מִמִּצְרַיִם הוּא וְאִתְּתֵיהּ וְכָל דִּילֵיהּ וְלוֹט עִמֵּיהּ לְדָרוֹמָא:"/>
+                <nbspace CPARENT="regular" SCALEH="100"/>
+                <ITEXT CPARENT="verse no" SCALEH="100" CH="ב"/>
+                <nbspace CPARENT="regular" SCALEH="100"/>
+                <ITEXT CPARENT="regular" SCALEH="100" CH="וְאַבְרָם תַּקִּיף לַחֲדָא בִּבְעִירָא בְּכַסְפָּא וּבְדַהֲבָא:"/>
+                <nbspace CPARENT="regular" SCALEH="100"/>
+                <ITEXT CPARENT="verse no" SCALEH="100" CH="ג"/>
+                <nbspace CPARENT="regular" SCALEH="100"/>
+                <ITEXT CPARENT="regular" SCALEH="100" CH="וַאֲזַל לְמַטְלָנוֹהִי מִדָּרוֹמָא וְעַד בֵּית אֵל עַד אַתְרָא דִּי פְרַס תַּמָּן מַשְׁכְּנֵיהּ בְּקַדְמֵיתָא בֵּין בֵּית אֵל וּבֵין עָי:"/>
+                <nbspace CPARENT="regular" SCALEH="100"/>
+                <ITEXT CPARENT="verse no" SCALEH="100" CH="ד"/>
+                <nbspace CPARENT="regular" SCALEH="100"/>
+                <ITEXT CPARENT="regular" SCALEH="100" CH="לַאֲתַר מַדְבְּחָא דִּי עֲבַד תַּמָּן בְּקַדְמֵיתָא וְצַלִּי תַמָּן אַבְרָם בִּשְׁמָא דַיְיָ:"/>
+                <nbspace CPARENT="regular" SCALEH="100"/>
+                <ITEXT CPARENT="verse no" SCALEH="100" CH="ה"/>
+                <nbspace CPARENT="regular" SCALEH="100"/>
+                <ITEXT CPARENT="regular" SCALEH="100" CH="וְאַף לְלוֹט דְּאָזֵיל עִם אַבְרָם הֲוָה עָאן וְתוֹרִין וּמַשְׁכְּנִין:"/>
+                <nbspace CPARENT="regular" SCALEH="100"/>
+                <ITEXT CPARENT="verse no" SCALEH="100" CH="ו"/>
+                <nbspace CPARENT="regular" SCALEH="100"/>
+                <ITEXT CPARENT="regular" SCALEH="100" CH="וְלָא סוֹבָרַת יָתְהוֹן אַרְעָא לְמִיתַב כַּחֲדָא אֲרֵי הֲוָה קִנְיָנְהוֹן סַגִּי וְלָא יְכִילוּ לְמִיתַב כַּחֲדָא:"/>
+                <nbspace CPARENT="regular" SCALEH="100"/>
+                <ITEXT CPARENT="verse no" SCALEH="100" CH="ז"/>
+                <nbspace CPARENT="regular" SCALEH="100"/>
+                <ITEXT CPARENT="regular" SCALEH="100" CH="וַהֲוַת מַצּוּתָא בֵּין רָעֵי בְּעִירֵיהּ דְּאַבְרָם וּבֵין רָעֵי בְּעִירֵיהּ דְּלוֹט וּכְנַעֲנָאָה וּפְרִזָּאָה בְּכֵן יָתִיב בְּאַרְעָא:"/>
+                <nbspace CPARENT="regular" SCALEH="100"/>
+                <ITEXT CPARENT="verse no" SCALEH="100" CH="ח"/>
+                <nbspace CPARENT="regular" SCALEH="100"/>
+                <ITEXT CPARENT="regular" SCALEH="100" CH="וַאֲמַר אַבְרָם לְלוֹט לָא כְעַן תְּהֵי מַצּוּתָא בֵּינָא וּבֵינָךְ וּבֵין רַעֲוָתִי וּבֵין רַעֲוָתָךְ אֲרֵי גוּבְרִין אַחִין אֲנָחְנָא:"/>
+                <nbspace CPARENT="regular" SCALEH="100"/>
+                <ITEXT CPARENT="verse no" SCALEH="100" CH="ט"/>
+                <nbspace CPARENT="regular" SCALEH="100"/>
+                <ITEXT CPARENT="regular" SCALEH="100" CH="הֲלָא כָל אַרְעָא קֳדָמָךְ אִתְפְּרַשׁ כְּעַן מִלְּוָתִי אִם אַתְּ לְצִפּוּנָא וַאֲנָא לְדָרוֹמָא וְאִם אַתְּ לְדָרוֹמָא וַאֲנָא לְצִפּוּנָא:"/>
+                <nbspace CPARENT="regular" SCALEH="100"/>
+                <ITEXT CPARENT="verse no" SCALEH="100" CH="י"/>
+                <nbspace CPARENT="regular" SCALEH="100"/>
+                <ITEXT CPARENT="regular" SCALEH="100" CH="וּזְקַף לוֹט יָת עֵינוֹהִי וַחֲזָא יָת כָּל מֵישַׁר יַרְדְּנָא אֲרֵי כֻלַּהּ בֵּית שַׁקְיָא קֳדָם חַבָּלוּת יְיָ יָת סְדוֹם וְיָת עֲמֹרָה כְּגִינְתָא דַיְיָ כְּאַרְעָא דְמִצְרַיִם מָטֵי לְצֹעַר:"/>
+                <nbspace CPARENT="regular" SCALEH="100"/>
+                <ITEXT CPARENT="verse no" SCALEH="100" CH="יא"/>
+                <nbspace CPARENT="regular" SCALEH="100"/>
+                <ITEXT CPARENT="regular" SCALEH="100" CH="וּבְחַר לֵיהּ לוֹט יָת כָּל מֵישַׁר יַרְדְּנָא וּנְטַל לוֹט מִלְּקַדְמִין וְאִתַּפְרָשׁוּ גְּבַר מִלְּוַת אֲחוּהִי:"/>
+                <nbspace CPARENT="regular" SCALEH="100"/>
+                <ITEXT CPARENT="verse no" SCALEH="100" CH="יב"/>
+                <nbspace CPARENT="regular" SCALEH="100"/>
+                <ITEXT CPARENT="regular" SCALEH="100" CH="אַבְרָם יָתֵב בְּאַרְעָא דִכְנָעַן וְלוֹט יָתֵב בְּקִירְוֵי מֵישְׁרָא וּפְרַס עַד סְדוֹם:"/>
+                <nbspace CPARENT="regular" SCALEH="100"/>
+                <ITEXT CPARENT="verse no" SCALEH="100" CH="יג"/>
+                <nbspace CPARENT="regular" SCALEH="100"/>
+                <ITEXT CPARENT="regular" SCALEH="100" CH="וֶאֱנָשִׁין * דִּסְדוֹם בִּישִׁין בְּמָמוֹנְהוֹן וְחַיָּבִין בִּגְוִיָּתְהוֹן קֳדָם יְיָ לַחֲדָא:"/>
+                <nbspace CPARENT="regular" SCALEH="100"/>
+                <ITEXT CPARENT="verse no" SCALEH="100" CH="יד"/>
+                <nbspace CPARENT="regular" SCALEH="100"/>
+                <ITEXT CPARENT="regular" SCALEH="100" CH="וַיְיָ אֲמַר לְאַבְרָם בָּתַר דְּאִתְפָּרֶשׁ לוֹט מֵעִמֵּיהּ זְקוֹף כְּעַן עֵינָךְ וַחֲזֵי מִן אַתְרָא דִּאַתְּ תַּמָּן לְצִפּוּנָא וּלְדָרוֹמָא וּלְמָדִינְחָא וּלְמַעֲרָבָא:"/>
+                <nbspace CPARENT="regular" SCALEH="100"/>
+                <ITEXT CPARENT="verse no" SCALEH="100" CH="טו"/>
+                <nbspace CPARENT="regular" SCALEH="100"/>
+                <ITEXT CPARENT="regular" SCALEH="100" CH="אֲרֵי יָת כָּל אַרְעָא דִּי אַתְּ חָזֵי לָךְ אֶתְּנִנַּהּ וְלִבְנָךְ עַד עָלָם:"/>
+                <nbspace CPARENT="regular" SCALEH="100"/>
+                <ITEXT CPARENT="verse no" SCALEH="100" CH="טז"/>
+                <nbspace CPARENT="regular" SCALEH="100"/>
+                <ITEXT CPARENT="regular" SCALEH="100" CH="וַאֲשַׁוֵּי יָת בְּנָךְ סַגִּיאִין כְּעַפְרָא דְאַרְעָא כְּמָא דִּי לָא אֶפְשַׁר לִגְבַר לְמִמְנֵי יָת עַפְרָא דְאַרְעָא אַף בְּנָךְ לָא יִתִּמְנוּן:"/>
+                <nbspace CPARENT="regular" SCALEH="100"/>
+                <ITEXT CPARENT="regular" SCALEH="100" CH="יזקוּם הַלִּיךְ בְּאַרְעָא לְאָרְכַּהּ וְלִפְתָיַהּ אֲרֵי לָךְ"/>
+                <ITEXT CPARENT="regular" CH=" אֶתְּנִנַּהּ:"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="verse no" CH="יח"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וּפְרַס אַבְרָם וַאֲתָא וִיתֵב בְּמֵישְׁרֵי מַמְרֵא דִּי בְחֶבְרוֹן וּבְנָא תַמָּן מִדְבְּחָא קֳדָם יְיָ:"/>
+                <para LINESPMode="2" MinWordTrack="0.6" wordTrack="0.98"/>
+                <para LINESPMode="2"/>
+                <ITEXT CPARENT="chapter no" SCALEH="98" CH="יד"/>
+                <nbspace CPARENT="regular" SCALEH="98"/>
+                <ITEXT CPARENT="verse no" SCALEH="98" CH="א"/>
+                <nbspace CPARENT="regular" SCALEH="98"/>
+                <ITEXT CPARENT="regular" SCALEH="98" CH="וַהֲוָה בְּיוֹמֵי אַמְרָפֶל מַלְכָּא דְבָבֶל אַרְיוֹךְ מַלְכָּא דְאֶלָּסָר כְּדָרְלָעֹמֶר מַלְכָּא דְעֵילָם וְתִדְעָל מַלְכָּא דְעַמְמֵי:"/>
+                <nbspace CPARENT="regular" SCALEH="98"/>
+                <ITEXT CPARENT="verse no" SCALEH="98" CH="ב"/>
+                <nbspace CPARENT="regular" SCALEH="98"/>
+                <ITEXT CPARENT="regular" SCALEH="98" CH="סְדָרוּ * קְרָבָא עִם בֶּרַע מַלְכָּא דִסְדֹם וְעִם בִּרְשַׁע מַלְכָּא דַעֲמֹרָה שִׁנְאָב מַלְכָּא דְאַדְמָה וְשֶׁמְאֵבֶר מַלְכָּא דִצְבוֹיִם וּמַלְכָּא דְבֶלַע הִיא צֹעַר:"/>
+                <nbspace CPARENT="regular" SCALEH="98"/>
+                <ITEXT CPARENT="verse no" SCALEH="98" CH="ג"/>
+                <nbspace CPARENT="regular" SCALEH="98"/>
+                <ITEXT CPARENT="regular" SCALEH="98" CH="כָּל אִלֵּין אִתְכְּנָשׁוּ לְמֵישַׁר חַקְלַיָּא הוּא אֲתַר יַמָּא דְמִלְחָא:"/>
+                <nbspace CPARENT="regular" SCALEH="98"/>
+                <ITEXT CPARENT="verse no" SCALEH="98" CH="ד"/>
+                <nbspace CPARENT="regular" SCALEH="98"/>
+                <ITEXT CPARENT="regular" SCALEH="98" CH="תַּרְתֵּא עַשְׂרֵי שְׁנִין פְּלָחוּ יָת כְּדָרְלָעֹמֶר וּתְלָת עַשְׂרֵי שְׁנִין מְרָדוּ:"/>
+                <nbspace CPARENT="regular" SCALEH="98"/>
+                <ITEXT CPARENT="verse no" SCALEH="98" CH="ה"/>
+                <nbspace CPARENT="regular" SCALEH="98"/>
+                <ITEXT CPARENT="regular" SCALEH="98" CH="וּבְאַרְבַּע עַשְׂרֵי שְׁנִין אֲתָא כְדָרְלָעֹמֶר וּמַלְכַיָּא דְּעִמֵּיהּ וּמְחוֹ יָת גִּבָּרַיָּא דִּי בְעַשְׁתְּרוֹת קַרְנַיִם וְיָת תַּקִּיפַיָּא דִּבְהֶמְתָּא וְיָת אֵימְתָנֵי דִּבְשָׁוֵה קִרְיָתָיִם:"/>
+                <nbspace CPARENT="regular" SCALEH="98"/>
+                <ITEXT CPARENT="verse no" SCALEH="98" CH="ו"/>
+                <nbspace CPARENT="regular" SCALEH="98"/>
+                <ITEXT CPARENT="regular" SCALEH="98" CH="וְיָת חוֹרָאֵי דִּי בְטוּרְהוֹן דְּשֵׂעִיר עַד מֵישַׁר פָּארָן דִּסְמִיךְ עַל מַדְבְּרָא:"/>
+                <nbspace CPARENT="regular" SCALEH="98"/>
+                <ITEXT CPARENT="verse no" SCALEH="98" CH="ז"/>
+                <nbspace CPARENT="regular" SCALEH="98"/>
+                <ITEXT CPARENT="regular" SCALEH="98" CH="וְתָבוּ וַאֲתוּ לְמֵישַׁר פִּלּוּג דִּינָא הִיא רְקָם וּמְחוֹ יָת כָּל חֲקַל עֲמַלְקָאָה וְאַף יָת אֱמוֹרָאָה דְּיָתֵיב בְּעֵין גֶּדִי:"/>
+                <nbspace CPARENT="regular" SCALEH="98"/>
+                <ITEXT CPARENT="verse no" SCALEH="98" CH="ח"/>
+                <nbspace CPARENT="regular" SCALEH="98"/>
+                <ITEXT CPARENT="regular" SCALEH="98" CH="וּנְפַק מַלְכָּא דִסְדוֹם וּמַלְכָּא דַעֲמוֹרָה וּמַלְכָּא דְאַדְמָה וּמַלְכָּא דִצְבוֹיִם וּמַלְכָּא דְבֶלַע הִיא צוֹעַר וְסַדָּרוּ עִמְּהוֹן קְרָבָא בְּמֵישַׁר חַקְלַיָּא:"/>
+                <nbspace CPARENT="regular" SCALEH="98"/>
+                <ITEXT CPARENT="verse no" SCALEH="98" CH="ט"/>
+                <nbspace CPARENT="regular" SCALEH="98"/>
+                <ITEXT CPARENT="regular" SCALEH="98" CH="עִם כְּדָרְלָעֹמֶר מַלְכָּא דְעֵילָם וְתִדְעָל מַלְכָּא דְעַמְמִין וְאַמְרָפֶל מַלְכָּא דְבָבֶל וְאַרְיוֹךְ מַלְכָּא דְאֶלָּסָר אַרְבְּעָה מַלְכִין לָקֳבֵיל חַמְשָׁא:"/>
+                <nbspace CPARENT="regular" SCALEH="98"/>
+                <ITEXT CPARENT="verse no" SCALEH="98" CH="י"/>
+                <nbspace CPARENT="regular" SCALEH="98"/>
+                <ITEXT CPARENT="regular" SCALEH="98" CH="וּמֵישַׁר חַקְלַיָּא בֵּירִין בֵּירִין מַסְקַן חֵימָרָא וַעֲרָקוּ מַלְכָּא דִסְדוֹם וַעֲמוֹרָה וּנְפָלוּ תַמָּן וּדְאִשְׁתָּאָרוּ לְטוּרָא עֲרָקוּ:"/>
+                <nbspace CPARENT="regular" SCALEH="98"/>
+                <ITEXT CPARENT="verse no" SCALEH="98" CH="יא"/>
+                <nbspace CPARENT="regular" SCALEH="98"/>
+                <ITEXT CPARENT="regular" SCALEH="98" CH="וּשְׁבוֹ יָת כָּל קִנְיָנָא דִסְדוֹם וַעֲמוֹרָה וְיָת כָּל מֵיכָלְהוֹן וַאֲזָלוּ:"/>
+                <nbspace CPARENT="regular" SCALEH="98"/>
+                <ITEXT CPARENT="verse no" SCALEH="98" CH="יב"/>
+                <nbspace CPARENT="regular" SCALEH="98"/>
+                <ITEXT CPARENT="regular" SCALEH="98" CH="וּשְׁבוֹ יָת לוֹט וְיָת קִנְיָנֵיהּ בַּר אֲחוּהִי דְאַבְרָם וַאֲזָלוּ וְהוּא יָתֵב בִּסְדוֹם:"/>
+                <nbspace CPARENT="regular" SCALEH="98"/>
+                <ITEXT CPARENT="verse no" SCALEH="98" CH="יג"/>
+                <nbspace CPARENT="regular" SCALEH="98"/>
+                <ITEXT CPARENT="regular" SCALEH="98" CH="וַאֲתָא מְשֵׁיזָבָא וְחַוִּי לְאַבְרָם עִבְרָאָה וְהוּא שָׁרֵי בְּמֵישְׁרֵי מַמְרֵא אֱמוֹרָאָה אֲחוּהִי דְאֶשְׁכּוֹל וַאֲחוּהִי דְעָנֵר וְאִנּוּן אֱנָשֵׁי קְיָמֵיהּ דְּאַבְרָם:"/>
+                <nbspace CPARENT="regular" SCALEH="98"/>
+                <ITEXT CPARENT="verse no" SCALEH="98" CH="יד"/>
+                <nbspace CPARENT="regular" SCALEH="98"/>
+                <ITEXT CPARENT="regular" SCALEH="98" CH="וּשְׁמַע אַבְרָם אֲרֵי אִשְׁתְּבִי אֲחוּהִי וְזָרֵיז יָת עוּלֵמוֹהִי יְלִידֵי בֵיתֵיהּ תְּלָת מְאָה וְתַמְנֵי עֲסַר וּרְדַף עַד דָּן:"/>
+                <nbspace CPARENT="regular" SCALEH="98"/>
+                <ITEXT CPARENT="verse no" SCALEH="98" CH="טו"/>
+                <nbspace CPARENT="regular" SCALEH="98"/>
+                <ITEXT CPARENT="regular" SCALEH="98" CH="וְאִתְפְּלֵג עֲלֵיהוֹן לֵילְיָא הוּא וְעַבְדוֹהִי וּמְחוֹנוּן וּרְדָפִנּוּן עַד חוֹבָה דִּי מִצִּפּוּנָא לְדַמָּשֶׂק:"/>
+                <nbspace CPARENT="regular" SCALEH="98"/>
+                <ITEXT CPARENT="verse no" SCALEH="98" CH="טז"/>
+                <nbspace CPARENT="regular" SCALEH="98"/>
+                <ITEXT CPARENT="regular" SCALEH="98" CH="וַאֲתֵב יָת כָּל קִנְיָנָא וְאַף יָת לוֹט בַּר אֲחוּהִי וְקִנְיָנֵיהּ אֲתֵיב וְאַף יָת נְשַׁיָּא וְיָת עַמָּא:"/>
+                <nbspace CPARENT="regular" SCALEH="98"/>
+                <ITEXT CPARENT="verse no" SCALEH="98" CH="יז"/>
+                <nbspace CPARENT="regular" SCALEH="98"/>
+                <ITEXT CPARENT="regular" SCALEH="98" CH="וּנְפַק מַלְכָּא דִסְדוֹם לְקַדָּמוּתֵיהּ בָּתַר דְּתָב מִלְּמִמְחֵי יָת כְּדָרְלָעוֹמֶר וְיָת מַלְכַיָּא דִּי עִמֵּיהּ לְמֵישַׁר מַפְנָא הוּא אֲתַר בֵּית רֵיסָא דְמַלְכָּא:"/>
+                <nbspace CPARENT="regular" SCALEH="98"/>
+                <ITEXT CPARENT="verse no" SCALEH="98" CH="יח"/>
+                <nbspace CPARENT="regular" SCALEH="98"/>
+                <ITEXT CPARENT="regular" SCALEH="98" CH="וּמַלְכִּי צֶדֶק מַלְכָּא דִירוּשְׁלֶם אַפֵּיק לְחֵם וַחֲמָר וְהוּא מְשַׁמֵּשׁ קֳדָם אֵל עִלָּאָה:"/>
+                <nbspace CPARENT="regular" SCALEH="98"/>
+                <ITEXT CPARENT="verse no" SCALEH="98" CH="יט"/>
+                <nbspace CPARENT="regular" SCALEH="98"/>
+                <ITEXT CPARENT="regular" SCALEH="98" CH="וּבָרְכֵיהּ וַאֲמָר בְּרִיךְ אַבְרָם לְאֵל עִלָּאָה דִּקִנְיָנֵיהּ שְׁמַיָּא וְאַרְעָא:"/>
+                <nbspace CPARENT="regular" SCALEH="98"/>
+                <ITEXT CPARENT="verse no" SCALEH="98" CH="כ"/>
+                <nbspace CPARENT="regular" SCALEH="98"/>
+                <ITEXT CPARENT="regular" SCALEH="98" CH="וּבְרִיךְ אֵל עִלָּאָה דִּמְסַר סָנְאָךְ בִּידָךְ וִיהַב לֵיהּ חַד מִן עַסְרָא מִכֹּלָּא:"/>
+                <nbspace CPARENT="regular" SCALEH="98"/>
+                <ITEXT CPARENT="verse no" SCALEH="98" CH="כא"/>
+                <nbspace CPARENT="regular" SCALEH="98"/>
+                <ITEXT CPARENT="regular" SCALEH="98" CH="וַאֲמַר מַלְכָּא דִסְדוֹם לְאַבְרָם הַב לִי נַפְשָׁתָא וְקִנְיָנָא דְּבַר * לָךְ:"/>
+                <nbspace CPARENT="regular" SCALEH="98"/>
+                <ITEXT CPARENT="verse no" SCALEH="98" CH="כב"/>
+                <nbspace CPARENT="regular" SCALEH="98"/>
+                <ITEXT CPARENT="regular" SCALEH="98" CH="וַאֲמַר אַבְרָם לְמַלְכָּא דִסְדוֹם אֲרֵימִית יְדַי בִּצְלוֹ קֳדָם יְיָ קֳדָם אֵל עִלָּאָה דִּקִנְיָנֵיהּ שְׁמַיָּא וְאַרְעָא:"/>
+                <nbspace CPARENT="regular" SCALEH="98"/>
+                <ITEXT CPARENT="verse no" SCALEH="98" CH="כג"/>
+                <nbspace CPARENT="regular" SCALEH="98"/>
+                <ITEXT CPARENT="regular" SCALEH="98" CH="אִם מִחוּטָא וְעַד עַרְקַת מְסָנָא וְאִם אֶסַּב מִכָּל דִּי לָךְ וְלָא תֵימַר אֲנָא אַעְתָּרִית יָת אַבְרָם:"/>
+                <nbspace CPARENT="regular" SCALEH="98"/>
+                <ITEXT CPARENT="verse no" SCALEH="98" CH="כד"/>
+                <nbspace CPARENT="regular" SCALEH="98"/>
+                <ITEXT CPARENT="regular" SCALEH="98" CH="לְחוֹד * מִדִּאֲכָלוּ עוּלֵמַיָּא וְחוּלַק גֻּבְרַיָּא דִּי אֲזָלוּ עִמִּי עָנֵר אֶשְׁכֹּל וּמַמְרֵא אִנּוּן יְקַבְּלוּן חֲלָקְהוֹן:"/>
+                <para LINESPMode="2" MinWordTrack="0.7"/>
+                <ITEXT CPARENT="chapter no" CH="טו"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="verse no" CH="א"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="בָּתַר פִּתְגָּמַיָּא הָאִלֵּין הֲוָה פִּתְגָּמָא דַיְיָ עִם אַבְרָם בִּנְבוּאָה לְמֵימָר לָא תִדְחַל אַבְרָם מֵימְרִי תְּקוֹף לָךְ אַגְרָךְ סַגִּי לַחֲדָא:"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="verse no" CH="ב"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וַאֲמַר אַבְרָם יְיָ אֱלֹּהִים מַה תִּתֶּן לִי וַאֲנָא אָזֵיל בְּלָא וְלָד וּבַר פַּרְנָסָא הָדֵ"/>
+                <ITEXT CPARENT="regular" SCALEH="99" CH="ין דִּבְבֵיתִי הוּא דַּמַּשְׂקָאָה אֱלִיעֶזֶר:"/>
+                <nbspace CPARENT="regular" SCALEH="99"/>
+                <ITEXT CPARENT="verse no" SCALEH="99" CH="ג"/>
+                <nbspace CPARENT="regular" SCALEH="99"/>
+                <ITEXT CPARENT="regular" SCALEH="99" CH="וַאֲמַר אַבְרָם הָא לִי לָא יְהַבְתְּ וְלָד וְהָא בַר בֵּיתִי יָרִית יָתִי:"/>
+                <nbspace CPARENT="regular" SCALEH="99"/>
+                <ITEXT CPARENT="verse no" SCALEH="99" CH="ד"/>
+                <nbspace CPARENT="regular" SCALEH="99"/>
+                <ITEXT CPARENT="regular" SCALEH="99" CH="וְהָא פִּתְגָּמָא דַּיְיָ עִמֵּיהּ לְמֵימַר לָא יִרְתִנָּךְ דֵּין אֱלָהֵין בַּר דְּתוֹלִיד הוּא יִרְתִנָּךְ:"/>
+                <nbspace CPARENT="regular" SCALEH="99"/>
+                <ITEXT CPARENT="verse no" SCALEH="99" CH="ה"/>
+                <nbspace CPARENT="regular" SCALEH="99"/>
+                <ITEXT CPARENT="regular" SCALEH="99" CH="וְאַפֵּיק יָתֵיהּ לְבָרָא וַאֲמַר אִסְתְּכִי כְּעַן לִשְׁמַיָּא וּמְנֵי כּוֹכְבַיָּא אִם תִּכּוֹל לְמִמְנֵי יָתְהוֹן וַאֲמַר לֵיהּ כְּדֵין יְהוֹן בְּנָךְ:"/>
+                <nbspace CPARENT="regular" SCALEH="99"/>
+                <ITEXT CPARENT="verse no" SCALEH="99" CH="ו"/>
+                <nbspace CPARENT="regular" SCALEH="99"/>
+                <ITEXT CPARENT="regular" SCALEH="99" CH="וְהֵימִין בְּמֵימְרָא דַיְיָ וְחָשְׁבַהּ לֵיהּ לְזָכוּ:"/>
+                <nbspace CPARENT="regular" SCALEH="99"/>
+                <ITEXT CPARENT="verse no" SCALEH="99" CH="ז"/>
+                <nbspace CPARENT="regular" SCALEH="99"/>
+                <ITEXT CPARENT="regular" SCALEH="99" CH="וַאֲמַר לֵיהּ אֲנָא יְיָ דִּאַפֵּקְתָּךְ מֵאוּרָא דְכַשְׂדָּאֵי לְמִּתַּן לָךְ יָת אַרְעָא הָדָא לְמֵירְתַהּ:"/>
+                <nbspace CPARENT="regular" SCALEH="99"/>
+                <ITEXT CPARENT="verse no" SCALEH="99" CH="ח"/>
+                <nbspace CPARENT="regular" SCALEH="99"/>
+                <ITEXT CPARENT="regular" SCALEH="99" CH="וַאֲמָר יְיָ אֱלֹּהִים בְּמָה אִדַּע אֲרֵי אֵרְתִינַהּ:"/>
+                <nbspace CPARENT="regular" SCALEH="99"/>
+                <ITEXT CPARENT="verse no" SCALEH="99" CH="ט"/>
+                <nbspace CPARENT="regular" SCALEH="99"/>
+                <ITEXT CPARENT="regular" SCALEH="99" CH="וַאֲמַר לֵיהּ קָרֵב קֳדָמַי עֶגְלִין תְּלָתָא וְעִזִּין תְּלָתָא וְדִכְרִין תְּלָת וְשַׁפְנִינָא וּבַר יוֹנָא:"/>
+                <nbspace CPARENT="regular" SCALEH="99"/>
+                <ITEXT CPARENT="verse no" SCALEH="99" CH="י"/>
+                <nbspace CPARENT="regular" SCALEH="99"/>
+                <ITEXT CPARENT="regular" SCALEH="99" CH="וְקָרֵב קֳדָמוֹהִי יָת כָּל אִלֵּין וּפַלִּיג יָתְהוֹן בְּשָׁוֶה וִיהַב פַּלְגַיָּא פִּלּוּג לָקֳבֵל חַבְרֵיהּ וְיָת עוֹפָא לָא פַלִּיג:"/>
+                <nbspace CPARENT="regular" SCALEH="99"/>
+                <ITEXT CPARENT="verse no" SCALEH="99" CH="יא"/>
+                <nbspace CPARENT="regular" SCALEH="99"/>
+                <ITEXT CPARENT="regular" SCALEH="99" CH="וּנְחַת עוֹפָא עַל פַּגְלַיָּא וְאַפְרַח יָתְהוֹן אַבְרָם:"/>
+                <nbspace CPARENT="regular" SCALEH="99"/>
+                <ITEXT CPARENT="verse no" SCALEH="99" CH="יב"/>
+                <nbspace CPARENT="regular" SCALEH="99"/>
+                <ITEXT CPARENT="regular" SCALEH="99" CH="וַהֲוָה שִׁמְשָׁא לְמֵיעַל וְשִׁנְתָא נְפָלַת עַל אַבְרָם וְהָא אֵימָה קְבַל סַגִּי נְפָלַת עֲלוֹהִי:"/>
+                <nbspace CPARENT="regular" SCALEH="99"/>
+                <ITEXT CPARENT="verse no" SCALEH="99" CH="יג"/>
+                <nbspace CPARENT="regular" SCALEH="99"/>
+                <ITEXT CPARENT="regular" SCALEH="99" CH="וַאֲמַר לְאַבְרָם מִדַּע תִּדַּע אֲרֵי דַיָּרִין יְהוֹן בְּנָךְ בְּאַרְעָא דְלָא דִילְהוֹן וְיִפְלְחוּן בְּהוֹן וִיעַנּוּן יָתְהוֹן אַרְבַּע מְאָה שְׁנִין:"/>
+                <nbspace CPARENT="regular" SCALEH="99"/>
+                <ITEXT CPARENT="verse no" SCALEH="99" CH="יד"/>
+                <nbspace CPARENT="regular" SCALEH="99"/>
+                <ITEXT CPARENT="regular" SCALEH="99" CH="וְאַף יָת עַמָּא דִּיִפְלְחוּן בְּהוֹן דָּיִין אֲנָא וּבָתַר כֵּן יִפְקוּן בְּקִנְיָנָא סַגִּי:"/>
+                <nbspace CPARENT="regular" SCALEH="99"/>
+                <ITEXT CPARENT="verse no" SCALEH="99" CH="טו"/>
+                <nbspace CPARENT="regular" SCALEH="99"/>
+                <ITEXT CPARENT="regular" SCALEH="99" CH="וְאַתְּ תֵּיעוֹל לְוַת אֲבָהָתָךְ בִּשְׁלָם תִּתְקְבַר בְּסֵיבוּ טָבָא:"/>
+                <nbspace CPARENT="regular" SCALEH="99"/>
+                <ITEXT CPARENT="verse no" SCALEH="99" CH="טז"/>
+                <nbspace CPARENT="regular" SCALEH="99"/>
+                <ITEXT CPARENT="regular" SCALEH="99" CH="וְדָרָא רְבִיעָאָה יְתוּבוּן הָכָא אֲרֵי לָא שְׁלִים חוֹבָא דֶּאֱמוֹרָאָה עַד כְּעָן:"/>
+                <nbspace CPARENT="regular" SCALEH="99"/>
+                <ITEXT CPARENT="verse no" SCALEH="99" CH="יז"/>
+                <nbspace CPARENT="regular" SCALEH="99"/>
+                <ITEXT CPARENT="regular" SCALEH="99" CH="וַהֲוָה שִׁמְשָׁא עַלַּת וְקַבְלָא הֲוָה וְהָא תַנּוּר דִתְנַן וּבְעוּר דְּאֶשָּׁתָא דִּי עֲדָא בֵּין פַּלְגַיָּא הָאִלֵּין:"/>
+                <nbspace CPARENT="regular" SCALEH="99"/>
+                <ITEXT CPARENT="verse no" SCALEH="99" CH="יח"/>
+                <nbspace CPARENT="regular" SCALEH="99"/>
+                <ITEXT CPARENT="regular" SCALEH="99" CH="בְּיוֹמָא הַהוּא גְּזַר יְיָ עִם אַבְרָם קְיָם לְמֵימָר לִבְנָךְ יְהָבִית יָת אַרְעָא הָדָא מִן נַהֲרָא דְמִצְרַיִם וְעַד נַהֲרָא רַבָּא נַהֲרָא פְרָת:"/>
+                <nbspace CPARENT="regular" SCALEH="99"/>
+                <ITEXT CPARENT="verse no" SCALEH="99" CH="יט"/>
+                <nbspace CPARENT="regular" SCALEH="99"/>
+                <ITEXT CPARENT="regular" SCALEH="99" CH="יָת שַׁלְמָאֵי וְיָת קְנִזָּאֵי וְיָת קַדְמוֹנָאֵי:"/>
+                <nbspace CPARENT="regular" SCALEH="99"/>
+                <ITEXT CPARENT="verse no" SCALEH="99" CH="כ"/>
+                <nbspace CPARENT="regular" SCALEH="99"/>
+                <ITEXT CPARENT="regular" SCALEH="99" CH="וְיָת חִתָּאֵי וְיָת פְּרִזָּאֵי וְיָת גִּבָּרָאֵי:"/>
+                <nbspace CPARENT="regular" SCALEH="99"/>
+                <ITEXT CPARENT="verse no" SCALEH="99" CH="כא"/>
+                <nbspace CPARENT="regular" SCALEH="99"/>
+                <ITEXT CPARENT="regular" SCALEH="99" CH="וְיָת אֱמוֹרָאֵי וְיָת כְּנַעֲנָאֵי וְיָת גִּרְגָּשָׁאֵי וְיָת יְבוּסָאֵי:"/>
+                <para LINESPMode="2"/>
+                <ITEXT CPARENT="chapter no" SCALEH="98" CH="טז"/>
+                <nbspace CPARENT="regular" SCALEH="98"/>
+                <ITEXT CPARENT="regular" SCALEH="98" CH="א"/>
+                <nbspace CPARENT="verse no" SCALEH="98"/>
+                <ITEXT CPARENT="regular" SCALEH="98" CH="וְשָׂרַי אִתַּת אַבְרָם לָא יְלִידַת לֵיהּ וְלַהּ אַמְתָא מִצְרֵיתָא וּשְׁמַהּ הָגָר:"/>
+                <nbspace CPARENT="regular" SCALEH="98"/>
+                <ITEXT CPARENT="verse no" SCALEH="98" CH="ב"/>
+                <nbspace CPARENT="regular" SCALEH="98"/>
+                <ITEXT CPARENT="regular" SCALEH="98" CH="וַאֲמַרַת שָׂרַי לְאַבְרָם הָא כְּעַן מַנְעַנִי יְיָ מִלְּמֵילַד עוּל כְּעַן לְוַת אַמְתִי מָאִם אִתְבְּנֵי מִנַּהּ וְקַבִּיל אַבְרָם לְמֵימַר שָׂרָי:"/>
+                <nbspace CPARENT="regular" SCALEH="98"/>
+                <ITEXT CPARENT="verse no" SCALEH="98" CH="ג"/>
+                <nbspace CPARENT="regular" SCALEH="98"/>
+                <ITEXT CPARENT="regular" SCALEH="98" CH="וּדְבָרַת שָׂרַי אִתַּת אַבְרָם יָת הָגָר מִצְרֵיתָא אַמְתַהּ מִסּוֹף עֲשַׂר שְׁנִין לְמִתַּב אַבְרָם בְּאַרְעָא דִּכְנָעַן וִיהָבַת יָתַהּ לְאַבְרָם בַּעְלַהּ לֵיהּ לְאִנְתּוּ:"/>
+                <nbspace CPARENT="regular" SCALEH="98"/>
+                <ITEXT CPARENT="verse no" SCALEH="98" CH="ד"/>
+                <nbspace CPARENT="regular" SCALEH="98"/>
+                <ITEXT CPARENT="regular" SCALEH="98" CH="וְעַל לְוַת הָגָר וְעַדִּיאַת וַחֲזַת אֲרֵי עַדִּיאַת וּקְלַת רִבָּנְתַּהּ בְּעֵינָהַהּ:"/>
+                <nbspace CPARENT="regular" SCALEH="98"/>
+                <ITEXT CPARENT="verse no" SCALEH="98" CH="ה"/>
+                <nbspace CPARENT="regular" SCALEH="98"/>
+                <ITEXT CPARENT="regular" SCALEH="98" CH="וַאֲמַרַת שָׂרַי לְאַבְרָם דִּין לִי עֲלָךְ אֲנָא יְהָבִית אַמְתִי לָךְ וַחֲזַת אֲרֵי עַדִּיאַת וּקְלֵית בְּעֵינָהַהּ יְדִין יְיָ בֵּינִי וּבֵינָךְ:"/>
+                <nbspace CPARENT="regular" SCALEH="98"/>
+                <ITEXT CPARENT="verse no" SCALEH="98" CH="ו"/>
+                <nbspace CPARENT="regular" SCALEH="98"/>
+                <ITEXT CPARENT="regular" SCALEH="98" CH="וַאֲמַר אַבְרָם לְשָׂרַי הָא אַמְתִיךְ בִּידִיךְ עִבִידִי לַהּ כִּדְתַקִּין בְּעֵינָיְכִי וְעַנִיתַהּ שָׂרַי וְעָרְקַת מִקֳּדָמָהַהּ:"/>
+                <nbspace CPARENT="regular" SCALEH="98"/>
+                <ITEXT CPARENT="verse no" SCALEH="98" CH="ז"/>
+                <nbspace CPARENT="regular" SCALEH="98"/>
+                <ITEXT CPARENT="regular" SCALEH="98" CH="וְאַשְׁכְּחַהּ מַלְאָכָא דַיְיָ עַל עֵינָא דְמַיָּא בְּמַדְבְּרָא עַל עֵינָא בְּאָרְחָא דְחַגְרָא:"/>
+                <nbspace CPARENT="regular" SCALEH="98"/>
+                <ITEXT CPARENT="verse no" SCALEH="98" CH="ח"/>
+                <nbspace CPARENT="regular" SCALEH="98"/>
+                <ITEXT CPARENT="regular" SCALEH="98" CH="וַאֲמַר הָגָר אַמְתָא דְשָׂרַי מְנָן אַתְּ אָתְיָא וּלְאָן אַתְּ אָזְלָא וַאֲמַרַת מִן קֳדָם שָׂרַי רִבָּנְתִּי אֲנָא עָרְקָא*:"/>
+                <nbspace CPARENT="regular" SCALEH="98"/>
+                <ITEXT CPARENT="verse no" SCALEH="98" CH="ט"/>
+                <nbspace CPARENT="regular" SCALEH="98"/>
+                <ITEXT CPARENT="regular" SCALEH="98" CH="וַאֲמַר לַהּ מַלְאֲכָא דַיְיָ תּוּבִי לְוַת רִבּוֹנְתִּךְ וְאִשְׁתַּעְבְּדִי תְּחוֹת יְדָהָא:"/>
+                <nbspace CPARENT="regular" SCALEH="98"/>
+                <ITEXT CPARENT="verse no" SCALEH="98" CH="י"/>
+                <nbspace CPARENT="regular" SCALEH="98"/>
+                <ITEXT CPARENT="regular" SCALEH="98" CH="וַאֲמַר לַהּ מַלְאֲכָא דַיְיָ אַסְגָּאָה אַסְגֵּי יָת בְּנָיְכִי וְלָא יִתִּמְנוּן מִסְּגֵי:"/>
+                <nbspace CPARENT="regular" SCALEH="98"/>
+                <ITEXT CPARENT="verse no" SCALEH="98" CH="יא"/>
+                <nbspace CPARENT="regular" SCALEH="98"/>
+                <ITEXT CPARENT="regular" SCALEH="98" CH="וַאֲמַר לַהּ מַלְאֲכָא דַיְיָ הָא אַתְּ מְעַדְיָא וְתֵלְדִין בָּר וְתִקְרִין שְׁמֵיהּ יִשְׁמָעֵאל אֲרֵי קַבִּיל יְיָ צְלוֹתִיךְ:"/>
+                <nbspace CPARENT="regular" SCALEH="98"/>
+                <ITEXT CPARENT="verse no" SCALEH="98" CH="יב"/>
+                <nbspace CPARENT="regular" SCALEH="98"/>
+                <ITEXT CPARENT="regular" SCALEH="98" CH="וְהוּא יְהֵא מָרוֹד בֶּאֱנָשָׁא הוּא יְהֵא צְרִיךְ לְכֹלָּא וִידָא דִבְנֵי אֲנָשָׁא יְהוֹן צְרִיכִין לֵיהּ וְעַל אַפֵּי כָל אֲחוֹהִי יִשְׁרֵי:"/>
+                <nbspace CPARENT="regular" SCALEH="98"/>
+                <ITEXT CPARENT="verse no" SCALEH="98" CH="יג"/>
+                <nbspace CPARENT="regular" SCALEH="98"/>
+                <ITEXT CPARENT="regular" SCALEH="98" CH="וְצַלִּיאַת בִּשְׁמָא דַיְיָ דְּמִתְמַלֵּל עִמַּהּ אֲמַרַת אַתְּ הוּא אֱלָהָא דְחָזֵי כֹלָּא אֲרֵי אֲמַרַת הַבְרַם הָכָא * שָׁרֵתִי חָזְיָא בָּתַר דְּאִתְגְּלִי לִי:"/>
+                <nbspace CPARENT="regular" SCALEH="98"/>
+                <ITEXT CPARENT="verse no" SCALEH="98" CH="יד"/>
+                <nbspace CPARENT="regular" SCALEH="98"/>
+                <ITEXT CPARENT="regular" SCALEH="98" CH="עַל כֵּן קְרָא לִבְאֵרָא בְּאֵרָא דְמַלְאַךְ קַיָּמָא אִתַּחֲזִי עֲלַהּ הָא (הִיא) בֵּין רְקָם וּבֵין חַגְרָא:"/>
+                <nbspace CPARENT="regular" SCALEH="98"/>
+                <ITEXT CPARENT="verse no" SCALEH="98" CH="טו"/>
+                <nbspace CPARENT="regular" SCALEH="98"/>
+                <ITEXT CPARENT="regular" SCALEH="98" CH="וִילִידַת הָגָר לְאַבְרָם בָּר וּקְרָא אַבְרָם שׁוּם בְּרֵיהּ דִּילִידַת הָגָר יִשְׁמָעֵאל:"/>
+                <nbspace CPARENT="regular" SCALEH="98"/>
+                <ITEXT CPARENT="verse no" SCALEH="98" CH="טז"/>
+                <nbspace CPARENT="regular" SCALEH="98"/>
+                <ITEXT CPARENT="regular" SCALEH="98" CH="וְאַבְרָם בַּר תְּמָנָן וְשִׁתְּ שְׁנִין כַּד יְלִידַת הָגָר יָת יִשְׁמָעֵאל לְאַבְרָם:"/>
+                <para LINESPMode="2" MinWordTrack="0.6"/>
+                <ITEXT CPARENT="chapter no" CH="יז"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="verse no" CH="א"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וַהֲוָה אַבְרָם בַּר תִּשְׁעִין וּתְשַׁע שְׁנִין וְאִתְגְּלִי יְיָ לְאַבְרָם וַאֲמַר לֵיהּ אֲנָא אֵל שַׁדַּי פְּלַח קֳדָמַי וֶהֱוֵי שְׁלִים:"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="verse no" CH="ב"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וְאֶתֵּן קְיָמִי בֵּין מֵימְרִי וּבֵינָךְ וְאַסְגֵּי יָתָךְ לַחֲדָא לַחֲדָא:"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="verse no" CH="ג"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וּנְפַל אַבְרָם עַל אַפּוֹהִי וּמַלֵּיל עִמֵּיהּ יְיָ לְמֵימָר:"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="verse no" CH="ד"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="אֲנָא הָא * קְיָמִי עִמָּךְ וּתְהֵי לְאַב סַגִּי עַמְמִין:"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="verse no" CH="ה"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וְלָא יִתְקְרֵי עוֹד יָת שְׁמָךְ אַבְרָם וִיהֵי שְׁמָךְ אַבְרָהָם אֲרֵי אַב סַגִּי עַמְמִין יְהָבִתָּךְ:"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="verse no" CH="ו"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וְאַפֵּישׁ יָתָךְ לַחֲדָא לַחֲדָא וְאֶתְּנִנָּךְ לְכִנְשִׁין וּמַלְכִין דְּשַׁלִּיטִין בְּעַמְמַיָּא מִנָּךְ יִפְקוּן:"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="verse no" CH="ז"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וַאֲקֵים יָת קְיָמִי בֵּין מֵימְרִי וּבֵינָךְ וּבֵין בְּנָךְ בַּתְרָךְ לְדָרֵיהוֹן לִקְיָם עָלָם לְמֵהֲוֵי לָךְ לֵאלָהָא וְלִבְנָךְ בַּתְרָךְ:"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="verse no" CH="ח"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וְאֶתֵּן לָךְ וְלִבְנָךְ בַּתְרָךְ יָת אַרְעָא תּוֹתָבוּתָךְ יָת כָּל אַרְעָא דִכְנַעַן לְאַחֲסָנַת עָלָם וְאֶהֱוֵי לְהוֹן לֵאלָהָא:"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="verse no" CH="ט"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וַאֲמַר יְיָ לְאַבְרָהָם וְאַתְּ יָת קְיָמִי תִטָּר אַתְּ וּבְנָךְ בַּתְרָךְ לְדָרֵיהוֹן:"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="verse no" CH="י"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="דָּא קְיָמִי דִּי תִטְּרוּן בֵּין מֵימְרִי וּבֵינֵיכוֹן וּבֵין בְּנָךְ בַּתְרָךְ מִגְזַר לְכוֹן כָּל דְּכוּרָא:"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="verse no" CH="יא"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וְתִגְזְרוּן יָת בִּשְׂרָא דְעָרְלָתְכוֹן וּתְהֵי * לְאָת קְיָם בֵּין מֵימְרִי וּבֵינֵיכוֹן:"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="verse no" CH="יב"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וּבַר תְּמַנְיָא יוֹמִין יִתְגְּזַר (נ&quot;י יִגְזַר) לְכוֹן כָּל דְּכוּרָא לְדָרָתֵיכוֹן יְלִידֵי בֵיתָא וּזְבִינֵי כַסְפָּא מִכֹּל בַּר עַמְמִין דְּלָא מִבְּנָךְ הוּא:"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="verse no" CH="יג"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="אִתְגַּזָּרָא יִתְגַּזְּרוּן * יְלִיד בֵּיתָךְ וּזְבִין כַּסְפָּךְ וּתְהֵי קְיָמִי בְּבִשְׂרֵיכוֹן לִקְיָם עָלָם:"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="verse no" CH="יד"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וְעָרֵל דְּכוּרָא דִּי לָא יִגְזַר יָת בְּשַׂר עָרְלָתֵיהּ וְיִשְׁתֵּיצֵי אֱנָשָׁא הַהִיא מְעַמֵּיהּ יָת קְיָמִי אַשְׁנִי:"/>
+                <para LINESPMode="2"/>
+                <ITEXT CPARENT="verse no" CH="טו"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וַאֲמַר יְיָ לְאַבְרָהָם שָׂרַי אִתְּתָךְ לָא תִקְרֵי יָת שְׁמַהּ שָׂרָי אֲרֵי שָׂרָה שְׁמַהּ:"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="verse no" CH="טז"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וֶאֱבָרֵךְ יָתַהּ וְאַף אֶתֵּן מִנַּהּ לָךְ בָּר וֶאֱבָרֲכִנַּהּ וּתְהֵי לְכִנְשִׁין מַלְכִין דְּשַׁלִּיטִין בְּעַמְמַיָּא מִנַּהּ יְהוֹן:"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="verse no" CH="יז"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וּנְפַל אַבְרָהָם עַל אַפּוֹהִי וַחֲדִי וַאֲמַר בְּלִבֵּיהּ הַלְבַר מְאָה שְׁנִין יְהֵי וְלַד וְאִם שָׂרָה הֲבַת תִּשְׁעִין שְׁנִין תְּלִיד:"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="verse no" CH="יח"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וַאֲמַר אַבְרָהָם קֳדָם יְיָ לְוַי יִשְׁמָעֵאל יִתְקַיָּם קֳדָמָךְ:"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="verse no" CH="יט"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וַאֲמַר יְיָ בְּקוּשְׁטָא שָׂרָה אִתְּתָךְ תְּלִיד לָךְ בָּר וְתִקְרֵי יָת שְׁמֵיהּ יִצְחָק וַאֲקֵים יָת קְיָמִי עִמֵּיהּ לִקְיָם עָלָם לִבְנוֹהִי בַתְרוֹהִי:"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="verse no" CH="כ"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וְעַל יִשְׁמָעֵאל קַבֵּלִית צְלוֹתָךְ הָא בָּרֵכִית יָתֵיהּ וְאַפֵּשׁ יָתֵיהּ וְאַסְגֵּי יָתֵיהּ לַחֲדָא לַחֲדָא תְּרֵין עֲשַׂר רַבְרְבַיָּא יְלִיד וְאֶתְּנִנֵּיהּ לְעַם סַגִּי:"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="verse no" CH="כא"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וְיָת קְיָמִי אָקִים עִם יִצְחָק דִּי תְלִיד לָךְ שָׂרָה לְזִמְנָא הָדֵין בְּשַׁתָּא אָחֳרַנְתָּא:"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="verse no" CH="כב"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וְשֵׁיצֵי לְמַלָּלָא עִמֵּיהּ וְאִסְתַּלַּק יְקָרָא דַיְיָ מֵעִלָּווֹהִי דְּאַבְרָהָם:"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="verse no" CH="כג"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וּדְבַר אַבְרָהָם יָת יִשְׁמָעֵאל בְּרֵיהּ וְיָת כָּל יְלִידֵי בֵיתֵיהּ וְיָת כָּל זְבִינֵי כַסְפֵּיהּ כָּל דְּכוּרָא בַּאֲנָשֵׁי בֵּית אַבְרָהָם וּגְזַר יָת בִּשְׂרָא דְעָרְלָתְהוֹן בִּכְרַן יוֹמָא הָדֵין כְּמָא דִּי מַלִּיל עִמֵּיהּ יְיָ:"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="verse no" CH="כד"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וְאַבְרָהָם בַּר תִּשְׁעִין וּתְשַׁע שְׁנִין כַּד גְּזַר בִּשְׂרָא דְעָרְלְתֵיהּ:"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="verse no" CH="כה"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וְיִשְׁמָעֵאל בְּרֵיהּ בַּר תְּלָת עַשְׂרֵי שְׁנִין כַּד גְּזַר יָת בִּשְׂרָא דְעָרְלְתֵיהּ:"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="verse no" CH="כו"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="בִּכְרַן יוֹמָא הָדֵין אִתְגְּזַר* אַבְרָהָם וְיִשְׁמָעֵאל בְּרֵיהּ:"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="verse no" CH="כז"/>
+                <nbspace CPARENT="regular"/>
+                <ITEXT CPARENT="regular" CH="וְכָל אֱנָשֵׁי בֵיתֵיהּ יְלִידֵי בֵיתָא וּזְבִינֵי כַסְפָּא מִן בַּר עַמְמִין אִתְגְּזָרוּ* עִמֵּיהּ:"/>
+                <nbspace CPARENT="regular"/>
+                <trail LINESPMode="2"/>
+            </StoryText>
+        </PAGEOBJECT>
+        <PAGEOBJECT XPOS="125.512440944882" YPOS="1347.24472440945" OwnPage="3" ItemID="652686611" PTYPE="4" WIDTH="368.503937007874" HEIGHT="513.070866141732" FRTYPE="0" CLIPEDIT="0" PWIDTH="1" PLINEART="1" LOCALSCX="1" LOCALSCY="1" LOCALX="0" LOCALY="0" LOCALROT="0" PICART="1" SCALETYPE="1" RATIO="1" COLUMNS="1" COLGAP="11" AUTOTEXT="0" EXTRA="0" TEXTRA="0" BEXTRA="0" REXTRA="0" VAlign="0" FLOP="0" PLTSHOW="0" BASEOF="0" textPathType="0" textPathFlipped="0" path="M0 0 L368.504 0 L368.504 513.071 L0 513.071 L0 0 Z" copath="M0 0 L368.504 0 L368.504 513.071 L0 513.071 L0 0 Z" gXpos="125.512440944882" gYpos="1347.24472440945" gWidth="0" gHeight="0" LAYER="0" NEXTITEM="612651027" BACKITEM="637674883"/>
+        <PAGEOBJECT XPOS="545.04" YPOS="1347.24472440945" OwnPage="4" ItemID="641135459" PTYPE="4" WIDTH="368.503937007874" HEIGHT="513.070866141732" FRTYPE="0" CLIPEDIT="0" PWIDTH="1" PLINEART="1" LOCALSCX="1" LOCALSCY="1" LOCALX="0" LOCALY="0" LOCALROT="0" PICART="1" SCALETYPE="1" RATIO="1" COLUMNS="1" COLGAP="11" AUTOTEXT="1" EXTRA="0" TEXTRA="0" BEXTRA="0" REXTRA="0" VAlign="0" FLOP="0" PLTSHOW="0" BASEOF="0" textPathType="0" textPathFlipped="0" path="M0 0 L368.504 0 L368.504 513.071 L0 513.071 L0 0 Z" copath="M0 0 L368.504 0 L368.504 513.071 L0 513.071 L0 0 Z" gXpos="545.04" gYpos="1347.24472440945" gWidth="0" gHeight="0" LAYER="0" NEXTITEM="649799651" BACKITEM="640106419"/>
+        <PAGEOBJECT XPOS="125.512440944882" YPOS="1982.52" OwnPage="5" ItemID="612651027" PTYPE="4" WIDTH="368.503937007874" HEIGHT="513.070866141732" FRTYPE="0" CLIPEDIT="0" PWIDTH="1" PLINEART="1" LOCALSCX="1" LOCALSCY="1" LOCALX="0" LOCALY="0" LOCALROT="0" PICART="1" SCALETYPE="1" RATIO="1" COLUMNS="1" COLGAP="11" AUTOTEXT="0" EXTRA="0" TEXTRA="0" BEXTRA="0" REXTRA="0" VAlign="0" FLOP="0" PLTSHOW="0" BASEOF="0" textPathType="0" textPathFlipped="0" path="M0 0 L368.504 0 L368.504 513.071 L0 513.071 L0 0 Z" copath="M0 0 L368.504 0 L368.504 513.071 L0 513.071 L0 0 Z" gXpos="125.512440944882" gYpos="1982.52" gWidth="0" gHeight="0" LAYER="0" NEXTITEM="649792275" BACKITEM="652686611"/>
+        <PAGEOBJECT XPOS="545.04" YPOS="1982.52" OwnPage="6" ItemID="649799651" PTYPE="4" WIDTH="368.503937007874" HEIGHT="513.070866141732" FRTYPE="0" CLIPEDIT="0" PWIDTH="1" PLINEART="1" LOCALSCX="1" LOCALSCY="1" LOCALX="0" LOCALY="0" LOCALROT="0" PICART="1" SCALETYPE="1" RATIO="1" COLUMNS="1" COLGAP="11" AUTOTEXT="1" EXTRA="0" TEXTRA="0" BEXTRA="0" REXTRA="0" VAlign="0" FLOP="0" PLTSHOW="0" BASEOF="0" textPathType="0" textPathFlipped="0" path="M0 0 L368.504 0 L368.504 513.071 L0 513.071 L0 0 Z" copath="M0 0 L368.504 0 L368.504 513.071 L0 513.071 L0 0 Z" gXpos="545.04" gYpos="1982.52" gWidth="0" gHeight="0" LAYER="0" NEXTITEM="626137715" BACKITEM="641135459"/>
+        <PAGEOBJECT XPOS="125.512440944882" YPOS="2617.79527559055" OwnPage="7" ItemID="649792275" PTYPE="4" WIDTH="368.503937007874" HEIGHT="513.070866141732" FRTYPE="0" CLIPEDIT="0" PWIDTH="1" PLINEART="1" LOCALSCX="1" LOCALSCY="1" LOCALX="0" LOCALY="0" LOCALROT="0" PICART="1" SCALETYPE="1" RATIO="1" COLUMNS="1" COLGAP="11" AUTOTEXT="0" EXTRA="0" TEXTRA="0" BEXTRA="0" REXTRA="0" VAlign="0" FLOP="0" PLTSHOW="0" BASEOF="0" textPathType="0" textPathFlipped="0" path="M0 0 L368.504 0 L368.504 513.071 L0 513.071 L0 0 Z" copath="M0 0 L368.504 0 L368.504 513.071 L0 513.071 L0 0 Z" gXpos="125.512440944882" gYpos="2617.79527559055" gWidth="0" gHeight="0" LAYER="0" NEXTITEM="-1" BACKITEM="612651027"/>
+        <PAGEOBJECT XPOS="545.04" YPOS="2617.79527559055" OwnPage="8" ItemID="626137715" PTYPE="4" WIDTH="368.503937007874" HEIGHT="513.070866141732" FRTYPE="0" CLIPEDIT="0" PWIDTH="1" PLINEART="1" LOCALSCX="1" LOCALSCY="1" LOCALX="0" LOCALY="0" LOCALROT="0" PICART="1" SCALETYPE="1" RATIO="1" COLUMNS="1" COLGAP="11" AUTOTEXT="1" EXTRA="0" TEXTRA="0" BEXTRA="0" REXTRA="0" VAlign="0" FLOP="0" PLTSHOW="0" BASEOF="0" textPathType="0" textPathFlipped="0" path="M0 0 L368.504 0 L368.504 513.071 L0 513.071 L0 0 Z" copath="M0 0 L368.504 0 L368.504 513.071 L0 513.071 L0 0 Z" gXpos="545.04" gYpos="2617.79527559055" gWidth="0" gHeight="0" LAYER="0" NEXTITEM="-1" BACKITEM="649799651"/>
+    </DOCUMENT>
+</SCRIBUSUTF8NEW>
