@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# -*- coding: utf-8  -*-
+
 import hebrew_numbers
 import os
 import re
