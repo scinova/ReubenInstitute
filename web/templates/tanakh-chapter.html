@@ -26,5 +26,12 @@
 		{% endfor %}
 		</p> 
 	{% endif %}
-
+	<h2>רש"י</h2>
+	<p>
+	{% for verse in rashi.verses %}
+		{% if verse.text %}
+			<span class="verseno">{{verse.hno}}</span> {{verse.text}}<br />
+		{% endif %}
+	{% endfor %}
+	</p> 
 {% endblock %}
