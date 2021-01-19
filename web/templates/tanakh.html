@@ -2,16 +2,27 @@
 {% block title %}תנך{% endblock %}
 {% block content %}
 <h1>תנך</h1>
-{% for book in tanakh.books %}
-	<h2>{{book.name}}</h2>
-	{% if 6 > book.number %}
-		{% for number, parasha in enumerate(book.parashot, start=1) %}
-			<a href="/tanakh/{{book.number}}/p/{{number}}">{{parasha.name}}</a><br />
+{% set sections = [
+	[1, 5, 'תורה'],
+	[6, 11, 'נביאים ראשונים'],
+	[12, 14, 'נביאים אחרונים'],
+	[15, 26, 'תרי עשר'],
+	[27, 29, 'ספרי אמת'],
+	[30, 34, 'חמש מגילות'],
+	[35, 39, 'אחרים']] %}
+{% for start_book, end_book, section in sections %}
+	<h2>{{section}}</h2>
+	{% for book in tanakh.books[start_book - 1:end_book]  %}
+		<h3>{{book.name}}</h3>
+		{% if 6 > book.number %}
+			{% for number, parasha in enumerate(book.parashot, start=1) %}
+				<a href="/tanakh/{{book.number}}/p/{{number}}">{{parasha.name}}</a><br />
+			{% endfor %}
+		{% endif %}
+		{% for chapter in book.chapters %}
+			<a href="/tanakh/{{book.number}}/{{chapter.number}}">{{chapter.hebrew_number}}</a>
 		{% endfor %}
-	{% endif %}
-	{% for chapter in book.chapters %}
-		<a href="/tanakh/{{book.number}}/{{chapter.number}}">{{chapter.hebrew_number}}</a>
+		<br />
 	{% endfor %}
-	<br />
 {% endfor %}
 {% endblock %}
