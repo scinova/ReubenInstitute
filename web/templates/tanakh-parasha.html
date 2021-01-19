@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}{% endblock %}
+{% block content %}
+	<h1>{{parasha.book.name}}, פרשת {{parasha.name}}</h1>
+	<p>
+	{% for verse in parasha.verses %}
+		<span class="verseno">{{verse.hebrew_number}}</span> {{verse.text}}
+	{% endfor %}
+	<h2>אונקלוס</h2>
+	<p>
+	{% for verse in parasha.verses %}
+		<span class="verseno">{{verse.hebrew_number}}</span> {{verse.onkelos_text}}
+	{% endfor %}
+	</p> 
+	<h2>רש"י</h2>
+	<p>
+	{% for verse in parasha.verses %}
+		{% if verse.rashi_text %}
+			<span class="verseno">{{verse.hebrew_number}}</span> {{verse.rashi_text}}
+		{% endif %}
+	{% endfor %}
+	</p> 
+{% endblock %}

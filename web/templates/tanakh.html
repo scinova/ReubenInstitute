@@ -2,11 +2,15 @@
 {% block title %}תנך{% endblock %}
 {% block content %}
 <h1>תנך</h1>
-{% for book in bible %}
-	{% set oloop = loop %}
-	<h2>{{book.hname}}</h2>
+{% for book in tanakh.books %}
+	<h2>{{book.name}}</h2>
+	{% if 6 > book.number %}
+		{% for number, parasha in enumerate(book.parashot, start=1) %}
+			<a href="/tanakh/{{book.number}}/p/{{number}}">{{parasha.name}}</a><br />
+		{% endfor %}
+	{% endif %}
 	{% for chapter in book.chapters %}
-		<a href="/tanakh/{{book.ind}}/{{chapter.no}}">{{chapter.hno}}</a>
+		<a href="/tanakh/{{book.number}}/{{chapter.number}}">{{chapter.hebrew_number}}</a>
 	{% endfor %}
 	<br />
 {% endfor %}

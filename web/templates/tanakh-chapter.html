@@ -1,11 +1,8 @@
 {% extends "base.html" %}
 {% block title %}{% endblock %}
 {% block content %}
-	<h1>{{book.hname}}, פרק {{chapter.hnog}}</h1>
-	{% if book.ind in [27, 28, 29, 30] %}
-		{% set poem = True %}
-	{% endif %}
-	{% if not poem %}<p>{% endif %}
+	<h1>{{chapter.book.name}}, פרק {{chapter.hebrew_number}}</h1>
+	{% if not chapter.book.is_poem %}<p>{% endif %}
 	{% for verse in chapter.verses %}
 		{% set text = verse.text %}
 		{% if verse == chapter.verses[-1] %}
@@ -13,24 +10,24 @@
 		{% endif %}
 		{% set text = re.sub('{פ}', ' <span class="portion">פ</span><br /><br />', text) %}
 		{% set text = re.sub('{ס}', ' <span class="portion">ס</span><br />', text) %}
-		{% if poem %}<p class="poem">{% endif %}
-		<span class="verseno">{{verse.hno}}</span> {{text|safe}}
-		{% if poem %}</p>{% endif %}
+		{% if chapter.book.is_poem %}<p class="poem">{% endif %}
+		<span class="verseno">{{verse.hebrew_number}}</span> {{text|safe}}
+		{% if chapter.book.is_poem %}</p>{% endif %}
 	{% endfor %}
-	{% if not poem %}</p>{% endif %}
-	{% if book.ind in [1, 2, 3, 4, 5] %}
+	{% if not chapter.book.is_poem %}</p>{% endif %}
+	{% if chapter.book.has_onkelos %}
 		<h2>אונקלוס</h2>
 		<p>
-		{% for verse in onkelos.verses %}
-			<span class="verseno">{{verse.hno}}</span> {{verse.text}}
+		{% for verse in chapter.verses %}
+			<span class="verseno">{{verse.hebrew_number}}</span> {{verse.onkelos_text}}
 		{% endfor %}
 		</p> 
 	{% endif %}
 	<h2>רש"י</h2>
 	<p>
-	{% for verse in rashi.verses %}
-		{% if verse.text %}
-			<span class="verseno">{{verse.hno}}</span> {{verse.text}}<br />
+	{% for verse in chapter.verses %}
+		{% if verse.rashi_text %}
+			<span class="verseno">{{verse.hebrew_number}}</span> {{verse.rashi_text}}
 		{% endif %}
 	{% endfor %}
 	</p> 

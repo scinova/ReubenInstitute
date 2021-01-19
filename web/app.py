@@ -28,36 +28,19 @@ def main():
 
 @app.route('/tanakh/')
 def tanakh():
-	return render_template('tanakh.html', bible=common.Bible)
+	return render_template('tanakh.html', tanakh=common.tanakh, enumerate=enumerate)
 
-@app.route('/tanakh/<int:book_ind>/<int:chapter_no>')
-def view_chapter(book_ind, chapter_no):
-	book = common.Bible[book_ind - 1]
-	data = open('../db/tanakh/%02d.%03d.txt'%(book_ind, chapter_no)).read()
-	data = re.sub('{{[^}]+}} ', '', data)
-	lines = data.split('\n')[:-1]
-	chapter = common.Chapter(chapter_no)
-	for l in range(1, len(lines) + 1):
-		verse = common.Verse(l, lines[l - 1])
-		chapter.verses.append(verse)
-	filename = '../db/onkelos/%1d.%02d.txt'%(book_ind, chapter_no)
-	if os.path.exists(filename):
-		data = open(filename).read()
-		lines = data.split('\n')[:-1]
-		onkelos = common.Chapter(chapter_no)
-		for l in range(1, len(lines) + 1):
-			verse = common.Verse(l, lines[l - 1])
-			onkelos.verses.append(verse)
-	else:
-		onkelos = None
-	filename = '../db/rashi/%02d.%03d.txt'%(book_ind, chapter_no)
-	data = open(filename).read()
-	lines = data.split('\n')
-	rashi = common.Chapter(chapter_no)
-	for l in range(1, len(lines) + 1):
-		verse = common.Verse(l, lines[l - 1])
-		rashi.verses.append(verse)
-	return render_template('tanakh-chapter.html', chapter=chapter, onkelos=onkelos, rashi=rashi, book=book, re=re)
+@app.route('/tanakh/<int:book_no>/<int:chapter_no>')
+def view_chapter(book_no, chapter_no):
+	book = common.tanakh.books[book_no - 1]
+	chapter = book.chapters[chapter_no - 1]
+	return render_template('tanakh-chapter.html', chapter=chapter, re=re)
+
+@app.route('/tanakh/<int:book_no>/p/<int:parasha_no>')
+def view_parasha(book_no, parasha_no):
+	book = common.tanakh.books[book_no - 1]
+	parasha = book.parashot[parasha_no - 1]
+	return render_template('tanakh-parasha.html', parasha=parasha, re=re)
 
 @app.route('/mishnah/')
 def mishnah():
