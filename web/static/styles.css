@@ -19,7 +19,7 @@
 	}
 
 html {
-	background-color: #eee;
+	background-color: #dfffd4;
 	}
 
 body {
@@ -30,7 +30,7 @@ body {
 	}
 
 div#content {
-	border: 1px solid #999;
+	border-radius: 20px;
 	padding: 20px;
 	background-color: #fff;
 	}
@@ -59,17 +59,52 @@ p.poem {
 	margin-bottom: 5px;
 	}
 
-span.verseno {
-	color: silver;
+p.parshia {
+	background-color: #e2e5ff;
+	margin-bottom: 1em;
+	padding: 5px 10px 5px;
+	border-radius: 10px;
 	}
 
-span.portion {
-	color: silver;
+span.chapterno {
+	color: #900;
+	font-weight: bold;
 	}
+
+span.verseno {
+	color: #94a300;
+	}
+
+span.alternative {
+	color: #ccc;
+	}
+
+span.aliya {
+	color: #999;
+	font-style: italic;
+	font-size: smaller;
+	}
+
+span.legend {
+	font-weight: bold;
+}
 
 span.citation {
 	color: #900;
 	}
+
+span.reference {
+	color: silver;
+	font-size: smaller;
+}
+
+span.majuscule {
+	font-size: 140%;
+}
+
+span.minuscule {
+	font-size: 80%;
+}
 
 div.left span.citation {
 	color: #633;

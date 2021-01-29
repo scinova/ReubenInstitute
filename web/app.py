@@ -2,6 +2,17 @@ import sys
 sys.path.append('..')
 
 from flask import Flask
+
+app = Flask(__name__)
+app.jinja_options['trim_blocks'] = True
+app.jinja_options['lstrip_blocks'] = True
+print (app.jinja_options)
+print (dir(app.jinja_env))
+print (app.jinja_env.lstrip_blocks)
+print (app.jinja_env.trim_blocks)
+
+#app.jinja_env.trim_blocks = True
+#app.jinja_env.lstrip_blocks = True
 from flask import render_template, send_from_directory, request, redirect
 
 import common
@@ -12,7 +23,6 @@ import os
 
 numbers = [hebrew_numbers.int_to_gematria(x) for x in range(0, 151)]
 
-app = Flask(__name__)
 
 @app.route('/@@/<path:filename>')
 def files(filename):
@@ -34,13 +44,13 @@ def tanakh():
 def view_chapter(book_no, chapter_no):
 	book = common.tanakh.books[book_no - 1]
 	chapter = book.chapters[chapter_no - 1]
-	return render_template('tanakh-chapter.html', chapter=chapter, re=re)
+	return render_template('tanakh-chapter.html', chapter=chapter, re=re, Span=common.Span, SpanKind=common.SpanKind, VerseKind=common.VerseKind)
 
 @app.route('/tanakh/<int:book_no>/p/<int:parasha_no>')
 def view_parasha(book_no, parasha_no):
 	book = common.tanakh.books[book_no - 1]
 	parasha = book.parashot[parasha_no - 1]
-	return render_template('tanakh-parasha.html', parasha=parasha, re=re)
+	return render_template('tanakh-parasha.html', parasha=parasha, re=re, Span=common.Span, SpanKind=common.SpanKind, VerseKind=common.VerseKind)
 
 @app.route('/mishnah/')
 def mishnah():

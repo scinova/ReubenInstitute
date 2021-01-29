@@ -1,34 +1,83 @@
 {% extends "base.html" %}
-{% block title %}{% endblock %}
+{% block title %}{{chapter.book.name}}, פרק {{chapter.hebrew_number}}{% endblock %}
 {% block content %}
-	<h1>{{chapter.book.name}}, פרק {{chapter.hebrew_number}}</h1>
-	{% if not chapter.book.is_poem %}<p>{% endif %}
-	{% for verse in chapter.verses %}
-		{% set text = verse.text %}
-		{% if verse == chapter.verses[-1] %}
-			{% set text = re.sub('{פ}', ' <span class="portion">פ</span>', text) %}
-		{% endif %}
-		{% set text = re.sub('{פ}', ' <span class="portion">פ</span><br /><br />', text) %}
-		{% set text = re.sub('{ס}', ' <span class="portion">ס</span><br />', text) %}
-		{% if chapter.book.is_poem %}<p class="poem">{% endif %}
-		<span class="verseno">{{verse.hebrew_number}}</span> {{text|safe}}
-		{% if chapter.book.is_poem %}</p>{% endif %}
-	{% endfor %}
-	{% if not chapter.book.is_poem %}</p>{% endif %}
+<h1>{{chapter.book.name}}, פרק {{chapter.hebrew_number}}</h1>
+
+{% for paragraph in chapter.paragraphs -%}
+	<div>
+	<div class="right mikra justify">
+	<p class="parshia">
+	{%- for subparagraph in paragraph %}
+		{%- for verse in subparagraph -%}
+			{%- if verse.number != 1 and verse.kind == VerseKind.CLOSED -%}
+				<br /><span>&emsp;&emsp;&emsp;&emsp;</span>
+			{%- endif -%}
+			{%- if verse != subparagraph[0] -%}
+				&ensp;
+			{%- endif -%}
+			<span class="verseno">{{verse.hebrew_number}}&nbsp;</span>
+			{%- for span in verse.mikra -%}
+				{% if span.kind == SpanKind.MAJUSCULE -%}
+					<span class="majuscule">{{span.value}}</span>
+				{%- elif span.kind == SpanKind.MINUSCULE -%}
+					<span class="minuscule">{{span.value}}</span>
+				{%- elif span.kind == SpanKind.PLAIN -%}
+					<span class="plain">{{span.value}}</span>
+				{%- endif -%}
+			{%- endfor -%}
+		{%- endfor -%}
+	{%- endfor -%}
+	</p>
+	</div>
+
 	{% if chapter.book.has_onkelos %}
-		<h2>אונקלוס</h2>
-		<p>
-		{% for verse in chapter.verses %}
-			<span class="verseno">{{verse.hebrew_number}}</span> {{verse.onkelos_text}}
+		<div class="left onkelos justify">
+		<p class="parshia">
+		{% for subparagraph in paragraph %}
+			{% if subparagraph != paragraph[0] %}
+				<br /><span>&emsp;&emsp;&emsp;&emsp;</span>
+			{% endif %}
+			{% for verse in subparagraph %}
+				{% set spans = verse.onkelos %}
+				{{ spans.insert(0, Span(SpanKind.VERSENO, verse.hebrew_number)) or '' }}
+				{% for span in spans %}
+					{% if span.kind == SpanKind.VERSENO -%}
+						<span class="verseno">{{span.value}}</span>&nbsp;
+					{%- elif span.kind == SpanKind.ALTERNATIVE -%}
+						<span class="plain">{{span.value}}</span> <span class="alternative">{{span.alt}}</span>
+					{%- elif span.kind == SpanKind.PLAIN -%}
+						<span class="plain">{{span.value}}</span>
+					{%- endif -%}
+				{% endfor %}
+			{% endfor %}
 		{% endfor %}
-		</p> 
+		</p>
+		</div>
 	{% endif %}
-	<h2>רש"י</h2>
-	<p>
-	{% for verse in chapter.verses %}
-		{% if verse.rashi_text %}
-			<span class="verseno">{{verse.hebrew_number}}</span> {{verse.rashi_text}}
-		{% endif %}
-	{% endfor %}
-	</p> 
+
+	<div class="clear"></div>
+{%- endfor -%}
+
+<div class="rashi justify">
+<h2>רש״י</h2>
+{% for verse in chapter.verses %}
+	{% if verse.rashi %}
+		<span class="verseno">{{verse.hebrew_number}}</span>
+		{% for span in verse.rashi %}
+			{%- if span.kind == SpanKind.PLAIN -%}
+				{{span.value}}
+			{%- 	endif -%}
+			{%- if span.kind == SpanKind.LEGEND -%}
+				<span class="legend">{{span.value}}</span>
+			{%- endif -%}
+			{% if span.kind == SpanKind.CITATION -%}
+				<span class="citation">{{span.value}}</span>
+			{%- endif -%}
+			{% if span.kind == SpanKind.REFERENCE -%}
+				<span class="reference">{{span.value}}</span>
+			{%- endif -%}
+		{% endfor %}
+	{% endif %}
+{% endfor %}
+</div>
 {% endblock %}

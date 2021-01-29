@@ -291,6 +291,29 @@ class Verse:
 		self.hnog = hebrew_numbers.int_to_gematria(no)
 		self.text = text
 
+from enum import Enum
+class SpanKind(Enum):
+
+	PLAIN = 0
+	LEGEND = 1
+	CITATION = 2
+	REFERENCE = 3
+
+	MAJUSCULE = 4
+	MINUSCULE = 5
+
+	KRIKTIV = 6
+	ALIYA = 7
+
+	CHAPTERNO = 10
+	VERSENO = 11
+
+	ALTERNATIVE = 20
+
+class VerseKind(Enum):
+	OPENED = 1
+	CLOSED = 2
+
 class Chapter:
 	def __init__(self, no):
 		self.no = no
@@ -316,6 +339,12 @@ class Order:
 		self.hname = hname
 		self.books = []
 
+class Span:
+	def __init__(self, kind, value, alt=None):
+		self.kind = kind
+		self.value = value
+		self.alt = alt
+
 class NVerse:
 	def __init__(self, chapter, number, text):
 		self.chapter = chapter
@@ -324,6 +353,161 @@ class NVerse:
 		self.text = text
 		self.onkelos_text = None
 		self.rashi_text = None
+
+	def __repr__(self):
+		return "Verse %d.%d.%d"%(self.chapter.book.number, self.chapter.number, self.number)
+
+	@property
+	def kind(self):
+		if self.number > 1:
+			prev_verse = self.chapter.verses[self.number - 2]
+		else:
+			if self.chapter.number > 1:
+				prev_chapter = self.chapter.book.chapters[self.chapter.number - 2]
+				prev_verse = prev_chapter.verses[-1]
+			else:
+				prev_verse = None
+		if prev_verse:
+			if prev_verse.text.endswith('{פ}') or prev_verse.text.endswith('{פ} '):
+				return VerseKind.OPENED
+			elif prev_verse.text.endswith('{ס}') or prev_verse.text.endswith('{ס} '):
+				return VerseKind.CLOSED
+		return None
+
+	@property
+	def onkelos(self):
+		text = self.onkelos_text
+		alternative_items = list(re.finditer('\[([^|]+)\|([^]]+)\]', text))
+		for item in alternative_items:
+			start, end = item.span()
+			text = text[0:start] + (end - start) * 'X' + text[end:]
+		plain_items = list(re.finditer('([^X]+)', text))
+		for item in plain_items:
+			start, end = item.span()
+			text = text[0:start] + (end - start) * '.' + text[end:]
+		spans = []
+		for idx in range(len(text)):
+			for item in alternative_items + plain_items:
+				if idx == item.start():
+					groups = item.groups()
+					value = groups[0]
+					if len(groups) > 1:
+						alt = groups[1]
+					span = None
+					if item in alternative_items:
+						span = Span(SpanKind.ALTERNATIVE, value, alt)
+					elif item in plain_items:
+						span = Span(SpanKind.PLAIN, value)
+					spans.append(span)
+		return spans
+
+	@property
+	def mikra(self):
+		text = self.text
+		aliyot_items = list(re.finditer('\{(ראשון|שני|שלישי|רביעי|חמישי|ששי|שביעי|מפטיר)\} ', text))
+		for item in aliyot_items:
+			start, end = item.span()
+			text = text[0:start] + (end - start) * 'X' + text[end:]
+		kriktiv_items = list(re.finditer('\[([^|]+)\|([^]]+)\]', text))
+		for item in kriktiv_items:
+			start, end = item.span()
+			text = text[0:start] + (end - start) * 'X' + text[end:]
+		majuscule_items = list(re.finditer('<<([^>]+)>>', text))
+		for item in majuscule_items:
+			start, end = item.span()
+			text = text[0:start] + (end - start) * 'X' + text[end:]
+		minuscule_items = list(re.finditer('>>([^<]+)<<', text))
+		for item in minuscule_items:
+			start, end = item.span()
+			text = text[0:start] + (end - start) * 'X' + text[end:]
+		plain_items = list(re.finditer('([^X]+)', text))
+		for item in plain_items:
+			start, end = item.span()
+			text = text[0:start] + (end - start) * '.' + text[end:]
+		spans = []
+		for idx in range(len(text)):
+			for item in aliyot_items + kriktiv_items + majuscule_items + minuscule_items + plain_items:
+				if idx == item.start():
+					groups = item.groups()
+					value = groups[0]
+					if len(groups) > 1:
+						alt = groups[1]
+					span = None
+					if item in aliyot_items:
+						span = Span(SpanKind.ALIYA, value)
+					elif item in kriktiv_items:
+						span = Span(SpanKind.KRIKTIV, value, alt)
+					elif item in majuscule_items:
+						span = Span(SpanKind.MAJUSCULE, value)
+					elif item in minuscule_items:
+						span = Span(SpanKind.MINUSCULE, value)
+					elif item in plain_items:
+						value = re.sub('\{\{[^\}]+\}\}\s* ', '', value)
+						value = re.sub('\{[^\}]+\}\s*', '', value) # open/closed portion
+						span = Span(SpanKind.PLAIN, value)
+					spans.append(span)
+		return spans
+
+	@property
+	def rashi(self):
+		text = self.rashi_text.replace('\u2028', '\n')
+		legend_items = list(re.finditer('^[^\.]+\.', text, re.M))
+		for item in legend_items:
+			start, end = item.span()
+			text = text[0:start] + (end - start) * 'X' + text[end:]
+		citation_items = list(re.finditer('"[^"]+"', text))
+		for item in citation_items:
+			start, end = item.span()
+			text = text[0:start] + (end - start) * 'X' + text[end:]
+		reference_items = list(re.finditer('\([^\)]+\)', text))
+		for item in reference_items:
+			start, end = item.span()
+			text = text[0:start] + (end - start) * 'X' + text[end:]
+#		text = text.replace('\n', '\u2028')
+		plain_items = list(re.finditer('[^X]+', text))
+		for item in plain_items:
+			start, end = item.span()
+			text = text[0:start] + (end - start) * '.' + text[end:]
+		spans = []
+		for idx in range(len(text)):
+			for item in legend_items + citation_items + reference_items + plain_items:
+				if idx == item.start():
+					value = item.group()
+					span = None
+					if item in legend_items:
+						span = Span(SpanKind.LEGEND, value)
+					elif item in citation_items:
+						value = re.sub('"([^"]+)"', r'“\1”', value)
+						span = Span(SpanKind.CITATION, value)
+					elif item in reference_items:
+						value = re.sub(' ', '\u00a0', value)
+						span = Span(SpanKind.REFERENCE, value)
+					elif item in plain_items:
+						value = re.sub("'([^']+)'", r"‘\1’", value)
+						span = Span(SpanKind.PLAIN, value)
+					spans.append(span)
+		return spans
+
+def verses_to_paragraphs(verses):
+	paragraphs = []
+	part = []
+	parts = []
+	for verse in verses:
+		if verse == verses[0]:
+			part = [verse]
+		elif verse.kind == VerseKind.OPENED:
+			parts.append(part)
+			paragraphs.append(parts)
+			parts = []
+			part = [verse]
+		elif verse.kind == VerseKind.CLOSED:
+			parts.append(part)
+			part = [verse]
+		else:
+			part.append(verse)
+	parts.append(part)
+	paragraphs.append(parts)
+	return paragraphs
 
 class NChapter:
 	def __init__(self, book, number):
@@ -346,12 +530,20 @@ class NChapter:
 			for idx, text in enumerate(f):
 				self.verses[idx].onkelos_text = text[:-1]
 
+	@property
+	def paragraphs(self):
+		return verses_to_paragraphs(self.verses)
+
 class Parasha:
 	def __init__(self, book, name, latin_name):
 		self.book = book
 		self.name = name
 		self.latin_name = latin_name
 		self.verses = []
+
+	@property
+	def paragraphs(self):
+		return verses_to_paragraphs(self.verses)
 
 class NBook:
 	def __init__(self, number, name, latin_name):
@@ -365,24 +557,25 @@ class NBook:
 		for idx, filename in enumerate(filenames):
 			chapter = NChapter(self, idx + 1)
 			self.chapters.append(chapter)
-		if self.number <= 5:
-			self.parashot = []
-			for start_chapter, start_verse, end_chapter, end_verse, latin_name, name in parashot_arr[self.number - 1]:
-				parasha = Parasha(self, name, latin_name)
-				chapter_idx = start_chapter - 1
-				verse_idx = start_verse - 1
-				while True:
-					chapter = self.chapters[chapter_idx]
-					verse = chapter.verses[verse_idx]
-					parasha.verses.append(verse)
-					if chapter_idx == end_chapter - 1 and verse_idx == end_verse - 1:
-						break
-					if verse_idx < len(chapter.verses) - 1:
-						verse_idx += 1
-					else:
-						verse_idx = 0
-						chapter_idx += 1
-				self.parashot.append(parasha)
+		if self.number > 5:
+			return
+		self.parashot = []
+		for start_chapter, start_verse, end_chapter, end_verse, latin_name, name in parashot_arr[self.number - 1]:
+			parasha = Parasha(self, name, latin_name)
+			chapter_idx = start_chapter - 1
+			verse_idx = start_verse - 1
+			while True:
+				chapter = self.chapters[chapter_idx]
+				verse = chapter.verses[verse_idx]
+				parasha.verses.append(verse)
+				if chapter_idx == end_chapter - 1 and verse_idx == end_verse - 1:
+					break
+				if verse_idx < len(chapter.verses) - 1:
+					verse_idx += 1
+				else:
+					verse_idx = 0
+					chapter_idx += 1
+			self.parashot.append(parasha)
 
 class Tanakh:
 	def __init__(self):
