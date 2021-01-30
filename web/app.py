@@ -52,6 +52,12 @@ def view_parasha(book_no, parasha_no):
 	parasha = book.parashot[parasha_no - 1]
 	return render_template('tanakh-parasha.html', parasha=parasha, re=re, Span=common.Span, SpanKind=common.SpanKind, VerseKind=common.VerseKind)
 
+@app.route('/tanakh/<int:book_no>/psmet/<int:parasha_no>')
+def view_parasha_smet(book_no, parasha_no):
+	book = common.tanakh.books[book_no - 1]
+	parasha = book.parashot[parasha_no - 1]
+	return render_template('tanakh-parasha-smet.html', parasha=parasha, re=re, Span=common.Span, SpanKind=common.SpanKind, VerseKind=common.VerseKind)
+
 @app.route('/mishnah/')
 def mishnah():
 	return render_template('mishnah.html', mishnah=common.Mishnah)
