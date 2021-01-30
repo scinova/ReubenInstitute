@@ -387,7 +387,7 @@ class NVerse:
 		for item in nonliteral_items:
 			start, end = item.span()
 			text = text[0:start] + (end - start) * 'X' + text[end:]
-		addition_items = list(re.finditer('\+([^_]+)\+', text))
+		addition_items = list(re.finditer('\+([^+]+)\+', text))
 		for item in addition_items:
 			start, end = item.span()
 			text = text[0:start] + (end - start) * 'X' + text[end:]
