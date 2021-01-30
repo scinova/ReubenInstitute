@@ -77,11 +77,11 @@ span.verseno {
 
 span.addition {
 	color: #999;
+	font-style: italic;
 	}
 
 span.nonliteral {
 	color: #999;
-	font-style: italic;
 	}
 
 span.alternative {
