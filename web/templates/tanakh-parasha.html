@@ -62,6 +62,10 @@
 						<span class="chapterno">{{span.value}}</span>&nbsp;
 					{% elif span.kind == SpanKind.VERSENO -%}
 						<span class="verseno">{{span.value}}</span>&nbsp;
+					{%- elif span.kind == SpanKind.NONLITERAL -%}
+						<span class="nonliteral">{{span.value}}</span>
+					{%- elif span.kind == SpanKind.ADDITION -%}
+						<span class="addition">{{span.value}}</span>
 					{%- elif span.kind == SpanKind.ALTERNATIVE -%}
 						<span class="plain">{{span.value}}</span> <span class="alternative">{{span.alt}}</span>
 					{%- elif span.kind == SpanKind.PLAIN -%}

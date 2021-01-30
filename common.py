@@ -309,6 +309,8 @@ class SpanKind(Enum):
 	VERSENO = 11
 
 	ALTERNATIVE = 20
+	ADDITION = 21
+	NONLITERAL = 22
 
 class VerseKind(Enum):
 	OPENED = 1
@@ -381,20 +383,32 @@ class NVerse:
 		for item in alternative_items:
 			start, end = item.span()
 			text = text[0:start] + (end - start) * 'X' + text[end:]
+		nonliteral_items = list(re.finditer('_([^_]+)_', text))
+		for item in nonliteral_items:
+			start, end = item.span()
+			text = text[0:start] + (end - start) * 'X' + text[end:]
+		addition_items = list(re.finditer('\+([^_]+)\+', text))
+		for item in addition_items:
+			start, end = item.span()
+			text = text[0:start] + (end - start) * 'X' + text[end:]
 		plain_items = list(re.finditer('([^X]+)', text))
 		for item in plain_items:
 			start, end = item.span()
 			text = text[0:start] + (end - start) * '.' + text[end:]
 		spans = []
 		for idx in range(len(text)):
-			for item in alternative_items + plain_items:
+			for item in nonliteral_items + addition_items + alternative_items + plain_items:
 				if idx == item.start():
 					groups = item.groups()
 					value = groups[0]
 					if len(groups) > 1:
 						alt = groups[1]
 					span = None
-					if item in alternative_items:
+					if item in nonliteral_items:
+						span = Span(SpanKind.NONLITERAL, value)
+					elif item in addition_items:
+						span = Span(SpanKind.ADDITION, value)
+					elif item in alternative_items:
 						span = Span(SpanKind.ALTERNATIVE, value, alt)
 					elif item in plain_items:
 						span = Span(SpanKind.PLAIN, value)
