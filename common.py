@@ -350,6 +350,7 @@ class Span:
 class NVerse:
 	def __init__(self, chapter, number, text):
 		self.chapter = chapter
+		self.parasha = None
 		self.number = number
 		self.hebrew_number = hebrew_numbers.int_to_gematria(number)
 		self.text = text
@@ -502,6 +503,26 @@ class NVerse:
 					spans.append(span)
 		return spans
 
+	def save_onkelos(self):
+		if not self.chapter.book.has_onkelos:
+			return
+		filename = '%01d.%02d.txt'%(self.chapter.book.number, self.chapter.number)
+		path = os.path.join(DB_PATH, 'onkelos', filename)
+		f = open(path)
+		lines = f.read().split('\n')
+		lines[self.number - 1] = self.onkelos_text
+		data = '\n'.join(lines)
+		open(path, 'w').write(data)
+
+	def save_rashi(self):
+		filename = '%02d.%03d.txt'%(self.chapter.book.number, self.chapter.number)
+		path = os.path.join(DB_PATH, 'rashi', filename)
+		f = open(path)
+		lines = f.read().split('\n')
+		lines[self.number - 1] = self.rashi_text
+		data = '\n'.join(lines)
+		open(path, 'w').write(data)
+
 def verses_to_paragraphs(verses):
 	paragraphs = []
 	part = []
@@ -549,8 +570,9 @@ class NChapter:
 		return verses_to_paragraphs(self.verses)
 
 class Parasha:
-	def __init__(self, book, name, latin_name):
+	def __init__(self, book, number, name, latin_name):
 		self.book = book
+		self.number = number
 		self.name = name
 		self.latin_name = latin_name
 		self.verses = []
@@ -574,13 +596,15 @@ class NBook:
 		if self.number > 5:
 			return
 		self.parashot = []
-		for start_chapter, start_verse, end_chapter, end_verse, latin_name, name in parashot_arr[self.number - 1]:
-			parasha = Parasha(self, name, latin_name)
+		for number, value in enumerate(parashot_arr[self.number - 1], start=1):
+			start_chapter, start_verse, end_chapter, end_verse, latin_name, name = value
+			parasha = Parasha(self, number, name, latin_name)
 			chapter_idx = start_chapter - 1
 			verse_idx = start_verse - 1
 			while True:
 				chapter = self.chapters[chapter_idx]
 				verse = chapter.verses[verse_idx]
+				verse.parasha = parasha
 				parasha.verses.append(verse)
 				if chapter_idx == end_chapter - 1 and verse_idx == end_verse - 1:
 					break

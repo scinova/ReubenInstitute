@@ -8,6 +8,8 @@
 	{% for subparagraph in paragraph %}
 		{% for verse in subparagraph %}
 			<div class="mikra justify">
+			<a name="{{verse.chapter.number}}.{{verse.number}}"
+					href="/tanakh/{{parasha.book.number}}/{{parasha.number}}/{{verse.chapter.number}}/{{verse.number}}/edit">edit</a><br />
 			{% set spans = verse.mikra %}
 			{% if spans[0].kind == SpanKind.ALIYA %}
 				{% set i = 1 %}

@@ -58,6 +58,25 @@ def view_parasha_smet(book_no, parasha_no):
 	parasha = book.parashot[parasha_no - 1]
 	return render_template('tanakh-parasha-smet.html', parasha=parasha, re=re, Span=common.Span, SpanKind=common.SpanKind, VerseKind=common.VerseKind)
 
+@app.route('/tanakh/<int:book_no>/<int:parasha_no>/<int:chapter_no>/<int:verse_no>/edit', methods=['GET','POST'])
+def verse_edit(book_no, parasha_no, chapter_no, verse_no):
+	book = common.tanakh.books[book_no - 1]
+	parasha = book.parashot[parasha_no - 1]
+	verse = book.chapters[chapter_no - 1].verses[verse_no - 1]
+	if request.method == 'POST':
+		if verse.text != request.form['mikra_text']:
+			print ("SAVE MIKRA")
+		if verse.onkelos_text != request.form['onkelos_text']:
+			verse.onkelos_text = request.form['onkelos_text']
+			verse.save_onkelos()
+			print ("SAVE ONKELOS")
+		if verse.rashi_text != request.form['rashi_text'].replace('\r\n', '\u2028'):
+			verse.rashi_text = request.form['rashi_text'].replace('\r\n', '\u2028')
+			verse.save_rashi()
+			print ("SAVE RASHI")
+		return redirect('/tanakh/%d/psmet/%d#%d.%d'%(book.number, parasha.number, verse.chapter.number, verse.number))
+	return render_template('tanakh-verse-edit.html', parasha=parasha, verse=verse)
+
 @app.route('/mishnah/')
 def mishnah():
 	return render_template('mishnah.html', mishnah=common.Mishnah)
