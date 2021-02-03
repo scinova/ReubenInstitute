@@ -1,12 +1,26 @@
 @font-face {
-	font-family: 'regular';
+	font-family: 'frank';
 	src: url('/@@/fonts/TaameyFrankCLM-Medium.ttf') format('truetype');
 	font-weight: normal;
 	font-style: normal;
 }
 
 @font-face {
-	font-family: 'script';
+	font-family: 'vilna';
+	src: url('/@@/fonts/Mekorot-Vilna.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'vilna';
+	src: url('/@@/fonts/Mekorot-Vilna-Bold.ttf') format('truetype');
+	font-weight: bold;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'sbl';
 	src: url('/@@/fonts/SBL_Hbrw.ttf') format('truetype');
 	font-weight: normal;
 	font-style: normal;
@@ -15,7 +29,7 @@
 * {
 	spacing: 0;
 	margin: 0;
-	font-family: script;
+	xfont-family: script;
 	}
 
 html {
@@ -64,6 +78,18 @@ p.parshia {
 	margin-bottom: 1em;
 	padding: 5px 10px 5px;
 	border-radius: 10px;
+	}
+
+div.mikra {
+	font-family: sbl;
+	}
+
+div.onkelos {
+	font-family: sbl;
+	}
+
+div.rashi {
+	font-family: vilna;
 	}
 
 span.chapterno {

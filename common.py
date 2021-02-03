@@ -153,7 +153,7 @@ parashot_arr = [
 		[6, 2, 9, 35, 'VaEira', 'וָאֵרָא'],
 		[10, 1, 13, 16, 'Bo', 'בֹּא'],
 		[13, 17, 17, 16, 'BeShalach', 'בְּשַׁלַּח'],
-		[18, 1, 20, 22, 'Yitro', 'יִתְרוֹ'],
+		[18, 1, 20, 23, 'Yitro', 'יִתְרוֹ'],
 		[21, 1, 24, 18, 'Mishpatim', 'מִּשְׁפָּטִים'],
 		[25, 1, 27, 19, 'Terumah', 'תְּרוּמָה'],
 		[27, 20, 30, 10, 'Tetzaveh', 'תְּצַוֶּה'],
@@ -379,7 +379,7 @@ class NVerse:
 	@property
 	def onkelos(self):
 		text = self.onkelos_text
-		alternative_items = list(re.finditer('\[([^|]+)\|([^]]+)\]', text))
+		alternative_items = list(re.finditer('\[([^|]*)\|([^]]+)\]', text))
 		for item in alternative_items:
 			start, end = item.span()
 			text = text[0:start] + (end - start) * 'X' + text[end:]
