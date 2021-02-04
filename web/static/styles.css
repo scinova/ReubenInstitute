@@ -122,10 +122,12 @@ span.aliya {
 
 span.legend {
 	font-weight: bold;
+	font-family: sbl;
 }
 
 span.citation {
 	color: #900;
+	font-family: sbl;
 	}
 
 span.reference {
@@ -209,8 +211,7 @@ span.diff-legend {
 	}
 
 textarea {
-	width: 450px;
-	height: 400px;
+	width: 100%;
 	border: 1px solid #ccc;
 	font-family: script;
 	font-size: 20px;
