@@ -10,49 +10,9 @@
 
 יתרו
 פְלֵיישְׁטְרִיר flestrir
+אֶינְפְּרֶינְמֶינְט anprenement
+אֶשְׂקֶלוֹנְשׂ escalons
 
-Exodus
-	
-20:05:01
-	
-Anprenement
-Exodus
-	
-20:23:01
-	
-Escalons
-
-
-Genesis
-	
-1:02:02
-	
-Astordisson
-Genesis
-	
-1:02:05
-	
-Acoveter
-Genesis
-	
-1:11:02
-	
-Erberiz
-Genesis
-	
-1:24:03
-	
-Conbres
-Genesis
-	
-1:27:01
-	
-Coin
-Genesis
-	
-3:24:03
-	
-Lame
 Genesis
 	
 4:18:01
