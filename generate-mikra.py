@@ -27,17 +27,18 @@ defineColorRGB("Gray", 0x66, 0x66, 0x66)
 defineColorRGB('Green', 0x94, 0xa3, 0)
 
 font = "SBL Hebrew Regular"
-font2 = "Nachlieli CLM Light"
+font2 = "Shlomo Regular"
 createCharStyle("Default Character Style", font, 15, fillcolor='Black', language='he')
-createCharStyle("chapterno", font2, 17, fillcolor='DarkRed', language='he')
-createCharStyle("verseno", font2, 11, fillcolor='Green', language='he')
+createCharStyle("chapterno", font2, 10, fillcolor='Silver', language='he')
+createCharStyle("verseno", font2, 8, fillcolor='Silver', language='he')
 createCharStyle("mikra", font, 15, fillcolor='Black', language='he')
 createCharStyle("transparent", font, 15, fillcolor='White', language='he')
 createCharStyle("aliya", font2, 10, fillcolor='Silver', language='he')
 createCharStyle("keri", font, 15, fillcolor='Silver', language='he')
 createCharStyle("majuscule", font, 18, fillcolor='Black', language='he')
 createCharStyle("minuscule", font, 12, fillcolor='Black', language='he')
-createCharStyle("cantillation", font, 15, fillcolor='Red', language='he')
+createCharStyle("cantillation", font, 15, fillcolor='Blue', language='he')
+createCharStyle("dcantillation", font, 15, fillcolor='Red', language='he')
 createParagraphStyle("Default Paragraph Style", alignment=ALIGN_BLOCK, linespacing=20)
 createParagraphStyle("paragraph-opened", alignment=ALIGN_BLOCK, linespacing=20)
 createParagraphStyle("paragraph-closed", alignment=ALIGN_BLOCK, linespacing=20, firstindent=40)
@@ -105,9 +106,13 @@ setTextDirection(DIRECTION_RTL, frame)
 
 selectText(0, getTextLength(frame), frame)
 content = getAllText(frame)
+
 for i in reversed(tuple(re.finditer(u'[\u0591-\u05af\u05bd\u05c3]+', content))):
 	selectText(i.start(), i.end() - i.start(), frame)
 	setCharacterStyle('cantillation', frame)
+for i in reversed(tuple(re.finditer(u'[\u0591\u05c3\u0592\u0593\u0594\u0595\u05a3\u05c0]+', content))):
+	selectText(i.start(), i.end() - i.start(), frame)
+	setCharacterStyle('dcantillation', frame)
 
 p = 1
 while textOverflows(str(p)):

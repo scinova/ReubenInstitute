@@ -65,6 +65,8 @@ def verse_edit(book_no, parasha_no, chapter_no, verse_no):
 	verse = book.chapters[chapter_no - 1].verses[verse_no - 1]
 	if request.method == 'POST':
 		if verse.text != request.form['mikra_text']:
+			verse.text = request.form['mikra_text']
+			verse.save_mikra()
 			print ("SAVE MIKRA")
 		if verse.onkelos_text != request.form['onkelos_text']:
 			verse.onkelos_text = request.form['onkelos_text']

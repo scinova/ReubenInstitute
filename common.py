@@ -380,6 +380,8 @@ class NVerse:
 	@property
 	def onkelos(self):
 		text = self.onkelos_text
+		text = re.sub('"([^"]+)"', r'“\1”', text)
+		text = re.sub("'([^']+)'", r"‘\1’", text)
 		alternative_items = list(re.finditer('\[([^|]*)\|([^]]+)\]', text))
 		for item in alternative_items:
 			start, end = item.span()
@@ -419,6 +421,8 @@ class NVerse:
 	@property
 	def mikra(self):
 		text = self.text
+		text = re.sub('"([^"]+)"', r'“\1”', text)
+		text = re.sub("'([^']+)'", r"‘\1’", text)
 		aliyot_items = list(re.finditer('\{(ראשון|שני|שלישי|רביעי|חמישי|ששי|שביעי|מפטיר)\} ', text))
 		for item in aliyot_items:
 			start, end = item.span()
@@ -490,6 +494,7 @@ class NVerse:
 					value = item.group()
 					span = None
 					if item in legend_items:
+						value = value[:-1]
 						span = Span(SpanKind.LEGEND, value)
 					elif item in citation_items:
 						value = re.sub('"([^"]+)"', r'“\1”', value)
@@ -502,6 +507,15 @@ class NVerse:
 						span = Span(SpanKind.PLAIN, value)
 					spans.append(span)
 		return spans
+
+	def save_mikra(self):
+		filename = '%02d.%03d.txt'%(self.chapter.book.number, self.chapter.number)
+		path = os.path.join(DB_PATH, 'tanakh', filename)
+		f = open(path)
+		lines = f.read().split('\n')
+		lines[self.number - 1] = self.text
+		data = '\n'.join(lines)
+		open(path, 'w').write(data)
 
 	def save_onkelos(self):
 		if not self.chapter.book.has_onkelos:
