@@ -567,17 +567,23 @@ class NChapter:
 		filename = '%02d.%03d.txt'%(self.book.number, self.number)
 		f = open(os.path.join(DB_PATH, 'tanakh', filename))
 		for number, text in enumerate(f, start=1):
-			verse = NVerse(self, number, text[:-1])
+			if text.endswith('\n'):
+				text = text[:-1]
+			verse = NVerse(self, number, text)
 			self.verses.append(verse)
 		filename = '%02d.%03d.txt'%(self.book.number, self.number)
 		f = open(os.path.join(DB_PATH, 'rashi', filename))
 		for idx, text in enumerate(f):
-			self.verses[idx].rashi_text = text[:-1]
+			if text.endswith('\n'):
+				text = text[:-1]
+			self.verses[idx].rashi_text = text
 		if book.has_onkelos:
 			filename = '%1d.%02d.txt'%(self.book.number, self.number)
 			f = open(os.path.join(DB_PATH, 'onkelos', filename))
 			for idx, text in enumerate(f):
-				self.verses[idx].onkelos_text = text[:-1]
+				if text.endswith('\n'):
+					text = text[:-1]
+				self.verses[idx].onkelos_text = text
 
 	@property
 	def paragraphs(self):
