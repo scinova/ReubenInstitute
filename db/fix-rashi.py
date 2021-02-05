@@ -10,21 +10,26 @@ if len(sys.argv) != 3:
 def remove_cantillation(text):
 	return re.sub('[\u0591-\u05af\u05bd]', '', text)
 
+def remove_diacritics(text):
+	return re.sub('[\u05b0-\u05bc\u05c1\u05c2\u05c7]', '', text)
+
 book_idx = int(sys.argv[1]) - 1
 chapter_idx = int(sys.argv[2]) - 1
 chapter = common.tanakh.books[book_idx].chapters[chapter_idx]
 
 for verse in chapter.verses:
+	# remove final colon
 	data = re.sub('\:\u2028', '.\u2028', verse.rashi_text)
 	data = re.sub('\:$', '.', data)
 	if data != verse.rashi_text:
 		verse.rashi_text = data
 		verse.save_rashi()
-
+	# copy legends from mikra
 	text = verse.rashi_text.replace('\u2028', '\n')
 	legends = reversed(list(re.finditer('^[^\.]+\.', text, re.M)))
 	for idx, legend in enumerate(legends):
-		words = legend.group()[:-1].split(' ')
+		legend_text = remove_diacritics(legend.group()[:-1]).replace('־', ' ').replace('…', 'וגו׳')
+		words = legend_text.split(' ')
 		patterns = []
 		for w in range(len(words)):
 			if words[w] == 'ה׳':
@@ -38,9 +43,14 @@ for verse in chapter.verses:
 		pattern = '[\s־׀,\.]+'.join(patterns)
 
 		m = re.search(pattern, verse.text)
-		print (verse.number, idx, legend.group()[:-1])
+		print (verse.number, idx, legend_text)
 
-		replacement = remove_cantillation(m.group())
+		try:
+			replacement = m.group()
+		except:
+			print ("ERROR")
+			continue
+		replacement = remove_cantillation(replacement)
 		replacement = re.sub('[,\.]', '', replacement)
 		if words[-1] == 'וגו׳':
 			replacement += ' …'
@@ -48,4 +58,4 @@ for verse in chapter.verses:
 		print (verse.rashi_text[legend.start():legend.end()])
 
 		verse.rashi_text = verse.rashi_text[:legend.start()] + replacement + '.' + verse.rashi_text[legend.end():]
-	#verse.save_rashi()
+	verse.save_rashi()
