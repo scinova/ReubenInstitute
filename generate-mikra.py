@@ -110,7 +110,7 @@ content = getAllText(frame)
 for i in reversed(tuple(re.finditer(u'[\u0591-\u05af\u05bd\u05c3]+', content))):
 	selectText(i.start(), i.end() - i.start(), frame)
 	setCharacterStyle('cantillation', frame)
-for i in reversed(tuple(re.finditer(u'[\u0591\u05c3\u0592\u0593\u0594\u0595\u05a3\u05c0]+', content))):
+for i in reversed(tuple(re.finditer(u'[\u0591\u05c3\u0592\u0593\u0594\u0595\u05c0]+', content))):
 	selectText(i.start(), i.end() - i.start(), frame)
 	setCharacterStyle('dcantillation', frame)
 
