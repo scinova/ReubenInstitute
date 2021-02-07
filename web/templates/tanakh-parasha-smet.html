@@ -32,7 +32,7 @@
 				{%- elif span.kind == SpanKind.CHAPTERNO -%}
 					<span class="chapterno">{{span.value}}</span>&nbsp;
 				{%- elif span.kind == SpanKind.KRIKTIV -%}
-					<span class="alternative">{{span.value}}</span> <span class="plain">{{span.alt}}</span>
+					<span class="alternative">[</span><span class="plain">{{span.value}}</span><span class="alternative">/{{span.alt}}]</span>
 				{%- elif span.kind == SpanKind.PLAIN -%}
 					<span class="mikra">{{span.value}}</span>
 				{%- endif -%}
@@ -71,10 +71,13 @@
 					<br /><span class="legend">{{span.value}}</span> - 
 				{%- endif -%}
 				{% if span.kind == SpanKind.CITATION -%}
-					<span class="citation">{{span.value}}</span>
+					<span class="citation">“{{span.value}}”</span>
+				{%- endif -%}
+				{% if span.kind == SpanKind.LINK -%}
+					<span class="link">({{span.value}})</span>
 				{%- endif -%}
 				{% if span.kind == SpanKind.REFERENCE -%}
-					<span class="reference">{{span.value}}</span>
+					<span class="reference">[{{span.value}}]</span>
 				{%- endif -%}
 			{% endfor %}
 			</div>

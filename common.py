@@ -297,7 +297,7 @@ class SpanKind(Enum):
 	PLAIN = 0
 	LEGEND = 1
 	CITATION = 2
-	REFERENCE = 3
+	LINK = 3
 
 	MAJUSCULE = 4
 	MINUSCULE = 5
@@ -311,6 +311,7 @@ class SpanKind(Enum):
 	ALTERNATIVE = 20
 	ADDITION = 21
 	NONLITERAL = 22
+	REFERENCE = 23
 
 class VerseKind(Enum):
 	OPENED = 1
@@ -470,35 +471,43 @@ class NVerse:
 	@property
 	def rashi(self):
 		text = self.rashi_text.replace('\u2028', '\n')
-		legend_items = list(re.finditer('^[^\.]+\.', text, re.M))
+		legend_items = list(re.finditer('^([^\.]+)\.', text, re.M))
 		for item in legend_items:
 			start, end = item.span()
 			text = text[0:start] + (end - start) * 'X' + text[end:]
-		citation_items = list(re.finditer('"[^"]+"', text))
+		citation_items = list(re.finditer('"([^"]+)"', text))
 		for item in citation_items:
 			start, end = item.span()
 			text = text[0:start] + (end - start) * 'X' + text[end:]
-		reference_items = list(re.finditer('\([^\)]+\)', text))
+		link_items = list(re.finditer('\(([^\)]+)\)', text))
+		for item in link_items:
+			start, end = item.span()
+			text = text[0:start] + (end - start) * 'X' + text[end:]
+		reference_items = list(re.finditer('\{([^\}]+)\}', text))
 		for item in reference_items:
 			start, end = item.span()
 			text = text[0:start] + (end - start) * 'X' + text[end:]
 #		text = text.replace('\n', '\u2028')
-		plain_items = list(re.finditer('[^X]+', text))
+		plain_items = list(re.finditer('([^X]+)', text))
 		for item in plain_items:
 			start, end = item.span()
 			text = text[0:start] + (end - start) * '.' + text[end:]
 		spans = []
 		for idx in range(len(text)):
-			for item in legend_items + citation_items + reference_items + plain_items:
+			for item in legend_items + citation_items + link_items + reference_items + plain_items:
 				if idx == item.start():
-					value = item.group()
+					groups = item.groups()
+					value = groups[0]
 					span = None
 					if item in legend_items:
-						value = value[:-1]
+						#value = value[:-1]
 						span = Span(SpanKind.LEGEND, value)
 					elif item in citation_items:
-						value = re.sub('"([^"]+)"', r'“\1”', value)
+						#value = re.sub('"([^"]+)"', r'“\1”', value)
 						span = Span(SpanKind.CITATION, value)
+					elif item in link_items:
+						value = re.sub(' ', '\u00a0', value)
+						span = Span(SpanKind.LINK, value)
 					elif item in reference_items:
 						value = re.sub(' ', '\u00a0', value)
 						span = Span(SpanKind.REFERENCE, value)

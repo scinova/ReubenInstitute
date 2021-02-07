@@ -130,9 +130,14 @@ span.citation {
 	font-family: sbl;
 	}
 
+span.link {
+	color: #0099cc;
+	font-size: x-small;
+}
+
 span.reference {
 	color: silver;
-	font-size: smaller;
+	font-size: x-small;
 }
 
 span.majuscule {
@@ -179,11 +184,6 @@ div.justify {
 
 span.addition {
 	color: #bbb;
-	}
-
-span.link {
-	color: #999;
-	font-size: 13px;
 	}
 
 div.dialog {
