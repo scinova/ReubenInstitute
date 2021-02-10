@@ -32,7 +32,7 @@
 				{%- elif span.kind == SpanKind.CHAPTERNO -%}
 					<span class="chapterno">{{span.value}}</span>&nbsp;
 				{%- elif span.kind == SpanKind.KRIKTIV -%}
-					<span class="alternative">[</span><span class="plain">{{span.value}}</span><span class="alternative">/{{span.alt}}]</span>
+					<span class="alternative">[{{span.alt}}/</span><span class="plain">{{span.value}}</span><span class="alternative">]</span>
 				{%- elif span.kind == SpanKind.PLAIN -%}
 					<span class="mikra">{{span.value}}</span>
 				{%- endif -%}
