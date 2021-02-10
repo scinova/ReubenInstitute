@@ -8,6 +8,12 @@ import re
 ROOT_PATH = os.path.dirname(os.path.abspath(__file__))
 DB_PATH = os.path.join(ROOT_PATH, 'db')
 
+def remove_cantillations(text):
+	return re.sub('[\u0591-\u05ae\u05bd\u05c0\u05c3]', '', text)
+
+def remove_diacritics(text):
+	return re.sub('[\u05b0-\u05bc\u05c7\u05c1\u05c2]', '', text)
+
 mishnah_arr = [
 	['Zeraim', 'זְרָעִים', [
 		['Berakhot', 'בְּרָכוֹת'],
