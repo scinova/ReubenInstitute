@@ -48,7 +48,7 @@
 			{% for span in spans %}
 				{%- if span.kind == SpanKind.CHAPTERNO -%}
 					<span class="chapterno">{{span.value}}</span>&nbsp;
-				{% elif span.kind == SpanKind.VERSENO -%}
+				{%- elif span.kind == SpanKind.VERSENO -%}
 					<span class="verseno">{{span.value}}</span>&nbsp;
 				{%- elif span.kind == SpanKind.NONLITERAL -%}
 					<span class="nonliteral">{{span.value}}</span>
@@ -62,6 +62,30 @@
 			{% endfor %}
 			</div>
 
+			<div class="onkelos jerusalmi justify">
+			{% set spans = verse.jerusalmi %}
+			{{ spans.insert(0, Span(SpanKind.VERSENO, verse.hebrew_number)) or '' }}
+			{% if verse.number == 1 %}
+				{{ spans.insert(0, Span(SpanKind.CHAPTERNO, verse.chapter.hebrew_number)) or '' }}
+			{% endif %}
+			{% for span in spans %}
+				{%- if span.kind == SpanKind.CHAPTERNO -%}
+					<span class="chapterno">{{span.value}}</span>&nbsp;
+				{%- elif span.kind == SpanKind.VERSENO -%}
+					<span class="verseno">{{span.value}}</span>&nbsp;
+				{%- elif span.kind == SpanKind.NONLITERAL -%}
+					<span class="nonliteral">{{span.value}}</span>
+				{%- elif span.kind == SpanKind.ADDITION -%}
+					<span class="addition">{{span.value}}</span>
+				{%- elif span.kind == SpanKind.ALTERNATIVE -%}
+					<span class="alternative">[</span><span class="plain">{{span.value}}</span><span class="alternative">/{{span.alt}}]</span>
+				{%- elif span.kind == SpanKind.PLAIN -%}
+					<span class="plain">{{span.value}}</span>
+				{%- endif -%}
+			{% endfor %}
+			</div>
+
+			<!--
 			<div class="rashi justify">
 			{% for span in verse.rashi %}
 				{%- if span.kind == SpanKind.PLAIN -%}
@@ -81,7 +105,7 @@
 				{%- endif -%}
 			{% endfor %}
 			</div>
-
+			-->
 
 			<br />
 		{% endfor %}

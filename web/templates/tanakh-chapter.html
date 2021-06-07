@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+5{% extends "base.html" %}
 {% block title %}{{chapter.book.name}}, פרק {{chapter.hebrew_number}}{% endblock %}
 {% block content %}
 <h1>{{chapter.book.name}}, פרק {{chapter.hebrew_number}}</h1>
@@ -53,6 +53,30 @@
 		{% endfor %}
 		</p>
 		</div>
+
+		<div class="left onkelos justify">
+		<p class="parshia">
+		{% for subparagraph in paragraph %}
+			{% if subparagraph != paragraph[0] %}
+				<br /><span>&emsp;&emsp;&emsp;&emsp;</span>
+			{% endif %}
+			{% for verse in subparagraph %}
+				{% set spans = verse.jerusalmi %}
+				{{ spans.insert(0, Span(SpanKind.VERSENO, verse.hebrew_number)) or '' }}
+				{% for span in spans %}
+					{% if span.kind == SpanKind.VERSENO -%}
+						<span class="verseno">{{span.value}}</span>&nbsp;
+					{%- elif span.kind == SpanKind.ALTERNATIVE -%}
+						<span class="plain">{{span.value}}</span> <span class="alternative">{{span.alt}}</span>
+					{%- elif span.kind == SpanKind.PLAIN -%}
+						<span class="plain">{{span.value}}</span>
+					{%- endif -%}
+				{% endfor %}
+			{% endfor %}
+		{% endfor %}
+		</p>
+		</div>
+
 	{% endif %}
 
 	<div class="clear"></div>

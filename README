@@ -1,0 +1,7 @@
+Requirements
+------------
+
+apt install python3-flask
+pat-install python3-pip
+
+pip3 install python-hebrew-numbers

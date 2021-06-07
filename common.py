@@ -362,6 +362,7 @@ class NVerse:
 		self.hebrew_number = hebrew_numbers.int_to_gematria(number)
 		self.text = text
 		self.onkelos_text = None
+		self.jerusalmi_text = None
 		self.rashi_text = None
 
 	def __repr__(self):
@@ -384,9 +385,7 @@ class NVerse:
 				return VerseKind.CLOSED
 		return None
 
-	@property
-	def onkelos(self):
-		text = self.onkelos_text
+	def targum(self, text=''):
 		text = re.sub('"([^"]+)"', r'“\1”', text)
 		text = re.sub("'([^']+)'", r"‘\1’", text)
 		alternative_items = list(re.finditer('\[([^|]*)\|([^]]+)\]', text))
@@ -424,6 +423,14 @@ class NVerse:
 						span = Span(SpanKind.PLAIN, value)
 					spans.append(span)
 		return spans
+
+	@property
+	def onkelos(self):
+		return self.targum(self.onkelos_text)
+
+	@property
+	def jerusalmi(self):
+		return self.targum(self.jerusalmi_text)
 
 	@property
 	def mikra(self):
@@ -543,6 +550,17 @@ class NVerse:
 		data = '\n'.join(lines)
 		open(path, 'w').write(data)
 
+	def save_jerusalmi(self):
+		if not self.chapter.book.has_onkelos:
+			return
+		filename = '%01d.%02d.txt'%(self.chapter.book.number, self.chapter.number)
+		path = os.path.join(DB_PATH, 'jerusalmi', filename)
+		f = open(path)
+		lines = f.read().split('\n')
+		lines[self.number - 1] = self.jerusalmi_text
+		data = '\n'.join(lines)
+		open(path, 'w').write(data)
+
 	def save_rashi(self):
 		filename = '%02d.%03d.txt'%(self.chapter.book.number, self.chapter.number)
 		path = os.path.join(DB_PATH, 'rashi', filename)
@@ -599,6 +617,15 @@ class NChapter:
 				if text.endswith('\n'):
 					text = text[:-1]
 				self.verses[idx].onkelos_text = text
+		if book.has_onkelos:
+			filename = '%1d.%02d.txt'%(self.book.number, self.number)
+			f = open(os.path.join(DB_PATH, 'jerusalmi', filename))
+			for idx, text in enumerate(f):
+				if idx == 31:
+					continue
+				if text.endswith('\n'):
+					text = text[:-1]
+				self.verses[idx].jerusalmi_text = text
 
 	@property
 	def paragraphs(self):
