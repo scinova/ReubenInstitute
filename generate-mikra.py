@@ -9,7 +9,7 @@ import common
 from common import Span, SpanKind
 
 parasha = common.tanakh.books[0].parashot[0]
-name = '1'
+name = 'bereshit'
 
 sizes = {
 	'LARGE': (135, 205),
@@ -29,21 +29,27 @@ defineColorRGB('Green', 0x94, 0xa3, 0)
 font = "SBL Hebrew Regular"
 font2 = "Shlomo Regular"
 createCharStyle("Default Character Style", font, 15, fillcolor='Black', language='he')
-createCharStyle("chapterno", font2, 10, fillcolor='Silver', language='he')
-createCharStyle("verseno", font2, 8, fillcolor='Silver', language='he')
+createCharStyle("chapterno", font, 10, fillcolor='Silver', language='he')
+createCharStyle("verseno", font, 8, fillcolor='Silver', language='he')
 createCharStyle("mikra", font, 15, fillcolor='Black', language='he')
 createCharStyle("transparent", font, 15, fillcolor='White', language='he')
 createCharStyle("aliya", font2, 10, fillcolor='Silver', language='he')
 createCharStyle("keri", font, 15, fillcolor='Silver', language='he')
-createCharStyle("majuscule", font, 18, fillcolor='Black', language='he')
+createCharStyle("majuscule", font, 20, fillcolor='Black', language='he')
 createCharStyle("minuscule", font, 12, fillcolor='Black', language='he')
 createCharStyle("cantillation", font, 15, fillcolor='Blue', language='he')
 createCharStyle("dcantillation", font, 15, fillcolor='Red', language='he')
+createCharStyle("translation", font, 12, fillcolor='Black', language='he')
+createCharStyle("ttranslation", font, 9, fillcolor='Black', language='he')
+createCharStyle("nonliteral", font, 12, fillcolor='Red', language='he')
+createCharStyle("addition", font, 11, fillcolor='Blue', language='he')
+
 createParagraphStyle("Default Paragraph Style", alignment=ALIGN_BLOCK, linespacing=20)
 createParagraphStyle("paragraph-opened", alignment=ALIGN_BLOCK, linespacing=20)
 createParagraphStyle("paragraph-closed", alignment=ALIGN_BLOCK, linespacing=20, firstindent=40)
 
 def add_text(frame, text, char_style=None, paragraph_style=None):
+	text = common.remove_cantillations(text)
 	length = len(text)
 	pos = getTextLength(frame)
 	insertText(text, pos, frame)
@@ -62,7 +68,7 @@ scribus.progressTotal(len(parasha.verses))
 scribus.progressReset()
 progress = 0
 paragraphs = parasha.paragraphs
-for paragraph in paragraphs:
+for paragraph in paragraphs[:3]:
 	for subparagraph in paragraph:
 		is_first_subparagraph = subparagraph == paragraph[0]
 		if is_first_subparagraph:
@@ -70,6 +76,7 @@ for paragraph in paragraphs:
 		else:
 			paragraph_style = 'paragraph-closed'
 		for verse in subparagraph:
+			# MIKRA
 			spans = verse.mikra
 			i = 1 * (spans[0].kind == SpanKind.ALIYA)
 			spans.insert(i, Span(SpanKind.VERSENO, verse.hebrew_number))
@@ -78,14 +85,14 @@ for paragraph in paragraphs:
 			for span in spans:
 				if span.kind == SpanKind.CHAPTERNO:
 					add_text(frame, span.value, 'chapterno', paragraph_style)
-					add_text(frame, '_', 'transparent', paragraph_style)
+					add_text(frame, ' ', 'transparent', paragraph_style)
 				elif span.kind == SpanKind.VERSENO:
 					add_text(frame, span.value, 'verseno', paragraph_style)
-					add_text(frame, '_', 'transparent', paragraph_style)
-				elif span.kind == SpanKind.ALIYA:
-					add_text(frame, span.value, 'aliya', paragraph_style)
-					add_text(frame, '_', 'transparent', paragraph_style)
-				elif span.kind == SpanKind.KRIKTIV:
+					add_text(frame, ' ', 'transparent', paragraph_style)
+				#elif span.kind == SpanKind.ALIYA:
+				#	add_text(frame, span.value, 'aliya', paragraph_style)
+				#	add_text(frame, '_', 'transparent', paragraph_style)
+				if span.kind == SpanKind.KRIKTIV:
 					add_text(frame, span.value, 'keri', paragraph_style)
 					add_text(frame, ' ' + span.alt, 'mikra', paragraph_style)
 				elif span.kind == SpanKind.MAJUSCULE:
@@ -97,6 +104,81 @@ for paragraph in paragraphs:
 			is_last_verse = verse == subparagraph[-1]
 			if not is_last_verse:
 				add_text(frame, ' ')
+
+			# TRANSLATIONS
+			spans = verse.onkelos
+			spans.insert(0, Span(SpanKind.VERSENO, verse.hebrew_number))
+			if verse.number == 1:
+				spans.insert(0, Span(SpanKind.CHAPTERNO, verse.chapter.hebrew_number))
+			for span in spans:
+				if span.kind == SpanKind.CHAPTERNO:
+					add_text(frame, span.value, 'chapterno', paragraph_style)
+					add_text(frame, ' ', 'transparent', paragraph_style)
+				elif span.kind == SpanKind.VERSENO:
+					add_text(frame, span.value, 'verseno', paragraph_style)
+					add_text(frame, ' ', 'transparent', paragraph_style)
+				elif span.kind == SpanKind.NONLITERAL:
+					add_text(frame, span.value, 'nonliteral', paragraph_style)
+				elif span.kind == SpanKind.ADDITION:
+					add_text(frame, span.value, 'addition', paragraph_style)
+				elif span.kind == SpanKind.PLAIN:
+					add_text(frame, span.value, 'translation', paragraph_style)
+
+			spans = verse.onkelos_trans
+			spans.insert(0, Span(SpanKind.VERSENO, verse.hebrew_number))
+			if verse.number == 1:
+				spans.insert(0, Span(SpanKind.CHAPTERNO, verse.chapter.hebrew_number))
+			for span in spans:
+				if span.kind == SpanKind.CHAPTERNO:
+					add_text(frame, span.value, 'chapterno', paragraph_style)
+					add_text(frame, ' ', 'transparent', paragraph_style)
+				elif span.kind == SpanKind.VERSENO:
+					add_text(frame, span.value, 'verseno', paragraph_style)
+					add_text(frame, ' ', 'transparent', paragraph_style)
+				elif span.kind == SpanKind.NONLITERAL:
+					add_text(frame, span.value, 'nonliteral', paragraph_style)
+				elif span.kind == SpanKind.ADDITION:
+					add_text(frame, span.value, 'addition', paragraph_style)
+				elif span.kind == SpanKind.PLAIN:
+					add_text(frame, span.value, 'ttranslation', paragraph_style)
+
+			# JERUSALMI
+			spans = verse.jerusalmi
+			spans.insert(0, Span(SpanKind.VERSENO, verse.hebrew_number))
+			if verse.number == 1:
+				spans.insert(0, Span(SpanKind.CHAPTERNO, verse.chapter.hebrew_number))
+			for span in spans:
+				if span.kind == SpanKind.CHAPTERNO:
+					add_text(frame, span.value, 'chapterno', paragraph_style)
+					add_text(frame, ' ', 'transparent', paragraph_style)
+				elif span.kind == SpanKind.VERSENO:
+					add_text(frame, span.value, 'verseno', paragraph_style)
+					add_text(frame, ' ', 'transparent', paragraph_style)
+				elif span.kind == SpanKind.NONLITERAL:
+					add_text(frame, span.value, 'nonliteral', paragraph_style)
+				elif span.kind == SpanKind.ADDITION:
+					add_text(frame, span.value, 'addition', paragraph_style)
+				elif span.kind == SpanKind.PLAIN:
+					add_text(frame, span.value, 'ttranslation', paragraph_style)
+
+			spans = verse.jerusalmi_trans
+			spans.insert(0, Span(SpanKind.VERSENO, verse.hebrew_number))
+			if verse.number == 1:
+				spans.insert(0, Span(SpanKind.CHAPTERNO, verse.chapter.hebrew_number))
+			for span in spans:
+				if span.kind == SpanKind.CHAPTERNO:
+					add_text(frame, span.value, 'chapterno', paragraph_style)
+					add_text(frame, ' ', 'transparent', paragraph_style)
+				elif span.kind == SpanKind.VERSENO:
+					add_text(frame, span.value, 'verseno', paragraph_style)
+					add_text(frame, ' ', 'transparent', paragraph_style)
+				elif span.kind == SpanKind.NONLITERAL:
+					add_text(frame, span.value, 'nonliteral', paragraph_style)
+				elif span.kind == SpanKind.ADDITION:
+					add_text(frame, span.value, 'addition', paragraph_style)
+				elif span.kind == SpanKind.PLAIN:
+					add_text(frame, span.value, 'translation', paragraph_style)
+
 			progress += 1
 			scribus.progressSet(progress)
 		add_text(frame, '\n')
@@ -106,13 +188,16 @@ setTextDirection(DIRECTION_RTL, frame)
 
 selectText(0, getTextLength(frame), frame)
 content = getAllText(frame)
-
-for i in reversed(tuple(re.finditer(u'[\u0591-\u05af\u05bd\u05c3]+', content))):
-	selectText(i.start(), i.end() - i.start(), frame)
-	setCharacterStyle('cantillation', frame)
-for i in reversed(tuple(re.finditer(u'[\u0591\u05c3\u0592\u0593\u0594\u0595\u05c0]+', content))):
+cantillations = list(reversed(list(re.finditer(u'[\u0591-\u05af\u05bd\u05c3]+', content))))
+scribus.progressTotal(len(cantillations))
+scribus.progressReset()
+for progress, i in enumerate(cantillations):
 	selectText(i.start(), i.end() - i.start(), frame)
 	setCharacterStyle('dcantillation', frame)
+	scribus.progressSet(progress)
+"""for i in reversed(tuple(re.finditer(u'[\u0591\u05c3\u0592\u0593\u0594\u0595\u05c0]+', content))):
+	selectText(i.start(), i.end() - i.start(), frame)
+	setCharacterStyle('dcantillation', frame)"""
 
 p = 1
 while textOverflows(str(p)):
