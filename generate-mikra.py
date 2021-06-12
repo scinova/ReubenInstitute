@@ -8,8 +8,8 @@ import sys
 import common
 from common import Span, SpanKind
 
-parasha = common.tanakh.books[1].parashot[4]
-name = '17'
+parasha = common.tanakh.books[0].parashot[0]
+name = '1'
 
 sizes = {
 	'LARGE': (135, 205),

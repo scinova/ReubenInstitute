@@ -105,6 +105,9 @@ span.chapterno {
 
 span.verseno {
 	color: #94a300;
+	color: #999;
+	font-size: smaller;
+	background-color: #ddf;
 	}
 
 span.addition {

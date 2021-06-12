@@ -362,7 +362,9 @@ class NVerse:
 		self.hebrew_number = hebrew_numbers.int_to_gematria(number)
 		self.text = text
 		self.onkelos_text = None
+		self.onkelos_trans_text = None
 		self.jerusalmi_text = None
+		self.jerusalmi_trans_text = None
 		self.rashi_text = None
 
 	def __repr__(self):
@@ -386,6 +388,8 @@ class NVerse:
 		return None
 
 	def targum(self, text=''):
+		if not text:
+			return []
 		text = re.sub('"([^"]+)"', r'“\1”', text)
 		text = re.sub("'([^']+)'", r"‘\1’", text)
 		alternative_items = list(re.finditer('\[([^|]*)\|([^]]+)\]', text))
@@ -429,8 +433,16 @@ class NVerse:
 		return self.targum(self.onkelos_text)
 
 	@property
+	def onkelos_trans(self):
+		return self.targum(self.onkelos_trans_text)
+
+	@property
 	def jerusalmi(self):
 		return self.targum(self.jerusalmi_text)
+
+	@property
+	def jerusalmi_trans(self):
+		return self.targum(self.jerusalmi_trans_text)
 
 	@property
 	def mikra(self):
@@ -550,6 +562,17 @@ class NVerse:
 		data = '\n'.join(lines)
 		open(path, 'w').write(data)
 
+	def save_onkelos_trans(self):
+		if not self.chapter.book.has_onkelos:
+			return
+		filename = '%01d.%02d.txt'%(self.chapter.book.number, self.chapter.number)
+		path = os.path.join(DB_PATH, 'onkelost', filename)
+		f = open(path)
+		lines = f.read().split('\n')
+		lines[self.number - 1] = self.onkelos_trans_text
+		data = '\n'.join(lines)
+		open(path, 'w').write(data)
+
 	def save_jerusalmi(self):
 		if not self.chapter.book.has_onkelos:
 			return
@@ -558,6 +581,17 @@ class NVerse:
 		f = open(path)
 		lines = f.read().split('\n')
 		lines[self.number - 1] = self.jerusalmi_text
+		data = '\n'.join(lines)
+		open(path, 'w').write(data)
+
+	def save_jerusalmi_trans(self):
+		if not self.chapter.book.has_onkelos:
+			return
+		filename = '%01d.%02d.txt'%(self.chapter.book.number, self.chapter.number)
+		path = os.path.join(DB_PATH, 'jerusalmit', filename)
+		f = open(path)
+		lines = f.read().split('\n')
+		lines[self.number - 1] = self.jerusalmi_trans_text
 		data = '\n'.join(lines)
 		open(path, 'w').write(data)
 
@@ -614,10 +648,19 @@ class NChapter:
 			filename = '%1d.%02d.txt'%(self.book.number, self.number)
 			f = open(os.path.join(DB_PATH, 'onkelos', filename))
 			for idx, text in enumerate(f):
+				print (self.book.number, self.number, idx)
 				if text.endswith('\n'):
 					text = text[:-1]
 				self.verses[idx].onkelos_text = text
-		if book.has_onkelos:
+
+			filename = '%1d.%02d.txt'%(self.book.number, self.number)
+			f = open(os.path.join(DB_PATH, 'onkelost', filename))
+			for idx, text in enumerate(f):
+				print (self.book.number, self.number, idx)
+				if text.endswith('\n'):
+					text = text[:-1]
+				self.verses[idx].onkelos_trans_text = text
+		
 			filename = '%1d.%02d.txt'%(self.book.number, self.number)
 			f = open(os.path.join(DB_PATH, 'jerusalmi', filename))
 			for idx, text in enumerate(f):
@@ -626,6 +669,15 @@ class NChapter:
 				if text.endswith('\n'):
 					text = text[:-1]
 				self.verses[idx].jerusalmi_text = text
+
+			filename = '%1d.%02d.txt'%(self.book.number, self.number)
+			f = open(os.path.join(DB_PATH, 'jerusalmit', filename))
+			for idx, text in enumerate(f):
+				if idx == 31:
+					continue
+				if text.endswith('\n'):
+					text = text[:-1]
+				self.verses[idx].jerusalmi_trans_text = text
 
 	@property
 	def paragraphs(self):
