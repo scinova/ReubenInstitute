@@ -75,7 +75,15 @@ def verse_edit(book_no, parasha_no, chapter_no, verse_no):
 		if verse.jerusalmi_text != request.form['jerusalmi_text']:
 			verse.jerusalmi_text = request.form['jerusalmi_text']
 			verse.save_jerusalmi()
-			print ("SAVE ONKELOS")
+			print ("SAVE JERUSALMI")
+		if verse.onkelos_trans_text != request.form['onkelos_trans_text']:
+			verse.onkelos_trans_text = request.form['onkelos_trans_text']
+			verse.save_onkelos_translation()
+			print ("SAVE ONKELOS TRANSLATION")
+		if verse.jerusalmi_trans_text != request.form['jerusalmi_trans_text']:
+			verse.jerusalmi_trans_text = request.form['jerusalmi_trans_text']
+			verse.save_jerusalmi_translation()
+			print ("SAVE JERUSALMI TRANSLATION")
 		if verse.rashi_text != request.form['rashi_text'].replace('\r\n', '\u2028'):
 			verse.rashi_text = request.form['rashi_text'].replace('\r\n', '\u2028')
 			verse.save_rashi()

@@ -88,6 +88,8 @@ p.parshia {
 
 div.mikra {
 	font-family: sbl;
+	font-size: larger;
+	margin-bottom: 10px;
 	}
 
 div.onkelos {
@@ -96,6 +98,12 @@ div.onkelos {
 
 div.rashi {
 	font-family: vilna;
+	}
+
+div.translation {
+	font-family: sbl;
+	color: #999;
+	margin-bottom: 10px;
 	}
 
 span.chapterno {

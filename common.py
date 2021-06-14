@@ -562,7 +562,7 @@ class NVerse:
 		data = '\n'.join(lines)
 		open(path, 'w').write(data)
 
-	def save_onkelos_trans(self):
+	def save_onkelos_translation(self):
 		if not self.chapter.book.has_onkelos:
 			return
 		filename = '%01d.%02d.txt'%(self.chapter.book.number, self.chapter.number)
@@ -584,7 +584,7 @@ class NVerse:
 		data = '\n'.join(lines)
 		open(path, 'w').write(data)
 
-	def save_jerusalmi_trans(self):
+	def save_jerusalmi_translation(self):
 		if not self.chapter.book.has_onkelos:
 			return
 		filename = '%01d.%02d.txt'%(self.chapter.book.number, self.chapter.number)
@@ -641,6 +641,7 @@ class NChapter:
 		filename = '%02d.%03d.txt'%(self.book.number, self.number)
 		f = open(os.path.join(DB_PATH, 'rashi', filename))
 		for idx, text in enumerate(f):
+			#text = unicode(text, 'utf-8')
 			if text.endswith('\n'):
 				text = text[:-1]
 			self.verses[idx].rashi_text = text
@@ -652,6 +653,9 @@ class NChapter:
 				if text.endswith('\n'):
 					text = text[:-1]
 				self.verses[idx].onkelos_text = text
+
+		if book.number == 1 and self.number == 1:
+
 
 			filename = '%1d.%02d.txt'%(self.book.number, self.number)
 			f = open(os.path.join(DB_PATH, 'onkelost', filename))
