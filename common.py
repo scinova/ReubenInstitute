@@ -656,7 +656,6 @@ class NChapter:
 
 		if book.number == 1 and self.number == 1:
 
-
 			filename = '%1d.%02d.txt'%(self.book.number, self.number)
 			f = open(os.path.join(DB_PATH, 'onkelost', filename))
 			for idx, text in enumerate(f):
@@ -668,8 +667,8 @@ class NChapter:
 			filename = '%1d.%02d.txt'%(self.book.number, self.number)
 			f = open(os.path.join(DB_PATH, 'jerusalmi', filename))
 			for idx, text in enumerate(f):
-				if idx == 31:
-					continue
+				#if idx == 31:
+					#continue
 				if text.endswith('\n'):
 					text = text[:-1]
 				self.verses[idx].jerusalmi_text = text
