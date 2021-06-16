@@ -654,7 +654,7 @@ class NChapter:
 					text = text[:-1]
 				self.verses[idx].onkelos_text = text
 
-		if book.number == 1 and self.number == 1:
+		if book.number == 1 and self.number in [1, 2]:
 
 			filename = '%1d.%02d.txt'%(self.book.number, self.number)
 			f = open(os.path.join(DB_PATH, 'onkelost', filename))
