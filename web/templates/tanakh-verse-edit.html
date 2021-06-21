@@ -3,22 +3,38 @@
 {% block content %}
 <h1></h1>
 <form method="post">
+	<textarea>
+	“ ”
+׳
+״
+ 
+</textarea>
 	<div>
+		<label>כותרת</lebel>
+		<textarea name="title">{{verse.title}}</textarea>
+	</div>
+	<div>
+		<label>מקרא</lebel>
 		<textarea name="mikra_text" style="font-family: sbl">{{verse.text}}</textarea>
 	</div>
 	<div>
-		<textarea name="onkelos_text" rows="8">{{verse.onkelos_text}}</textarea>
+		<label>אונלוס</lebel>
+		<textarea name="onkelos_text" rows="4">{{verse.onkelos_text}}</textarea>
 	</div>
 	<div>
-		<textarea name="onkelos_trans_text" rows="8">{{verse.onkelos_trans_text}}</textarea>
+		<label></lebel>
+		<textarea name="onkelos_trans_text" rows="4">{{verse.onkelos_trans_text}}</textarea>
 	</div>
 	<div>
-		<textarea name="jerusalmi_text" rows="8">{{verse.jerusalmi_text}}</textarea>
+		<label>ירשלמי</lebel>
+		<textarea name="jerusalmi_text" rows="4">{{verse.jerusalmi_text}}</textarea>
 	</div>
 	<div>
-		<textarea name="jerusalmi_trans_text" rows="8">{{verse.jerusalmi_trans_text}}</textarea>
+		<label></lebel>
+		<textarea name="jerusalmi_trans_text" rows="4">{{verse.jerusalmi_trans_text}}</textarea>
 	</div>
 	<div>
+		<label>רשי</lebel>
 		<textarea name="rashi_text" rows="10">{{verse.rashi_text | replace('\u2028', '\n')}}</textarea>
 	</div>
 	<button type="submit">שמור</button>

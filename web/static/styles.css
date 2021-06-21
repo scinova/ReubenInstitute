@@ -40,6 +40,7 @@
 
 html {
 	background-color: #dfffd4;
+	background-color: #333;
 	}
 
 body {
@@ -52,7 +53,7 @@ body {
 div#content {
 	border-radius: 20px;
 	padding: 20px;
-	background-color: #fff;
+	background-color: #ffe;
 	}
 
 h1 {
@@ -62,8 +63,20 @@ h1 {
 	}
 
 h2 {
-	font-size: 2em;
+	font-size: 1.2em;
+	font-family: sbl;
+	color: orange;
+	font-weight: normal;
+	text-align: center;
 	}
+
+h4 {
+	font-size: .6em;
+	font-family: sbl;
+	color: black;
+	font-weight: bold;
+	text-align: center;
+}	
 
 a {
 	color: #0099cc;
@@ -81,6 +94,7 @@ p.poem {
 
 p.parshia {
 	background-color: #e2e5ff;
+	background-color: #eeb;
 	margin-bottom: 1em;
 	padding: 5px 10px 5px;
 	border-radius: 10px;
@@ -88,7 +102,7 @@ p.parshia {
 
 div.mikra {
 	font-family: sbl;
-	font-size: larger;
+	font-size: 1.4em;
 	margin-bottom: 10px;
 	}
 
@@ -113,9 +127,9 @@ span.chapterno {
 
 span.verseno {
 	color: #94a300;
-	color: #999;
+	color: #cc9;
 	font-size: smaller;
-	background-color: #ddf;
+	background-color: #fee;
 	}
 
 span.addition {
@@ -173,16 +187,20 @@ div.left span.citation {
 	}
 
 div.right {
-	width: 460px;
+	width: 48%;
 	float: right;
 	padding: 0 0px;
+	zmargin-left: 5px;
+	xpadding-left: 5px;
 	}
 
 div.left {
-	width: 460px;
+	width: 50%;
 	float: left;
 	padding: 0 0px;
 	color: #777;
+	zmargin-right: 5px;
+	xpadding-right: -5px;
 	}
 
 div.verse {

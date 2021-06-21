@@ -64,6 +64,10 @@ def verse_edit(book_no, parasha_no, chapter_no, verse_no):
 	parasha = book.parashot[parasha_no - 1]
 	verse = book.chapters[chapter_no - 1].verses[verse_no - 1]
 	if request.method == 'POST':
+		if verse.title != request.form['title']:
+			verse.title = request.form['title']
+			verse.save_title()
+			print ("SAVE TITLE")
 		if verse.text != request.form['mikra_text']:
 			verse.text = request.form['mikra_text']
 			verse.save_mikra()
