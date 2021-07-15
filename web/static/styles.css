@@ -33,13 +33,20 @@
 	font-style: normal;
 }
 
+@font-face {
+	font-family: 'scripture';
+	src: url('/@@/fonts/KeterYG-Medium.ttf') format('truetype');
+	src: url('/@@/fonts/ShlomoStam.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
 * {
 	spacing: 0;
 	margin: 0;
 	}
 
 html {
-	background-color: #dfffd4;
 	background-color: #333;
 	}
 
@@ -47,36 +54,44 @@ body {
 	padding: 10px;
 	max-width: 1000px;
 	margin: 0 auto;
-	font-size: 2em;
 	}
 
 div#content {
 	border-radius: 20px;
 	padding: 20px;
 	background-color: #ffe;
+	font-size: 2em;
 	}
 
 h1 {
+	font-family: sbl;
 	font-size: 2em;
 	font-weight: normal;
-	xfont-style: italic;
+j	xfont-style: italic;
 	}
 
 h2 {
-	font-size: 1.2em;
+	font-size: 1.4em;
 	font-family: sbl;
 	color: orange;
 	font-weight: normal;
 	text-align: center;
+	margin: 1em 0 0;
 	}
 
 h4 {
-	font-size: .6em;
+	font-size: 80%;
 	font-family: sbl;
-	color: black;
-	font-weight: bold;
+	color: #330;
+	font-weight: normal;
 	text-align: center;
-}	
+	colzor: #999;
+	margin-top: 1em;
+}
+
+h5 {
+	margin-top: 10px;
+	}
 
 a {
 	color: #0099cc;
@@ -92,60 +107,77 @@ p.poem {
 	margin-bottom: 5px;
 	}
 
-p.parshia {
-	background-color: #e2e5ff;
-	background-color: #eeb;
-	margin-bottom: 1em;
-	padding: 5px 10px 5px;
-	border-radius: 10px;
-	}
-
 div.mikra {
 	font-family: sbl;
-	font-size: 1.4em;
+	font-family: scripture;
+	font-size: 120%;
 	margin-bottom: 10px;
+	background-color: #fed;
+	padding: 5px 10px;
+	border-radius: 8px;
 	}
 
 div.onkelos {
 	font-family: sbl;
 	}
 
-div.rashi {
-	font-family: vilna;
+div.jerusalmi {
+	font-family: sbl;
 	}
 
-div.translation {
-	font-family: sbl;
+div.targum {
 	color: #999;
-	margin-bottom: 10px;
+	}
+
+div.rashi {
+	font-family: sbl;
+	column-count: 2;
+	background-color: #ffd;
+	padding: 1em;
+	}
+
+div.variations {
+	border-top: 1px solid #ccc;
+	font-size: 70%;
+	}
+
+hr {
+	margin: 1em auto;
+	background-image: url(/@@/separator.png);
+	sbackground-align: center;
+	sbackground-repeat: no-repeat;
+	height: 52px;
+	width: 233px;
+	border: 0;
+	align: center;
+	}
+
+span {
+	vertical-align: middle;
 	}
 
 span.chapterno {
-	color: #900;
+	color: #ccc;
 	font-weight: bold;
 	}
 
 span.verseno {
-	color: #94a300;
-	color: #cc9;
+	color: #ddd;
 	font-size: smaller;
-	background-color: #fee;
 	}
 
 span.addition {
 	color: #009;
+	font-size: 80%;
 	font-family: script;
-	font-size: .6em;
 	}
 
 span.nonliteral {
 	color: #a33;
-	background-color: #ffd;
 	}
 
 span.alternative {
-	color: #ccc;
-	font-size: smaller;
+	background-color: #ffb;
 	}
 
 span.aliya {
@@ -156,22 +188,31 @@ span.aliya {
 
 span.legend {
 	font-family: sbl;
-	font-size: larger;
+	font-family: scripture;
+	font-size: 130%;
+	vertical-align: bottom;
+	color: #006;
 }
 
 span.citation {
-	color: #900;
+	color: #600;
 	font-family: sbl;
+	font-family: scripture;
 	}
 
 span.link {
-	color: #0099cc;
-	font-size: x-small;
+	color: #600;
+	vertical-align: top;
+
+	vertical-align: middle;
+	font-size: 70%;
+	xfont-family: script;
+
 }
 
 span.reference {
-	color: silver;
-	font-size: x-small;
+	color: red;
+	font-size: smaller
 }
 
 span.majuscule {
@@ -182,25 +223,16 @@ span.minuscule {
 	font-size: 80%;
 }
 
-div.left span.citation {
-	color: #633;
-	}
-
 div.right {
 	width: 48%;
 	float: right;
-	padding: 0 0px;
-	zmargin-left: 5px;
-	xpadding-left: 5px;
+	padding-left: 10px;
+	border-left: 1px solid #ccc;
 	}
 
 div.left {
-	width: 50%;
+	width: 48%;
 	float: left;
-	padding: 0 0px;
-	color: #777;
-	zmargin-right: 5px;
-	xpadding-right: -5px;
 	}
 
 div.verse {
@@ -246,7 +278,7 @@ span.diff-legend {
 
 textarea {
 	width: 100%;
-	border: 1px solid #ccc;
+	border: 1px solid #333;
 	font-family: sbl;
 	font-size: 1.2em;;
 	text-align: justify;
