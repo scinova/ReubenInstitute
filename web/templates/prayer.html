@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}{% endblock %}
+{% block content %}
+<div class="prayer">
+{% for span in spans %}
+	{%- if span.kind == SpanKind.TITLE -%}
+		<h1>{{span.value}}</h1>
+	{%- elif span.kind == SpanKind.SUBTITLE -%}
+		<h2>{{span.value}}</h2>
+	{%- elif span.kind == SpanKind.LINK -%}
+		<span class="link">{{span.value}}</span>
+	{%- elif span.kind == SpanKind.PLAIN -%}
+		<span class="plain">{{span.value}}</span>
+	{%- endif -%}
+{% endfor %}
+</div>
+{% endblock %}

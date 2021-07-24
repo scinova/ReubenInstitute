@@ -101,10 +101,12 @@
 		</div>
 		<div class="left onkelos targum justify">
 			{% for verse in subparagraph -%}
-				<span class="verseno">{{verse.hebrew_number}}</span>&nbsp;
 				{% set spans = verse.onkelos_trans %}
+				{{ spans.insert(0, Span(SpanKind.VERSENO, verse.hebrew_number)) or '' }}
 				{% for span in spans %}
-					{%- if span.kind == SpanKind.NONLITERAL -%}
+					{%- if span.kind == SpanKind.VERSENO -%}
+						<span class="verseno">{{span.value}}</span>&nbsp;
+					{%- elif span.kind == SpanKind.NONLITERAL -%}
 						<span class="nonliteral">{{span.value}}</span>
 					{%- elif span.kind == SpanKind.ADDITION -%}
 						<span class="addition">{{span.value}}</span>
@@ -201,7 +203,7 @@
 		<div class="clear"></div>
 		{% endif %}
 
-
+	<!--
 	<h4>רש״י</h4>
 	<div class="rashi justify">
 		{% for verse in subparagraph %}
@@ -226,6 +228,7 @@
 		{% endif %}
 		{% endfor %}
 	</div>
+	<-->
 
 {% endfor %}
 <div class="clear"></div>

@@ -36,6 +36,15 @@ def fonts(filename):
 def main():
 	return render_template('index.html')
 
+@app.route('/liturgy/')
+def liturgy():
+	return render_template('liturgy.html')
+
+@app.route('/liturgy/<string:variation>/<string:kind>')
+def prayer(variation, kind):
+	p = common.Prayer(variation, kind)
+	return render_template('prayer.html', spans=p.spans, re=re, Span=common.Span, SpanKind=common.SpanKind)
+
 @app.route('/tanakh/')
 def tanakh():
 	return render_template('tanakh.html', tanakh=common.tanakh, enumerate=enumerate)

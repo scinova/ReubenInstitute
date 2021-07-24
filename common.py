@@ -319,6 +319,82 @@ class SpanKind(Enum):
 	NONLITERAL = 22
 	REFERENCE = 23
 
+	TITLE = 24
+	SUBTITLE = 25
+
+	BOLD = 26
+
+class Prayer:
+	def __init__(self, variation, kind):
+		self.variation = variation
+		self.kind = kind
+		filename = '%s-%s.txt'%(kind, variation)
+		path = os.path.join(DB_PATH, 'liturgy', filename)
+		self.text = open(path).read()
+		lines = self.text.split('\n')
+
+	@property
+	def spans(self):
+		text = self.text
+		if not text:
+			return []
+		#text = re.sub('"([^"]+)"', r'“\1”', text)
+		#text = re.sub("'([^']+)'", r"‘\1’", text)
+
+		# title subtitle link 
+
+		title_items = list(re.finditer('^==(.+)$', text, re.M))
+		for item in title_items:
+			start, end = item.span()
+			text = text[0:start] + (end - start) * 'X' + text[end:]
+		subtitle_items = list(re.finditer('^=(.+)$', text, re.M))
+		for item in subtitle_items:
+			start, end = item.span()
+			text = text[0:start] + (end - start) * 'X' + text[end:]
+		link_items = list(re.finditer('\[([^]]+)\]', text))
+		for item in link_items:
+			start, end = item.span()
+			text = text[0:start] + (end - start) * 'X' + text[end:]
+		plain_items = list(re.finditer('([^X]+)', text))
+		for item in plain_items:
+			start, end = item.span()
+			text = text[0:start] + (end - start) * '.' + text[end:]
+		spans = []
+		for idx in range(len(text)):
+			for item in title_items + subtitle_items + link_items + plain_items:
+				if idx == item.start():
+					groups = item.groups()
+					value = groups[0]
+					if len(groups) > 1:
+						alt = groups[1]
+					span = None
+					if item in title_items:
+						span = Span(SpanKind.TITLE, value)
+					elif item in subtitle_items:
+						span = Span(SpanKind.SUBTITLE, value)
+					elif item in link_items:
+						span = Span(SpanKind.LINK, value)
+					elif item in plain_items:
+						span = Span(SpanKind.PLAIN, value.replace('\n', ''))
+					if span.value != '':
+						spans.append(span)
+		return spans
+
+class Siddur:
+	def __init__(self, variation):
+		self.variation = variation
+		self.prayers = []
+
+
+#shaharit_ashkenaz = Prayer("ashkenaz", "shaharit")
+#shaharit_sefard = Prayer("sefard", "shaharit")
+#shaharit_mizrah = Prayer("mizrah", "shaharit")
+
+
+
+
+
+
 class VerseKind(Enum):
 	OPENED = 1
 	CLOSED = 2

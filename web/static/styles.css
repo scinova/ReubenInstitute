@@ -35,8 +35,9 @@
 
 @font-face {
 	font-family: 'scripture';
-	src: url('/@@/fonts/KeterYG-Medium.ttf') format('truetype');
 	src: url('/@@/fonts/ShlomoStam.ttf') format('truetype');
+	src: url('/@@/fonts/TaameyFrankCLM-Medium.ttf') format('truetype');
+	src: url('/@@/fonts/KeterYG-Medium.ttf') format('truetype');
 	font-weight: normal;
 	font-style: normal;
 }
@@ -65,16 +66,16 @@ div#content {
 
 h1 {
 	font-family: sbl;
-	font-size: 2em;
+	font-size: 150%;
 	font-weight: normal;
 j	xfont-style: italic;
 	}
 
 h2 {
-	font-size: 1.4em;
+	font-size: 80%;
 	font-family: sbl;
 	color: orange;
-	font-weight: normal;
+	xfont-weight: normal;
 	text-align: center;
 	margin: 1em 0 0;
 	}
@@ -92,6 +93,19 @@ h4 {
 h5 {
 	margin-top: 10px;
 	}
+
+div.prayer {
+	}
+
+div.prayer h2 {
+	text-align: right;
+	}
+
+div.prayer span.link {
+	color: blue;
+	}
+
+
 
 a {
 	color: #0099cc;
