@@ -43,7 +43,7 @@ def liturgy():
 @app.route('/liturgy/<string:variation>/<string:kind>')
 def prayer(variation, kind):
 	p = common.Prayer(variation, kind)
-	return render_template('prayer.html', spans=p.spans, re=re, Span=common.Span, SpanKind=common.SpanKind)
+	return render_template('prayer.html', spans=p.spans, divs=p.divs, re=re, Span=common.Span, SpanKind=common.SpanKind)
 
 @app.route('/tanakh/')
 def tanakh():

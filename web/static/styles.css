@@ -97,15 +97,28 @@ h5 {
 div.prayer {
 	}
 
+div.prayer p {
+	text-align: justify;
+	}
+
+div.prayer h1 {
+	ccolor: red;
+	color: orange;
+	margin: 0;
+	}
+
 div.prayer h2 {
+	color: orange;
 	text-align: right;
+	margin: 0;
 	}
 
 div.prayer span.link {
 	color: blue;
 	}
 
-
+div.prayer span.bold {
+	color: red;
 
 a {
 	color: #0099cc;
@@ -214,10 +227,14 @@ span.citation {
 	font-family: scripture;
 	}
 
+span.info {
+	color: #ccc;
+	font-size: smaller;
+	}
+
 span.link {
 	color: #600;
 	vertical-align: top;
-
 	vertical-align: middle;
 	font-size: 70%;
 	xfont-family: script;
