@@ -325,95 +325,6 @@ class SpanKind(Enum):
 	
 	BOLD = 27
 
-class Prayer:
-	def __init__(self, variation, kind):
-		self.variation = variation
-		self.kind = kind
-		filename = '%s-%s.txt'%(kind, variation)
-		path = os.path.join(DB_PATH, 'liturgy', filename)
-		self.text = open(path).read()
-		lines = self.text.split('\n')
-
-	def parse_tags(self, text):
-		if not text:
-			return []
-		title_items = list(re.finditer('^==(.+)$', text, re.M))
-		for item in title_items:
-			start, end = item.span()
-			text = text[0:start] + (end - start) * 'X' + text[end:]
-		subtitle_items = list(re.finditer('^=(.+)$', text, re.M))
-		for item in subtitle_items:
-			start, end = item.span()
-			text = text[0:start] + (end - start) * 'X' + text[end:]
-		info_items = list(re.finditer('\{\{([^}]+)\}\}', text))
-		for item in info_items:
-			start, end = item.span()
-			text = text[0:start] + (end - start) * 'X' + text[end:]
-		bold_items = list(re.finditer('\<\[([^]]+)\]\>', text))
-		for item in bold_items:
-			start, end = item.span()
-			text = text[0:start] + (end - start) * 'X' + text[end:]
-		link_items = list(re.finditer('\[([^]]+)\]', text))
-		for item in link_items:
-			start, end = item.span()
-			text = text[0:start] + (end - start) * 'X' + text[end:]
-		plain_items = list(re.finditer('([^X]+)', text))
-		for item in plain_items:
-			start, end = item.span()
-			text = text[0:start] + (end - start) * '.' + text[end:]
-		spans = []
-		for idx in range(len(text)):
-			for item in title_items + subtitle_items + info_items + bold_items + link_items + plain_items:
-				if idx == item.start():
-					groups = item.groups()
-					value = groups[0]
-					if len(groups) > 1:
-						alt = groups[1]
-					span = None
-					if value.endswith('\n'):
-						value = value[:-1]
-					if not value:
-						break
-					if item in title_items:
-						span = Span(SpanKind.TITLE, value)
-					elif item in subtitle_items:
-						span = Span(SpanKind.SUBTITLE, value)
-					elif item in info_items:
-						span = Span(SpanKind.INFO, value)
-					elif item in bold_items:
-						span = Span(SpanKind.BOLD, value)
-					elif item in link_items:
-						span = Span(SpanKind.LINK, value)
-					elif item in plain_items:
-						span = Span(SpanKind.PLAIN, value)#.replace('\n', ''))
-					if span.value != '':
-						spans.append(span)
-		return spans
-
-	@property
-	def divs(self):
-		divs = []
-		divs_text = self.text.split('\n\n')
-		for div_text in divs_text:
-			paragraphs = []
-			paragraphs_text = div_text.split('\n')
-			for paragraph_text in paragraphs_text:
-				spans = self.parse_tags(paragraph_text)
-				paragraphs.append(spans)
-			divs.append(paragraphs)
-		return divs
-
-	@property
-	def spans(self):
-		text = self.text
-		spans = self.parse_tags(text)
-		return spans
-
-class Siddur:
-	def __init__(self, variation):
-		self.variation = variation
-		self.prayers = []
-
 
 #shaharit_ashkenaz = Prayer("ashkenaz", "shaharit")
 #shaharit_sefard = Prayer("sefard", "shaharit")
@@ -746,7 +657,7 @@ def verses_to_paragraphs(verses):
 			vbuffer.append(verse)
 	sbuffer.append(vbuffer)
 	paragraphs.append(sbuffer)
-	print (paragraphs[0])
+	#print (paragraphs[0])
 	return paragraphs
 
 def verses_to_paragraphsx(verses):
@@ -804,7 +715,7 @@ class NChapter:
 			filename = '%1d.%02d.txt'%(self.book.number, self.number)
 			f = open(os.path.join(DB_PATH, 'headings', filename))
 			for idx, text in enumerate(f):
-				print (self.book.number, self.number, idx)
+				#print (self.book.number, self.number, idx)
 				if text.endswith('\n'):
 					text = text[:-1]
 				self.verses[idx].title = text
@@ -829,7 +740,7 @@ class NChapter:
 			filename = '%1d.%02d.txt'%(self.book.number, self.number)
 			f = open(os.path.join(DB_PATH, 'jerusalmit', filename))
 			for idx, text in enumerate(f):
-				if idx == 31:
+				if idx == 31:	# ????????
 					continue
 				if text.endswith('\n'):
 					text = text[:-1]
@@ -931,3 +842,130 @@ for x in range(len(zohar_arr)):
 				chapter.articles.append(article)
 		book.chapters.append(chapter)
 	Zohar.append(book)
+
+
+class Prayer:
+	def __init__(self, variation, kind):
+		self.variation = variation
+		self.kind = kind
+		filename = '%s-%s.txt'%(kind, variation)
+		path = os.path.join(DB_PATH, 'liturgy', filename)
+		self.text = open(path).read()
+		lines = self.text.split('\n')
+
+	def parse_tags(self, text):
+		if not text:
+			return []
+
+		# SUBSTIUTES
+		subs = list(re.finditer('(?<!=\{)\{([^}]+)\}(?!=\})', text))
+		for s in subs:
+			print (s)
+			parts = s.groups()[0].split(' ')
+			if len(parts) not in [2, 3, 4]:
+				continue
+			book = None
+			book_name = parts[0]
+			for b in tanakh.books:
+				if b.name == book_name:
+					book = b
+					break
+			if not book:
+				continue
+			chapter_number = parts[1]
+			chapter_idx = hebrew_numbers.gematria_to_int(chapter_number) - 1
+			print (chapter_idx)
+			print (chapter_number)
+			chapter = book.chapters[chapter_idx]
+			if len(parts) == 3 and '-' not in parts[2]:
+				verse_number = psrts[2]
+				verse_idx = hebrew_numbers.gematria_to_int(verse_number) - 1
+				spans.append(Span(SpanKind.LINK, 'xxx')
+
+			"""
+				if '-' in parts[2]:
+					book_name, chapter_number, x = parts
+					start_verse, end_verse = x.split('-')
+				else:
+					book_name, chapter_number, x = parts
+
+				print (book.name, chapter_idx, chapter_number)
+				print ('---------')"""
+
+			
+
+		title_items = list(re.finditer('^==(.+)$', text, re.M))
+		for item in title_items:
+			start, end = item.span()
+			text = text[0:start] + (end - start) * 'X' + text[end:]
+		subtitle_items = list(re.finditer('^=(.+)$', text, re.M))
+		for item in subtitle_items:
+			start, end = item.span()
+			text = text[0:start] + (end - start) * 'X' + text[end:]
+		info_items = list(re.finditer('\{\{([^}]+)\}\}', text))
+		for item in info_items:
+			start, end = item.span()
+			text = text[0:start] + (end - start) * 'X' + text[end:]
+		bold_items = list(re.finditer('\<\[([^]]+)\]\>', text))
+		for item in bold_items:
+			start, end = item.span()
+			text = text[0:start] + (end - start) * 'X' + text[end:]
+		link_items = list(re.finditer('\[([^]]+)\]', text))
+		for item in link_items:
+			start, end = item.span()
+			text = text[0:start] + (end - start) * 'X' + text[end:]
+		plain_items = list(re.finditer('([^X]+)', text))
+		for item in plain_items:
+			start, end = item.span()
+			text = text[0:start] + (end - start) * '.' + text[end:]
+		spans = []
+		items = list(title_items + subtitle_items + info_items + bold_items + link_items + plain_items)
+		items.sort(key=lambda x:x.start())
+		for item in items:
+			groups = item.groups()
+			value = groups[0]
+			if len(groups) > 1:
+				alt = groups[1]
+			#span = None
+			if value.endswith('\n'):
+				value = value[:-1]
+			if not value:
+				break
+			if item in title_items:
+				spans.append(Span(SpanKind.TITLE, value))
+			elif item in subtitle_items:
+				spans.append(Span(SpanKind.SUBTITLE, value))
+			elif item in info_items:
+				spans.append(Span(SpanKind.INFO, value))
+			elif item in bold_items:
+				spans.append(Span(SpanKind.BOLD, value))
+			elif item in link_items:
+				spans.append(Span(SpanKind.LINK, value))
+			elif item in plain_items:
+				spans.append(Span(SpanKind.PLAIN, value))#.replace('\n', ''))\
+		return spans
+
+	@property
+	def divs(self):
+		divs = []
+		divs_text = self.text.split('\n\n')
+		for div_text in divs_text:
+			paragraphs = []
+			paragraphs_text = div_text.split('\n')
+			for paragraph_text in paragraphs_text:
+				spans = self.parse_tags(paragraph_text)
+				paragraphs.append(spans)
+			divs.append(paragraphs)
+		return divs
+
+	@property
+	def spans(self):
+		text = self.text
+		spans = self.parse_tags(text)
+		return spans
+
+class Siddur:
+	def __init__(self, variation):
+		self.variation = variation
+		self.prayers = []
+
