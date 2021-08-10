@@ -95,10 +95,21 @@ h5 {
 	}
 
 div.prayer {
+	font-family: sbl;
+	}
+
+div.prayer div {
+	background-color: #eee;
+	padding: 10px;
+	margin-bottom: 10px;
+	border-radius: 10px;
 	}
 
 div.prayer p {
 	text-align: justify;
+	background-color: #ddd;
+	margin-bottom: 10px;
+	xborder: 1px solid red;
 	}
 
 div.prayer h1 {
@@ -119,6 +130,11 @@ div.prayer span.link {
 
 div.prayer span.bold {
 	color: red;
+}
+
+div.prayer span.info
+	color: #ccc;
+}
 
 a {
 	color: #0099cc;
@@ -228,7 +244,7 @@ span.citation {
 	}
 
 span.info {
-	color: #ccc;
+	color: #999;
 	font-size: smaller;
 	}
 

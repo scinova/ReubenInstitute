@@ -9,3 +9,12 @@ pip3 install python-hebrew-numbers
 wget https://bootstrap.pypa.io/pip/2.7/get-pip.py
 pip2 install enum
 pip2 install python-hebrew-numbers
+
+
+
+TAGS
+{replace}
+[link]
+{{info}}
+<[bold]>
+
