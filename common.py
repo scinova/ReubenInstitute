@@ -873,7 +873,7 @@ class Prayer:
 
 		"""
 		# SUBSTIUTES
-#		subs = list(re.finditer('(?<!=\{)\{([^}]+)\}(?!=\})', text))
+		+subs = list(re.finditer('(?<!=\{)\{([^}]+)\}(?!=\})', text))
 		subs, text = search('(?<!=\{)\{([^}]+)\}(?!=\})', text)
 		for item in subs:
 			parts = item.groups()[0].split(' ')
@@ -897,15 +897,11 @@ class Prayer:
 				verse = chapter.verses[verse_idx]
 				#spans.append(Span(SpanKind.LINK, 'xxx'))
 				print ("SUB", book.number, chapter.number, verse.number)
-		
-		
-		
 		"""
-
 		title_items, text = search('^==(.+)$', text)
 		subtitle_items, text = search('^=(.+)$', text)
 		info_items, text = search('\{\{([^}]+)\}\}', text)
-		bold_items, text = search('\<\[([^]]+)\]\>', text)
+		bold_items, text = search('\<([^>]+)\>', text)
 		link_items, text = search('\[([^]]+)\]', text)
 		plain_items, text = search('([^X]+)', text)
 		items = list(title_items + subtitle_items + info_items + bold_items + link_items + plain_items)
