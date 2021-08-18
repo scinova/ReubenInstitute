@@ -1,6 +1,7 @@
 @font-face {
 	font-family: 'frank';
-	src: url('/@@/fonts/TaameyFrankCLM-Medium.ttf') format('truetype');
+	src: url('/@@/fonts/TaameyFrankCLM-Bold.ttf') format('truetype');
+	src: url('/@@/fonts/ShofarRegular.ttf') format('truetype');
 	font-weight: normal;
 	font-style: normal;
 }
@@ -61,7 +62,7 @@ div#content {
 	border-radius: 20px;
 	padding: 20px;
 	background-color: #ffe;
-	font-size: 2em;
+	font-size: 1em;
 	}
 
 h1 {
@@ -153,6 +154,7 @@ p.poem {
 div.mikra {
 	font-family: sbl;
 	font-family: scripture;
+	font-family: frank;
 	font-size: 120%;
 	margin-bottom: 10px;
 	background-color: #fed;

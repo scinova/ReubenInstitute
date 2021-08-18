@@ -2,13 +2,10 @@
 {% block title %}{% endblock %}
 {% block content %}
 <h1></h1>
+
+<div id="dev" style="height:2em;width:100%;border:1px solid red;"></div>
+
 <form method="post">
-	<textarea>
-	“ ”
-׳
-״
- 
-</textarea>
 	<div>
 		<label>כותרת</lebel>
 		<textarea name="title">{{verse.title}}</textarea>
@@ -18,19 +15,20 @@
 		<textarea name="mikra_text" style="font-family: sbl">{{verse.text}}</textarea>
 	</div>
 	<div>
-		<label>אונלוס</lebel>
+		<label>אונקלוס</lebel>
 		<textarea name="onkelos_text" rows="4">{{verse.onkelos_text}}</textarea>
 	</div>
 	<div>
-		<label></lebel>
-		<textarea name="onkelos_trans_text" rows="4">{{verse.onkelos_trans_text}}</textarea>
+		<label>תרגום לאונקלוס</label>
+		<textarea id="onkelos_trans_text" name="onkelos_trans_text" rows="4">{{verse.onkelos_trans_text}}</textarea>
 	</div>
+	<div id="onkelos_trans">x</div>
 	<div>
-		<label>ירשלמי</lebel>
+		<label>ירושלמי</lebel>
 		<textarea name="jerusalmi_text" rows="4">{{verse.jerusalmi_text}}</textarea>
 	</div>
 	<div>
-		<label></lebel>
+		<label>תרגום לירושלמי</label>
 		<textarea name="jerusalmi_trans_text" rows="4">{{verse.jerusalmi_trans_text}}</textarea>
 	</div>
 	<div>
@@ -39,4 +37,44 @@
 	</div>
 	<button type="submit">שמור</button>
 <form>
+
+<script type="text/javascript">
+function test(text, trans_text) {
+	words = text.split(' ');
+	twords = trans_text.split(' ');
+	chars = '_+';
+	for (c = 0; c != chars.length; c++) {
+		ch = chars[c];
+		for (i = 0; i != words.length; i++) {
+			if (words[i][0] == ch)
+				if (twords[i][0] != ch)
+					twords[i] = ch + twords[i];
+			idx = words[i].length - 1;
+			if (words[i][idx] == ch)
+				if (twords[i][idx] != ch)
+					twords[i] = twords[i] + ch;
+		}
+	}
+	sug = twords.join(' ');
+	if (trans_text != sug)
+		return sug;
+}
+
+function init() {
+	onkelos_trans_fixed = test('{{verse.onkelos_text}}', '{{verse.onkelos_trans_text}}');
+	dev = document.getElementById('dev');
+	div = document.getElementById('onkelos_trans_text');
+	div2 = document.getElementById('onkelos_trans');
+	if (div.value != onkelos_trans_fixed) {
+		old = div.value
+		div.value = onkelos_trans_fixed;
+		div2.innerHTML = old;
+		dev.innerHTML = 'changed';
+	}
+	//sug = twords.join(' ');
+	//dev.innerHTML = 'ok' + (div.value == sug) + '<br />' + div.value + '<br />' + sug;
+}
+window.onload = init;
+
+</script>
 {% endblock %}

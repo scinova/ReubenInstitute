@@ -386,6 +386,7 @@ class NVerse:
 		self.onkelos_trans_text = None
 		self.jerusalmi_text = None
 		self.jerusalmi_trans_text = None
+		self.targum_text = None
 		self.rashi_text = None
 
 	def __repr__(self):
@@ -410,7 +411,7 @@ class NVerse:
 			return VerseKind.BREAK
 		return None
 
-	def targum(self, text=''):
+	def parse(self, text=''):
 		if not text:
 			return []
 		text = re.sub('"([^"]+)"', r'“\1”', text)
@@ -453,19 +454,23 @@ class NVerse:
 
 	@property
 	def onkelos(self):
-		return self.targum(self.onkelos_text)
+		return self.parse(self.onkelos_text)
 
 	@property
 	def onkelos_trans(self):
-		return self.targum(self.onkelos_trans_text)
+		return self.parse(self.onkelos_trans_text)
 
 	@property
 	def jerusalmi(self):
-		return self.targum(self.jerusalmi_text)
+		return self.parse(self.jerusalmi_text)
 
 	@property
 	def jerusalmi_trans(self):
-		return self.targum(self.jerusalmi_trans_text)
+		return self.parse(self.jerusalmi_trans_text)
+
+	@property
+	def targum(self):
+		return self.parse(self.targum_text)
 
 	@property
 	def mikra(self):
@@ -697,6 +702,7 @@ class NChapter:
 		filename = '%02d.%03d.txt'%(self.book.number, self.number)
 		f = open(os.path.join(DB_PATH, 'rashi', filename))
 		for idx, text in enumerate(f):
+			print (filename, idx)
 			#text = unicode(text, 'utf-8')
 			if text.endswith('\n'):
 				text = text[:-1]
@@ -710,8 +716,16 @@ class NChapter:
 					text = text[:-1]
 				self.verses[idx].onkelos_text = text
 
-		if book.number == 1 and self.number in [1, 2, 3, 4, 5, 6]:
+		if book.number == 27:
+			filename = '%02d.%03d.txt'%(self.book.number, self.number)
+			f = open(os.path.join(DB_PATH, 'targum', filename))
+			for idx, text in enumerate(f):
+				#print (self.book.number, self.number, idx)
+				if text.endswith('\n'):
+					text = text[:-1]
+				self.verses[idx].targum_text = text
 
+		if book.number == 1 and self.number in [1, 2, 3, 4, 5, 6]:
 			filename = '%1d.%02d.txt'%(self.book.number, self.number)
 			f = open(os.path.join(DB_PATH, 'headings', filename))
 			for idx, text in enumerate(f):

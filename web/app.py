@@ -53,7 +53,10 @@ def tanakh():
 def view_chapter(book_no, chapter_no):
 	book = common.tanakh.books[book_no - 1]
 	chapter = book.chapters[chapter_no - 1]
-	return render_template('tanakh-chapter.html', chapter=chapter, re=re, Span=common.Span, SpanKind=common.SpanKind, VerseKind=common.VerseKind)
+	if book.is_poem:
+		return render_template('tanakh-chapter-poem.html', chapter=chapter, re=re, Span=common.Span, SpanKind=common.SpanKind, VerseKind=common.VerseKind)
+	else:
+		return render_template('tanakh-chapter.html', chapter=chapter, re=re, Span=common.Span, SpanKind=common.SpanKind, VerseKind=common.VerseKind)
 
 @app.route('/tanakh/<int:book_no>/p/<int:parasha_no>')
 def view_parasha(book_no, parasha_no):
