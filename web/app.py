@@ -70,11 +70,11 @@ def view_parasha_smet(book_no, parasha_no):
 	parasha = book.parashot[parasha_no - 1]
 	return render_template('tanakh-parasha-smet.html', parasha=parasha, re=re, Span=common.Span, SpanKind=common.SpanKind, VerseKind=common.VerseKind)
 
-@app.route('/tanakh/<int:book_no>/<int:parasha_no>/<int:chapter_no>/<int:verse_no>/edit', methods=['GET','POST'])
-def verse_edit(book_no, parasha_no, chapter_no, verse_no):
+@app.route('/tanakh/<int:book_no>/<int:chapter_no>/<int:verse_no>/edit', methods=['GET','POST'])
+def verse_edit(book_no, chapter_no, verse_no):
 	book = common.tanakh.books[book_no - 1]
-	parasha = book.parashot[parasha_no - 1]
-	verse = book.chapters[chapter_no - 1].verses[verse_no - 1]
+	chapter = book.chapters[chapter_no - 1]
+	verse = chapter.verses[verse_no - 1]
 	if request.method == 'POST':
 		if verse.title != request.form['title']:
 			verse.title = request.form['title']
@@ -84,28 +84,34 @@ def verse_edit(book_no, parasha_no, chapter_no, verse_no):
 			verse.text = request.form['mikra_text']
 			verse.save_mikra()
 			print ("SAVE MIKRA")
-		if verse.onkelos_text != request.form['onkelos_text']:
-			verse.onkelos_text = request.form['onkelos_text']
-			verse.save_onkelos()
-			print ("SAVE ONKELOS")
-		if verse.jerusalmi_text != request.form['jerusalmi_text']:
-			verse.jerusalmi_text = request.form['jerusalmi_text']
-			verse.save_jerusalmi()
-			print ("SAVE JERUSALMI")
-		if verse.onkelos_trans_text != request.form['onkelos_trans_text']:
-			verse.onkelos_trans_text = request.form['onkelos_trans_text']
-			verse.save_onkelos_translation()
-			print ("SAVE ONKELOS TRANSLATION")
-		if verse.jerusalmi_trans_text != request.form['jerusalmi_trans_text']:
-			verse.jerusalmi_trans_text = request.form['jerusalmi_trans_text']
-			verse.save_jerusalmi_translation()
-			print ("SAVE JERUSALMI TRANSLATION")
+#		if verse.onkelos_text != request.form['onkelos_text']:
+#			verse.onkelos_text = request.form['onkelos_text']
+#			verse.save_onkelos()
+#			print ("SAVE ONKELOS")
+#		if verse.jerusalmi_text != request.form['jerusalmi_text']:
+#			verse.jerusalmi_text = request.form['jerusalmi_text']
+#			verse.save_jerusalmi()
+#			print ("SAVE JERUSALMI")
+#		if verse.onkelos_trans_text != request.form['onkelos_trans_text']:
+#			verse.onkelos_trans_text = request.form['onkelos_trans_text']
+#			verse.save_onkelos_translation()
+#			print ("SAVE ONKELOS TRANSLATION")
+#		if verse.jerusalmi_trans_text != request.form['jerusalmi_trans_text']:
+#			verse.jerusalmi_trans_text = request.form['jerusalmi_trans_text']
+#			verse.save_jerusalmi_translation()
+#			print ("SAVE JERUSALMI TRANSLATION")
+		if verse.targum_text != request.form['targum_text'].replace('\r\n', '\u2028'):
+			verse.targum_text = request.form['targum_text'].replace('\r\n', '\u2028')
+			verse.save_targum()
+		if verse.targum_trans_text != request.form['targum_trans_text'].replace('\r\n', '\u2028'):
+			verse.targum_trans_text = request.form['targum_trans_text'].replace('\r\n', '\u2028')
+			verse.save_targum_translation()
 		if verse.rashi_text != request.form['rashi_text'].replace('\r\n', '\u2028'):
 			verse.rashi_text = request.form['rashi_text'].replace('\r\n', '\u2028')
 			verse.save_rashi()
 			print ("SAVE RASHI")
-		return redirect('/tanakh/%d/psmet/%d#%d.%d'%(book.number, parasha.number, verse.chapter.number, verse.number))
-	return render_template('tanakh-verse-edit.html', parasha=parasha, verse=verse)
+		return redirect('/tanakh/%d/%d#%d'%(book.number, verse.chapter.number, verse.number))
+	return render_template('tanakh-verse-edit2.html', verse=verse)
 
 @app.route('/mishnah/')
 def mishnah():

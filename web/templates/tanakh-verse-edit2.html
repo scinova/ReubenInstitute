@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}{% endblock %}
+{% block content %}
+<h1></h1>
+<form method="post">
+	<div>
+		<label>כותרת</lebel>
+		<textarea name="title">{{verse.title}}</textarea>
+	</div>
+	<div>
+		<label>מקרא</lebel>
+		<textarea name="mikra_text" style="font-family: sbl">{{verse.text}}</textarea>
+	</div>
+	<div>
+		<label>תרגום</lebel>
+		<textarea name="targum_text">{{verse.targum_text}}</textarea>
+	</div>
+	<div>
+		<label>תרגום תרגום</label>
+		<textarea id="targum_trans_text" name="targum_trans_text">{{verse.targum_trans_text}}</textarea>
+	</div>
+	<div>
+		<label>רשי</lebel>
+		<textarea name="rashi_text" rows="10">{{verse.rashi_text | replace('\u2028', '\n')}}</textarea>
+	</div>
+	<button type="submit">שמור</button>
+<form>
+{% endblock %}

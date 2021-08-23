@@ -1,38 +1,52 @@
 @font-face {
-	font-family: 'frank';
-	src: url('/@@/fonts/TaameyFrankCLM-Bold.ttf') format('truetype');
+	font-family: 'david';
+	src: url('/@@/fonts/TaameyDavidCLM-Medium.ttf') format('truetype');
+	}
+
+@font-face {
+	font-family: 'shofar';
 	src: url('/@@/fonts/ShofarRegular.ttf') format('truetype');
-	font-weight: normal;
-	font-style: normal;
-}
+	}
+
+@font-face {
+	font-family: 'keter';
+	src: url('/@@/fonts/KeterYG-Medium.ttf') format('truetype');
+	}
+
+@font-face {
+	font-family: 'taamey-frank';
+	src: url('/@@/fonts/TaameyFrankCLM-Bold.ttf') format('truetype');
+	xfont-weight: normal;
+	xfont-style: normal;
+	}
 
 @font-face {
 	font-family: 'vilna';
 	src: url('/@@/fonts/Mekorot-Vilna.ttf') format('truetype');
-	font-weight: normal;
-	font-style: normal;
-}
+	xfont-weight: normal;
+	xfont-style: normal;
+	}
 
 @font-face {
-	font-family: 'vilna';
+	font-family: 'vilnab';
 	src: url('/@@/fonts/Mekorot-Vilna-Bold.ttf') format('truetype');
-	font-weight: bold;
-	font-style: normal;
-}
+	xfont-weight: bold;
+	xfont-style: normal;
+	}
 
 @font-face {
 	font-family: 'sbl';
 	src: url('/@@/fonts/SBL_Hbrw.ttf') format('truetype');
-	font-weight: normal;
-	font-style: normal;
-}
+	xfont-weight: normal;
+	xfont-style: normal;
+	}
 
 @font-face {
 	font-family: 'script';
 	src: url('/@@/fonts/DorianCLM-BookItalic.ttf') format('truetype');
 	font-weight: normal;
 	font-style: normal;
-}
+	}
 
 @font-face {
 	font-family: 'scripture';
@@ -41,7 +55,7 @@
 	src: url('/@@/fonts/KeterYG-Medium.ttf') format('truetype');
 	font-weight: normal;
 	font-style: normal;
-}
+	}
 
 * {
 	spacing: 0;
@@ -61,8 +75,8 @@ body {
 div#content {
 	border-radius: 20px;
 	padding: 20px;
-	background-color: #ffe;
-	font-size: 1em;
+	background-color: #f4edd6;
+	font-size: 1.5em;
 	}
 
 h1 {
@@ -74,8 +88,9 @@ j	xfont-style: italic;
 
 h2 {
 	font-size: 80%;
-	font-family: sbl;
+	font-family: david;
 	color: orange;
+	color: #d7b75a;
 	xfont-weight: normal;
 	text-align: center;
 	margin: 1em 0 0;
@@ -146,6 +161,13 @@ a:hover {
 	text-decoration: underline;
 	}
 
+p {
+	dborder: 1px solid blue;
+	margin-bottom: .5em;
+	xdisplay: block;
+	xmargin: auto;
+	}
+
 p.poem {
 	text-align: center;
 	margin-bottom: 5px;
@@ -153,11 +175,14 @@ p.poem {
 
 div.mikra {
 	font-family: sbl;
-	font-family: scripture;
-	font-family: frank;
-	font-size: 120%;
+	xfont-family: scripture;
+	xfont-family: taamey-frank;
+	xfont-family: vilna;
+	xfont-family: shofar;
+	xfont-size: 120%;
 	margin-bottom: 10px;
-	background-color: #fed;
+	background-color: #ebdbad;
+	color: #524213;
 	padding: 5px 10px;
 	border-radius: 8px;
 	}
@@ -167,16 +192,25 @@ div.onkelos {
 	}
 
 div.jerusalmi {
-	font-family: sbl;
 	}
 
 div.targum {
 	color: #999;
+	font-family: sbl;
+	background-color: #fed;
+	margin-bottom: 10px;
+	}
+
+div.targum_trans {
+	color: #666;
+	font-family: sbl;
+	background-color: #fed;
+	xmargin-bottom: 5px;
 	}
 
 div.rashi {
 	font-family: sbl;
-	column-count: 2;
+	zcolumn-count: 2;
 	background-color: #ffd;
 	padding: 1em;
 	}
@@ -199,6 +233,7 @@ hr {
 
 span {
 	vertical-align: middle;
+	xborder: 1px solid red;
 	}
 
 span.chapterno {
@@ -208,6 +243,7 @@ span.chapterno {
 
 span.verseno {
 	color: #ddd;
+	color: green;
 	font-size: smaller;
 	}
 
@@ -232,10 +268,10 @@ span.aliya {
 	}
 
 span.legend {
-	font-family: sbl;
 	font-family: scripture;
+	font-family: sbl;
 	font-size: 130%;
-	vertical-align: bottom;
+		vertical-align: bottom;
 	color: #006;
 }
 

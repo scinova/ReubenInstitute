@@ -2,56 +2,103 @@
 {% block title %}{{chapter.book.name}}, פרק {{chapter.hebrew_number}}{% endblock %}
 {% block content %}
 <h1>{{chapter.book.name}}, פרק {{chapter.hebrew_number}}</h1>
-
 {% for paragraph in chapter.paragraphs -%}
-	<div>
+	<div style="">
 	{%- for subparagraph in paragraph %}
-		<div class="mikra" style="text-align: center;">
+		{% if subparagraph.0.title %}
+			<h2>{{subparagraph.0.title}}</h2>
+		{% endif %}
 		{%- for verse in subparagraph -%}
-			<p>
-			<span class="verseno">{{verse.hebrew_number}}&nbsp;</span>
-			{%- for span in verse.mikra -%}
-				{% if span.kind == SpanKind.MAJUSCULE -%}
-					<span class="majuscule">{{span.value}}</span>
-				{%- elif span.kind == SpanKind.MINUSCULE -%}
-					<span class="minuscule">{{span.value}}</span>
-				{%- elif span.kind == SpanKind.PLAIN -%}
-					<span class="plain">{{span.value}}</span>
-				{%- endif -%}
-			{%- endfor -%}
-			</p>
-		{%- endfor -%}
-		</div>
+			<a name="{{verse.number}}" />
+			<div class="mikra" style="border:0px solid red;font-size:1.8em;text-align: center;">
+				<p><span class="verseno">
+				<a href="/tanakh/{{chapter.book.number}}/{{chapter.number}}/{{verse.number}}/edit">{{verse.hebrew_number}}</a> &nbsp;</span>
+				{%- for span in verse.mikra -%}
+					{% if span.kind == SpanKind.MAJUSCULE -%}
+						<span class="majuscule">{{span.value}}</span>
+					{%- elif span.kind == SpanKind.MINUSCULE -%}
+						<span class="minuscule">{{span.value}}</span>
+					{%- elif span.kind == SpanKind.ALTERNATIVE -%}
+						<span class="alternative">{{span.value}}</span>
+					{%- elif span.kind == SpanKind.PLAIN -%}
+						<span class="plain">{{span.value | replace('R', '<br />') | safe}}</span>
+					{%- else -%}
+						<span class="unknown">{{span.value}}</span>
+					{%- endif -%}
+				{%- endfor -%}
+				</p>
+			</div>
 
-	{% if chapter.book.number == 27 %}
-		<div class="justify">
-			{% for verse in subparagraph %}
+			{% if chapter.book.number == 27 %}
+			<div style="border:0px solid blue;text-align:center;" class="targum right center">
 				<p>
 				{% set spans = verse.targum %}
-				{{ spans.insert(0, Span(SpanKind.VERSENO, verse.hebrew_number)) or '' }}
 				{% for span in spans %}
-					{% if span.kind == SpanKind.VERSENO -%}
-						<span class="verseno">{{span.value}}</span>&nbsp;
-					{%- elif span.kind == SpanKind.ALTERNATIVE -%}
+					{%- if span.kind == SpanKind.ALTERNATIVE -%}
 						<span class="plain">{{span.value}}</span> <span class="alternative">{{span.alt}}</span>
+					{%- elif span.kind == SpanKind.NONLITERAL -%}
+						<span class="nonliteral">{{span.value}}</span>
+					{%- elif span.kind == SpanKind.ADDITION -%}
+						<span class="addition">{{span.value}}</span>
 					{%- elif span.kind == SpanKind.PLAIN -%}
-						<span class="plain">{{span.value}}</span>
+						<span class="plain">{{span.value | replace('R', '<br />') | safe}}</span>
+					{%- else -%}
+						<span class="unknown">{{span.value}}</span>
 					{%- endif -%}
 				{% endfor %}
 				</p>
-			{% endfor %}
-		</div>
-	{% endif %}
+			</div>
 
+			<div style="border:0px solid silver;text-align:center;" class="targum_trans left center">
+				<p>
+				{% set spans = verse.targum_trans %}
+				{% for span in spans %}
+					{%- if span.kind == SpanKind.ALTERNATIVE -%}
+						<span class="plain">{{span.value}}</span> <span class="alternative">{{span.alt}}</span>
+					{%- elif span.kind == SpanKind.NONLITERAL -%}
+						<span class="nonliteral">{{span.value}}</span>
+					{%- elif span.kind == SpanKind.ADDITION -%}
+						<span class="addition">{{span.value}}</span>
+					{%- elif span.kind == SpanKind.PLAIN -%}
+						<span class="plain">{{span.value | replace('R', '<br />') | safe}}</span>
+					{%- else -%}
+						<span class="unknown">{{span.value}}</span>
+					{%- endif -%}
+				{% endfor %}
+				</p>
+			</div>
+			<div class="clear"></div>
+
+			{% if verse.rashi %}
+			<div class="rashi justify">
+				<h2>רש״י</h2>
+				{% for span in verse.rashi %}
+					{%- if span.kind == SpanKind.LEGEND -%}
+						<span class="legend">{{span.value}}</span> -
+					{%- elif span.kind == SpanKind.CITATION -%}
+						<span class="citation">{{span.value}}</span>
+					{%- elif span.kind == SpanKind.LINK -%}
+						<span class="link">{{span.value}}</span>
+					{%- elif span.kind == SpanKind.REFERENCE -%}
+						<span class="reference">{{span.value}}</span>
+					{%- elif span.kind == SpanKind.PLAIN -%}
+						{{span.value}}
+					{%- else -%}
+						<span class="unknown">{{span.value}}</span>
+					{%- endif -%}
+				{% endfor %}
+			</div>
+			{% endif %}
+
+			{% endif %}
+			<div class="clear"></div>
+		{% endfor %}
+		<div class="clear"></div>
 	{%- endfor -%}
-	</div>
-
-
-
-
 	<div class="clear"></div>
 {%- endfor -%}
 
+<!--
 <div class="rashi justify">
 <h2>רש״י</h2>
 {% for verse in chapter.verses %}
@@ -74,4 +121,5 @@
 	{% endif %}
 {% endfor %}
 </div>
+-->
 {% endblock %}

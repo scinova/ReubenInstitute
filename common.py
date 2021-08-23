@@ -382,12 +382,13 @@ class NVerse:
 		self.hebrew_number = hebrew_numbers.int_to_gematria(number)
 		self.title = None
 		self.text = text
-		self.onkelos_text = None
-		self.onkelos_trans_text = None
-		self.jerusalmi_text = None
-		self.jerusalmi_trans_text = None
-		self.targum_text = None
-		self.rashi_text = None
+		self.onkelos_text = ''
+		self.onkelos_trans_text = ''
+		self.jerusalmi_text = ''
+		self.jerusalmi_trans_text = ''
+		self.targum_text = ''
+		self.targum_trans_text = ''
+		self.rashi_text = ''
 
 	def __repr__(self):
 		return "Verse %d.%d.%d"%(self.chapter.book.number, self.chapter.number, self.number)
@@ -471,6 +472,10 @@ class NVerse:
 	@property
 	def targum(self):
 		return self.parse(self.targum_text)
+
+	@property
+	def targum_trans(self):
+		return self.parse(self.targum_trans_text)
 
 	@property
 	def mikra(self):
@@ -571,7 +576,7 @@ class NVerse:
 		return spans
 
 	def save_title(self):
-		filename = '%01d.%02d.txt'%(self.chapter.book.number, self.chapter.number)
+		filename = '%01d.%03d.txt'%(self.chapter.book.number, self.chapter.number)
 		path = os.path.join(DB_PATH, 'headings', filename)
 		f = open(path)
 		lines = f.read().split('\n')
@@ -632,6 +637,24 @@ class NVerse:
 		data = '\n'.join(lines)
 		open(path, 'w').write(data)
 
+	def save_targum(self):
+		filename = '%02d.%03d.txt'%(self.chapter.book.number, self.chapter.number)
+		path = os.path.join(DB_PATH, 'targum', filename)
+		f = open(path)
+		lines = f.read().split('\n')
+		lines[self.number - 1] = self.targum_text
+		data = '\n'.join(lines)
+		open(path, 'w').write(data)
+
+	def save_targum_translation(self):
+		filename = '%02d.%03d.txt'%(self.chapter.book.number, self.chapter.number)
+		path = os.path.join(DB_PATH, 'targumt', filename)
+		f = open(path)
+		lines = f.read().split('\n')
+		lines[self.number - 1] = self.targum_trans_text
+		data = '\n'.join(lines)
+		open(path, 'w').write(data)
+
 	def save_rashi(self):
 		filename = '%02d.%03d.txt'%(self.chapter.book.number, self.chapter.number)
 		path = os.path.join(DB_PATH, 'rashi', filename)
@@ -665,7 +688,7 @@ def verses_to_paragraphs(verses):
 	#print (paragraphs[0])
 	return paragraphs
 
-def verses_to_paragraphsx(verses):
+	"""def verses_to_paragraphsx(verses):
 	paragraphs = []
 	part = []
 	parts = []
@@ -685,6 +708,7 @@ def verses_to_paragraphsx(verses):
 	parts.append(part)
 	paragraphs.append(parts)
 	return paragraphs
+	"""
 
 class NChapter:
 	def __init__(self, book, number):
@@ -692,6 +716,7 @@ class NChapter:
 		self.number = number
 		self.hebrew_number = hebrew_numbers.int_to_gematria(number)
 		self.verses = []
+
 		filename = '%02d.%03d.txt'%(self.book.number, self.number)
 		f = open(os.path.join(DB_PATH, 'tanakh', filename))
 		for number, text in enumerate(f, start=1):
@@ -702,8 +727,7 @@ class NChapter:
 		filename = '%02d.%03d.txt'%(self.book.number, self.number)
 		f = open(os.path.join(DB_PATH, 'rashi', filename))
 		for idx, text in enumerate(f):
-			print (filename, idx)
-			#text = unicode(text, 'utf-8')
+			#print (filename, idx)
 			if text.endswith('\n'):
 				text = text[:-1]
 			self.verses[idx].rashi_text = text
@@ -711,33 +735,36 @@ class NChapter:
 			filename = '%1d.%02d.txt'%(self.book.number, self.number)
 			f = open(os.path.join(DB_PATH, 'onkelos', filename))
 			for idx, text in enumerate(f):
-				#print (self.book.number, self.number, idx)
 				if text.endswith('\n'):
 					text = text[:-1]
 				self.verses[idx].onkelos_text = text
-
 		if book.number == 27:
 			filename = '%02d.%03d.txt'%(self.book.number, self.number)
 			f = open(os.path.join(DB_PATH, 'targum', filename))
 			for idx, text in enumerate(f):
-				#print (self.book.number, self.number, idx)
 				if text.endswith('\n'):
 					text = text[:-1]
 				self.verses[idx].targum_text = text
+			filename = '%02d.%03d.txt'%(self.book.number, self.number)
+			f = open(os.path.join(DB_PATH, 'targumt', filename))
+			for idx, text in enumerate(f):
+				if text.endswith('\n'):
+					text = text[:-1]
+				self.verses[idx].targum_trans_text = text
 
-		if book.number == 1 and self.number in [1, 2, 3, 4, 5, 6]:
-			filename = '%1d.%02d.txt'%(self.book.number, self.number)
+		if (book.number == 27 and self.number in [1]) or \
+				(book.number == 1 and self.number in [1, 2, 3, 4, 5, 6]):
+			filename = '%02d.%03d.txt'%(self.book.number, self.number)
 			f = open(os.path.join(DB_PATH, 'headings', filename))
 			for idx, text in enumerate(f):
-				#print (self.book.number, self.number, idx)
 				if text.endswith('\n'):
 					text = text[:-1]
 				self.verses[idx].title = text
 
+		if book.number == 1 and self.number in [1, 2, 3, 4, 5, 6]:
 			filename = '%1d.%02d.txt'%(self.book.number, self.number)
 			f = open(os.path.join(DB_PATH, 'onkelost', filename))
 			for idx, text in enumerate(f):
-				#print (self.book.number, self.number, idx)
 				if text.endswith('\n'):
 					text = text[:-1]
 				self.verses[idx].onkelos_trans_text = text
@@ -745,8 +772,6 @@ class NChapter:
 			filename = '%1d.%02d.txt'%(self.book.number, self.number)
 			f = open(os.path.join(DB_PATH, 'jerusalmi', filename))
 			for idx, text in enumerate(f):
-				#if idx == 31:
-					#continue
 				if text.endswith('\n'):
 					text = text[:-1]
 				self.verses[idx].jerusalmi_text = text
@@ -754,8 +779,6 @@ class NChapter:
 			filename = '%1d.%02d.txt'%(self.book.number, self.number)
 			f = open(os.path.join(DB_PATH, 'jerusalmit', filename))
 			for idx, text in enumerate(f):
-				if idx == 31:	# ????????
-					continue
 				if text.endswith('\n'):
 					text = text[:-1]
 				self.verses[idx].jerusalmi_trans_text = text
