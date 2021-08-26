@@ -45,6 +45,23 @@ def prayer(variation, kind):
 	p = common.Prayer(variation, kind)
 	return render_template('prayer.html', spans=p.spans, divs=p.divs, re=re, Span=common.Span, SpanKind=common.SpanKind)
 
+@app.route('/psalms/')
+def psalms():
+	s = ''
+	book = common.tanakh.books[26]
+	for chapter in book.chapters:
+		for verse in chapter.verses:
+			x = ''.join([s.value for s in verse.mikra])
+			x = x.replace('R', ' ')
+			x = common.remove_cantillations(x)
+			x = re.sub('[׀׃\?\!\,\.\:\;]+', '', x)
+			x = x.replace('־', ' ')
+			x = re.sub('[\s]+', ' ', x)
+			s += ' ' + x
+	words = list(set(s.split(' ')))
+	words.sort()
+	return render_template('psalms.html', words=words, s=s, tanakh=common.tanakh, enumerate=enumerate)
+
 @app.route('/tanakh/')
 def tanakh():
 	return render_template('tanakh.html', tanakh=common.tanakh, enumerate=enumerate)
