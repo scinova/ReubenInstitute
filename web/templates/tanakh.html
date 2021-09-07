@@ -16,7 +16,7 @@
 		<h3>{{book.name}}</h3>
 		{% if 6 > book.number %}
 			{% for number, parasha in enumerate(book.parashot, start=1) %}
-				<a href="/tanakh/{{book.number}}/p/{{number}}">{{parasha.name}}</a>
+				<a href="/tanakh/{{book.number}}/p{{number}}">{{parasha.name}}</a>
 				<a href="/tanakh/{{book.number}}/psmet/{{number}}">ש</a>
 				<br />
 			{% endfor %}

@@ -4,17 +4,12 @@
 <h1>{{chapter.book.name}}, פרק {{chapter.hebrew_number}}</h1>
 
 {% for paragraph in chapter.paragraphs -%}
-	<div>
-	<div class="mikra justify">
-	<p class="parshia">
+	{% if paragraph.0.title %}
+		<h2>{{paragraph.0.title}}</h2>
+	{% endif %}
 	{%- for subparagraph in paragraph %}
+		<div class="mikra justify">
 		{%- for verse in subparagraph -%}
-			{%- if verse.number != 1 and verse.kind == VerseKind.CLOSED -%}
-				<br /><span>&emsp;&emsp;&emsp;&emsp;</span>
-			{%- endif -%}
-			{%- if verse != subparagraph[0] -%}
-				&ensp;
-			{%- endif -%}
 			<span class="verseno">{{verse.hebrew_number}}&nbsp;</span>
 			{%- for span in verse.mikra -%}
 				{% if span.kind == SpanKind.MAJUSCULE -%}

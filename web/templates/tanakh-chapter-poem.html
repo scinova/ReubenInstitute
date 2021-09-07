@@ -11,8 +11,7 @@
 		{%- for verse in subparagraph -%}
 			<a name="{{verse.number}}" />
 			<div class="mikra" style="border:0px solid red;font-size:1.8em;text-align: center;">
-				<p><span class="verseno">
-				<a href="/tanakh/{{chapter.book.number}}/{{chapter.number}}/{{verse.number}}/edit">{{verse.hebrew_number}}</a> &nbsp;</span>
+				<p><span class="verseno"><a href="/tanakh/{{chapter.book.number}}/{{chapter.number}}/{{verse.number}}/edit">{{verse.hebrew_number}}</a>&nbsp;</span>
 				{%- for span in verse.mikra -%}
 					{% if span.kind == SpanKind.MAJUSCULE -%}
 						<span class="majuscule">{{span.value}}</span>

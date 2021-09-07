@@ -45,11 +45,14 @@ for verse in chapter.verses:
 		m = re.search(pattern, verse.text)
 		print (verse.number, idx, legend_text)
 
-		try:
-			replacement = m.group()
-		except:
-			print ("ERROR")
+#		try:
+
+		if not m:
 			continue
+		replacement = m.group()
+#		except:
+#			print ("ERROR")
+#			continue
 		replacement = remove_cantillation(replacement)
 		replacement = re.sub('[,\.]', '', replacement)
 		if words[-1] == 'וגו׳':
@@ -58,4 +61,16 @@ for verse in chapter.verses:
 		print (verse.rashi_text[legend.start():legend.end()])
 
 		verse.rashi_text = verse.rashi_text[:legend.start()] + replacement + '.' + verse.rashi_text[legend.end():]
+
+	# expand abbreviations
+	abbreviations = {}
+	f = open('../db/rashi/00abbreviations.txt')
+	for line in f:
+		p = line[:-1].split(' ')
+		abbreviations[p[0]] = ' '.join(p[1:])
+	for abbreviation, replacement in abbreviations.items():
+		verse.rashi_text = re.sub(abbreviation, replacement, verse.rashi_text)
+
+
+
 	verse.save_rashi()

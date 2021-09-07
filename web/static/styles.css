@@ -1,4 +1,14 @@
 @font-face {
+	font-family: 'shlomo';
+	src: url('/@@/fonts/Shlomo.ttf') format('truetype');
+	}
+
+@font-face {
+	font-family: 'sans';
+	src: url('/@@/fonts/NachlieliCLM-Light.otf') format('opentype');
+	}
+
+@font-face {
 	font-family: 'david';
 	src: url('/@@/fonts/TaameyDavidCLM-Medium.ttf') format('truetype');
 	}
@@ -87,18 +97,18 @@ j	xfont-style: italic;
 	}
 
 h2 {
-	font-size: 80%;
-	font-family: david;
+	font-size: 140%;
+	font-family: sans;
 	color: orange;
 	color: #d7b75a;
-	xfont-weight: normal;
+	font-weight: normal;
 	text-align: center;
 	margin: 1em 0 0;
 	}
 
 h4 {
-	font-size: 80%;
-	font-family: sbl;
+	font-size: 50%;
+	font-family: sans;
 	color: #330;
 	font-weight: normal;
 	text-align: center;
@@ -152,13 +162,12 @@ div.prayer span.info
 	color: #ccc;
 }
 
-a {
+a:link,
+a:visited,
+a:hover,
+a:active {
 	color: #0099cc;
 	text-decoration: none;
-	}
-
-a:hover {
-	text-decoration: underline;
 	}
 
 p {
@@ -178,13 +187,13 @@ div.mikra {
 	xfont-family: scripture;
 	xfont-family: taamey-frank;
 	xfont-family: vilna;
-	xfont-family: shofar;
-	xfont-size: 120%;
+	Dfont-family: shlomo;
+	font-size: 160%;
 	margin-bottom: 10px;
 	background-color: #ebdbad;
 	color: #524213;
 	padding: 5px 10px;
-	border-radius: 8px;
+	xborder-radius: 8px;
 	}
 
 div.onkelos {
@@ -195,17 +204,18 @@ div.jerusalmi {
 	}
 
 div.targum {
-	color: #999;
-	font-family: sbl;
-	background-color: #fed;
+	color: #333;
+	xfont-family: sbl;
+	xbackground-color: #fed;
 	margin-bottom: 10px;
 	}
 
 div.targum_trans {
 	color: #666;
-	font-family: sbl;
-	background-color: #fed;
+	xfxont-family: sbl;
+	xbackground-color: #fed;
 	xmargin-bottom: 5px;
+	xfont-family: sbl;
 	}
 
 div.rashi {
@@ -216,8 +226,9 @@ div.rashi {
 	}
 
 div.variations {
-	border-top: 1px solid #ccc;
+	xborder-top: 1px solid #ccc;
 	font-size: 70%;
+	background-color: #fcc;
 	}
 
 hr {
@@ -233,7 +244,6 @@ hr {
 
 span {
 	vertical-align: middle;
-	xborder: 1px solid red;
 	}
 
 span.chapterno {
@@ -242,9 +252,13 @@ span.chapterno {
 	}
 
 span.verseno {
-	color: #ddd;
-	color: green;
-	font-size: smaller;
+	background-color: #ccc;
+	color: #eee;
+	display: inline-block;
+	padding: 0 5px;
+	border-radius: 5px;
+	font-size: 60%;
+	vertical-align: middle;
 	}
 
 span.addition {
@@ -255,10 +269,12 @@ span.addition {
 
 span.nonliteral {
 	color: #a33;
+	color: #700;
+	background-color: #ffb;
 	}
 
 span.alternative {
-	background-color: #ffb;
+	background-color: #fdd;
 	}
 
 span.aliya {
