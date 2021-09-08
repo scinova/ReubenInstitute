@@ -11,10 +11,25 @@ pip2 install enum
 pip2 install python-hebrew-numbers
 
 
-
 TAGS
 {replace}
 [link]
 {{info}}
 <[bold]>
 
+MIKRA
+=====
+{{reading}}
+[kri|ktiv]
+<<majuscule>>
+>>minuscule<<
+
+TARGUM
+======
+<[bold]>
+_nonliteral_
++addition+
+[alternative|version]
+(=synonym)
+(~explanation)
+[correction]

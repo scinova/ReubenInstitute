@@ -283,6 +283,26 @@ span.aliya {
 	font-size: smaller;
 	}
 
+span.synonym {
+	vertical-align: middle;
+	color: green;
+	font-family: sans;
+	font-size: 80%;
+	}
+
+span.explanation {
+	vertical-align: middle;
+	color: green;
+	font-family: sans;
+	font-size: 80%;
+	}
+
+span.correction {
+	vertical-align: middle;
+	color: green;
+	font-family: sans;
+}
+
 span.legend {
 	font-family: scripture;
 	font-family: sbl;

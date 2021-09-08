@@ -9,7 +9,7 @@
 	<a href="/zohar/{{book.ind}}/{{chapter.no}}/{{article_no}}/edit/{{loop.index}}">edit</a><br />
 	<a id="v{{loop.index}}"></a>
 	<div class="right">
-		<div class="verse">
+		<div class="verse" style="background-color:#ffc;font-family:sbl;">
 		{% set t = ar_texts[i] %}
 		{% for l in t.split('\n\n') %}
 			{% set dialog = l.startswith('- ') %}
@@ -32,7 +32,7 @@
 		</div>
 	</div>
 	<div class="left">
-		<div class="verse">
+		<div class="verse" style="background-color:#ffc;font-family:sbl;">
 		{% set t = he_texts[i] %}
 		{% for l in t.split('\n\n') %}
 			{% set dialog = l.startswith('- ') %}

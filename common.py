@@ -325,6 +325,9 @@ class SpanKind(Enum):
 	
 	BOLD = 27
 
+	SYNONYM = 28
+	EXPLANATION = 29
+	CORRECTION = 30
 
 #shaharit_ashkenaz = Prayer("ashkenaz", "shaharit")
 #shaharit_sefard = Prayer("sefard", "shaharit")
@@ -429,13 +432,27 @@ class NVerse:
 		for item in addition_items:
 			start, end = item.span()
 			text = text[0:start] + (end - start) * 'X' + text[end:]
+		synonym_items = list(re.finditer('\(\=([^)]+)\)', text))
+		for item in synonym_items:
+			start, end = item.span()
+			text = text[0:start] + (end - start) * 'X' + text[end:]
+		explanation_items = list(re.finditer('\(\~([^)]+)\)', text))
+		for item in explanation_items:
+			start, end = item.span()
+			text = text[0:start] + (end - start) * 'X' + text[end:]
+		correction_items = list(re.finditer('\[([^]]+)\]', text))
+		for item in correction_items:
+			start, end = item.span()
+			text = text[0:start] + (end - start) * 'X' + text[end:]
+
 		plain_items = list(re.finditer('([^X]+)', text))
 		for item in plain_items:
 			start, end = item.span()
 			text = text[0:start] + (end - start) * '.' + text[end:]
 		spans = []
 		for idx in range(len(text)):
-			for item in nonliteral_items + addition_items + alternative_items + plain_items:
+			for item in nonliteral_items + addition_items + alternative_items + \
+					synonym_items + explanation_items + correction_items + plain_items:
 				if idx == item.start():
 					groups = item.groups()
 					value = groups[0]
@@ -448,6 +465,12 @@ class NVerse:
 						span = Span(SpanKind.ADDITION, value)
 					elif item in alternative_items:
 						span = Span(SpanKind.ALTERNATIVE, value, alt)
+					elif item in synonym_items:
+						span = Span(SpanKind.SYNONYM, value)
+					elif item in explanation_items:
+						span = Span(SpanKind.EXPLANATION, value)
+					elif item in correction_items:
+						span = Span(SpanKind.CORRECTION, value)
 					elif item in plain_items:
 						span = Span(SpanKind.PLAIN, value)
 					spans.append(span)

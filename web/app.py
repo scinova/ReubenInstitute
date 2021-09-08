@@ -212,7 +212,7 @@ def edit_zohar_paragraph(book_ind, chapter_no, article_no, paragraph_no):
 #	if request.method == 'GET':
 	if True:
 		translate = request.args.get('t') == '1'
-		data = open('dictionary.txt').read().split('\n')[:-1]
+		data = open('../dictionary.txt').read().split('\n')[:-1]
 		dictionary = {}
 		for line in data:
 			words = line.split(' ')
