@@ -420,6 +420,7 @@ class NVerse:
 			return []
 		text = re.sub('"([^"]+)"', r'“\1”', text)
 		text = re.sub("'([^']+)'", r"‘\1’", text)
+		text = re.sub('-', '–', text)
 		alternative_items = list(re.finditer('\[([^|]*)\|([^]]+)\]', text))
 		for item in alternative_items:
 			start, end = item.span()

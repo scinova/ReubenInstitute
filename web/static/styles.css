@@ -1,7 +1,30 @@
 @font-face {
+	font-family: 'ReuvenSerif';
+	src: url('/@@/fonts/ReuvenSerif.ttf') format('truetype');
+	}
+
+
+@font-face {
+	font-family: 'noto';
+	src: url('/@@/fonts/NotoSerifHebrew-Regular.ttf') format('truetype');
+	}
+
+@font-face {
+	font-family: 'noto-bold';
+	src: url('/@@/fonts/NotoSerifHebrew-Bold.ttf') format('truetype');
+	}
+
+
+@font-face {
 	font-family: 'shlomo';
 	src: url('/@@/fonts/Shlomo.ttf') format('truetype');
 	}
+
+@font-face {
+	font-family: 'shlomo-stam';
+	src: url('/@@/fonts/ShlomoSemiStam.ttf') format('truetype');
+	}
+
 
 @font-face {
 	font-family: 'sans';
@@ -16,10 +39,15 @@
 @font-face {
 	font-family: 'shofar';
 	src: url('/@@/fonts/ShofarRegular.ttf') format('truetype');
+	xrc: url('/@@/fonts/ShofarDemi-Bold.ttf') format('truetype');
 	}
 
 @font-face {
 	font-family: 'keter';
+	src: url('/@@/fonts/KeterAramTsova.ttf') format('truetype');
+	}
+@font-face {
+	font-family: 'keteryg';
 	src: url('/@@/fonts/KeterYG-Medium.ttf') format('truetype');
 	}
 
@@ -78,7 +106,7 @@ html {
 
 body {
 	padding: 10px;
-	max-width: 1000px;
+	max-width: 1200px;
 	margin: 0 auto;
 	}
 
@@ -86,34 +114,44 @@ div#content {
 	border-radius: 20px;
 	padding: 20px;
 	background-color: #f4edd6;
+	background-color: #ffeedd;
 	font-size: 1.5em;
+	}
+
+a:visited,a {
+	color: #669;
+	text-decoration: none;
 	}
 
 h1 {
 	font-family: sbl;
 	font-size: 150%;
 	font-weight: normal;
-j	xfont-style: italic;
+	xfont-style: italic;
 	}
 
 h2 {
-	font-size: 140%;
-	font-family: sans;
-	color: orange;
-	color: #d7b75a;
+	font-size: 180%;
+	font-family: ReuvenSerif;
+	color: Brown;
+	xcolor: #d7b75a;
+	color: #aaa;
 	font-weight: normal;
 	text-align: center;
-	margin: 1em 0 0;
+	margin: 1em 0; .5em;
 	}
 
 h4 {
-	font-size: 50%;
-	font-family: sans;
+	font-size: 75%;
+	font-family: sbl;
 	color: #330;
 	font-weight: normal;
-	text-align: center;
-	colzor: #999;
+	xtext-align: center;
+	color: #bbb;
+	texxt-decoration: underline;
+	margin-bottom: .5em;
 	margin-top: 1em;
+	border-bottom: 2px solid #ddd;
 }
 
 h5 {
@@ -171,10 +209,7 @@ a:active {
 	}
 
 p {
-	dborder: 1px solid blue;
 	margin-bottom: .5em;
-	xdisplay: block;
-	xmargin: auto;
 	}
 
 p.poem {
@@ -182,22 +217,41 @@ p.poem {
 	margin-bottom: 5px;
 	}
 
+div.clear {
+	clear: both;
+	}
+
 div.mikra {
 	font-family: sbl;
-	xfont-family: scripture;
-	xfont-family: taamey-frank;
-	xfont-family: vilna;
-	Dfont-family: shlomo;
-	font-size: 160%;
+	font-size: 170%;
+	margin-top: 1em;
 	margin-bottom: 10px;
-	background-color: #ebdbad;
-	color: #524213;
-	padding: 5px 10px;
-	xborder-radius: 8px;
+	background-color: #eeddaa;
+	background-image: url(/@@/papyrus.jpg);
+	color: #531;
+	padding: 10px 20px;
+	border-radius: 5px;
+	text-align-last: center;
+	font-weight: normal;
+	}
+
+div.section {
+	font-family: ReuvenSerif;
+	}
+
+div.right {
+	width: 48%;
+	float: right;
+	padding-left: 10px;
+	border-left: 1px solid #ccc;
+	}
+
+div.left {
+	width: 48%;
+	float: left;
 	}
 
 div.onkelos {
-	font-family: sbl;
 	}
 
 div.jerusalmi {
@@ -205,17 +259,11 @@ div.jerusalmi {
 
 div.targum {
 	color: #333;
-	xfont-family: sbl;
-	xbackground-color: #fed;
 	margin-bottom: 10px;
 	}
 
 div.targum_trans {
 	color: #666;
-	xfxont-family: sbl;
-	xbackground-color: #fed;
-	xmargin-bottom: 5px;
-	xfont-family: sbl;
 	}
 
 div.rashi {
@@ -226,9 +274,13 @@ div.rashi {
 	}
 
 div.variations {
-	xborder-top: 1px solid #ccc;
+	xfont-family: sbl;
+	border-top: 1px solid #ccc;
+	padding-top: .5em;
 	font-size: 70%;
-	background-color: #fcc;
+	xbackground-color: #fcc;
+	xbackground-color: #fdd;
+	margin-top: .5em;
 	}
 
 hr {
@@ -243,38 +295,63 @@ hr {
 	}
 
 span {
+	display: block-inline;
 	vertical-align: middle;
 	}
 
-span.chapterno {
-	color: #ccc;
+div.mikra span.punctuation {
+	color: #b00;
 	font-weight: bold;
 	}
 
+div.mikra span.cantillations {
+	color: #fff;
+	}
+
+span.plain: {
+	}
+
+span.chapterno {
+	color: #fff;
+	font-family: sbl;
+	font-size: 60%;
+	}
+
+div.mikra span.chapterno {
+	background-color: #cb8;
+	padding: 0 1em;
+	color: #fff;
+	border-radius: 5px;
+	}
+
 span.verseno {
-	background-color: #ccc;
-	color: #eee;
-	display: inline-block;
+	background-color: #dc9;
+	color: #fff;
 	padding: 0 5px;
 	border-radius: 5px;
 	font-size: 60%;
-	vertical-align: middle;
+	}
+
+div.mikra span.verseno {
+	color: #fff;
+	background-color: #dc9;
+	font-family: sbl;
 	}
 
 span.addition {
-	color: #009;
-	font-size: 80%;
-	font-family: script;
+	color: #003;
+	background-color: #eef;
 	}
 
 span.nonliteral {
-	color: #a33;
 	color: #700;
 	background-color: #ffb;
+	zborder-radius: 3px;
 	}
 
 span.alternative {
 	background-color: #fdd;
+	zborder-radius: 3px;
 	}
 
 span.aliya {
@@ -284,32 +361,28 @@ span.aliya {
 	}
 
 span.synonym {
-	vertical-align: middle;
-	color: green;
+	color: #aba;
 	font-family: sans;
 	font-size: 80%;
 	}
 
 span.explanation {
-	vertical-align: middle;
-	color: green;
+	color: #aba;
 	font-family: sans;
 	font-size: 80%;
 	}
 
 span.correction {
-	vertical-align: middle;
-	color: green;
-	font-family: sans;
-}
+	color: #9a9;
+	}
 
 span.legend {
 	font-family: scripture;
 	font-family: sbl;
 	font-size: 130%;
-		vertical-align: bottom;
+	vertical-align: bottom;
 	color: #006;
-}
+	}
 
 span.citation {
 	color: #600;
@@ -328,33 +401,21 @@ span.link {
 	vertical-align: middle;
 	font-size: 70%;
 	xfont-family: script;
-
 }
 
 span.reference {
 	color: red;
 	font-size: smaller
-}
+	}
 
 span.majuscule {
 	font-size: 140%;
-}
+	}
 
 span.minuscule {
 	font-size: 80%;
-}
-
-div.right {
-	width: 48%;
-	float: right;
-	padding-left: 10px;
-	border-left: 1px solid #ccc;
 	}
 
-div.left {
-	width: 48%;
-	float: left;
-	}
 
 div.verse {
 	margin-bottom: 50px;
@@ -377,11 +438,6 @@ div.dialog {
 	margin-right: 20px;
 	}
 
-.clear {
-	clear: both;
-	height: 0px;
-	background-color: brown;
-	}
 
 span.diff-this {
 	text-decoration: underline;
@@ -400,7 +456,6 @@ span.diff-legend {
 textarea {
 	width: 100%;
 	border: 1px solid #333;
-	font-family: sbl;
-	font-size: 1.2em;;
-	text-align: justify;
+	font-family: ReuvenSerif;
+	font-size: 1.2em;
 	}

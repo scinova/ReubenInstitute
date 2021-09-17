@@ -25,11 +25,11 @@
 	{% if verse.has_jerusalmi %}
 		<div>
 			<label>ירושלמי</lebel>
-			<textarea name="jerusalmi_text">{{verse.jerusalmi_text}}</textarea>
+			<textarea rows="4" name="jerusalmi_text">{{verse.jerusalmi_text}}</textarea>
 		</div>
 		<div>
 			<label>תרגום ירושלמי</label>
-			<textarea id="jerusalmi_trans_text" name="jerusalmi_trans_text">{{verse.jerusalmi_trans_text}}</textarea>
+			<textarea rows="4" id="jerusalmi_trans_text" name="jerusalmi_trans_text">{{verse.jerusalmi_trans_text}}</textarea>
 		</div>
 	{% endif %}
 	{% if verse.has_targum %}

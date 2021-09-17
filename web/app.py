@@ -79,7 +79,7 @@ def view_chapter(book_no, chapter_no):
 def view_parasha(book_no, parasha_no):
 	book = common.tanakh.books[book_no - 1]
 	parasha = book.parashot[parasha_no - 1]
-	return render_template('tanakh-parasha.html', parasha=parasha, re=re, Span=common.Span, SpanKind=common.SpanKind, VerseKind=common.VerseKind)
+	return render_template('tanakh-parasha.html', parasha=parasha, re=re, Span=common.Span, SpanKind=common.SpanKind, VerseKind=common.VerseKind, ord=ord, chr=chr, list=list)
 
 @app.route('/tanakh/<int:book_no>/psmet/<int:parasha_no>')
 def view_parasha_smet(book_no, parasha_no):
@@ -100,6 +100,7 @@ def verse_edit(book_no, chapter_no, verse_no, parasha_no=None):
 			print ("SAVE TITLE")
 		if verse.text != request.form['mikra_text']:
 			verse.text = request.form['mikra_text']
+			verse.text = unicodedata.normalize('NFD', verse.text)
 			verse.save_mikra()
 			print ("SAVE MIKRA")
 		if verse.rashi_text != request.form['rashi_text'].replace('\r\n', '\u2028'):
