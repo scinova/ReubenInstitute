@@ -3,18 +3,19 @@
 {% block content %}
 <h1></h1>
 <form method="post">
-	<div>
-		<label>כותרת</lebel>
-		<textarea name="title">{{verse.title}}</textarea>
-	</div>
-	<div>
-		<label>מקרא</lebel>
-		<textarea name="mikra_text" style="font-family: sbl">{{verse.text}}</textarea>
-	</div>
-
 	{% if verse.has_onkelos %}
 		<div>
-			<label>אונקלוס</lebel>
+			<label>כותרת</lebel>
+			<textarea name="title">{{verse.title}}</textarea>
+		</div>
+	{% endif %}
+	<div>
+		<label>מקרא</label>
+		<textarea name="mikra_text" style="font-family: sbl">{{verse.text}}</textarea>
+	</div>
+	{% if verse.has_onkelos %}
+		<div>
+			<label>אונקלוס</label>
 			<textarea name="onkelos_text">{{verse.onkelos_text}}</textarea>
 		</div>
 		<div>
@@ -24,17 +25,23 @@
 	{% endif %}
 	{% if verse.has_jerusalmi %}
 		<div>
-			<label>ירושלמי</lebel>
+			<label>ירושלמי</label>
 			<textarea rows="4" name="jerusalmi_text">{{verse.jerusalmi_text}}</textarea>
 		</div>
 		<div>
-			<label>תרגום ירושלמי</label>
-			<textarea rows="4" id="jerusalmi_trans_text" name="jerusalmi_trans_text">{{verse.jerusalmi_trans_text}}</textarea>
+			<label>ירושלמי מתורגם</label>
+			<textarea rows="4" name="jerusalmi_trans_text">{{verse.jerusalmi_trans_text}}</textarea>
+		</div>
+	{% endif %}
+	{% if verse.has_jonathan %}
+		<div>
+			<label>יונתן</label>
+			<textarea rows="4" name="jonathan_text">{{verse.jonathan_text}}</textarea>
 		</div>
 	{% endif %}
 	{% if verse.has_targum %}
 		<div>
-			<label>תרגום</lebel>
+			<label>תרגום</label>
 			<textarea name="targum_text">{{verse.targum_text}}</textarea>
 		</div>
 		<div>
@@ -43,10 +50,25 @@
 		</div>
 	{% endif %}
 	<div>
-		<label>רשי</lebel>
+		<label>רשי</label>
 		<textarea name="rashi_text" rows="10">{{verse.rashi_text | replace('\u2028', '\n')}}</textarea>
 	</div>
 	<input type="hidden" name="parasha_no" value="{{parasha_no}}" />
 	<button type="submit">שמור</button>
 <form>
+<table>
+	<tr>
+		<td>׳</td>
+		<td>״</td>
+	</tr>
+	<tr>
+		<td>־</td>
+		<td>…</td>
+	</tr>
+	<tr>
+		<td>“</td>
+		<td>”</td>
+	</tr>
+</table>
+
 {% endblock %}

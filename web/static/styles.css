@@ -113,8 +113,7 @@ body {
 div#content {
 	border-radius: 20px;
 	padding: 20px;
-	background-color: #f4edd6;
-	background-color: #ffeedd;
+	background-color: #f4eadc;
 	font-size: 1.5em;
 	}
 
@@ -128,17 +127,17 @@ h1 {
 	font-size: 150%;
 	font-weight: normal;
 	xfont-style: italic;
+	text-align: center;
 	}
 
 h2 {
-	font-size: 180%;
-	font-family: ReuvenSerif;
-	color: Brown;
-	xcolor: #d7b75a;
-	color: #aaa;
+	font-size: 200%;
+	font-family: sbl;
+	color: #dbba8b;
+	color: #d8b27e;
 	font-weight: normal;
 	text-align: center;
-	margin: 1em 0; .5em;
+	margin: 1em 0 0;
 	}
 
 h4 {
@@ -147,11 +146,12 @@ h4 {
 	color: #330;
 	font-weight: normal;
 	xtext-align: center;
-	color: #bbb;
+	color: #dbba8b;
+	color: #d8b27e;
 	texxt-decoration: underline;
 	margin-bottom: .5em;
 	margin-top: 1em;
-	border-bottom: 2px solid #ddd;
+	border-bottom: 2px solid #d8b27e;
 }
 
 h5 {
@@ -177,7 +177,7 @@ div.prayer p {
 	}
 
 div.prayer h1 {
-	ccolor: red;
+	color: red;
 	color: orange;
 	margin: 0;
 	}
@@ -224,11 +224,13 @@ div.clear {
 div.mikra {
 	font-family: sbl;
 	font-size: 170%;
-	margin-top: 1em;
-	margin-bottom: 10px;
-	background-color: #eeddaa;
-	background-image: url(/@@/papyrus.jpg);
-	color: #531;
+	line-height: 1.1em;
+	xmargin-top: 1em;
+	xmargin-bottom: 10px;
+	background-color: #d6af78;
+	background-color: #e1c59d;
+	background-image: url(/@@/papyrus2.jpg);
+	color: 1f1609;
 	padding: 10px 20px;
 	border-radius: 5px;
 	text-align-last: center;
@@ -296,16 +298,16 @@ hr {
 
 span {
 	display: block-inline;
-	vertical-align: middle;
+	height: 1em;
+	vertical-align: baseline;
 	}
 
 div.mikra span.punctuation {
 	color: #b00;
-	font-weight: bold;
 	}
 
 div.mikra span.cantillations {
-	color: #fff;
+	color: #f4eadc;
 	}
 
 span.plain: {
@@ -319,8 +321,8 @@ span.chapterno {
 
 div.mikra span.chapterno {
 	background-color: #cb8;
-	padding: 0 1em;
-	color: #fff;
+	padding: 0 5px;
+	color: #fcf9f5;
 	border-radius: 5px;
 	}
 
@@ -333,8 +335,8 @@ span.verseno {
 	}
 
 div.mikra span.verseno {
-	color: #fff;
-	background-color: #dc9;
+	color: #fcf9f5;
+	background-color: #d9b684;
 	font-family: sbl;
 	}
 
@@ -355,9 +357,9 @@ span.alternative {
 	}
 
 span.aliya {
-	color: #999;
+	color: #fcf9f5;
 	font-style: italic;
-	font-size: smaller;
+	font-size: 60%;
 	}
 
 span.synonym {
@@ -374,7 +376,15 @@ span.explanation {
 
 span.correction {
 	color: #9a9;
+	color: #ccc;
+	color: #aba;
+	font-size: 70%;
 	}
+
+span.hollyname {
+	color: red;
+	}
+
 
 span.legend {
 	font-family: scripture;

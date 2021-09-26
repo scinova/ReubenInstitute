@@ -106,7 +106,7 @@ bible_arr = [
 	['Kings 1', 22, 'מלכים א׳'],
 	['Kings 2', 25, 'מלכים ב׳'],
 
-	['Isaiah', 66, 'ישעיה'],
+	['Isaiah', 66, 'יְשַׁעְיָה'],
 	['Jeremiah', 52, 'ירמיה'],
 	['Ezekiel', 48, 'יחזקאל'],
 
@@ -142,65 +142,67 @@ bible_arr = [
 
 parashot_arr = [
 	[
-		[1, 1, 6, 8, 'BeReshit', 'בְּרֵאשִׁית'],
-		[6, 9, 11, 32, 'Noach', 'נֹחַ'],
-		[12, 1, 17, 27, 'Lech Lecha', 'לֶךְ-לְךָ'],
-		[18, 1, 22, 24, 'VaYera', 'וַיֵּרָא'],
-		[23, 1, 25, 18, 'Chayei Sarah', 'חַיֵּי שָׂרָה'],
-		[25, 19, 28, 9, 'Toledot', 'תּוֹלְדֹת'],
-		[28, 10, 32, 3, 'VaYetze', 'וַיֵּצֵא'],
-		[32, 4, 36, 43, 'VaYishlach', 'וַיִּשְׁלַח'],
-		[37, 1, 40, 23, 'VaYeshev', 'וַיֵּשֶׁב'],
-		[41, 1, 44, 17, 'MiKetz', 'מִקֵּץ'],
-		[44, 18, 47, 27, 'VaYigash', 'וַיִּגַּשׁ'],
-		[47, 28, 50, 26, 'VaYechi', 'וַיְחִי']
+		# book_number, a-sc, a-sv, s-sc, s-sv, m-sc, m-sv, y-sc, y-sv,
+		# a-ec, a-ev, s-ec, s-ev, m-ec, m-ev, y-ec, y-ev
+		[1, 1, 6, 8, 'BeReshit', 'בְּרֵאשִׁית', 12, 42, 5, 42, 5, 42, 5, 42, 1, 43, 10, 42, 21, 42, 21, 42, 16],
+		[6, 9, 11, 32, 'Noach', 'נֹחַ', 12, 54, 1, 54, 1, 54, 1, 54, 1, 54, 10, 54, 10, 54, 1, 55, 5],
+		[12, 1, 17, 27, 'Lech Lecha', 'לֶךְ-לְךָ', 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+		[18, 1, 22, 24, 'VaYera', 'וַיֵּרָא', 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+		[23, 1, 25, 18, 'Chayei Sarah', 'חַיֵּי שָׂרָה', 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+		[25, 19, 28, 9, 'Toledot', 'תּוֹלְדֹת', 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+		[28, 10, 32, 3, 'VaYetze', 'וַיֵּצֵא', 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+		[32, 4, 36, 43, 'VaYishlach', 'וַיִּשְׁלַח', 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+		[37, 1, 40, 23, 'VaYeshev', 'וַיֵּשֶׁב', 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+		[41, 1, 44, 17, 'MiKetz', 'מִקֵּץ', 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+		[44, 18, 47, 27, 'VaYigash', 'וַיִּגַּשׁ', 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+		[47, 28, 50, 26, 'VaYechi', 'וַיְחִי', 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
 	], [
-		[1, 1, 6, 1, 'Shemot', 'שְׁמוֹת'],
-		[6, 2, 9, 35, 'VaEira', 'וָאֵרָא'],
-		[10, 1, 13, 16, 'Bo', 'בֹּא'],
-		[13, 17, 17, 16, 'BeShalach', 'בְּשַׁלַּח'],
-		[18, 1, 20, 23, 'Yitro', 'יִתְרוֹ'],
-		[21, 1, 24, 18, 'Mishpatim', 'מִּשְׁפָּטִים'],
-		[25, 1, 27, 19, 'Terumah', 'תְּרוּמָה'],
-		[27, 20, 30, 10, 'Tetzaveh', 'תְּצַוֶּה'],
-		[30, 11, 34, 35, 'Ki Tisa', 'כִּי תִשָּׂא'],
-		[35, 1, 38, 20, 'VaYakhel', 'וַיַּקְהֵל'],
-		[38, 21, 40, 38, 'Pekudei', 'פְקוּדֵי']
+		[1, 1, 6, 1, 'Shemot', 'שְׁמוֹת', 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+		[6, 2, 9, 35, 'VaEira', 'וָאֵרָא', 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+		[10, 1, 13, 16, 'Bo', 'בֹּא', 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+		[13, 17, 17, 16, 'BeShalach', 'בְּשַׁלַּח', 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+		[18, 1, 20, 23, 'Yitro', 'יִתְרוֹ', 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+		[21, 1, 24, 18, 'Mishpatim', 'מִּשְׁפָּטִים', 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+		[25, 1, 27, 19, 'Terumah', 'תְּרוּמָה', 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+		[27, 20, 30, 10, 'Tetzaveh', 'תְּצַוֶּה', 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+		[30, 11, 34, 35, 'Ki Tisa', 'כִּי תִשָּׂא', 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+		[35, 1, 38, 20, 'VaYakhel', 'וַיַּקְהֵל', 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+		[38, 21, 40, 38, 'Pekudei', 'פְקוּדֵי', 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
 	], [
-		[1, 1, 5, 26, 'VaYikra', 'וַיִּקְרָא'],
-		[6, 1, 8, 36, 'Tzav', 'צַו'],
-		[9, 1, 11, 47, 'Shemini', 'שְּׁמִינִי'],
-		[12, 1, 13, 59, 'Tazria', 'תַזְרִיעַ'],
-		[14, 1, 15, 33, 'Metzora', 'מְּצֹרָע'],
-		[16, 1, 18, 30, 'Acharei Mot', 'אַחֲרֵי מוֹת'],
-		[19, 1, 20, 27, 'Kedoshim', 'קְדֹשִׁים'],
-		[21, 1, 24, 23, 'Emor', 'אֱמֹר'],
-		[25, 1, 26, 1, 'BeHar', 'בְּהַר'],
-		[26, 3, 27, 34, 'BeChukotai', 'בְּחֻקֹּתַי']
+		[1, 1, 5, 26, 'VaYikra', 'וַיִּקְרָא', 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+		[6, 1, 8, 36, 'Tzav', 'צַו', 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+		[9, 1, 11, 47, 'Shemini', 'שְּׁמִינִי', 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+		[12, 1, 13, 59, 'Tazria', 'תַזְרִיעַ', 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+		[14, 1, 15, 33, 'Metzora', 'מְּצֹרָע', 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+		[16, 1, 18, 30, 'Acharei Mot', 'אַחֲרֵי מוֹת', 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+		[19, 1, 20, 27, 'Kedoshim', 'קְדֹשִׁים', 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+		[21, 1, 24, 23, 'Emor', 'אֱמֹר', 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+		[25, 1, 26, 1, 'BeHar', 'בְּהַר', 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+		[26, 3, 27, 34, 'BeChukotai', 'בְּחֻקֹּתַי', 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
 	], [
-		[1, 1, 4, 20, 'BaMidbar', 'בְּמִדְבַּר'],
-		[4, 21, 7, 89, 'Naso', 'נָשֹׂא'],
-		[8, 1, 12, 16, 'BeHaalotecha', 'בְּהַעֲלֹתְךָ'],
-		[13, 1, 15, 41, 'Shlach ', 'שְׁלַח-לְךָ'],
-		[16, 1, 18, 32, 'Korach', 'קֹרַח'],
-		[19, 1, 22, 1, 'Chukat', 'חֻקַּת'],
-		[22, 2, 25, 9, 'Balak', 'בָּלָק'],
-		[25, 10, 30, 1, 'Pinchas', 'פִּינְחָס'],
-		[30, 2, 32, 42, 'Matot', 'מַּטּוֹת'],
-		[33, 1, 36, 13, 'Masei', 'מַסְעֵי']
+		[1, 1, 4, 20, 'BaMidbar', 'בְּמִדְבַּר', 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+		[4, 21, 7, 89, 'Naso', 'נָשֹׂא', 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+		[8, 1, 12, 16, 'BeHaalotecha', 'בְּהַעֲלֹתְךָ', 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+		[13, 1, 15, 41, 'Shlach ', 'שְׁלַח-לְךָ', 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+		[16, 1, 18, 32, 'Korach', 'קֹרַח', 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+		[19, 1, 22, 1, 'Chukat', 'חֻקַּת', 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+		[22, 2, 25, 9, 'Balak', 'בָּלָק', 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+		[25, 10, 30, 1, 'Pinchas', 'פִּינְחָס', 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+		[30, 2, 32, 42, 'Matot', 'מַּטּוֹת', 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+		[33, 1, 36, 13, 'Masei', 'מַסְעֵי', 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
 	], [
-		[1, 1, 3, 22, 'Devarim', 'דְּבָרִים'],
-		[3, 23, 7, 11, 'VaEtchanan', 'וָאֶתְחַנַּן'],
-		[7, 12, 11, 25, 'Eikev', 'עֵקֶב'],
-		[11, 26, 16, 17, "Re'eh", 'רְאֵה'],
-		[16, 18, 21, 9, 'Shoftim', 'שֹׁפְטִים'],
-		[21, 10, 25, 19, 'Ki Teitzei', 'כִּי-תֵצֵא'],
-		[26, 1, 29, 8, 'Ki Tavo', 'כִּי-תָבוֹא'],
-		[29, 9, 30, 20, 'Nitzavim', 'נִצָּבִים'],
-		[31, 1, 31, 30, 'VaYelech', 'וַיֵּלֶךְ'],
-		[32, 1, 32, 52, 'Haazinu', 'הַאֲזִינוּ'],
-		[33, 1, 34, 12, 'VeZot Haberakha', 'וְזֹאת הַבְּרָכָה']
-	]]
+		[1, 1, 3, 22, 'Devarim', 'דְּבָרִים', 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+		[3, 23, 7, 11, 'VaEtchanan', 'וָאֶתְחַנַּן', 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+		[7, 12, 11, 25, 'Eikev', 'עֵקֶב', 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+		[11, 26, 16, 17, "Re'eh", 'רְאֵה', 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+		[16, 18, 21, 9, 'Shoftim', 'שֹׁפְטִים', 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+		[21, 10, 25, 19, 'Ki Teitzei', 'כִּי-תֵצֵא', 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+		[26, 1, 29, 8, 'Ki Tavo', 'כִּי-תָבוֹא', 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+		[29, 9, 30, 20, 'Nitzavim', 'נִצָּבִים', 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+		[31, 1, 31, 30, 'VaYelech', 'וַיֵּלֶךְ', 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+		[32, 1, 32, 52, 'Haazinu', 'הַאֲזִינוּ', 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+		[33, 1, 34, 12, 'VeZot Haberakha', 'וְזֹאת הַבְּרָכָה', 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]]
+	]
 
 a = 1
 b = 2
@@ -383,12 +385,14 @@ class NVerse:
 		self.parasha = None
 		self.number = number
 		self.hebrew_number = hebrew_numbers.int_to_gematria(number)
-		self.title = None
+		self.title = ''
 		self.text = text
 		self.onkelos_text = ''
 		self.onkelos_trans_text = ''
 		self.jerusalmi_text = ''
 		self.jerusalmi_trans_text = ''
+		self.jonathan_text = ''
+		self.jonathan_trans_text = ''
 		self.targum_text = ''
 		self.targum_trans_text = ''
 		self.rashi_text = ''
@@ -502,6 +506,14 @@ class NVerse:
 		return self.parse(self.jerusalmi_trans_text)
 
 	@property
+	def has_jonathan(self):
+		return self.chapter.has_jonathan
+
+	@property
+	def jonathan(self):
+		return self.parse(self.jonathan_text)
+
+	@property
 	def has_targum(self):
 		return self.chapter.has_targum
 
@@ -516,6 +528,7 @@ class NVerse:
 	@property
 	def mikra(self):
 		text = self.text
+		text = re.sub('-', '–', text)
 		text = re.sub('"([^"]+)"', r'“\1”', text)
 		text = re.sub("'([^']+)'", r"‘\1’", text)
 		aliyot_items = list(re.finditer('\{(ראשון|שני|שלישי|רביעי|חמישי|ששי|שביעי|מפטיר)\} ', text))
@@ -673,6 +686,18 @@ class NVerse:
 		data = '\n'.join(lines)
 		open(path, 'w').write(data)
 
+	def save_jonathan(self):
+		if not self.chapter.book.has_jonathan:
+			return
+		filename = '%01d.%02d.txt'%(self.chapter.book.number, self.chapter.number)
+		path = os.path.join(DB_PATH, 'jonathan', filename)
+		f = open(path)
+		lines = f.read().split('\n')
+		lines[self.number - 1] = self.jonathan_text
+		data = '\n'.join(lines)
+		open(path, 'w').write(data)
+
+
 	def save_targum(self):
 		filename = '%02d.%03d.txt'%(self.chapter.book.number, self.chapter.number)
 		path = os.path.join(DB_PATH, 'targum', filename)
@@ -788,9 +813,18 @@ class NChapter:
 			filename = '%1d.%02d.txt'%(self.book.number, self.number)
 			f = open(os.path.join(DB_PATH, 'jerusalmit', filename))
 			for idx, text in enumerate(f):
+				#print (self.book.number, self.number, idx)
 				if text.endswith('\n'):
 					text = text[:-1]
 				self.verses[idx].jerusalmi_trans_text = text
+		if book.has_jonathan:
+			filename = '%1d.%02d.txt'%(book.number, self.number)
+			f = open(os.path.join(DB_PATH, 'jonathan', filename))
+			for idx, text in enumerate(f):
+				if text.endswith('\n'):
+					text = text[:-1]
+				if idx < len(self.verses):
+					self.verses[idx].jonathan_text = text
 		if book.has_targum:
 			filename = '%02d.%03d.txt'%(self.book.number, self.number)
 			f = open(os.path.join(DB_PATH, 'targum', filename))
@@ -828,6 +862,10 @@ class NChapter:
 		return self.book.has_jerusalmi
 
 	@property
+	def has_jonathan(self):
+		return self.book.has_jonathan
+
+	@property
 	def has_targum(self):
 		return self.book.has_targum
 
@@ -837,6 +875,21 @@ class Parasha:
 		self.number = number
 		self.name = name
 		self.latin_name = latin_name
+		self.verses = []
+		self.haftara = None
+
+	@property
+	def paragraphs(self):
+		return verses_to_paragraphs(self.verses)
+
+class Haftara:
+	def __init__(self):
+		flavors = ['ashkenaz', 'sefard', 'mizrah', 'yemen']
+		self.book = 4 * [None]
+		self.start_chapter = 4 * [None]
+		self.start_verse = 4 * [None]
+		self.end_chapter = 4 * [None]
+		self.end_verse = 4 * [None]
 		self.verses = []
 
 	@property
@@ -852,6 +905,7 @@ class NBook:
 		self.has_onkelos = number in [1, 2, 3, 4, 5]
 		self.has_onkelos = number in [1]
 		self.has_jerusalmi = self.has_onkelos
+		self.has_jonathan = number in list(range(6, 27))
 		self.has_targum = number in [27]
 		self.is_poem = number in [27, 28, 29, 30]
 		filenames = [f for f in os.listdir(os.path.join(DB_PATH, 'tanakh')) if f.startswith('%02d.'%number)]
@@ -862,7 +916,14 @@ class NBook:
 			return
 		self.parashot = []
 		for number, value in enumerate(parashot_arr[self.number - 1], start=1):
-			start_chapter, start_verse, end_chapter, end_verse, latin_name, name = value
+			start_chapter, start_verse, end_chapter, end_verse, latin_name, name = value[:6]
+#			print (number, value[:6])
+#		for number, value in enumerate(parashot_arr[self.number - 1], start=1):
+#			start_chapter, start_verse, end_chapter, end_verse, latin_name, name = value[:6]
+#					book_number, a_start_chapter, a_start_verse, s_start_chapter, s_start_verse, \
+#					m_start_chapter, m_start_verse, y_start_chapter, y_start_verse, \
+#					a_end_chapter, a_end_verse, s_end_chapter, s_end_verse, \
+#					m_end_chapter, m_end_verse, y_end_chapter, y_end_verse = value
 			parasha = Parasha(self, number, name, latin_name)
 			chapter_idx = start_chapter - 1
 			verse_idx = start_verse - 1
@@ -887,8 +948,43 @@ class Tanakh:
 			latin_name, num_chapters, name = bible_arr[x]
 			book = NBook(x + 1, name, latin_name)
 			self.books.append(book)
+	def __postinit__(self):
+		for b in range(5):
+			book = self.books[b]
+			for p in range(len(book.parashot)):
+				parasha = book.parashot[p]
+				haftara = Haftara()
+#		for number, value in enumerate(parashot_arr[self.number - 1], start=1):
+				book_number = parashot_arr[b][p][6]
+				haftara.book[0] = self.books[book_number - 1]
+				haftara.start_chapter[0], haftara.start_verse[0], haftara.start_chapter[1], haftara.start_verse[1], \
+					haftara.start_chapter[2], haftara.start_verse[2], haftara.start_chapter[3], haftara.start_verse[3], \
+					haftara.end_chapter[0], haftara.end_verse[0], haftara.end_chapter[1], haftara.end_verse[1], \
+					haftara.end_chapter[2], haftara.end_verse[2], haftara.end_chapter[3], haftara.end_verse[3] = parashot_arr[b][p][7:]
+				start_chapter = min(haftara.start_chapter)
+				start_verse = min([haftara.start_verse[x] for x in [i for i in range(4) if start_chapter == haftara.start_chapter[i]]])
+				end_chapter = max(haftara.end_chapter)
+				end_verse = max([haftara.end_verse[x] for x in [i for i in range(4) if end_chapter == haftara.end_chapter[i]]])
+				chapter_idx = start_chapter - 1
+				verse_idx = start_verse - 1
+				while True:
+					chapter = haftara.book[0].chapters[chapter_idx]
+					verse = chapter.verses[verse_idx]
+					verse.parasha = parasha
+					haftara.verses.append(verse)
+					if chapter_idx == end_chapter - 1 and verse_idx == end_verse - 1:
+						break
+					if verse_idx < len(chapter.verses) - 1:
+						verse_idx += 1
+					else:
+						verse_idx = 0
+						chapter_idx += 1
+
+				self.books[b].parashot[p].haftara = haftara
+
 
 tanakh = Tanakh()
+tanakh.__postinit__()
 
 Bible = []
 for x in range(len(bible_arr)):

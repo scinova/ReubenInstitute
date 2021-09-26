@@ -87,17 +87,13 @@ def view_parasha_smet(book_no, parasha_no):
 	parasha = book.parashot[parasha_no - 1]
 	return render_template('tanakh-parasha-smet.html', parasha=parasha, re=re, Span=common.Span, SpanKind=common.SpanKind, VerseKind=common.VerseKind)
 
-@app.route('/tanakh/<int:book_no>/<int:chapter_no>/<int:verse_no>/edit', methods=['GET','POST'])
+@app.route('/tanakh/<int:book_no>/<int:chapter_no>/<int:verse_no>/p<int:parasha_book_no>.<int:parasha_no>/edit', methods=['GET','POST'])
 @app.route('/tanakh/<int:book_no>/p<int:parasha_no>/<int:chapter_no>/<int:verse_no>/edit', methods=['GET','POST'])
-def verse_edit(book_no, chapter_no, verse_no, parasha_no=None):
+def verse_edit(book_no, chapter_no, verse_no, parasha_book_no=None, parasha_no=None):
 	book = common.tanakh.books[book_no - 1]
 	chapter = book.chapters[chapter_no - 1]
 	verse = chapter.verses[verse_no - 1]
 	if request.method == 'POST':
-		if verse.title != request.form['title']:
-			verse.title = request.form['title']
-			verse.save_title()
-			print ("SAVE TITLE")
 		if verse.text != request.form['mikra_text']:
 			verse.text = request.form['mikra_text']
 			verse.text = unicodedata.normalize('NFD', verse.text)
@@ -108,6 +104,10 @@ def verse_edit(book_no, chapter_no, verse_no, parasha_no=None):
 			verse.save_rashi()
 			print ("SAVE RASHI")
 		if verse.has_onkelos:
+			if verse.title != request.form['title']:
+				verse.title = request.form['title']
+				verse.save_title()
+				print ("SAVE TITLE")
 			if verse.onkelos_text != request.form['onkelos_text']:
 				verse.onkelos_text = request.form['onkelos_text']
 				verse.save_onkelos()
@@ -125,6 +125,11 @@ def verse_edit(book_no, chapter_no, verse_no, parasha_no=None):
 				verse.jerusalmi_trans_text = request.form['jerusalmi_trans_text']
 				verse.save_jerusalmi_translation()
 				print ("SAVE JERUSALMI TRANSLATION")
+		if verse.has_jonathan:
+			if verse.jonathan_text != request.form['jonathan_text']:
+				verse.jonathan_text = request.form['jonathan_text']
+				verse.save_jonathan()
+				print ("SAVE JONATHAN")
 		if verse.has_targum:
 			if verse.targum_text != request.form['targum_text'].replace('\r\n', '\u2028'):
 				verse.targum_text = request.form['targum_text'].replace('\r\n', '\u2028')
@@ -132,7 +137,9 @@ def verse_edit(book_no, chapter_no, verse_no, parasha_no=None):
 			if verse.targum_trans_text != request.form['targum_trans_text'].replace('\r\n', '\u2028'):
 				verse.targum_trans_text = request.form['targum_trans_text'].replace('\r\n', '\u2028')
 				verse.save_targum_translation()
-		if parasha_no:
+		if parasha_book_no:
+			return redirect('/tanakh/%d/p%d#h%d.%d.%d'%(parasha_book_no, parasha_no, book.number, chapter.number, verse.number))
+		elif parasha_no:
 			return redirect('/tanakh/%d/p%d#%d.%d'%(book.number, parasha_no, chapter.number, verse.number))
 		else:
 			return redirect('/tanakh/%d/%d#%d'%(book.number, verse.chapter.number, verse.number))
