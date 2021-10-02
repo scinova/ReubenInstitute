@@ -424,7 +424,8 @@ class NVerse:
 			return []
 		text = re.sub('"([^"]+)"', r'“\1”', text)
 		text = re.sub("'([^']+)'", r"‘\1’", text)
-		text = re.sub('-', '–', text)
+		text = re.sub(' -', ' \u2013', text)
+		text = re.sub('-', '\u2011', text)
 		alternative_items = list(re.finditer('\[([^|]*)\|([^]]+)\]', text))
 		for item in alternative_items:
 			start, end = item.span()
@@ -528,9 +529,10 @@ class NVerse:
 	@property
 	def mikra(self):
 		text = self.text
-		text = re.sub('-', '–', text)
 		text = re.sub('"([^"]+)"', r'“\1”', text)
 		text = re.sub("'([^']+)'", r"‘\1’", text)
+		text = re.sub(' -', ' \u2013', text)
+		text = re.sub('-', '\u2011', text)
 		aliyot_items = list(re.finditer('\{(ראשון|שני|שלישי|רביעי|חמישי|ששי|שביעי|מפטיר)\} ', text))
 		for item in aliyot_items:
 			start, end = item.span()

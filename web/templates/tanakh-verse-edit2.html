@@ -56,18 +56,17 @@
 	<input type="hidden" name="parasha_no" value="{{parasha_no}}" />
 	<button type="submit">שמור</button>
 <form>
+
 <table>
 	<tr>
-		<td>׳</td>
-		<td>״</td>
-	</tr>
-	<tr>
-		<td>־</td>
-		<td>…</td>
-	</tr>
-	<tr>
-		<td>“</td>
-		<td>”</td>
+		<td><button onclick="navigator.clipboard.writeText('׳');return false;">׳</button></td>
+		<td><button onclick="navigator.clipboard.writeText('״');return false;">״</button></td>
+		<td><button onclick="navigator.clipboard.writeText('־');return false;">־</button></td>
+		<td><button onclick="navigator.clipboard.writeText('…');return false;">…</button></td>
+		<td><button onclick="navigator.clipboard.writeText('“');return false;">“</button></td>
+		<td><button onclick="navigator.clipboard.writeText('”');return false;">”</button></td>
+		<td><button onclick="navigator.clipboard.writeText('‘');return false;">‘</button></td>
+		<td><button onclick="navigator.clipboard.writeText('’');return false;">’</button></td>
 	</tr>
 </table>
 

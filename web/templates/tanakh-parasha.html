@@ -42,13 +42,11 @@
 					<span class="aliya">{ס}</span>
 				{% endif %}
 				<a href="/tanakh/{{verse.chapter.book.number}}/p{{parasha.number}}/{{verse.chapter.number}}/{{verse.number}}/edit"><span class="verseno">{{verse.hebrew_number}}</span></a>&nbsp;
-
-				{% for span in spans %}
-					{% set value = span.value.replace('-', '–') %}
+				{%- for span in spans %}
 					{% set value = span.value.replace('\f', '') %}
-					{% set value = span.value.replace('הְ', 'ﬣְ').replace('עְ',
+					{% set value = value.replace('הְ', 'ﬣְ').replace('עְ',
 							'ﬠְ').replace('הּ', 'ﬣּ') %}
-					{% set value = re.sub('([\.\,\;\:\!\?\––“”‘’"]+)', '<span class="punctuation">\\1</span>', value) %}
+					{% set value = re.sub('([\.\,\;\:\!\?\u2013\u2011“”‘’"]+)', '<span class="punctuation">\\1</span>', value) %}
 					{% set value = re.sub('([׃׀]+)', '<span class="cantillations">\\1</span>', value) %}
 					{%- if span.kind == SpanKind.MAJUSCULE -%}
 						<span class="majuscule">{{value}}</span>
@@ -288,9 +286,8 @@
 				{% endif %}
 				<a href="/tanakh/{{verse.chapter.book.number}}/{{verse.chapter.number}}/{{verse.number}}/p{{parasha.book.number}}.{{parasha.number}}/edit"><span class="verseno">{{verse.hebrew_number}}</span></a>&nbsp;
 				{% for span in spans %}
-					{% set value = span.value.replace('-', '–') %}
 					{% set value = span.value.replace('\f', '') %}
-					{% set value = span.value.replace('הְ', 'ﬣְ').replace('עְ',
+					{% set value = value.replace('הְ', 'ﬣְ').replace('עְ',
 							'ﬠְ').replace('הּ', 'ﬣּ') %}
 					{% set value = re.sub('([\.\,\;\:\!\?\––“”‘’"]+)', '<span class="punctuation">\\1</span>', value) %}
 					{% set value = re.sub('([׃׀]+)', '<span class="cantillations">\\1</span>', value) %}
