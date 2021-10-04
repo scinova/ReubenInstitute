@@ -1,14 +1,24 @@
 Requirements
 ------------
 
+apt install git mc python-is-python3
+
 apt install python3-flask
-pat-install python3-pip
+apt install python3-pip
+apt install font-manager
+font-manager -i fonts/SBL_Hbrw.ttf fonts/Shlomo.ttf fonts/Reuven.ttf
+
+
 
 pip3 install python-hebrew-numbers
 
 wget https://bootstrap.pypa.io/pip/2.7/get-pip.py
-pip2 install enum
-pip2 install python-hebrew-numbers
+python get-pip.py
+pip install --upgrade pip
+
+pip install enum
+pip install python-hebrew-numbers
+
 
 
 TAGS

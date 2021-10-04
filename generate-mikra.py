@@ -26,25 +26,30 @@ defineColorRGB("Silver", 0xcc, 0xcc, 0xcc)
 defineColorRGB("Gray", 0x66, 0x66, 0x66)
 defineColorRGB('Green', 0x94, 0xa3, 0)
 
-font = "SBL Hebrew Regular"
+font1 = "SBL Hebrew Regular"
 font2 = "Shlomo Regular"
-createCharStyle("Default Character Style", font, 15, fillcolor='Black', language='he')
-createCharStyle("chapterno", font, 10, fillcolor='Silver', language='he')
-createCharStyle("verseno", font, 8, fillcolor='Silver', language='he')
-createCharStyle("mikra", font, 15, fillcolor='Black', language='he')
-createCharStyle("punctuation", font, 15, fillcolor='Blue', language='he')
-createCharStyle("transparent", font, 15, fillcolor='White', language='he')
-createCharStyle("aliya", font2, 10, fillcolor='Silver', language='he')
-createCharStyle("keri", font, 15, fillcolor='Silver', language='he')
-createCharStyle("majuscule", font, 20, fillcolor='Black', language='he')
-createCharStyle("minuscule", font, 12, fillcolor='Black', language='he')
-createCharStyle("cantillation", font, 15, fillcolor='Blue', language='he')
-createCharStyle("dcantillation", font, 15, fillcolor='Red', language='he')
-createCharStyle("punctuation", font, 15, fillcolor='Blue', language='he')
-createCharStyle("translation", font, 12, fillcolor='Black', language='he')
-createCharStyle("ttranslation", font, 9, fillcolor='Black', language='he')
-createCharStyle("nonliteral", font, 12, fillcolor='Red', language='he')
-createCharStyle("addition", font, 11, fillcolor='Blue', language='he')
+styles = [
+	["Default Character Style", font1, 15, 'Black'],
+	["chapterno", font1, 10, 'Silver'],
+	["verseno", font1, 8, 'Silver'],
+	["mikra", font1, 15, 'Black'],
+	["punctuation", font1, 15, 'Blue'],
+	["transparent", font1, 15, 'White'],
+	["aliya", font1, 10, 'Silver'],
+	["keri", font1, 15, 'Silver'],
+	["majuscule", font1, 20, 'Black'],
+	["minuscule", font1, 12, 'Black'],
+	["cantillation", font1, 15, 'Blue'],
+	["dcantillation", font1, 15, 'Red'],
+	["punctuation", font1, 15, 'Blue'],
+	["translation", font1, 12, 'Black'],
+	["ttranslation", font1, 9, 'Black'],
+	["nonliteral", font1, 12, 'Red'],
+	["addition", font1, 11, 'Blue']
+	]
+for style in styles:
+	name, font, size, fillcolor = style
+	createCharStyle(name, font, size, fillcolor=fillcolor) #language='he')
 
 createParagraphStyle("Default Paragraph Style", linespacingmode=1, alignment=ALIGN_BLOCK)
 createParagraphStyle("mikra", linespacingmode=0, linespacing=18, alignment=ALIGN_BLOCK)
@@ -53,7 +58,7 @@ createParagraphStyle("paragraph-closed", linespacingmode=1, alignment=ALIGN_BLOC
 
 def add_text(frame, text, char_style=None, paragraph_style=None):
 	#text = common.remove_cantillations(text)
-	length = len(text)
+	length = len(unicode(text))
 	pos = getTextLength(frame)
 	insertText(text, pos, frame)
 	selectText(pos, length, frame)
@@ -71,7 +76,7 @@ scribus.progressTotal(len(parasha.verses))
 scribus.progressReset()
 progress = 0
 paragraphs = parasha.paragraphs
-for paragraph in paragraphs[:6]:
+for paragraph in paragraphs[:1]:
 	for subparagraph in paragraph:
 		# MIKRA
 		is_first_subparagraph = subparagraph == paragraph[0]
@@ -236,17 +241,19 @@ setTextDirection(DIRECTION_RTL, frame)
 
 selectText(0, getTextLength(frame), frame)
 content = getAllText(frame)
-cantillations = list(reversed(list(re.finditer(u'[\u0591-\u05af\u05bd\u05c3\u05c0]+', content))))
-punctuations = list(reversed(list(re.finditer(u'[\.\'\!\?\;\:]+', content))))
-scribus.progressTotal(len(cantillations))
+cantillations = list(reversed(list(re.finditer(ur'[\u0591-\u05af\u05bd\u05c3\u05c0]+', content))))
+punctuations = list(reversed(list(re.finditer(ur'[\.\'\!\?\;\:]+', content))))
+
+scribus.progressTotal(len(unicode(cantillations)))
 scribus.progressReset()
 for progress, i in enumerate(cantillations):
 	selectText(i.start(), i.end() - i.start(), frame)
 	setCharacterStyle('dcantillation', frame)
 	scribus.progressSet(progress)
-#scribus.progressTotal(len(punctuations))
+
+#scribus.progressTotal(len(unicode(punctuations)))
 #scribus.progressReset()
-#for progress, i in enumerate(punctuations):
+#for progress, i in enumerate(punctuations):#
 #	selectText(i.start(), i.end() - i.start(), frame)
 #	setCharacterStyle('punctuation', frame)
 #	scribus.progressSet(progress)
