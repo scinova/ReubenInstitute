@@ -23,7 +23,7 @@
 		{% set jerusalmi_variations = [] %}
 		{% set jerusalmi_trans_variations = [] %}
 
-		{% if subparagraph[0].title %}<h2>{{subparagraph[0].title}}</h2>{% endif %}
+		{% if subparagraph[0].title_text %}<h2>{{subparagraph[0].title_text}}</h2>{% endif %}
 		<div class="mikra justify">
 			{% for verse in subparagraph %}
 				<a name="{{verse.chapter.number}}.{{verse.number}}"></a>

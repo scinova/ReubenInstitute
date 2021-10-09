@@ -6,12 +6,12 @@
 	{% if verse.has_onkelos %}
 		<div>
 			<label>כותרת</lebel>
-			<textarea name="title">{{verse.title}}</textarea>
+			<textarea name="title_text">{{verse.title_text}}</textarea>
 		</div>
 	{% endif %}
 	<div>
 		<label>מקרא</label>
-		<textarea name="mikra_text" style="font-family: sbl">{{verse.text}}</textarea>
+		<textarea name="mikra_text" style="font-family: sbl">{{verse.mikra_text}}</textarea>
 	</div>
 	{% if verse.has_onkelos %}
 		<div>

@@ -94,49 +94,31 @@ def verse_edit(book_no, chapter_no, verse_no, parasha_book_no=None, parasha_no=N
 	chapter = book.chapters[chapter_no - 1]
 	verse = chapter.verses[verse_no - 1]
 	if request.method == 'POST':
-		if verse.text != request.form['mikra_text']:
-			verse.text = request.form['mikra_text']
-			verse.text = unicodedata.normalize('NFD', verse.text)
-			verse.save_mikra()
-			print ("SAVE MIKRA")
+		if verse.mikra_text != request.form['mikra_text']:
+			verse.mikra_text = request.form['mikra_text']
+			verse.mikra_text = unicodedata.normalize('NFD', verse.mikra_text)
 		if verse.rashi_text != request.form['rashi_text'].replace('\r\n', '\u2028'):
 			verse.rashi_text = request.form['rashi_text'].replace('\r\n', '\u2028')
-			verse.save_rashi()
-			print ("SAVE RASHI")
+		if 'title_text' in request.form and verse.title_text != request.form['title_text']:
+			verse.title_text = request.form['title_text']
 		if verse.has_onkelos:
-			if verse.title != request.form['title']:
-				verse.title = request.form['title']
-				verse.save_title()
-				print ("SAVE TITLE")
 			if verse.onkelos_text != request.form['onkelos_text']:
 				verse.onkelos_text = request.form['onkelos_text']
-				verse.save_onkelos()
-				print ("SAVE ONKELOS")
 			if verse.onkelos_trans_text != request.form['onkelos_trans_text']:
 				verse.onkelos_trans_text = request.form['onkelos_trans_text']
-				verse.save_onkelos_translation()
-				print ("SAVE ONKELOS TRANSLATION")
 		if verse.has_jerusalmi:
 			if verse.jerusalmi_text != request.form['jerusalmi_text']:
 				verse.jerusalmi_text = request.form['jerusalmi_text']
-				verse.save_jerusalmi()
-				print ("SAVE JERUSALMI")
 			if verse.jerusalmi_trans_text != request.form['jerusalmi_trans_text']:
 				verse.jerusalmi_trans_text = request.form['jerusalmi_trans_text']
-				verse.save_jerusalmi_translation()
-				print ("SAVE JERUSALMI TRANSLATION")
 		if verse.has_jonathan:
 			if verse.jonathan_text != request.form['jonathan_text']:
 				verse.jonathan_text = request.form['jonathan_text']
-				verse.save_jonathan()
-				print ("SAVE JONATHAN")
 		if verse.has_targum:
 			if verse.targum_text != request.form['targum_text'].replace('\r\n', '\u2028'):
 				verse.targum_text = request.form['targum_text'].replace('\r\n', '\u2028')
-				verse.save_targum()
 			if verse.targum_trans_text != request.form['targum_trans_text'].replace('\r\n', '\u2028'):
 				verse.targum_trans_text = request.form['targum_trans_text'].replace('\r\n', '\u2028')
-				verse.save_targum_translation()
 		if parasha_book_no:
 			return redirect('/tanakh/%d/p%d#h%d.%d.%d'%(parasha_book_no, parasha_no, book.number, chapter.number, verse.number))
 		elif parasha_no:
