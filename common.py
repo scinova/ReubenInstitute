@@ -285,11 +285,24 @@ class Article:
 		self.title = title
 		self.he_title = he_title
 
+	@property
+	def text(self):
+		filename = os.path.join('%1d.%02d'%(book_ind, chapter_no), '/%02d.txt'%article_no)
+		path = os.path.join(DB_PATH, 'zohar', filename)
+		return open(filename).read()
+
+	@property
+	def translation(self):
+		filename = os.path.join('%1d.%02d'%(book_ind, chapter_no), '/%02dt.txt'%article_no)
+		path = os.path.join(DB_PATH, 'zohar', filename)
+		return open(filename).read()
+
 class ZoharChapter:
-	def __init__(self, no):
-		self.no = no
-		self.hno = hebrew_numbers.int_to_gematria(no, gershayim=False)
-		self.hnog = hebrew_numbers.int_to_gematria(no)
+	def __init__(self, number):
+		self.number = number
+		self.hebrew_number = hebrew_numbers.int_to_gematria(number)
+		#self.hno = hebrew_numbers.int_to_gematria(no, gershayim=False)
+		#self.hnog = hebrew_numbers.int_to_gematria(no)
 		self.articles = []
 
 class Verse:
@@ -385,20 +398,476 @@ class NVerse:
 		self.parasha = None
 		self.number = number
 		self.hebrew_number = hebrew_numbers.int_to_gematria(number)
-		self.title = ''
-		self.text = text
-		self.onkelos_text = ''
-		self.onkelos_trans_text = ''
-		self.jerusalmi_text = ''
-		self.jerusalmi_trans_text = ''
-		self.jonathan_text = ''
-		self.jonathan_trans_text = ''
-		self.targum_text = ''
-		self.targum_trans_text = ''
-		self.rashi_text = ''
+
+		self._mikra_text = text
+		self._title_text = ''
+		self._onkelos_text = ''
+		self._onkelos_trans_text = ''
+		self._jerusalmi_text = ''
+		self._jerusalmi_trans_text = ''
+		self._jonathan_text = ''
+		self._jonathan_trans_text = ''
+		self._targum_text = ''
+		self._targum_trans_text = ''
+		self._rashi_text = ''
 
 	def __repr__(self):
 		return "Verse %d.%d.%d"%(self.chapter.book.number, self.chapter.number, self.number)
+
+	@property
+	def book(self):
+		return self.chapter.book
+
+	def get_text(self, name):
+		if self.__dict__['_' + name + '_text']:
+			return self.__dict__['_' + name + '_text']
+		filename = '%02d.%03d.txt'%(self.book.number, self.chapter.number)
+		data = open(os.path.join(DB_PATH, name, filename)).read()
+		value = data.split('\n')[self.number - 1]
+		self.__dict__['_' + name + '_text'] = value
+		return value
+
+	def set_text(self, name, value):
+		self.__dict__['_' + name + '_text'] = value
+		filename = '%02d.%03d.txt'%(self.book.number, self.chapter.number)
+		path = os.path.join(DB_PATH, name, filename)
+		lines = open(path).read().split('\n')
+		lines[self.number - 1] = value
+		data = '\n'.join(lines)
+		open(path, 'w').write(data)
+
+	@property
+	def mikra_text(self):
+		return self.get_text('mikra')
+
+	@mikra_text.setter
+	def mikra_text(self, value):
+		self.set_text('mikra', value)
+
+	@property
+	def title_text(self):
+		return self.get_text('title')
+
+	@title_text.setter
+	def title_text(self, value):
+		self.set_text(self, value)
+
+	@property
+	def onkelos_text(self):
+		if not self.has_onkelos:
+			return
+		return self.get_text('onkelos')
+
+	@onkelos_text.setter
+	def onkelos_text(self, value):
+		if not self.has_onkelos:
+			return
+		self.set_text('onkelos', value)
+
+	@property
+	def onkelos_trans_text(self):
+		if not self.has_onkelos:
+			return
+		return self.get_text('onkelos_trans')
+
+	@onkelos_trans_text.setter
+	def onkelos_trans_text(self, value):
+		if not self.has_onkelos:
+			return
+		self.set_text('onkelos_trans', value)
+
+	@property
+	def jerusalmi_text(self):
+		if not self.has_jerusalmi:
+			return
+		return self.get_text('jerusalmi')
+
+	@jerusalmi_text.setter
+	def jerusalmi_text(self, value):
+		if not self.has_jerusalmi:
+			return
+		self.set_text('jerusalmi', value)
+
+	@property
+	def jerusalmi_trans_text(self):
+		if not self.has_jerusalmi:
+			return
+		return self.get_text('jerusalmi_trans')
+
+	@jerusalmi_trans_text.setter
+	def jerusalmi_trans_text(self, value):
+		if not self.has_jerusalmi:
+			return
+		self.set_text('jerusalmi_trans', value)
+
+	@property
+	def jonathan_text(self):
+		if not self.has_jonathan:
+			return
+		return self.get_text('jonathan')
+
+	@jonathan_text.setter
+	def jonathan_text(self, value):
+		if not self.has_jonathan:
+			return
+		self.set_text('jonathan', value)
+
+	@property
+	def jonathan_trans_text(self):
+		if not self.has_jonathan:
+			return
+		return self.get_text('jonathan_trans')
+
+	@jonathan_trans_text.setter
+	def jonathan_trans_text(self, value):
+		if not self.has_jonathan:
+			return
+		self.set_text('jonathan_trans', value)
+
+	@property
+	def targum_text(self):
+		if not self.has_targum:
+			return
+		return self.get_text('targum')
+
+	@targum_text.setter
+	def targum_text(self, value):
+		if not self.has_targum:
+			return
+		self.set_text('targum', value)
+
+	@property
+	def targum_trans_text(self):
+		if not self.has_targum:
+			return
+		return self.get_text('targum_trans')
+
+	@targum_trans_text.setter
+	def targum_trans_text(self, value):
+		if not self.has_targum:
+			return
+		self.set_text('targum_trans', value)
+
+	@property
+	def rashi_text(self):
+		return self.get_text('rashi')
+
+	@rashi_text.setter
+	def rashi_text(self, value):
+		self.set_text('rashi', value)
+
+
+	"""
+
+	@property
+	def title(self):
+		if (self.chapter.book.number == 27 and self.chapter.number in [1]) or self.chapter.book.number == 1:
+			filename = '%02d.%03d.txt'%(self.book.number, self.chapter.number)
+			data = open(os.path.join(DB_PATH, 'headings', filename)).read()
+			text = data.split('\n')[self.number - 1]
+			if text.endswith('\n'):
+				text = text[:-1]
+			return text
+
+	@title.setter
+	def title(self, value):
+		filename = '%02d.%03d.txt'%(self.book.number, self.chapter.number)
+		path = os.path.join(DB_PATH, 'headings', filename)
+		f = open(path)
+		lines = f.read().split('\n')
+		lines[self.number - 1] = value
+		data = '\n'.join(lines)
+		open(path, 'w').write(data)
+
+	@property
+	def onkelos_text(self):
+		if self.book.has_onkelos:
+			if self._onkelos_text:
+				return self._onkelos_text
+			filename = '%1d.%02d.txt'%(self.book.number, self.chapter.number)
+			data = open(os.path.join(DB_PATH, 'onkelos', filename)).read()
+			text = data.split('\n')[self.number - 1]
+			if text.endswith('\n'):
+				text = text[:-1]
+			self._onkelos_text = text
+			return self._onkelos_text
+
+	@onkelos_text.setter
+	def onkelos_text(self, value):
+		if not self.book.has_onkelos:
+			return
+		if value == self._onkelos_text:
+			return
+		self._onkelos_text = value
+		filename = '%01d.%02d.txt'%(self.book.number, self.chapter.number)
+		path = os.path.join(DB_PATH, 'onkelos', filename)
+		f = open(path)
+		lines = f.read().split('\n')
+		lines[self.number - 1] = value
+		data = '\n'.join(lines)
+		open(path, 'w').write(data)
+
+	@property
+	def onkelos_trans_text(self):
+		if self.book.has_onkelos:
+			if self._onkelos_trans_text:
+				return self._onkelos_trans_text
+			filename = '%1d.%02d.txt'%(self.book.number, self.chapter.number)
+			data = open(os.path.join(DB_PATH, 'onkelost', filename)).read()
+			text = data.split('\n')[self.number - 1]
+			if text.endswith('\n'):
+				text = text[:-1]
+			self._onkelos_trans_text = text
+			return self._onkelos_trans_text
+
+	@onkelos_trans_text.setter
+	def onkelos_trans_text(self, value):
+		if not self.book.has_onkelos:
+			return
+		if value != self._onkelos_trans_text:
+			self._onkelos_trans_text = value
+		filename = '%01d.%02d.txt'%(self.book.number, self.chapter.number)
+		path = os.path.join(DB_PATH, 'onkelost', filename)
+		f = open(path)
+		lines = f.read().split('\n')
+		lines[self.number - 1] = value
+		data = '\n'.join(lines)
+		open(path, 'w').write(data)
+
+	@property
+	def jerusalmi_text(self):
+		if self.book.has_jerusalmi:
+			if self._jerusalmi_text:
+				return self._jerusalmi_text
+			filename = '%1d.%02d.txt'%(self.book.number, self.chapter.number)
+			data = open(os.path.join(DB_PATH, 'jerusalmi', filename)).read()
+			text = data.split('\n')[self.number - 1]
+			if text.endswith('\n'):
+				text = text[:-1]
+			self._jerusalmi_text = text
+			return self._jerusalmi_text
+
+	@jerusalmi_text.setter
+	def jerusalmi_text(self, value):
+		if not self.book.has_jerusalmi:
+			return
+		if value != self._jerusalmi_text:
+			self._jerusalmi_text = value
+		filename = '%01d.%02d.txt'%(self.book.number, self.chapter.number)
+		path = os.path.join(DB_PATH, 'jerusalmi', filename)
+		f = open(path)
+		lines = f.read().split('\n')
+		lines[self.number - 1] = value
+		data = '\n'.join(lines)
+		open(path, 'w').write(data)
+
+	@property
+	def jerusalmi_trans_text(self):
+		if self.book.has_jerusalmi:
+			if self._jerusalmi_trans_text:
+				return self._jerusalmi_trans_text
+			filename = '%1d.%02d.txt'%(self.book.number, self.chapter.number)
+			data = open(os.path.join(DB_PATH, 'jerusalmit', filename)).read()
+			text = data.split('\n')[self.number - 1]
+			if text.endswith('\n'):
+				text = text[:-1]
+			self._jerusalmi_trans_text = text
+			return self._jerusalmi_trans_text
+
+	@jerusalmi_trans_text.setter
+	def jerusalmi_trans_text(self, value):
+		if not self.book.has_jerusalmi:
+			return
+		if value != self._jerusalmi_trans_text:
+			self._jerusalmi_trans_text = value
+		filename = '%01d.%02d.txt'%(self.book.number, self.chapter.number)
+		path = os.path.join(DB_PATH, 'jerusalmit', filename)
+		f = open(path)
+		lines = f.read().split('\n')
+		lines[self.number - 1] = value
+		data = '\n'.join(lines)
+		open(path, 'w').write(data)
+
+	@property
+	def jonathan_text(self):
+		if self.book.has_jonathan:
+			if self._jonathan_text:
+				return self._jonathan_text
+			filename = '%1d.%02d.txt'%(self.book.number, self.chapter.number)
+			data = open(os.path.join(DB_PATH, 'jonathan', filename)).read()
+			text = data.split('\n')[self.number - 1]
+			if text.endswith('\n'):
+				text = text[:-1]
+			self._jonathan_text = text
+			return self._jonathan_text
+
+	@jonathan_text.setter
+	def jonathan_text(self, value):
+		if not self.book.has_jonathan:
+			return
+		if value != self._jonathan_text:
+			self._jonathan_text = value
+		filename = '%01d.%02d.txt'%(self.book.number, self.chapter.number)
+		path = os.path.join(DB_PATH, 'jonathan', filename)
+		f = open(path)
+		lines = f.read().split('\n')
+		lines[self.number - 1] = value
+		data = '\n'.join(lines)
+		open(path, 'w').write(data)
+
+	@property
+	def jonathan_trans_text(self):
+		if self.book.has_jonathan:
+			if self._jonathan_trans_text:
+				return self._jonathan_trans_text
+			filename = '%1d.%02d.txt'%(self.book.number, self.chapter.number)
+			data = open(os.path.join(DB_PATH, 'jonathant', filename)).read()
+			text = data.split('\n')[self.number - 1]
+			if text.endswith('\n'):
+				text = text[:-1]
+			self._jonathan_trans_text = text
+			return self._jonathan_trans_text
+
+	@property
+	def targum_text(self):
+		if self.book.has_targum:
+			if self._targum_text:
+				return self._targum_text
+			filename = '%1d.%02d.txt'%(self.book.number, self.chapter.number)
+			data = open(os.path.join(DB_PATH, 'targum', filename)).read()
+			text = data.split('\n')[self.number - 1]
+			if text.endswith('\n'):
+				text = text[:-1]
+			self._targum_text = text
+			return self._targum_text
+
+	@property
+	def targum_trans_text(self):
+		if self.book.has_targum:
+			if self._targum_trans_text:
+				return self._targum_trans_text
+			filename = '%1d.%02d.txt'%(self.book.number, self.chapter.number)
+			data = open(os.path.join(DB_PATH, 'targumt', filename)).read()
+			text = data.split('\n')[self.number - 1]
+			if text.endswith('\n'):
+				text = text[:-1]
+			self._targum_trans_text = text
+			return self._targum_trans_text
+
+	@property
+	def rashi_text(self):
+		if self._rashi_text:
+			return self._rashi_text
+		filename = '%02d.%03d.txt'%(self.book.number, self.chapter.number)
+		data = open(os.path.join(DB_PATH, 'rashi', filename)).read()
+		text = data.split('\n')[self.number - 1]
+		if text.endswith('\n'):
+			text = text[:-1]
+		self._rashi_text = text
+		return self._rashi_text
+
+	@rashi_text.setter
+	def rashi_text(self, value):
+		if value != self._jonathan_text:
+			self._jonathan_text = value
+		filename = '%02d.%03d.txt'%(self.book.number, self.chapter.number)
+		path = os.path.join(DB_PATH, 'rashi', filename)
+		f = open(path)
+		lines = f.read().split('\n')
+		lines[self.number - 1] = self.rashi_text
+		data = '\n'.join(lines)
+		open(path, 'w').write(data)
+
+	def save_mikra(self):
+		filename = '%02d.%03d.txt'%(self.chapter.book.number, self.chapter.number)
+		path = os.path.join(DB_PATH, 'tanakh', filename)
+		f = open(path)
+		lines = f.read().split('\n')
+		lines[self.number - 1] = self.text
+		data = '\n'.join(lines)
+		open(path, 'w').write(data)
+
+
+
+
+
+	def save_targum(self):
+		filename = '%02d.%03d.txt'%(self.chapter.book.number, self.chapter.number)
+		path = os.path.join(DB_PATH, 'targum', filename)
+		f = open(path)
+		lines = f.read().split('\n')
+		lines[self.number - 1] = self.targum_text
+		data = '\n'.join(lines)
+		open(path, 'w').write(data)
+
+	def save_targum_translation(self):
+		filename = '%02d.%03d.txt'%(self.chapter.book.number, self.chapter.number)
+		path = os.path.join(DB_PATH, 'targumt', filename)
+		f = open(path)
+		lines = f.read().split('\n')
+		lines[self.number - 1] = self.targum_trans_text
+		data = '\n'.join(lines)
+		open(path, 'w').write(data)
+
+
+
+
+
+
+			
+			
+
+
+
+	
+		filename = '%02d.%03d.txt'%(self.book.number, self.number)
+		f = open(os.path.join(DB_PATH, 'rashi', filename))
+		for idx, text in enumerate(f):
+			if text.endswith('\n'):
+				text = text[:-1]
+			self.verses[idx].rashi_text = text
+
+
+		if book.has_jerusalmi:
+			filename = '%1d.%02d.txt'%(self.book.number, self.number)
+			f = open(os.path.join(DB_PATH, 'jerusalmi', filename))
+			for idx, text in enumerate(f):
+				if text.endswith('\n'):
+					text = text[:-1]
+				self.verses[idx].jerusalmi_text = text
+			filename = '%1d.%02d.txt'%(self.book.number, self.number)
+			f = open(os.path.join(DB_PATH, 'jerusalmit', filename))
+			for idx, text in enumerate(f):
+				#print (self.book.number, self.number, idx)
+				if text.endswith('\n'):
+					text = text[:-1]
+				self.verses[idx].jerusalmi_trans_text = text
+		if book.has_jonathan:
+			filename = '%1d.%02d.txt'%(book.number, self.number)
+			f = open(os.path.join(DB_PATH, 'jonathan', filename))
+			for idx, text in enumerate(f):
+				if text.endswith('\n'):
+					text = text[:-1]
+				if idx < len(self.verses):
+					self.verses[idx].jonathan_text = text
+
+		if book.has_targum:
+			filename = '%02d.%03d.txt'%(self.book.number, self.number)
+			f = open(os.path.join(DB_PATH, 'targum', filename))
+			for idx, text in enumerate(f):
+				if text.endswith('\n'):
+					text = text[:-1]
+				self.verses[idx].targum_text = text
+			filename = '%02d.%03d.txt'%(self.book.number, self.number)
+			f = open(os.path.join(DB_PATH, 'targumt', filename))
+			for idx, text in enumerate(f):
+				if text.endswith('\n'):
+					text = text[:-1]
+				self.verses[idx].targum_trans_text = text
+#		if (book.number == 27 and self.number in [1]) or \
+#				(book.number == 1 and self.number in [1, 2, 3, 4, 5, 6]):
+
+"""
 
 	@property
 	def kind(self):
@@ -626,107 +1095,6 @@ class NVerse:
 					spans.append(span)
 		return spans
 
-	def save_title(self):
-		filename = '%02d.%03d.txt'%(self.chapter.book.number, self.chapter.number)
-		path = os.path.join(DB_PATH, 'headings', filename)
-		f = open(path)
-		lines = f.read().split('\n')
-		lines[self.number - 1] = self.title
-		data = '\n'.join(lines)
-		open(path, 'w').write(data)
-
-	def save_mikra(self):
-		filename = '%02d.%03d.txt'%(self.chapter.book.number, self.chapter.number)
-		path = os.path.join(DB_PATH, 'tanakh', filename)
-		f = open(path)
-		lines = f.read().split('\n')
-		lines[self.number - 1] = self.text
-		data = '\n'.join(lines)
-		open(path, 'w').write(data)
-
-	def save_onkelos(self):
-		if not self.chapter.book.has_onkelos:
-			return
-		filename = '%01d.%02d.txt'%(self.chapter.book.number, self.chapter.number)
-		path = os.path.join(DB_PATH, 'onkelos', filename)
-		f = open(path)
-		lines = f.read().split('\n')
-		lines[self.number - 1] = self.onkelos_text
-		data = '\n'.join(lines)
-		open(path, 'w').write(data)
-
-	def save_onkelos_translation(self):
-		if not self.chapter.book.has_onkelos:
-			return
-		filename = '%01d.%02d.txt'%(self.chapter.book.number, self.chapter.number)
-		path = os.path.join(DB_PATH, 'onkelost', filename)
-		f = open(path)
-		lines = f.read().split('\n')
-		lines[self.number - 1] = self.onkelos_trans_text
-		data = '\n'.join(lines)
-		open(path, 'w').write(data)
-
-	def save_jerusalmi(self):
-		if not self.chapter.book.has_jerusalmi:
-			return
-		filename = '%01d.%02d.txt'%(self.chapter.book.number, self.chapter.number)
-		path = os.path.join(DB_PATH, 'jerusalmi', filename)
-		f = open(path)
-		lines = f.read().split('\n')
-		lines[self.number - 1] = self.jerusalmi_text
-		data = '\n'.join(lines)
-		open(path, 'w').write(data)
-
-	def save_jerusalmi_translation(self):
-		if not self.chapter.book.has_jerusalmi:
-			return
-		filename = '%01d.%02d.txt'%(self.chapter.book.number, self.chapter.number)
-		path = os.path.join(DB_PATH, 'jerusalmit', filename)
-		f = open(path)
-		lines = f.read().split('\n')
-		lines[self.number - 1] = self.jerusalmi_trans_text
-		data = '\n'.join(lines)
-		open(path, 'w').write(data)
-
-	def save_jonathan(self):
-		if not self.chapter.book.has_jonathan:
-			return
-		filename = '%01d.%02d.txt'%(self.chapter.book.number, self.chapter.number)
-		path = os.path.join(DB_PATH, 'jonathan', filename)
-		f = open(path)
-		lines = f.read().split('\n')
-		lines[self.number - 1] = self.jonathan_text
-		data = '\n'.join(lines)
-		open(path, 'w').write(data)
-
-
-	def save_targum(self):
-		filename = '%02d.%03d.txt'%(self.chapter.book.number, self.chapter.number)
-		path = os.path.join(DB_PATH, 'targum', filename)
-		f = open(path)
-		lines = f.read().split('\n')
-		lines[self.number - 1] = self.targum_text
-		data = '\n'.join(lines)
-		open(path, 'w').write(data)
-
-	def save_targum_translation(self):
-		filename = '%02d.%03d.txt'%(self.chapter.book.number, self.chapter.number)
-		path = os.path.join(DB_PATH, 'targumt', filename)
-		f = open(path)
-		lines = f.read().split('\n')
-		lines[self.number - 1] = self.targum_trans_text
-		data = '\n'.join(lines)
-		open(path, 'w').write(data)
-
-	def save_rashi(self):
-		filename = '%02d.%03d.txt'%(self.chapter.book.number, self.chapter.number)
-		path = os.path.join(DB_PATH, 'rashi', filename)
-		f = open(path)
-		lines = f.read().split('\n')
-		lines[self.number - 1] = self.rashi_text
-		data = '\n'.join(lines)
-		open(path, 'w').write(data)
-
 def verses_to_paragraphs(verses):
 	paragraphs = []
 	vbuffer = []
@@ -778,78 +1146,20 @@ class NChapter:
 		self.book = book
 		self.number = number
 		self.hebrew_number = hebrew_numbers.int_to_gematria(number)
-		self.verses = []
+		self._verses = []
+
+	@property
+	def verses(self):
+		if self._verses:
+			return self._verses
 		filename = '%02d.%03d.txt'%(self.book.number, self.number)
 		f = open(os.path.join(DB_PATH, 'tanakh', filename))
 		for number, text in enumerate(f, start=1):
 			if text.endswith('\n'):
 				text = text[:-1]
 			verse = NVerse(self, number, text)
-			self.verses.append(verse)
-		filename = '%02d.%03d.txt'%(self.book.number, self.number)
-		f = open(os.path.join(DB_PATH, 'rashi', filename))
-		for idx, text in enumerate(f):
-			if text.endswith('\n'):
-				text = text[:-1]
-			self.verses[idx].rashi_text = text
-		if book.has_onkelos:
-			filename = '%1d.%02d.txt'%(self.book.number, self.number)
-			f = open(os.path.join(DB_PATH, 'onkelos', filename))
-			for idx, text in enumerate(f):
-				if text.endswith('\n'):
-					text = text[:-1]
-				self.verses[idx].onkelos_text = text
-			filename = '%1d.%02d.txt'%(self.book.number, self.number)
-			f = open(os.path.join(DB_PATH, 'onkelost', filename))
-			for idx, text in enumerate(f):
-				if text.endswith('\n'):
-					text = text[:-1]
-				self.verses[idx].onkelos_trans_text = text
-		if book.has_jerusalmi:
-			filename = '%1d.%02d.txt'%(self.book.number, self.number)
-			f = open(os.path.join(DB_PATH, 'jerusalmi', filename))
-			for idx, text in enumerate(f):
-				if text.endswith('\n'):
-					text = text[:-1]
-				self.verses[idx].jerusalmi_text = text
-			filename = '%1d.%02d.txt'%(self.book.number, self.number)
-			f = open(os.path.join(DB_PATH, 'jerusalmit', filename))
-			for idx, text in enumerate(f):
-				#print (self.book.number, self.number, idx)
-				if text.endswith('\n'):
-					text = text[:-1]
-				self.verses[idx].jerusalmi_trans_text = text
-		if book.has_jonathan:
-			filename = '%1d.%02d.txt'%(book.number, self.number)
-			f = open(os.path.join(DB_PATH, 'jonathan', filename))
-			for idx, text in enumerate(f):
-				if text.endswith('\n'):
-					text = text[:-1]
-				if idx < len(self.verses):
-					self.verses[idx].jonathan_text = text
-		if book.has_targum:
-			filename = '%02d.%03d.txt'%(self.book.number, self.number)
-			f = open(os.path.join(DB_PATH, 'targum', filename))
-			for idx, text in enumerate(f):
-				if text.endswith('\n'):
-					text = text[:-1]
-				self.verses[idx].targum_text = text
-			filename = '%02d.%03d.txt'%(self.book.number, self.number)
-			f = open(os.path.join(DB_PATH, 'targumt', filename))
-			for idx, text in enumerate(f):
-				if text.endswith('\n'):
-					text = text[:-1]
-				self.verses[idx].targum_trans_text = text
-#		if (book.number == 27 and self.number in [1]) or \
-#				(book.number == 1 and self.number in [1, 2, 3, 4, 5, 6]):
-
-		if (book.number == 27 and self.number in [1]) or book.number == 1:
-			filename = '%02d.%03d.txt'%(self.book.number, self.number)
-			f = open(os.path.join(DB_PATH, 'headings', filename))
-			for idx, text in enumerate(f):
-				if text.endswith('\n'):
-					text = text[:-1]
-				self.verses[idx].title = text
+			self._verses.append(verse)
+		return self._verses
 
 	@property
 	def paragraphs(self):
@@ -1007,6 +1317,22 @@ for x in range(len(mishnah_arr)):
 		order.books.append(tractate)
 	Mishnah.append(order)
 
+
+class NZohar:
+	def __init__(self):
+		self.books = []
+		for book_idx in range(len(zohar_arr)):
+			name, chapter_arr = zohar_arr[book_idx]
+			book = Book('', name, book_idx + 1)
+			self.books.append(book)
+			for chapter_idx in range(len(chapter_arr)):
+				start_daf, start_amud, start_verse, end_daf, end_amud, end_verse, hname = chapter_arr[chapter_idx]
+				chapter = Chapter(chapter_idx + 1)
+				chapter.hname = hname
+
+
+zohar = NZohar()
+
 Zohar = []
 for x in range(len(zohar_arr)):
 	hname, chapter_arr = zohar_arr[x]
@@ -1023,7 +1349,6 @@ for x in range(len(zohar_arr)):
 				chapter.articles.append(article)
 		book.chapters.append(chapter)
 	Zohar.append(book)
-
 
 class Prayer:
 	def __init__(self, variation, kind):
