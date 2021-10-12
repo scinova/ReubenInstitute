@@ -581,6 +581,7 @@ class NVerse:
 			return []
 		text = re.sub('"([^"]+)"', r'“\1”', text)
 		text = re.sub("'([^']+)'", r"‘\1’", text)
+		text = re.sub('^- ', '\u2015 ', text)
 		text = re.sub(' -', ' \u2013', text)
 		text = re.sub('-', '\u2011', text)
 		alternative_items = list(re.finditer('\[([^|]*)\|([^]]+)\]', text))
