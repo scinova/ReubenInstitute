@@ -2,11 +2,11 @@
 {% block title %}זהר{% endblock %}
 {% block content %}
 <h1>זוהר</h1>
-{% for book in zohar %}
+{% for book in zohar.books %}
 	{% set oloop = loop %}
-	<h2>{{book.hname}}</h2>
+	<h2>{{book.title}}</h2>
 	{% for chapter in book.chapters %}
-		<a href="/zohar/{{book.ind}}/{{chapter.no}}">{{chapter.hname}}</a><br />
+		<a href="/zohar/{{book.number}}/{{chapter.number}}">{{chapter.title}}</a><br />
 	{% endfor %}
 	<br />
 {% endfor %}

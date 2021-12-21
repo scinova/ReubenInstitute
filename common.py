@@ -4,6 +4,7 @@
 import hebrew_numbers
 import os
 import re
+from enum import Enum
 
 ROOT_PATH = os.path.dirname(os.path.abspath(__file__))
 DB_PATH = os.path.join(ROOT_PATH, 'db')
@@ -13,6 +14,65 @@ def remove_cantillations(text):
 
 def remove_diacritics(text):
 	return re.sub('[\u05b0-\u05bc\u05c7\u05c1\u05c2]', '', text)
+
+
+class Person(Enum):
+	A = 1
+	B = 2
+	C = 3
+
+class Gender(Enum):
+	M = 'm'
+	F = 'f'
+	MF = 'm/f'
+
+class Count(Enum):
+	S = 's'
+	P = 'p'
+	SP = 's/p'
+
+class Tense(Enum):
+	P = 'past'
+	N = 'now'
+	F = 'future'
+	I = 'imperative'
+
+class Stem(Enum):
+	PAAL = 'paal' # simple active
+	NIFAL = 'nifal' # simple passive
+	PIEL = 'piel' # intensive active
+	PUAL = 'pual' # intensive active
+	HIFIL = 'hifil' # causative active
+	HUFAL = 'hufal' # causative passive
+	HITPAEL = 'hitpael' # reflexive
+
+class Noun:
+	def __init__(self, gender, kount):
+		self.gender = gender
+		self.count = kount
+
+noun = Noun(Gender.M, Count.S)
+
+class Verb:
+	def __init__(self, stem, root, person, gender, kount, tense):
+		self.stem = stem
+		self.root = root
+		self.person = person
+		self.gender = gender
+		self.count = kount
+		self.tense = tense
+
+verb = Verb(Stem.PAAL, 'אכל', Person.A, Gender.M, Count.S, Tense.I)
+
+class Word:
+	def __init__(self, string):
+		self._string = string
+
+class Particle:
+	def __init__(self):
+		pass
+
+		
 
 mishnah_arr = [
 	['Zeraim', 'זְרָעִים', [
@@ -204,6 +264,7 @@ parashot_arr = [
 		[33, 1, 34, 12, 'VeZot Haberakha', 'וְזֹאת הַבְּרָכָה', 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]]
 	]
 
+"""
 a = 1
 b = 2
 zohar_arr = [
@@ -304,6 +365,7 @@ class ZoharChapter:
 		#self.hno = hebrew_numbers.int_to_gematria(no, gershayim=False)
 		#self.hnog = hebrew_numbers.int_to_gematria(no)
 		self.articles = []
+"""
 
 class Verse:
 	def __init__(self, no, text):
@@ -312,7 +374,6 @@ class Verse:
 		self.hnog = hebrew_numbers.int_to_gematria(no)
 		self.text = text
 
-from enum import Enum
 class SpanKind(Enum):
 
 	PLAIN = 0
@@ -372,6 +433,16 @@ class Book:
 		self.hname = hname
 		self.ind = ind
 		self.chapters = []
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 
 #class Collection:
 #	def __init__(self):
@@ -1006,7 +1077,7 @@ for x in range(len(mishnah_arr)):
 		order.books.append(tractate)
 	Mishnah.append(order)
 
-
+"""
 class NZohar:
 	def __init__(self):
 		self.books = []
@@ -1038,6 +1109,7 @@ for x in range(len(zohar_arr)):
 				chapter.articles.append(article)
 		book.chapters.append(chapter)
 	Zohar.append(book)
+"""
 
 class Prayer:
 	def __init__(self, variation, kind):

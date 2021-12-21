@@ -302,6 +302,10 @@ span {
 	vertical-align: baseline;
 	}
 
+span.tag {
+	border: 1px solid red;
+	}
+
 div.mikra span.punctuation {
 	color: #b00;
 	}
@@ -397,7 +401,8 @@ span.legend {
 span.citation {
 	color: #600;
 	font-family: sbl;
-	font-family: scripture;
+	xfont-family: scripture;
+	xfont-weight: bold;
 	}
 
 span.info {
@@ -406,7 +411,7 @@ span.info {
 	}
 
 span.link {
-	color: #600;
+	color: #999	;
 	vertical-align: top;
 	vertical-align: middle;
 	font-size: 70%;

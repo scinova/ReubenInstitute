@@ -25,19 +25,22 @@ if all_content.count(content) != 1:
 	scribus.messageBox('Error', 'Select more unique text')
 	sys.exit(1)
 
-scribus.setRedraw(False)
+#scribus.setRedraw(False)
 pos = all_content.find(content)
 
-prefix = 'SC '
+#prefix = 'SC '
 scribus.selectText(pos, len(content))
-scribus.setCharacterStyle(prefix + 'regular', frame)
-scribus.selectText(0, 0)
+#scribus.setCharacterStyle(prefix + 'regular', frame)
 
-P = u'[\u05b0-\u05bc\u05c1\u05c2\u05c7]'
-C = u'[\u0591-\u05af\u05bd\u05bf]'
-L = u'[\u05d0-\u05ea]'
+#P = u'[\u05b0-\u05bc\u05c1\u05c2\u05c7]'
+#C = u'[\u0591-\u05af\u05bd\u05bf]'
+#L = u'[\u05d0-\u05ea]'
 
-styles = [
+scribus.deleteText()
+out = re.sub(u'[\u05b0-\u05bc]+', '', content)
+scribus.insertText(out, pos)
+
+"""styles = [
 	(ur'(?<=\u05c3\s)(((?:[\u05d0-\u05e0])|(?:[\u05d8-\u05e0][\u05d0-\u05d8]))\u00a0)', prefix + 'verse no'),
 	(ur'(?<=^)(((?:[\u05d0-\u05e0])|(?:[\u05d8-\u05e0][\u05d0-\u05d8]))\u00a0)', prefix + 'verse no'),
 	(u'[\u0591-\u05af\u05bd]+', prefix + 'cantillation'),
@@ -52,7 +55,8 @@ for pattern, style in styles:
 	for i in reversed(tuple(r)):
 		scribus.selectText(pos + i.start(), i.end() - i.start(), frame)
 		scribus.setCharacterStyle(style, frame)
-		c += 1
+		c += 1"""
+scribus.selectText(0, 0)
 scribus.setRedraw(True)
 scribus.docChanged(True)
 sys.exit()

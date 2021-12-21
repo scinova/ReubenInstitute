@@ -22,10 +22,8 @@ pip install python-hebrew-numbers
 
 
 TAGS
-{replace}
 [link]
 {{info}}
-<[bold]>
 
 MIKRA
 =====
@@ -45,7 +43,8 @@ _nonliteral_
 
 LITURGY
 =======
-<[bold]>
+<bold>
+{replace}
 
 ZOHAR
 =====

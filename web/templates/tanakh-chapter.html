@@ -4,10 +4,12 @@
 <h1>{{chapter.book.name}}, פרק {{chapter.hebrew_number}}</h1>
 
 {% for paragraph in chapter.paragraphs -%}
-	{% if paragraph.0.title %}
-		<h2>{{paragraph.0.title}}</h2>
-	{% endif %}
+	{% if paragraph != chapter.paragraphs.0 %}<hr />{% endif %}
 	{%- for subparagraph in paragraph %}
+
+
+
+	{% if paragraph.0.title_text %}<h2>{{paragraph.0.title}}</h2>{% endif %}
 		<div class="mikra justify">
 		{%- for verse in subparagraph -%}
 			<span class="verseno">{{verse.hebrew_number}}&nbsp;</span>

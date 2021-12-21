@@ -2,59 +2,54 @@
 {% block title %}{% endblock %}
 {% block content %}
 <a href="/zohar">זהר</a>
-{{book.hname}}
-<a href="/zohar/{{book.ind}}/{{chapter.no}}">{{chapter.hname}}</a><br />
-<h1></h1>
-{% for i in range(ar_texts|length) %}
-	<a href="/zohar/{{book.ind}}/{{chapter.no}}/{{article_no}}/edit/{{loop.index}}">edit</a><br />
+{{article.book.title}}
+<a href="/zohar/{{article.book.number}}/{{article.chapter.no}}">{{article.chapter.title}}</a><br />
+<h1>{{article.title}}</h1>
+{% for section_idx in range(article.sections|length) %}
+	<a href="/zohar/{{article.book.number}}/{{article.chapter.number}}/{{article.number}}/edit/{{loop.index}}">edit</a><br />
 	<a id="v{{loop.index}}"></a>
-	<div class="right">
-		<div class="verse" style="background-color:#ffc;font-family:sbl;">
-		{% set t = ar_texts[i] %}
-		{% for l in t.split('\n\n') %}
-			{% set dialog = l.startswith('- ') %}
-			{% set oloop = loop %}
-			<div class="outer justify{% if dialog %} dialog{% endif %}" {% if dialog %} style="background-color: #eee; padding: 0 10px 0; border-radius: 7px;"{% endif %}>
-				{% for p in l.split('\n') %}
-					{% set bdialog = p.startswith('- ') and loop.index != 1 %}
-					{% set p = re.sub('([א-ת]׳)', '<strong>\\1</strong>', p) %}
-					{% set p = re.sub('\(([^\)]+)' + ' נא ' + '([^)]+)\)',
-							'<span class="diff-this">\\1</span> <span class="diff-other">(<span class="diff-legend">אתרין&nbsp;אחרנין:&nbsp;</span>\\2)</span>', p) %}
-					{% set p = re.sub('(“[^”]+”)', '<span class="citation">\\1</span>', p) %}
-					{% set p = re.sub('{[^}]+}', '', p) %}
-					{% set p = re.sub('^\=(.+)', '<h1>\\1</h1>', p) %}
-					{% set p = re.sub('\s\(([א-ת]+)\s([א-ת]+)\s([א-ת]+)\)', '<span class="link">&nbsp;(\\1,\\2:\\3)</span>', p) %}
-					{% set p = re.sub('\s\(([א-ת]+)\s([א-ת]+)\s([א-ת]+)\s([א-ת]+)\)', '<span class="link">&nbsp;(\\1־\\2,\\3:\\4)</span>', p) %}
-					<div class="inner justify{% if bdialog %} dialog{% endif %}" sxtyle="border: 1px solid blue">{{p|safe}}</div>
-				{% endfor %}
-			</div>
-		{% endfor %}
+	<div class="section">
+		<div class="right justify">
+			{% for line in article.sections[section_idx] %}
+				{%- for span in article.parse(line) -%}
+					{%- if span.kind == SpanKind.SYNONYM -%}
+						<span class="synonym">(={{span.value}})</span>
+					{%- elif span.kind == SpanKind.EXPLANATION -%}
+						<span class="explanation"">(~{{span.value}})</span>
+					{%- elif span.kind == SpanKind.CORRECTION -%}
+						<span class="correction">[{{span.value}}]</span>
+					{%- elif span.kind == SpanKind.CITATION -%}
+						<span class="citation">“{{span.value}}”</span>
+					{%- elif span.kind == SpanKind.LINK -%}
+						<span class="link">({{span.value}})</span>
+					{%- elif span.kind == SpanKind.PLAIN -%}
+						<span class="plain">{{span.value}}</span>
+					{%- endif -%}
+				{%- endfor -%}
+				<br />
+			{% endfor %}
 		</div>
-	</div>
-	<div class="left">
-		<div class="verse" style="background-color:#ffc;font-family:sbl;">
-		{% set t = he_texts[i] %}
-		{% for l in t.split('\n\n') %}
-			{% set dialog = l.startswith('- ') %}
-			{% set oloop = loop %}
-			<div class="outer justify{% if dialog %} dialog{% endif %}"{% if dialog %} style="background-color: #eee; padding: 0 10px 0; border-radius: 7px;"{% endif %}>
-				{% for p in l.split('\n') %}
-					{% set bdialog = p.startswith('- ') and loop.index != 1 %}
-					{% set p = re.sub('\(([^\)]+)' + ' נא ' + '([^)]+)\)',
-							'<span class="diff-this">\\1</span> <span class="diff-other">(<span class="diff-legend">מקומות&nbsp;אחרים:&nbsp;</span>\\2)</span>', p) %}
-					{% set p = re.sub('(“[^”]+”)', '<span class="citation">\\1</span>', p) %}
-					{% set p = re.sub('_([^_]+)_', '<span class="addition">\\1</span>', p) %}
-					{% set p = re.sub('^\=(.+)', '<h1>\\1</h1>', p) %}
-					{% set p = re.sub('{[^}]+}', '', p) %}
-					{% set p = re.sub('\s\(([א-ת]+)\s([א-ת]+)\s([א-ת]+)\)', '<span class="link">&nbsp;(\\1,\\2:\\3)</span>', p) %}
-					{% set p = re.sub('\s\(([א-ת]+)\s([א-ת]+)\s([א-ת]+)\s([א-ת]+)\)', '<span class="link">&nbsp;(\\1־\\2,\\3:\\4)</span>', p) %}
-					<div class="inner justify{% if bdialog %} dialog{% endif %}">{{p|safe}}</div>
-				{% endfor %}
-			</div>
-		{% endfor %}
+		<div class="left justify">
+			{% for line in article.translation_sections[section_idx] %}
+				{%- for span in article.parse(line) -%}
+					{%- if span.kind == SpanKind.SYNONYM -%}
+						<span class="synonym">(={{span.value}})</span>
+					{%- elif span.kind == SpanKind.EXPLANATION -%}
+						<span class="explanation"">(~{{span.value}})</span>
+					{%- elif span.kind == SpanKind.CORRECTION -%}
+						<span class="correction">[{{span.value}}]</span>
+					{%- elif span.kind == SpanKind.CITATION -%}
+						<span class="citation">“{{span.value}}”</span>
+					{%- elif span.kind == SpanKind.LINK -%}
+						<span class="link">({{span.value}})</span>
+					{%- elif span.kind == SpanKind.PLAIN -%}
+						<span class="plain">{{span.value}}</span>
+					{%- endif -%}
+				{%- endfor -%}
+				<br />
+			{% endfor %}
 		</div>
-	</div>
-	<div class="clear"></div>
+		<div class="clear"></div>
+	</div><br />
 {% endfor %}
-<div class="clear"></div>
 {% endblock %}

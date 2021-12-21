@@ -8,9 +8,12 @@ app.jinja_options['trim_blocks'] = True
 app.jinja_options['lstrip_blocks'] = True
 print (app.jinja_options)
 print (dir(app.jinja_env))
+app.jinja_env.lstrip_blocks = True
+app.jinja_env.trim_blocks = True
+
 print (app.jinja_env.lstrip_blocks)
 print (app.jinja_env.trim_blocks)
-
+	
 #app.jinja_env.trim_blocks = True
 #app.jinja_env.lstrip_blocks = True
 from flask import render_template, send_from_directory, request, redirect
@@ -21,8 +24,10 @@ import re
 import unicodedata
 import os
 
-numbers = [hebrew_numbers.int_to_gematria(x) for x in range(0, 151)]
+import Zohar
+ZOHAR = Zohar.Zohar()
 
+numbers = [hebrew_numbers.int_to_gematria(x) for x in range(0, 151)]
 
 @app.route('/@@/<path:filename>')
 def files(filename):
@@ -149,34 +154,36 @@ def view_tractate(order_no, tractate_no):
 
 @app.route('/zohar/')
 def zohar():
-	return render_template('zohar.html', zohar=common.Zohar)
+	return render_template('zohar.html', zohar=ZOHAR)
 
-@app.route('/zohar-articles')
-def zohar_articles():
-	articles = {}
-	for i in ['1.01', '3.28']:
-		data = open('../db/zohar/%s/00.txt'%i).read().split('\n')
-		articles[i] = data
-	return render_template('zohar-articles.html', articles=articles)
+@app.route('/zohar/<int:book_number>/<int:chapter_number>')
+def zohar_chapter(book_number, chapter_number):
+#	filename = os.path.join(DB_PATH, '%1d%02d'%(book_number, chapter_name), '00.txt')
+#	data = open(filename).read.split('\n')
 
-@app.route('/zohar/<int:book_ind>/<int:chapter_no>/<int:article_no>')
-def view_zohar_article(book_ind, chapter_no, article_no):
-	book = common.Zohar[book_ind - 1]
-	chapter = book.chapters[chapter_no - 1]
-	print (chapter.hname)
-	t = open('../db/zohar/%1d.%02d/%02d.txt'%(book_ind, chapter_no, article_no)).read()
-	t = re.sub('"([^"]+)"', '“\\1”', t)
-	t = re.sub("'([^']+)'", '‘\\1’', t)
-	ar_texts = t.split('\n\n\n')
-	t = open('../db/zohar/%1d.%02d/%02dt.txt'%(book_ind, chapter_no, article_no)).read()
-	t = re.sub('"([^"]+)"', '“\\1”', t)
-	t = re.sub("'([^']+)'", '‘\\1’', t)
-	he_texts = t.split('\n\n\n')
-	return render_template('zohar-article.html', ar_texts=ar_texts, he_texts=he_texts, re=re,
-		book=book, chapter=chapter, article_no=article_no)
+#	articles = {}
+##	for i in ['1.01', '3.28']:
+#		data = open('../db/zohar/%s/00.txt'%i).read().split('\n')
+#		articles[i] = data
+	chapter = ZOHAR.books[book_number - 1].chapters[chapter_number - 1]
+	return render_template('zohar-chapter.html', chapter=chapter)
 
-@app.route('/zohar/<int:book_ind>/<int:chapter_no>/<int:article_no>/edit/<int:paragraph_no>', methods=['GET','POST'])
-def edit_zohar_paragraph(book_ind, chapter_no, article_no, paragraph_no):
+@app.route('/zohar/<int:book_number>/<int:chapter_number>/<int:article_number>')
+def view_zohar_article(book_number, chapter_number, article_number):
+	book = ZOHAR.books[book_number - 1]
+	chapter = book.chapters[chapter_number - 1]
+	article = chapter.articles[article_number - 1]
+	return render_template('zohar-article.html', article=article, SpanKind=common.SpanKind)
+
+@app.route('/zohar/<int:book_ind>/<int:chapter_number>/<int:article_number>/edit/<int:paragraph_number>', methods=['GET','POST'])
+def edit_zohar_paragraph(book_number, chapter_number, article_number, paragraph_number):
+	book = ZOHAR.books[book_number - 1]
+	chapter = book.chapters[chapter_number - 1]
+	article = chapter.articles[article_number - 1]
+
+	text = article.sections
+
+
 	book = common.Zohar[book_ind - 1]
 	chapter = book.chapters[chapter_no - 1]
 	ar_texts = open('../db/zohar/%1d.%02d/%02d.txt'%(book_ind, chapter_no, article_no)).read().split('\n\n\n')
