@@ -157,7 +157,7 @@ def zohar():
 	return render_template('zohar.html', zohar=ZOHAR)
 
 @app.route('/zohar/<int:book_number>/<int:chapter_number>')
-def zohar_chapter(book_number, chapter_number):
+def view_zohar_chapter(book_number, chapter_number):
 #	filename = os.path.join(DB_PATH, '%1d%02d'%(book_number, chapter_name), '00.txt')
 #	data = open(filename).read.split('\n')
 
@@ -175,17 +175,31 @@ def view_zohar_article(book_number, chapter_number, article_number):
 	article = chapter.articles[article_number - 1]
 	return render_template('zohar-article.html', article=article, SpanKind=common.SpanKind)
 
-@app.route('/zohar/<int:book_ind>/<int:chapter_number>/<int:article_number>/edit/<int:paragraph_number>', methods=['GET','POST'])
+@app.route('/zohar/<int:book_number>/<int:chapter_number>/<int:article_number>/edit/<int:paragraph_number>', methods=['GET','POST'])
 def edit_zohar_paragraph(book_number, chapter_number, article_number, paragraph_number):
 	book = ZOHAR.books[book_number - 1]
 	chapter = book.chapters[chapter_number - 1]
 	article = chapter.articles[article_number - 1]
+	if request.method == 'POST':
+		paragraphs = article.text.split('\n\n\n')
+		paragraphs[paragraph_number - 1] = request.form['text'].replace('\r\n', '\n').replace('\r', '')
+		article.text = '\n\n\n'.join(paragraphs).replace('\r\n', '\n')
+		paragraphs = article.translation.split('\n\n\n')
+		paragraphs[paragraph_number - 1] = request.form['translation'].replace('\r\n', '\n')
+		article.translation = '\n\n\n'.join(paragraphs)
+		return redirect('/zohar/%d/%d/%d#v%d'%(book_number, chapter_number, article_number, paragraph_number))
+	if request.method == 'GET':
+		text = article.text.split("\n\n\n")[paragraph_number - 1]
+		translation = article.translation.split("\n\n\n")[paragraph_number - 1]
 
+		return render_template('zohar-edit-paragraph.html', text=text, translation=translation,
+				book=book, chapter=chapter, article_number=article_number, paragraph_number=paragraph_number)
+
+
+def older():
 	text = article.sections
-
-
-	book = common.Zohar[book_ind - 1]
-	chapter = book.chapters[chapter_no - 1]
+#	book = common.Zohar[book_ind - 1]
+#	chapter = book.chapters[chapter_no - 1]
 	ar_texts = open('../db/zohar/%1d.%02d/%02d.txt'%(book_ind, chapter_no, article_no)).read().split('\n\n\n')
 	he_texts = open('../db/zohar/%1d.%02d/%02dt.txt'%(book_ind, chapter_no, article_no)).read().split('\n\n\n')
 	if request.method == 'POST':
@@ -229,8 +243,8 @@ def edit_zohar_paragraph(book_number, chapter_number, article_number, paragraph_
 		return render_template('zohar-edit-paragraph.html', ar_text=ar_text, he_text=he_text, re=re,
 				book=book, chapter=chapter, article_no=article_no, paragraph_no=paragraph_no)
 
-@app.route('/zohar/<int:book_ind>/<int:chapter_no>')
-def view_zohar_chapter(book_ind, chapter_no):
+@app.route('/x/zohar/<int:book_ind>/<int:chapter_no>')
+def OLDview_zohar_chapter(book_ind, chapter_no):
 	book = common.Zohar[book_ind - 1]
 	chapter = book.chapters[chapter_no - 1]
 	print (chapter.articles)

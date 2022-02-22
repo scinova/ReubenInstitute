@@ -298,8 +298,8 @@ hr {
 
 span {
 	display: block-inline;
-	height: 1em;
-	vertical-align: baseline;
+	xheight: 1em;
+	xvertical-align: baseline;
 	}
 
 span.tag {
@@ -403,6 +403,7 @@ span.citation {
 	font-family: sbl;
 	xfont-family: scripture;
 	xfont-weight: bold;
+	vertical-align: center;
 	}
 
 span.info {
@@ -411,8 +412,8 @@ span.info {
 	}
 
 span.link {
-	color: #999	;
-	vertical-align: top;
+	color: #339;
+	certical-align: top;
 	vertical-align: middle;
 	font-size: 70%;
 	xfont-family: script;

@@ -4,13 +4,8 @@
 	<a href="/zohar">זהר</a>
 	<br />
 	<h1>{{chapter.title}}</h1>
-	{% if chapter.articles %}
-		{% for article in chapter.articles %}
-			<a href="/zohar/{{article.book.number}}/{{article.chapter.number}}/{{article.number}}">{{article.title}}</a><br />
-		{% endfor %}
-	{% else %}
-		{% for verse in chapter.verses %}
-			<p><span class="verseno">{{verse.hno}}</span> {{verse.text}}</p>
-		{% endfor %}
-	{% endif %}
+	{% for article in chapter.articles %}
+		{{loop.index}} {{article.text|length}} {{article.translation|length}}
+		<a href="/zohar/{{article.book.number}}/{{article.chapter.number}}/{{article.number}}">{{article.title}}</a><br />
+	{% endfor %}
 {% endblock %}

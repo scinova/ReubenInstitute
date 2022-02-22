@@ -3,7 +3,7 @@
 {% block content %}
 <a href="/zohar">זהר</a>
 {{article.book.title}}
-<a href="/zohar/{{article.book.number}}/{{article.chapter.no}}">{{article.chapter.title}}</a><br />
+<a href="/zohar/{{article.book.number}}/{{article.chapter.number}}">{{article.chapter.title}}</a><br />
 <h1>{{article.title}}</h1>
 {% for section_idx in range(article.sections|length) %}
 	<a href="/zohar/{{article.book.number}}/{{article.chapter.number}}/{{article.number}}/edit/{{loop.index}}">edit</a><br />
@@ -21,7 +21,9 @@
 					{%- elif span.kind == SpanKind.CITATION -%}
 						<span class="citation">“{{span.value}}”</span>
 					{%- elif span.kind == SpanKind.LINK -%}
-						<span class="link">({{span.value}})</span>
+						<span class="link">{{span.value}}</span>
+					{%- elif span.kind == SpanKind.ALTERNATIVE -%}
+						<span class="alternative">{{span.value}}</span>
 					{%- elif span.kind == SpanKind.PLAIN -%}
 						<span class="plain">{{span.value}}</span>
 					{%- endif -%}
@@ -41,7 +43,9 @@
 					{%- elif span.kind == SpanKind.CITATION -%}
 						<span class="citation">“{{span.value}}”</span>
 					{%- elif span.kind == SpanKind.LINK -%}
-						<span class="link">({{span.value}})</span>
+						<span class="link">{{span.value}}</span>
+					{%- elif span.kind == SpanKind.ALTERNATIVE -%}
+						<span class="alternative">{{span.value}}</span>
 					{%- elif span.kind == SpanKind.PLAIN -%}
 						<span class="plain">{{span.value}}</span>
 					{%- endif -%}
