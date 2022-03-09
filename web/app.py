@@ -27,6 +27,8 @@ import os
 import Zohar
 ZOHAR = Zohar.Zohar()
 
+import Aramaic
+aramaic = Aramaic.Aramaic()
 numbers = [hebrew_numbers.int_to_gematria(x) for x in range(0, 151)]
 
 @app.route('/@@/<path:filename>')
@@ -152,6 +154,16 @@ def view_tractate(order_no, tractate_no):
 		chapters.append(chapter)
 	return render_template('mishnah-tractate.html', chapters=chapters, order=order, tractate=tractate)
 
+@app.route('/dictionary', methods=['POST', 'GET'])
+def dictionary():
+	if request.method == 'GET':
+		text = open('../aramaic.txt').read()
+		return render_template('dictionary.html', text=text)
+	if request.method == 'POST':
+		text = request.form['text'].replace('\r\n', '\n')
+		open('../aramaic.txt', 'w').write(text)
+		return redirect('/dictionary')
+
 @app.route('/zohar/')
 def zohar():
 	return render_template('zohar.html', zohar=ZOHAR)
@@ -173,7 +185,7 @@ def view_zohar_article(book_number, chapter_number, article_number):
 	book = ZOHAR.books[book_number - 1]
 	chapter = book.chapters[chapter_number - 1]
 	article = chapter.articles[article_number - 1]
-	return render_template('zohar-article.html', article=article, SpanKind=common.SpanKind)
+	return render_template('zohar-article.html', aramaic=aramaic, article=article, SpanKind=common.SpanKind, re=re)
 
 @app.route('/zohar/<int:book_number>/<int:chapter_number>/<int:article_number>/edit/<int:paragraph_number>', methods=['GET','POST'])
 def edit_zohar_paragraph(book_number, chapter_number, article_number, paragraph_number):
@@ -192,8 +204,8 @@ def edit_zohar_paragraph(book_number, chapter_number, article_number, paragraph_
 		text = article.text.split("\n\n\n")[paragraph_number - 1]
 		translation = article.translation.split("\n\n\n")[paragraph_number - 1]
 
-		return render_template('zohar-edit-paragraph.html', text=text, translation=translation,
-				book=book, chapter=chapter, article_number=article_number, paragraph_number=paragraph_number)
+		return render_template('zohar-edit-paragraph.html', re=re, aramaic=aramaic, text=text, translation=translation,
+				book=book, chapter=chapter, article=article, Zohar=Zohar, article_number=article_number, paragraph_number=paragraph_number)
 
 
 def older():

@@ -141,9 +141,9 @@ class Article:
 			return []
 		text = re.sub('"([^"]+)"', r'“\1”', text)
 		text = re.sub("'([^']+)'", r"‘\1’", text)
-		text = re.sub('^- ', '\u2015 ', text)#―
-		text = re.sub(' -', ' \u2013', text)#–
-		text = re.sub('-', '\u2011', text)
+		#text = re.sub('^- ', '\u2015 ', text)#―
+		#text = re.sub(' -', ' \u2013', text)#–
+		#text = re.sub('-', '\u2011', text)
 		alternative_items = list(re.finditer('\[([^|]*)\|([^]]+)\]', text))
 		for item in alternative_items:
 			start, end = item.span()
@@ -172,7 +172,7 @@ class Article:
 		for item in citation_items:
 			start, end = item.span()
 			text = text[0:start] + (end - start) * 'X' + text[end:]
-		link_items = list(re.finditer('\(([\u05d0-\u05ea־]+ [\u05d0-\u05ea]{1,3} [\u05d0-\u05ea]{1,3})\)', text))
+		link_items = list(re.finditer(' \(([\u05d0-\u05ea־]+ [\u05d0-\u05ea]{1,3} [\u05d0-\u05ea]{1,3})\)', text))
 		for item in link_items:
 			start, end = item.span()
 			text = text[0:start] + (end - start) * 'X' + text[end:]

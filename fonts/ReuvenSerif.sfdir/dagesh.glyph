@@ -1,0 +1,21 @@
+StartChar: dagesh
+Encoding: 80 1468 45
+Width: 0
+GlyphClass: 4
+Flags: W
+AnchorPoint: "Dagesh" 0 519 mark 0
+LayerCount: 2
+Fore
+SplineSet
+0 437 m 0,0,1
+ -31 437 -31 437 -50.5 460.5 c 128,-1,2
+ -70 484 -70 484 -70 519 c 0,3,4
+ -70 555 -70 555 -50 578 c 128,-1,5
+ -30 601 -30 601 0 601 c 0,6,7
+ 31 601 31 601 50.5 577.5 c 128,-1,8
+ 70 554 70 554 70 519 c 0,9,10
+ 70 483 70 483 50 460 c 128,-1,11
+ 30 437 30 437 0 437 c 0,0,1
+EndSplineSet
+Validated: 1
+EndChar

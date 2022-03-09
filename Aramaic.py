@@ -12,6 +12,9 @@ def remove_diacritics(text):
 
 class Aramaic:
 	def load(self):
+		self._dictionary = {}
+		self._words = {}
+		self._spellings = []
 		lines = open(DBFILE).read().split('\n')
 		for line in lines:
 			parts = line.split(' ')
@@ -46,7 +49,7 @@ class Aramaic:
 		self.load()
 
 	def spell(self, text):
-		#print ('spell', text)
+		print ('spell', text)
 		word_items = list(re.finditer('([\u05d0-\u05ea\u05b0-\u05bc\u05c1\u05c2\u05bd]+)', text))
 		for item in word_items:
 			text = text[:item.start()] + ((item.end() - item.start()) * 'X') + text[item.end():]
@@ -67,6 +70,7 @@ class Aramaic:
 					s += value
 				elif item in other_items:
 					s += item.groups()[0]
+		print ('spell > ', s)
 		return s
 
 	def sx():

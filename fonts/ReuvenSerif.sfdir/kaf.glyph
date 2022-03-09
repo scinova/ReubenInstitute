@@ -1,0 +1,43 @@
+StartChar: kaf
+Encoding: 102 1499 67
+Width: 942
+GlyphClass: 2
+Flags: W
+AnchorPoint: "Top" 507 1317 basechar 0
+AnchorPoint: "Holam" 42 1105 basechar 0
+AnchorPoint: "Dagesh" 503 538 basechar 0
+AnchorPoint: "Bottom Narrow Point" 500 0 basechar 0
+AnchorPoint: "Bottom Regular Point" 500 0 basechar 0
+AnchorPoint: "Bottom Wide Point" 500 0 basechar 0
+LayerCount: 2
+Fore
+SplineSet
+774 507 m 2,0,1
+ 774 507 774 507 774 517 c 0,2,3
+ 774 596 774 596 766 646.5 c 128,-1,4
+ 758 697 758 697 736.5 737.5 c 128,-1,5
+ 715 778 715 778 673.5 796 c 128,-1,6
+ 632 814 632 814 567 814 c 2,7,-1
+ 292 814 l 2,8,9
+ 224 814 224 814 190 854.5 c 128,-1,10
+ 156 895 156 895 156 962 c 0,11,12
+ 156 1056 156 1056 217 1126 c 1,13,-1
+ 243 1126 l 1,14,15
+ 259 1056 259 1056 343 1056 c 2,16,-1
+ 549 1056 l 2,17,18
+ 866 1056 866 1056 866 537 c 0,19,20
+ 866 413 866 413 854 325.5 c 128,-1,21
+ 842 238 842 238 818.5 185.5 c 128,-1,22
+ 795 133 795 133 769 104 c 128,-1,23
+ 743 75 743 75 705 54 c 0,24,25
+ 610 0 610 0 454 0 c 2,26,-1
+ 125 0 l 1,27,-1
+ 170 240 l 1,28,-1
+ 549 240 l 2,29,30
+ 670 240 670 240 722 300 c 128,-1,31
+ 774 360 774 360 774 507 c 2,0,1
+EndSplineSet
+Validated: 1048577
+PairPos2: "kerning-2" pe dx=-36 dy=0 dh=-36 dv=0 dx=0 dy=0 dh=0 dv=0
+PairPos2: "kerning-2" ayin.wide dx=-123 dy=0 dh=-123 dv=0 dx=0 dy=0 dh=0 dv=0
+EndChar

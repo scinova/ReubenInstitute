@@ -314,7 +314,11 @@ div.mikra span.cantillations {
 	color: #f4eadc;
 	}
 
-span.plain: {
+span.plain {
+	}
+
+span.silent {
+	color: #999;
 	}
 
 span.chapterno {

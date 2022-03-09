@@ -16,4 +16,27 @@
 <div class="clear"></div>
 	<button type="submit">שמור</button>
 <form>
+
+
+<div>
+<hr />
+{% for s in article.parse(text) %}
+	<textarea>{{aramaic.spell(s.value)}}</textarea><br /><br />
+{% endfor %}
+<hr />
+</div>
+
+<div>
+{% set t = aramaic.remove_diacritics(text) %}
+{% set t = re.compile('[\-\,\.\:\!\?]').sub('', text) %}
+{% set t = re.compile('\s+').sub(' ', t) %}
+{{t}}
+{% set words = t.split(' ') %}
+{% for word in words %}
+	{{word}}
+	{{aramaic.search(word)}}
+	<br />
+{% endfor %}
+</div>
+
 {% endblock %}

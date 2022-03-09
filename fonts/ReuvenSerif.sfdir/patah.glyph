@@ -1,0 +1,17 @@
+StartChar: patah
+Encoding: 75 1463 40
+Width: 0
+GlyphClass: 4
+Flags: W
+AnchorPoint: "Bottom Regular Point" 0 0 mark 0
+LayerCount: 2
+Fore
+SplineSet
+150 -288 m 1,0,-1
+ -150 -288 l 1,1,-1
+ -150 -194 l 1,2,-1
+ 150 -194 l 1,3,-1
+ 150 -288 l 1,0,-1
+EndSplineSet
+Validated: 1
+EndChar

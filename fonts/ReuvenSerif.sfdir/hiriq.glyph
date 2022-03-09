@@ -1,0 +1,21 @@
+StartChar: hiriq
+Encoding: 72 1460 37
+Width: 0
+GlyphClass: 4
+Flags: W
+AnchorPoint: "Bottom Narrow Point" 0 0 mark 0
+LayerCount: 2
+Fore
+SplineSet
+0 -333 m 0,0,1
+ -31 -333 -31 -333 -50.5 -309.5 c 128,-1,2
+ -70 -286 -70 -286 -70 -251 c 0,3,4
+ -70 -215 -70 -215 -50 -192 c 128,-1,5
+ -30 -169 -30 -169 0 -169 c 0,6,7
+ 31 -169 31 -169 50.5 -192.5 c 128,-1,8
+ 70 -216 70 -216 70 -251 c 0,9,10
+ 70 -287 70 -287 50 -310 c 128,-1,11
+ 30 -333 30 -333 0 -333 c 0,0,1
+EndSplineSet
+Validated: 1
+EndChar

@@ -1,0 +1,15 @@
+StartChar: emdash
+Encoding: 122 8212 101
+Width: 2048
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+54 463 m 1,0,1
+ 50 519 50 519 54 576 c 1,2,-1
+ 1996 576 l 1,3,4
+ 1998 518 1998 518 1996 463 c 1,5,-1
+ 54 463 l 1,0,1
+EndSplineSet
+Validated: 33
+EndChar
