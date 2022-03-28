@@ -39,7 +39,7 @@ class Aramaic:
 
 	def save(self):
 		s = '\n'.join([' '.join([k, v]) for k, v in self._dictionary.items()])
-		open(DBFILE + 'x', 'w').write(s)
+		open(DBFILE, 'w').write(s)
 		print (s)
 
 	def __init__(self):

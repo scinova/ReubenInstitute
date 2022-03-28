@@ -479,3 +479,13 @@ textarea {
 	font-family: ReuvenSerif;
 	font-size: 1.2em;
 	}
+
+input {
+	border: 1px solid #333;
+	font-family: ReuvenSerif;
+	font-size: 1.2em;
+}
+
+label {
+	font-family: ReuvenSerif;
+}

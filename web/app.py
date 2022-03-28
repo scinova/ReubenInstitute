@@ -154,15 +154,59 @@ def view_tractate(order_no, tractate_no):
 		chapters.append(chapter)
 	return render_template('mishnah-tractate.html', chapters=chapters, order=order, tractate=tractate)
 
-@app.route('/dictionary', methods=['POST', 'GET'])
-def dictionary():
+@app.route('/aramaic', methods=['POST', 'GET'])
+def edit_aramaic():
 	if request.method == 'GET':
 		text = open('../aramaic.txt').read()
-		return render_template('dictionary.html', text=text)
+		return render_template('aramaic.html', text=text, aramaic=aramaic)
 	if request.method == 'POST':
 		text = request.form['text'].replace('\r\n', '\n')
 		open('../aramaic.txt', 'w').write(text)
-		return redirect('/dictionary')
+		return redirect('/aramaic')
+
+@app.route('/aramaic/<string:word>/edit', methods=['POST', 'GET'])
+def edit_aramaic_word(word):
+	if request.method == 'GET':
+		data = aramaic._dictionary[word]
+		if ' ' in data:
+			data = data.split(' ')[0]
+		spelling, rest = data.split(':')
+		translation = ''
+		if '=' in rest:
+			rest, translation = rest.split('=')
+		options = rest.split(',')
+		ddata = spelling, options, translation
+		return render_template('aramaic-word-edit.html', word=word,
+				data=data, ddata=ddata, aramaic=aramaic)
+	if request.method == 'POST':
+		kind = request.form['kind']
+		spelling = request.form['spelling']
+		clean_spelling = remove_diacritics(spelling).replace('[', '').replace(']', '')
+		if kind == 'כינוי':
+			s = '%s:%s,%s,%s,%s=%s'%(
+					spelling,
+					kind,
+					request.form['person'],
+					request.form['gender'],
+					request.form['count'],
+					request.form['translation'])
+			print (aramaic._dictionary[clean_spelling])
+			print (s)
+			aramaic._dictionary[clean_spelling] = s
+			aramaic.save()
+			return redirect('/aramaic#%s'%clean_spelling)
+		if kind == 'שם-עצם':
+			s = '%s:%s'%(spelling, kind)
+			if request.form['root']:
+				s += '(%s)'%request.form['root']
+			s += ',%s,%s'%(request.form['gender'], request.form['count'])
+			if request.form['translation']:
+				s += '=%s'%request.form['translation']
+			print (aramaic._dictionary[clean_spelling])
+			print (s)
+			aramaic._dictionary[clean_spelling] = s
+			aramaic.save()
+			return redirect('/aramaic#%s'%clean_spelling)
 
 @app.route('/zohar/')
 def zohar():
