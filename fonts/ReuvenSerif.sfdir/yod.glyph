@@ -30,6 +30,6 @@ SplineSet
  400 795 l 2,21,22
  400 560 400 560 247 480 c 1,0,-1
 EndSplineSet
-Validated: 1048577
-PairPos2: "kerning-2" gimel dx=-30 dy=0 dh=-30 dv=0 dx=0 dy=0 dh=0 dv=0
+Validated: 1
+PairPos2: "kerning-2" gimel dx=-30 dy=0 dh=-30 dv=0 [ddx={} ddy={} ddh={} ddv={}] dx=0 dy=0 dh=0 dv=0 [ddx={} ddy={} ddh={} ddv={}]
 EndChar

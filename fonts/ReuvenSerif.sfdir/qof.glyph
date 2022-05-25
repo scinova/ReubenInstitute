@@ -4,7 +4,7 @@ Width: 997
 GlyphClass: 2
 Flags: W
 AnchorPoint: "Top" 507 1317 basechar 0
-AnchorPoint: "Holam" 28 1105 basechar 0
+AnchorPoint: "Holam" 225 1300 basechar 0
 AnchorPoint: "Dagesh" 503 538 basechar 0
 AnchorPoint: "Bottom Narrow Point" 492 0 basechar 0
 AnchorPoint: "Bottom Wide Point" 597 -2 basechar 0
@@ -47,4 +47,5 @@ SplineSet
  312 -267 l 2,44,45
  312 -293 312 -293 225 -345 c 1,38,-1
 EndSplineSet
+Validated: 1
 EndChar

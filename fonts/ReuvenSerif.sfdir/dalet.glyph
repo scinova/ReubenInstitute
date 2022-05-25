@@ -37,10 +37,11 @@ SplineSet
  723 764 723 764 706 736 c 0,33,34
  671 681 671 681 671 596 c 0,0,1
 EndSplineSet
-PairPos2: "kerning-2" pe dx=-48 dy=0 dh=-48 dv=0 dx=0 dy=0 dh=0 dv=0
-PairPos2: "kerning-2" mem dx=-86 dy=0 dh=-86 dv=0 dx=0 dy=0 dh=0 dv=0
-PairPos2: "kerning-2" kaf dx=-41 dy=0 dh=-41 dv=0 dx=0 dy=0 dh=0 dv=0
-PairPos2: "kerning-2" gimel dx=-122 dy=0 dh=-122 dv=0 dx=0 dy=0 dh=0 dv=0
-PairPos2: "kerning-2" bet dx=-47 dy=0 dh=-47 dv=0 dx=0 dy=0 dh=0 dv=0
-PairPos2: "kerning-2" ayin.wide dx=-39 dy=0 dh=-39 dv=0 dx=0 dy=0 dh=0 dv=0
+Validated: 1
+PairPos2: "kerning-2" ayin.wide dx=-39 dy=0 dh=-39 dv=0 [ddx={} ddy={} ddh={} ddv={}] dx=0 dy=0 dh=0 dv=0 [ddx={} ddy={} ddh={} ddv={}]
+PairPos2: "kerning-2" bet dx=-47 dy=0 dh=-47 dv=0 [ddx={} ddy={} ddh={} ddv={}] dx=0 dy=0 dh=0 dv=0 [ddx={} ddy={} ddh={} ddv={}]
+PairPos2: "kerning-2" gimel dx=-122 dy=0 dh=-122 dv=0 [ddx={} ddy={} ddh={} ddv={}] dx=0 dy=0 dh=0 dv=0 [ddx={} ddy={} ddh={} ddv={}]
+PairPos2: "kerning-2" kaf dx=-41 dy=0 dh=-41 dv=0 [ddx={} ddy={} ddh={} ddv={}] dx=0 dy=0 dh=0 dv=0 [ddx={} ddy={} ddh={} ddv={}]
+PairPos2: "kerning-2" mem dx=-86 dy=0 dh=-86 dv=0 [ddx={} ddy={} ddh={} ddv={}] dx=0 dy=0 dh=0 dv=0 [ddx={} ddy={} ddh={} ddv={}]
+PairPos2: "kerning-2" pe dx=-48 dy=0 dh=-48 dv=0 [ddx={} ddy={} ddh={} ddv={}] dx=0 dy=0 dh=0 dv=0 [ddx={} ddy={} ddh={} ddv={}]
 EndChar

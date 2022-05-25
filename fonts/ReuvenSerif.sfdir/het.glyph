@@ -4,7 +4,7 @@ Width: 1065
 GlyphClass: 2
 Flags: W
 AnchorPoint: "Top" 567 1317 basechar 0
-AnchorPoint: "Holam" 54 1300 basechar 0
+AnchorPoint: "Holam" 253 1300 basechar 0
 AnchorPoint: "Dagesh" 583 538 basechar 0
 AnchorPoint: "Bottom Narrow Point" 580 0 basechar 0
 AnchorPoint: "Bottom Regular Point" 580 0 basechar 0
@@ -49,7 +49,7 @@ SplineSet
  937 767 937 767 925 720.5 c 128,-1,49
  913 674 913 674 913 607 c 0,0,1
 EndSplineSet
-Validated: 1048577
-PairPos2: "kerning-2" ayin.wide dx=-142 dy=0 dh=-142 dv=0 dx=0 dy=0 dh=0 dv=0
+Validated: 1
+PairPos2: "kerning-2" ayin.wide dx=-142 dy=0 dh=-142 dv=0 [ddx={} ddy={} ddh={} ddv={}] dx=0 dy=0 dh=0 dv=0 [ddx={} ddy={} ddh={} ddv={}]
 MultipleSubs2: "wide letters" het.wide
 EndChar

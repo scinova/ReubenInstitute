@@ -3,7 +3,7 @@ Encoding: 143 -1 145
 Width: 1780
 GlyphClass: 2
 Flags: W
-AnchorPoint: "Holam" -26 1105 basechar 0
+AnchorPoint: "Holam" 129 1300 basechar 0
 AnchorPoint: "Bottom Narrow Point" 870 0 basechar 0
 AnchorPoint: "Bottom Regular Point" 870 0 basechar 0
 AnchorPoint: "Bottom Wide Point" 870 0 basechar 0
@@ -70,6 +70,6 @@ SplineSet
  110 0 l 9,0,-1
 464 -60 m 1025,85,-1
 EndSplineSet
-Validated: 1048585
-PairPos2: "kerning-2" ayin.wide dx=-30 dy=0 dh=-30 dv=0 dx=0 dy=0 dh=0 dv=0
+Validated: 9
+PairPos2: "kerning-2" ayin.wide dx=-30 dy=0 dh=-30 dv=0 [ddx={} ddy={} ddh={} ddv={}] dx=0 dy=0 dh=0 dv=0 [ddx={} ddy={} ddh={} ddv={}]
 EndChar

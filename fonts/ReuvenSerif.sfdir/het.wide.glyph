@@ -7,7 +7,7 @@ AnchorPoint: "Bottom Wide Point" 895 0 basechar 0
 AnchorPoint: "Bottom Regular Point" 895 0 basechar 0
 AnchorPoint: "Bottom Narrow Point" 895 0 basechar 0
 AnchorPoint: "Dagesh" 898 538 basechar 0
-AnchorPoint: "Holam" 54 1105 basechar 0
+AnchorPoint: "Holam" 253 1300 basechar 0
 LayerCount: 2
 Fore
 SplineSet
@@ -48,6 +48,6 @@ SplineSet
  1506 767 1506 767 1494 720.5 c 132,-1,49
  1482 674 1482 674 1482 607 c 4,0,1
 EndSplineSet
-Validated: 1048577
-PairPos2: "kerning-2" ayin.wide dx=-142 dy=0 dh=-142 dv=0 dx=0 dy=0 dh=0 dv=0
+Validated: 1
+PairPos2: "kerning-2" ayin.wide dx=-142 dy=0 dh=-142 dv=0 [ddx={} ddy={} ddh={} ddv={}] dx=0 dy=0 dh=0 dv=0 [ddx={} ddy={} ddh={} ddv={}]
 EndChar
