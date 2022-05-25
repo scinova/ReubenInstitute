@@ -1,5 +1,5 @@
 StartChar: resh
-Encoding: 115 1512 80
+Encoding: 115 1512 79
 Width: 883
 GlyphClass: 2
 Flags: W
@@ -31,10 +31,10 @@ SplineSet
  827 18 827 18 757 -19 c 1,0,-1
 EndSplineSet
 Validated: 1
-PairPos2: "kerning-2" ayin.wide dx=-35 dy=0 dh=-35 dv=0 [ddx={} ddy={} ddh={} ddv={}] dx=0 dy=0 dh=0 dv=0 [ddx={} ddy={} ddh={} ddv={}]
-PairPos2: "kerning-2" bet dx=-39 dy=0 dh=-39 dv=0 [ddx={} ddy={} ddh={} ddv={}] dx=0 dy=0 dh=0 dv=0 [ddx={} ddy={} ddh={} ddv={}]
-PairPos2: "kerning-2" gimel dx=-124 dy=0 dh=-124 dv=0 [ddx={} ddy={} ddh={} ddv={}] dx=0 dy=0 dh=0 dv=0 [ddx={} ddy={} ddh={} ddv={}]
-PairPos2: "kerning-2" kaf dx=-30 dy=0 dh=-30 dv=0 [ddx={} ddy={} ddh={} ddv={}] dx=0 dy=0 dh=0 dv=0 [ddx={} ddy={} ddh={} ddv={}]
-PairPos2: "kerning-2" mem dx=-76 dy=0 dh=-76 dv=0 [ddx={} ddy={} ddh={} ddv={}] dx=0 dy=0 dh=0 dv=0 [ddx={} ddy={} ddh={} ddv={}]
-PairPos2: "kerning-2" pe dx=-37 dy=0 dh=-37 dv=0 [ddx={} ddy={} ddh={} ddv={}] dx=0 dy=0 dh=0 dv=0 [ddx={} ddy={} ddh={} ddv={}]
+PairPos2: "kerning-2" ayin.wide dx=-35 dy=0 dh=-35 dv=0 dx=0 dy=0 dh=0 dv=0
+PairPos2: "kerning-2" bet dx=-39 dy=0 dh=-39 dv=0 dx=0 dy=0 dh=0 dv=0
+PairPos2: "kerning-2" gimel dx=-124 dy=0 dh=-124 dv=0 dx=0 dy=0 dh=0 dv=0
+PairPos2: "kerning-2" kaf dx=-30 dy=0 dh=-30 dv=0 dx=0 dy=0 dh=0 dv=0
+PairPos2: "kerning-2" mem dx=-76 dy=0 dh=-76 dv=0 dx=0 dy=0 dh=0 dv=0
+PairPos2: "kerning-2" pe dx=-37 dy=0 dh=-37 dv=0 dx=0 dy=0 dh=0 dv=0
 EndChar

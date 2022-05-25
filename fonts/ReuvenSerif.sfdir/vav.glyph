@@ -1,5 +1,5 @@
 StartChar: vav
-Encoding: 96 1493 61
+Encoding: 96 1493 60
 Width: 484
 GlyphClass: 2
 Flags: W
@@ -31,6 +31,6 @@ SplineSet
  167 1056 167 1056 266 1056 c 0,0,1
 EndSplineSet
 Validated: 1
-PairPos2: "kerning-2" gimel dx=-59 dy=0 dh=-59 dv=0 [ddx={} ddy={} ddh={} ddv={}] dx=0 dy=0 dh=0 dv=0 [ddx={} ddy={} ddh={} ddv={}]
-PairPos2: "kerning-2" mem dx=-51 dy=0 dh=-51 dv=0 [ddx={} ddy={} ddh={} ddv={}] dx=0 dy=0 dh=0 dv=0 [ddx={} ddy={} ddh={} ddv={}]
+PairPos2: "kerning-2" gimel dx=-59 dy=0 dh=-59 dv=0 dx=0 dy=0 dh=0 dv=0
+PairPos2: "kerning-2" mem dx=-51 dy=0 dh=-51 dv=0 dx=0 dy=0 dh=0 dv=0
 EndChar

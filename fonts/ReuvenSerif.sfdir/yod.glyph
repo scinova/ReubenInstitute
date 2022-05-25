@@ -1,5 +1,5 @@
 StartChar: yod
-Encoding: 100 1497 65
+Encoding: 100 1497 64
 Width: 454
 GlyphClass: 2
 Flags: W
@@ -31,5 +31,5 @@ SplineSet
  400 560 400 560 247 480 c 1,0,-1
 EndSplineSet
 Validated: 1
-PairPos2: "kerning-2" gimel dx=-30 dy=0 dh=-30 dv=0 [ddx={} ddy={} ddh={} ddv={}] dx=0 dy=0 dh=0 dv=0 [ddx={} ddy={} ddh={} ddv={}]
+PairPos2: "kerning-2" gimel dx=-30 dy=0 dh=-30 dv=0 dx=0 dy=0 dh=0 dv=0
 EndChar

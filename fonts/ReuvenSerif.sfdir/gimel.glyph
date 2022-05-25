@@ -1,5 +1,5 @@
 StartChar: gimel
-Encoding: 93 1490 58
+Encoding: 93 1490 57
 Width: 665
 GlyphClass: 2
 Flags: W
@@ -51,6 +51,6 @@ SplineSet
  468 638 468 638 468 599 c 0,0,1
 EndSplineSet
 Validated: 1
-PairPos2: "kerning-2" ayin.wide dx=-178 dy=0 dh=-178 dv=0 [ddx={} ddy={} ddh={} ddv={}] dx=0 dy=0 dh=0 dv=0 [ddx={} ddy={} ddh={} ddv={}]
-PairPos2: "kerning-2" pe dx=-32 dy=0 dh=-32 dv=0 [ddx={} ddy={} ddh={} ddv={}] dx=0 dy=0 dh=0 dv=0 [ddx={} ddy={} ddh={} ddv={}]
+PairPos2: "kerning-2" ayin.wide dx=-178 dy=0 dh=-178 dv=0 dx=0 dy=0 dh=0 dv=0
+PairPos2: "kerning-2" pe dx=-32 dy=0 dh=-32 dv=0 dx=0 dy=0 dh=0 dv=0
 EndChar

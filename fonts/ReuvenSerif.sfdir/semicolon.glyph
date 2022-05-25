@@ -1,10 +1,10 @@
 StartChar: semicolon
-Encoding: 27 59 129
+Encoding: 27 59 128
 Width: 570
 Flags: W
 LayerCount: 2
 Fore
-Refer: 114 44 N 1 0 0 1 30 0 3
-Refer: 116 46 N 1 0 0 1 30 664 2
+Refer: 113 44 N 1 0 0 1 30 0 3
+Refer: 115 46 N 1 0 0 1 30 664 2
 Validated: 5
 EndChar

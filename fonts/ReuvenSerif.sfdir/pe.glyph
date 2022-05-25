@@ -1,5 +1,5 @@
 StartChar: pe
-Encoding: 111 1508 76
+Encoding: 111 1508 75
 Width: 912
 GlyphClass: 2
 Flags: W
@@ -54,5 +54,5 @@ SplineSet
  407 459 407 459 382 459 c 0,0,1
 EndSplineSet
 Validated: 1
-PairPos2: "kerning-2" ayin.wide dx=-103 dy=0 dh=-103 dv=0 [ddx={} ddy={} ddh={} ddv={}] dx=0 dy=0 dh=0 dv=0 [ddx={} ddy={} ddh={} ddv={}]
+PairPos2: "kerning-2" ayin.wide dx=-103 dy=0 dh=-103 dv=0 dx=0 dy=0 dh=0 dv=0
 EndChar

@@ -1,5 +1,5 @@
 StartChar: ayin
-Encoding: 109 1506 74
+Encoding: 109 1506 73
 Width: 920
 GlyphClass: 2
 Flags: W
@@ -67,6 +67,6 @@ SplineSet
  693 382 693 382 693 282 c 0,0,1
 EndSplineSet
 Validated: 1
-PairPos2: "kerning-2" ayin.wide dx=-39 dy=0 dh=-39 dv=0 [ddx={} ddy={} ddh={} ddv={}] dx=0 dy=0 dh=0 dv=0 [ddx={} ddy={} ddh={} ddv={}]
+PairPos2: "kerning-2" ayin.wide dx=-39 dy=0 dh=-39 dv=0 dx=0 dy=0 dh=0 dv=0
 MultipleSubs2: "wide letters" ayin.wide
 EndChar
