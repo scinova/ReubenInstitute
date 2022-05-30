@@ -56,7 +56,7 @@ SplineSet
  361 778 361 778 341 796 c 128,-1,59
  321 814 321 814 273 814 c 0,0,1
 EndSplineSet
-Validated: 1
+Validated: 1048577
 PairPos2: "kerning-2" ayin.wide dx=-73 dy=0 dh=-73 dv=0 dx=0 dy=0 dh=0 dv=0
 PairPos2: "kerning-2" kaf dx=-53 dy=0 dh=-53 dv=0 dx=0 dy=0 dh=0 dv=0
 PairPos2: "kerning-2" mem dx=-72 dy=0 dh=-72 dv=0 dx=0 dy=0 dh=0 dv=0

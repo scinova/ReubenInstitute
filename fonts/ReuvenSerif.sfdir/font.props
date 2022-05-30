@@ -22,7 +22,7 @@ OS2Version: 4
 OS2_WeightWidthSlopeOnly: 0
 OS2_UseTypoMetrics: 1
 CreationTime: 1631515319
-ModificationTime: 1653460935
+ModificationTime: 1653541537
 PfmFamily: 17
 TTFWeight: 400
 TTFWidth: 5
@@ -61,9 +61,19 @@ Lookup: 4 1 0 "substitute bold diacritics" { "shva and dagesh"  } ['ccmp' ('DFLT
 Lookup: 2 1 0 "substitute wide letters" { "wide letters"  } []
 Lookup: 260 1 0 "dagesh" { "dagesh"  } ['mark' ('DFLT' <'dflt' > 'hebr' <'dflt' > ) ]
 Lookup: 260 1 0 "bottom marks" { "bottom points"  } ['mark' ('DFLT' <'dflt' > 'hebr' <'dflt' > ) ]
+Lookup: 264 1 0 "meteg and wowel" { "meteg and wowel-1"  } ['kern' ('DFLT' <'dflt' > 'hebr' <'dflt' > 'latn' <'dflt' > ) ]
+Lookup: 262 1 0 "meteg" { "meteg positioning"  } ['mkmk' ('DFLT' <'dflt' > 'hebr' <'dflt' > 'latn' <'dflt' > ) ]
 Lookup: 258 1 0 "kerning" { "kerning-2" [307,30,2] } ['kern' ('hebr' <'dflt' > ) ]
+Lookup: 257 1 0 "move vowel" { "move vowel"  } []
 MarkAttachClasses: 1
 DEI: 91125
+ChainPos2: coverage "meteg and wowel-1" 0 0 0 1
+ 1 0 1
+  Coverage: 85 sheva hatafsegol hatafpatah hatafqamats hiriq tsere segol patah qamats qubuts uni05C7
+  FCoverage: 5 meteg
+ 1
+  SeqLookup: 0 "move vowel"
+EndFPST
 ChainSub2: coverage "ain sheva" 0 0 0 1
  1 0 1
   Coverage: 4 ayin
@@ -130,12 +140,12 @@ NameList: AGL For New Fonts
 DisplaySize: -72
 AntiAlias: 1
 FitToEm: 1
-WinInfo: 0 26 10
+WinInfo: 34 17 6
 BeginPrivate: 0
 EndPrivate
 Grid
 1089 538 m 29
  11 538 l 1053
 EndSplineSet
-AnchorClass2: "Top" "bottom points" "bottom narrow point"""  "Bottom Narrow Point" "bottom points" "Dagesh" "dagesh" "Meteg"""  "ShinDot" "bottom points" "SinDot" "bottom points" "Holam" "dagesh" "Bottom Wide Point" "bottom points" "Bottom Regular Point" "bottom points"
+AnchorClass2: "Top" "bottom points" "bottom narrow point"""  "Bottom Narrow Point" "bottom points" "Dagesh" "dagesh" "Meteg" "meteg positioning" "ShinDot" "bottom points" "SinDot" "bottom points" "Holam" "dagesh" "Bottom Wide Point" "bottom points" "Bottom Regular Point" "bottom points"
 EndSplineFont

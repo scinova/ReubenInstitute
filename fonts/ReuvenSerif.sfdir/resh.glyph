@@ -30,7 +30,7 @@ SplineSet
  827 80 l 2,22,23
  827 18 827 18 757 -19 c 1,0,-1
 EndSplineSet
-Validated: 1
+Validated: 1048577
 PairPos2: "kerning-2" ayin.wide dx=-35 dy=0 dh=-35 dv=0 dx=0 dy=0 dh=0 dv=0
 PairPos2: "kerning-2" bet dx=-39 dy=0 dh=-39 dv=0 dx=0 dy=0 dh=0 dv=0
 PairPos2: "kerning-2" gimel dx=-124 dy=0 dh=-124 dv=0 dx=0 dy=0 dh=0 dv=0

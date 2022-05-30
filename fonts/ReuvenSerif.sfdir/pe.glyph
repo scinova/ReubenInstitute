@@ -53,6 +53,6 @@ SplineSet
  407 511 l 2,51,52
  407 459 407 459 382 459 c 0,0,1
 EndSplineSet
-Validated: 1
+Validated: 1048577
 PairPos2: "kerning-2" ayin.wide dx=-103 dy=0 dh=-103 dv=0 dx=0 dy=0 dh=0 dv=0
 EndChar

@@ -48,6 +48,6 @@ SplineSet
  750 204 750 204 811 276 c 128,-1,43
  872 348 872 348 872 502 c 0,28,29
 EndSplineSet
-Validated: 1
+Validated: 1048577
 PairPos2: "kerning-2" ayin.wide dx=-131 dy=0 dh=-131 dv=0 dx=0 dy=0 dh=0 dv=0
 EndChar

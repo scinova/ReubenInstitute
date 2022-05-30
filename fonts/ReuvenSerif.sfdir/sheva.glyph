@@ -4,6 +4,7 @@ Width: 0
 GlyphClass: 4
 InSpiro: 1
 Flags: W
+AnchorPoint: "Meteg" -220 0 basemark 0
 AnchorPoint: "Bottom Narrow Point" -2.5 -3.20001 mark 0
 LayerCount: 2
 Fore
@@ -66,4 +67,5 @@ SplineSet
   EndSpiro
 EndSplineSet
 Validated: 1
+Position2: "move vowel" dx=30 dy=0 dh=0 dv=0 [ddx={} ddy={} ddh={} ddv={}]
 EndChar

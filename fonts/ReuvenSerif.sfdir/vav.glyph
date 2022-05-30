@@ -30,7 +30,7 @@ SplineSet
  160 1112 l 1,22,23
  167 1056 167 1056 266 1056 c 0,0,1
 EndSplineSet
-Validated: 1
+Validated: 1048577
 PairPos2: "kerning-2" gimel dx=-59 dy=0 dh=-59 dv=0 dx=0 dy=0 dh=0 dv=0
 PairPos2: "kerning-2" mem dx=-51 dy=0 dh=-51 dv=0 dx=0 dy=0 dh=0 dv=0
 EndChar

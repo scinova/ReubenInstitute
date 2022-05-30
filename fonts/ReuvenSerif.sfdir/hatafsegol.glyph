@@ -3,7 +3,8 @@ Encoding: 69 1457 33
 Width: 0
 GlyphClass: 4
 Flags: W
-AnchorPoint: "Bottom Wide Point" -0 0 mark 0
+AnchorPoint: "Meteg" -450 0 basemark 0
+AnchorPoint: "Bottom Wide Point" 0 0 mark 0
 LayerCount: 2
 Fore
 SplineSet
@@ -54,4 +55,5 @@ SplineSet
  -264 -169 -264 -169 -234 -169 c 0,47,48
 EndSplineSet
 Validated: 1
+Position2: "move vowel" dx=130 dy=0 dh=0 dv=0 [ddx={} ddy={} ddh={} ddv={}]
 EndChar

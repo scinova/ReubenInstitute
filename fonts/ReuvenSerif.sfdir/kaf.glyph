@@ -37,7 +37,7 @@ SplineSet
  670 240 670 240 722 300 c 128,-1,31
  774 360 774 360 774 507 c 2,0,1
 EndSplineSet
-Validated: 1
+Validated: 1048577
 PairPos2: "kerning-2" ayin.wide dx=-123 dy=0 dh=-123 dv=0 dx=0 dy=0 dh=0 dv=0
 PairPos2: "kerning-2" pe dx=-36 dy=0 dh=-36 dv=0 dx=0 dy=0 dh=0 dv=0
 EndChar

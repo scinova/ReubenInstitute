@@ -45,7 +45,7 @@ SplineSet
  442 428 l 2,50,51
  442 390 442 390 408 390 c 0,0,1
 EndSplineSet
-Validated: 1
+Validated: 1048577
 PairPos2: "kerning-2" ayin.wide dx=-136 dy=0 dh=-136 dv=0 dx=0 dy=0 dh=0 dv=0
 PairPos2: "kerning-2" gimel dx=-58 dy=0 dh=-58 dv=0 dx=0 dy=0 dh=0 dv=0
 EndChar

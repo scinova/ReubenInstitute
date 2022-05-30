@@ -45,7 +45,7 @@ SplineSet
  970 107 l 2,41,42
  970 20 970 20 896 -17 c 1,0,-1
 EndSplineSet
-Validated: 1
+Validated: 1048577
 PairPos2: "kerning-2" ayin dx=-41 dy=0 dh=-41 dv=0 dx=0 dy=0 dh=0 dv=0
 PairPos2: "kerning-2" ayin.wide dx=-203 dy=0 dh=-203 dv=0 dx=0 dy=0 dh=0 dv=0
 PairPos2: "kerning-2" finaltsadi dx=-42 dy=0 dh=-42 dv=0 dx=0 dy=0 dh=0 dv=0

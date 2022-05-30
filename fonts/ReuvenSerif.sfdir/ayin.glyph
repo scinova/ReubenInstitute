@@ -66,7 +66,7 @@ SplineSet
  729 564 729 564 711 473 c 128,-1,73
  693 382 693 382 693 282 c 0,0,1
 EndSplineSet
-Validated: 1
+Validated: 1048577
 PairPos2: "kerning-2" ayin.wide dx=-39 dy=0 dh=-39 dv=0 dx=0 dy=0 dh=0 dv=0
 MultipleSubs2: "wide letters" ayin.wide
 EndChar

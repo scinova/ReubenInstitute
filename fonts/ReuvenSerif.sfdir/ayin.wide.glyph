@@ -70,6 +70,6 @@ SplineSet
  110 0 l 9,0,-1
 464 -60 m 1025,85,-1
 EndSplineSet
-Validated: 9
+Validated: 1048585
 PairPos2: "kerning-2" ayin.wide dx=-30 dy=0 dh=-30 dv=0 dx=0 dy=0 dh=0 dv=0
 EndChar
