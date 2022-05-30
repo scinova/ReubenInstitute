@@ -190,64 +190,10 @@ def parse(text):
 				spans.append(span)
 	return spans
 
-
-
-
-#class Verse:
-#	def __init__(self, no, text):
-#		self.no = no
-#		self.hno = hebrew_numbers.int_to_gematria(no, gershayim=False)
-#		self.hnog = hebrew_numbers.int_to_gematria(no)
-#		self.text = text
-
-#class VerseKind(Enum):
-#	OPENED = 1
-#	CLOSED = 2
-#	BREAK = 3
-
-#class Chapter:
-#	def __init__(self, no):
-#		self.no = no
-#		self.hno = hebrew_numbers.int_to_gematria(no, gershayim=False)
-#		self.hnog = hebrew_numbers.int_to_gematria(no)
-#		self.verses = []
-#		self.articles = []
-
-#class Book:
-#	def __init__(self, name, hname, ind):
-#		self.name = name
-#		self.hname = hname
-#		self.ind = ind
-#		self.chapters = []
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-
-#class Collection:
-#	def __init__(self):
-#		self.books = []
-
-#class Order:
-#	def __init__(self, name, hname):
-#		self.name = name
-#		self.hname = hname
-#		self.books = []
-
-#class Span:
-#	def __init__(self, kind, value, alt=None):
-#		self.kind = kind
-#		self.value = value
-#		self.alt = alt
-#
-#	def __repr__(self):
-#		return 'span=%s'%self.kind + '\n' + self.value + '\n'
+class VerseKind(Enum):
+	OPENED = 1
+	CLOSED = 2
+	BREAK = 3
 
 class NVerse:
 	def __init__(self, chapter, number, text):
@@ -602,28 +548,6 @@ def verses_to_paragraphs(verses):
 	#print (paragraphs[0])
 	return paragraphs
 
-	"""def verses_to_paragraphsx(verses):
-	paragraphs = []
-	part = []
-	parts = []
-	for verse in verses:
-		if verse == verses[0]:
-			part = [verse]
-		elif verse.kind == VerseKind.OPENED:
-			parts.append(part)
-			paragraphs.append(parts)
-			parts = []
-			part = [verse]
-		elif verse.kind == VerseKind.CLOSED:
-			parts.append(part)
-			part = [verse]
-		else:
-			part.append(verse)
-	parts.append(part)
-	paragraphs.append(parts)
-	return paragraphs
-	"""
-
 class NChapter:
 	def __init__(self, book, number):
 		self.book = book
@@ -776,18 +700,3 @@ class Tanakh:
 						chapter_idx += 1
 
 				self.books[b].parashot[p].haftara = haftara
-
-
-
-#tanakh = Tanakh()
-#tanakh.__postinit__()
-
-#Bible = []
-#for x in range(len(bible_arr)):
-#	name, num_chapters, hname = bible_arr[x]
-#	book = Book(name, hname, x + 1)
-#	for c in range(1, num_chapters + 1):
-#		chapter = Chapter(c)
-#		book.chapters.append(chapter)
-#	Bible.append(book)
-

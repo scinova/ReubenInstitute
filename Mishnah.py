@@ -109,16 +109,6 @@ class Book:
 		self.hname = hname
 		self.ind = ind
 		self.chapters = []
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 
 #class Collection:
 #	def __init__(self):

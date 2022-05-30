@@ -29,6 +29,7 @@ tanakh = Tanakh.Tanakh()
 tanakh.__postinit__()
 
 import Mishnah
+mishnah = Mishnah.Mishnah
 
 import Liturgy
 
@@ -165,13 +166,13 @@ def verse_edit(book_no, chapter_no, verse_no, parasha_book_no=None, parasha_no=N
 	return render_template('tanakh-verse-edit2.html', verse=verse, parasha_no=parasha_no)
 
 @app.route('/mishnah/')
-def mishnah():
-	return render_template('mishnah.html', mishnah=common.Mishnah)
+def mishnah_main():
+	return render_template('mishnah.html', mishnah=mishnah)
 
 @app.route('/mishnah/<int:order_no>/<int:tractate_no>')
 def view_tractate(order_no, tractate_no):
 	data = open('../db/mishnah/%1d.%02d.txt'%(order_no, tractate_no)).read()
-	order = Mishnah.Mishnah[order_no - 1]
+	order = mishnah[order_no - 1]
 	tractate = order.books[tractate_no - 1]
 	chapters = []
 	parags = data.split('\n\n')
