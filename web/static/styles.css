@@ -75,6 +75,7 @@
 @font-face {
 	font-family: 'sbl';
 	src: url('/@@/fonts/SBL_Hbrw.ttf') format('truetype');
+	src: url('/@@/fonts/SBLReuven.ttf') format('truetype');
 	xfont-weight: normal;
 	xfont-style: normal;
 	}
@@ -105,16 +106,21 @@ html {
 	}
 
 body {
-	padding: 10px;
-	max-width: 1200px;
+	סpadding: 10px;
+	xmax-width: 1200px;
 	margin: 0 auto;
 	}
 
+div#footer {
+	color: white;
+	}
+
 div#content {
-	border-radius: 20px;
-	padding: 20px;
+	border-radius: 3px;
+	padding: 10px;
 	background-color: #f4eadc;
-	font-size: 1.5em;
+	background-color: #ffffff;
+	zfont-size: 1.5em;
 	}
 
 a:visited,a {
@@ -126,17 +132,15 @@ h1 {
 	font-family: sbl;
 	font-size: 150%;
 	font-weight: normal;
-	xfont-style: italic;
 	text-align: center;
 	}
 
 h2 {
 	font-size: 200%;
 	font-family: sbl;
-	color: #dbba8b;
 	color: #d8b27e;
 	font-weight: normal;
-	text-align: center;
+	xtext-align: center;
 	margin: 1em 0 0;
 	}
 
@@ -145,97 +149,16 @@ h4 {
 	font-family: sbl;
 	color: #330;
 	font-weight: normal;
-	xtext-align: center;
-	color: #dbba8b;
 	color: #d8b27e;
-	texxt-decoration: underline;
 	margin-bottom: .5em;
 	margin-top: 1em;
 	border-bottom: 2px solid #d8b27e;
-}
+	}
 
 h5 {
 	margin-top: 10px;
 	}
 
-div.prayer {
-	font-family: sbl;
-	}
-
-div.prayer div {
-	background-color: #eee;
-	padding: 10px;
-	margin-bottom: 10px;
-	border-radius: 10px;
-	}
-
-div.prayer p {
-	text-align: justify;
-	background-color: #ddd;
-	margin-bottom: 10px;
-	xborder: 1px solid red;
-	}
-
-div.prayer h1 {
-	color: red;
-	color: orange;
-	margin: 0;
-	}
-
-div.prayer h2 {
-	color: orange;
-	text-align: right;
-	margin: 0;
-	}
-
-div.prayer span.link {
-	color: blue;
-	}
-
-div.prayer span.bold {
-	color: red;
-}
-
-div.prayer span.info
-	color: #ccc;
-}
-
-a:link,
-a:visited,
-a:hover,
-a:active {
-	color: #0099cc;
-	text-decoration: none;
-	}
-
-p {
-	margin-bottom: .5em;
-	}
-
-p.poem {
-	text-align: center;
-	margin-bottom: 5px;
-	}
-
-div.clear {
-	clear: both;
-	}
-
-div.mikra {
-	font-family: sbl;
-	font-size: 170%;
-	line-height: 1.1em;
-	xmargin-top: 1em;
-	xmargin-bottom: 10px;
-	background-color: #d6af78;
-	background-color: #e1c59d;
-	background-image: url(/@@/papyrus2.jpg);
-	color: 1f1609;
-	padding: 10px 20px;
-	border-radius: 5px;
-	text-align-last: center;
-	font-weight: normal;
-	}
 
 div.section {
 	font-family: ReuvenSerif;
@@ -251,6 +174,23 @@ div.right {
 div.left {
 	width: 48%;
 	float: left;
+	}
+
+div.mikra {
+	font-family: sbl;
+	font-size: 170%;
+	line-height: 1.1em;
+	xmargin-top: 1em;
+	xmargin-bottom: 10px;
+	background-color: #d6af78;
+	background-color: #e1c59d;
+	background-color: #fed;
+	xbackground-image: url(/@@/papyrus2.jpg);
+	color: 1f1609;
+	padding: 10px 20px;
+	border-radius: 5px;
+	text-align-last: center;
+	font-weight: normal;
 	}
 
 div.onkelos {
@@ -285,21 +225,12 @@ div.variations {
 	margin-top: .5em;
 	}
 
-hr {
-	margin: 1em auto;
-	background-image: url(/@@/separator.png);
-	sbackground-align: center;
-	sbackground-repeat: no-repeat;
-	height: 52px;
-	width: 233px;
-	border: 0;
-	align: center;
+p {
+	margin-bottom: .5em;
 	}
 
 span {
 	display: block-inline;
-	xheight: 1em;
-	xvertical-align: baseline;
 	}
 
 span.tag {
@@ -348,6 +279,10 @@ div.mikra span.verseno {
 	font-family: sbl;
 	}
 
+span.title {
+	color: #900;
+	}
+
 span.addition {
 	color: #003;
 	background-color: #eef;
@@ -356,12 +291,10 @@ span.addition {
 span.nonliteral {
 	color: #700;
 	background-color: #ffb;
-	zborder-radius: 3px;
 	}
 
 span.alternative {
 	background-color: #fdd;
-	zborder-radius: 3px;
 	}
 
 span.aliya {
@@ -383,16 +316,13 @@ span.explanation {
 	}
 
 span.correction {
-	color: #9a9;
-	color: #ccc;
 	color: #aba;
 	font-size: 70%;
 	}
 
 span.hollyname {
-	color: red;
+	color: #c33;
 	}
-
 
 span.legend {
 	font-family: scripture;
@@ -436,41 +366,32 @@ span.minuscule {
 	font-size: 80%;
 	}
 
-
-div.verse {
-	margin-bottom: 50px;
+a:link,
+a:visited,
+a:hover,
+a:active {
+	color: #0099cc;
+	text-decoration: none;
 	}
 
-div.outer {
-	border: 0px solid red;
-	}
-
-div.inner {
-	border: 0px solid blue;
-	margin-bottom: 5px;
-	}
 
 div.justify {
 	text-align: justify;
 	}
 
-div.dialog {
-	margin-right: 20px;
+div.clear {
+	clear: both;
 	}
 
-
-span.diff-this {
-	text-decoration: underline;
-	text-decoration-color: #ccc;
-	text-decoration-style: solid;
-	}
-
-span.diff-other {
-	color: #bbb;
-	}
-
-span.diff-legend {
-	font-size: 12px;
+hr {
+	margin: 1em auto;
+	background-image: url(/@@/separator.png);
+	sbackground-align: center;
+	sbackground-repeat: no-repeat;
+	height: 52px;
+	width: 233px;
+	border: 0;
+	align: center;
 	}
 
 textarea {
@@ -489,3 +410,94 @@ input {
 label {
 	font-family: ReuvenSerif;
 }
+
+
+
+
+div.prayer {
+	font-family: ReuvenSerif;
+	}
+
+xdiv.prayer div {
+	background-color: #eee;
+	padding: 10px;
+	margin-bottom: 10px;
+	border-radius: 10px;
+	}
+
+div.prayer p {
+	text-align: justify;
+	background-color: #ddd;
+	margin-bottom: 10px;
+	xborder: 1px solid red;
+	}
+
+div.prayer h1 {
+	color: red;
+	color: orange;
+	margin: 0;
+	}
+
+div.prayer h2 {
+	color: orange;
+	text-align: right;
+	margin: 0;
+	}
+
+div.prayer span.link {
+	color: blue;
+	}
+
+div.prayer span.bold {
+	color: red;
+}
+
+div.prayer span.info
+	color: #ccc;
+}
+
+
+
+
+
+
+
+
+
+xdiv.verse {
+	margin-bottom: 50px;
+	}
+
+xdiv.outer {
+	border: 0px solid red;
+	}
+
+xdiv.inner {
+	border: 0px solid blue;
+	margin-bottom: 5px;
+	}
+
+
+cdiv.dialog {
+	margin-right: 20px;
+	}
+
+
+cspan.diff-this {
+	text-decoration: underline;
+	text-decoration-color: #ccc;
+	text-decoration-style: solid;
+	}
+
+cspan.diff-other {
+	color: #bbb;
+	}
+
+xspan.diff-legend {
+	font-size: 12px;
+	}
+
+xp.poem {
+	text-align: center;
+	margin-bottom: 5px;
+	}

@@ -5,152 +5,15 @@ import hebrew_numbers
 import os
 import re
 from enum import Enum
+from common import Span, SpanKind
 
 ROOT_PATH = os.path.dirname(os.path.abspath(__file__))
 DB_PATH = os.path.join(ROOT_PATH, 'db')
 
-def remove_cantillations(text):
-	return re.sub('[\u0591-\u05ae\u05bd\u05c0\u05c3]', '', text)
-
-def remove_diacritics(text):
-	return re.sub('[\u05b0-\u05bc\u05c7\u05c1\u05c2]', '', text)
-
-
-class Person(Enum):
-	A = 1
-	B = 2
-	C = 3
-
-class Gender(Enum):
-	M = 'm'
-	F = 'f'
-	MF = 'm/f'
-
-class Count(Enum):
-	S = 's'
-	P = 'p'
-	SP = 's/p'
-
-class Tense(Enum):
-	P = 'past'
-	N = 'now'
-	F = 'future'
-	I = 'imperative'
-
-class Stem(Enum):
-	PAAL = 'paal' # simple active
-	NIFAL = 'nifal' # simple passive
-	PIEL = 'piel' # intensive active
-	PUAL = 'pual' # intensive active
-	HIFIL = 'hifil' # causative active
-	HUFAL = 'hufal' # causative passive
-	HITPAEL = 'hitpael' # reflexive
-
-class Noun:
-	def __init__(self, gender, kount):
-		self.gender = gender
-		self.count = kount
-
-noun = Noun(Gender.M, Count.S)
-
-class Verb:
-	def __init__(self, stem, root, person, gender, kount, tense):
-		self.stem = stem
-		self.root = root
-		self.person = person
-		self.gender = gender
-		self.count = kount
-		self.tense = tense
-
-verb = Verb(Stem.PAAL, 'אכל', Person.A, Gender.M, Count.S, Tense.I)
-
-class Word:
-	def __init__(self, string):
-		self._string = string
-
-class Particle:
-	def __init__(self):
-		pass
-
-		
-"""
-mishnah_arr = [
-	['Zeraim', 'זְרָעִים', [
-		['Berakhot', 'בְּרָכוֹת'],
-		['Peah', 'פֵּאָה'],
-		['Demai', 'דְּמַאי'],
-		['Kilayim', 'כִּלְאַיִם'],
-		['Sheviit', 'שְֹבִיעִית'],
-		['Terumot', 'תְּרוּמוֹת'],
-		['Maaserot', 'מַעֲשְׂרוֹת'], #Maasrot
-		['Maaser Sheni', 'מַעֲשֵׂר שֵׁנִי'],
-		['Challah', 'חַלָּה'],
-		['Orlah', 'עָרְלָה'],
-		['Bikkurim', 'בִּכּוּרִים']
-		]],
-	['Moed', 'מוֹעֵד', [
-		['Shabbat', 'שַׁבָּת'],
-		['Eruvin', 'עֵרוּבִין'],
-		['Pesachim', 'פְּסָחִים'],
-		['Shekalim', 'שְׁקָלִים'],
-		['Yoma', 'יוֹמָא'],
-		['Sukkah', 'סֻכָּה'],
-		['Beitzah', 'בֵּיצָה'], ###
-		['Rosh Hashanah', 'רֹאשׁ הַשָּׁנָה'],
-		['Taanit', 'תַּעֲנִית'],
-		['Megillah', 'מְגִלָּה'],
-		['Moed Katan', 'מוֹעֵד קָטָן'],
-		['Chagigah', 'חֲגִיגָה']
-		]],
-	['Nashim', 'נָשִׁים', [
-		['Yevamot', 'יְבָמוֹת'],
-		['Ketubot', 'כְּתוּבּוֹת'],
-		['Nedarim', 'נְדָרִים'],
-		['Nazir', 'נָזִיר'],
-		['Sotah', 'סוֹטָה'],
-		['Gittin', 'גִּטִּין'],
-		['Kiddushin', 'קִדּוּשִׁין']
-		]],
-	['Nezikin', 'נְזִיקִין', [
-		['Bava Kamma', 'בָּבָא קַמָּא'],
-		['Bava Metzia', 'בָּבָא מְצִיעָא'],
-		['Bava Batra', 'בָּבָא בָּתְרָא'],
-		['Sanhedrin', 'סַנְהֶדְרִין'],
-		['Makkot', 'מַכּוֹת'],
-		['Shevuot', 'שְׁבוּעוֹת'],
-		['Eduyot', 'עֵדֻיּוֹת'],
-		['Avodah Zarah', 'עֲבוֹדָה זָרָה'],
-		['Avot', 'אָבוֹת'],
-		['Horayot', 'הוֹרָיוֹת'],
-		]],
-	['Kodashim', 'קָדָשִׁים', [
-		['Zevachim', 'זבחים'],
-		['Menachot', 'מנחות'],
-		['Chullin', 'חולין'],
-		['Bekhorot', 'בְּכוֹרוֹת'],
-		['Arakhin', 'ערכין'],
-		['Temurah', 'תְּמוּרָה'],
-		['Keritot', 'כָּרֵתוֹת'],
-		['Meilah', 'מעילה'],
-		['Tamid', 'תָּמִיד'],
-		['Middot', 'מִדּוֹת'],
-		['Kinnim', 'קִנִּים'],
-		]],
-	['Tohorot', 'טְהָרוֹת', [
-		['Kelim', 'כלים'], ###
-		['Oholot', 'אהלות'],
-		['Negaim', 'נגעים'],
-		['Parah', 'פרה'],
-		['Tohorot', 'טְהָרות'], #Tahorot
-		['Mikvaot', 'מִקֶוָאוֹת'],
-		['Niddah', 'נידה'],
-		['Makhshirin', 'מכשירים'],
-		['Zavim', 'זבים'],
-		['Tevul Yom', 'טבול יום'],
-		['Yadayim', 'יָדַיִם'],
-		['Uktzim', 'עוקצים']#Oktzin
-		]]
-	]
+class VerseKind(Enum):
+	OPENED = 1
+	CLOSED = 2
+	BREAK = 3
 
 bible_arr = [
 	['Genesis', 50, 'בראשית'],
@@ -263,109 +126,72 @@ parashot_arr = [
 		[32, 1, 32, 52, 'Haazinu', 'הַאֲזִינוּ', 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
 		[33, 1, 34, 12, 'VeZot Haberakha', 'וְזֹאת הַבְּרָכָה', 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]]
 	]
-"""
-"""
-a = 1
-b = 2
-zohar_arr = [
-	['על התורה - בראשית', [
-		[1, a, 1, 14, b, 7, 'הקדמה'],
-		[15, a, 1, 59, a, 7, 'בראשית'],
-		[59, b, 1, 76, b, 4, 'נח'],
-		[76, b, 5, 96, b, 10, 'לך לך'],
-		[97, a, 1, 120, b, 8, 'וירא'],
-		[121, a, 1, 134, a, 7, 'חיי שרה'],
-		[134, a, 8, 146, b, 5, 'תולדות'],
-		[146, b, 6, 165, b, 1, 'ויצא'],
-		[165, b, 2, 179, a, 6, 'וישלח'],
-		[179, a, 7, 193, a, 3, 'וישב'],
-		[193, a, 4, 205, a, 9, 'מקץ'],
-		[205, a, 10, 211, b, 5, 'ויגש'],
-		[211, b, 5, 251, a, 5, 'ויחי']
-		]],
-	['על התורה - שמות', [
-		[1, b, 1, 22, b, 2, 'שמות'],
-		[22, a, 3, 32, a, 10, 'וארא'],
-		[32, b, 1, 43, b, 11, 'בא'],
-		[44, a, 1, 61, a, 6, 'בשלח'],
-		[61, a, 7, 67, a, 3, 'המן'],
-		[67, a, 4, 94, a, 6, 'יתרו'],
-		[94, a, 7, 126, a, 5, 'משפטים'],
-		[126, a, 6, 179, a, 9, 'תרומה'],
-		[179, b, 1, 187, b, 3, 'תצוה'],
-		[187, b, 4, 194, b, 6, 'כי תשא'],
-		[194, b, 7, 220, a, 7, 'ויקהל'],
-		[220, a, 8, 268, b, 11, 'פיקודי']
-		]],
-	['על התורה - ויקרא, במדבר, דברים', [
-		[2, a, 1, 26, a, 5, 'ויקרא'],
-		[26, a, 6, 35, b, 7, 'צו'],
-		[35, b, 8, 42, a, 7, 'שמיני'],
-		[42, a, 8, 52, a, 8, 'תזריע'],
-		[52, b, 1, 56, a, 5, 'מצורע'],
-		[56, a, 6, 80, a, 2, 'אחרי מות'],
-		[80, a, 3, 88, a, 3, 'קדושים'],
-		[88, a, 4, 107, b, 7, 'אמור'],
-		[107, b, 8, 112, a, 7, 'בהר'],
-		[112, a, 8, 115, b, 11, 'בחוקתי'],
-		[117, a, 1, 121, a, 5, 'במדבר'],
-		[121, a, 6, 148, b, 4, 'נשא'],
-		[148, b, 5, 156, b, 1, 'בהעלותך'],
-		[156, b, 2, 176, a, 3, 'שלח'],
-		[176, a, 4, 179, b, 4, 'קרח'],
-		[179, b, 5, 184, b, 4, 'חוקת'],
-		[184, b, 5, 212, b, 9, 'בלק'],
-		[213, a, 1, 259, b, 2, 'פנחס'],
-		[259, b, 3, 259, b, 8, 'מטות'],
-		[259, b, 9, 259, b, 9, 'דברים'],
-		[260, a, 1, 270, b, 7, 'ואתחנן'],
-		[270, b, 8, 274, a, 15, 'עקב'],
-		[274, a, 16, 275, b, 4, 'שופטים'],
-		[275, b, 5, 283, a, 20, 'כי תצא'],
-		[283, a, 21, 286, a, 5, 'ןילך'],
-		[286, a, 6, 287, b, 14, 'האזינו'],
-		[287, b, 15, 299, b, 13, 'אדרא זוטא'],
-		[127, b, 5, 145, a, 3, 'אדרא רבא']
-		]],
-	['זהר חדש', [
-		]],
-	['תיקוני הזהר', [
-		[1, a, 1, 16, b, 4, 'הקדמה'],
-		[17, a, 1, 17, b, 6, 'הקדמה אחרת'],
-		[17, b, 7, 18, a, 5, 'תיקון א'],
-		[18, a, 6, 18, a, 6, 'תיקון ב'],
-		#[120, b, 2, 140, b, 1, 'תיקון ע']
-		]]
-	]
 
-class Article:
-	def __init__(self, no, title, he_title):
-		self.no = no
-		self.hno = hebrew_numbers.int_to_gematria(no, gershayim=False)
-		self.hnog = hebrew_numbers.int_to_gematria(no)
-		self.title = title
-		self.he_title = he_title
+def parse(text):
+	if not text:
+		return []
+	text = re.sub('"([^"]+)"', r'“\1”', text)
+	text = re.sub("'([^']+)'", r"‘\1’", text)
+	text = re.sub('^- ', '\u2015 ', text)
+	text = re.sub(' -', ' \u2013', text)
+	text = re.sub('-', '\u2011', text)
+	alternative_items = list(re.finditer('\[([^|]*)\|([^]]+)\]', text))
+	for item in alternative_items:
+		start, end = item.span()
+		text = text[0:start] + (end - start) * 'X' + text[end:]
+	nonliteral_items = list(re.finditer('_([^_]+)_', text))
+	for item in nonliteral_items:
+		start, end = item.span()
+		text = text[0:start] + (end - start) * 'X' + text[end:]
+	addition_items = list(re.finditer('\+([^+]+)\+', text))
+	for item in addition_items:
+		start, end = item.span()
+		text = text[0:start] + (end - start) * 'X' + text[end:]
+	synonym_items = list(re.finditer('\(\=([^)]+)\)', text))
+	for item in synonym_items:
+		start, end = item.span()
+		text = text[0:start] + (end - start) * 'X' + text[end:]
+	explanation_items = list(re.finditer('\(\~([^)]+)\)', text))
+	for item in explanation_items:
+		start, end = item.span()
+		text = text[0:start] + (end - start) * 'X' + text[end:]
+	correction_items = list(re.finditer('\[([^]]+)\]', text))
+	for item in correction_items:
+		start, end = item.span()
+		text = text[0:start] + (end - start) * 'X' + text[end:]
+	plain_items = list(re.finditer('([^X]+)', text))
+	for item in plain_items:
+		start, end = item.span()
+		text = text[0:start] + (end - start) * '.' + text[end:]
+	spans = []
+	for idx in range(len(text)):
+		for item in nonliteral_items + addition_items + alternative_items + \
+				synonym_items + explanation_items + correction_items + plain_items:
+			if idx == item.start():
+				groups = item.groups()
+				value = groups[0]
+				if len(groups) > 1:
+					alt = groups[1]
+				span = None
+				if item in nonliteral_items:
+					span = Span(SpanKind.NONLITERAL, value)
+				elif item in addition_items:
+					span = Span(SpanKind.ADDITION, value)
+				elif item in alternative_items:
+					span = Span(SpanKind.ALTERNATIVE, value, alt)
+				elif item in synonym_items:
+					span = Span(SpanKind.SYNONYM, value)
+				elif item in explanation_items:
+					span = Span(SpanKind.EXPLANATION, value)
+				elif item in correction_items:
+					span = Span(SpanKind.CORRECTION, value)
+				elif item in plain_items:
+					span = Span(SpanKind.PLAIN, value)
+				spans.append(span)
+	return spans
 
-	@property
-	def text(self):
-		filename = os.path.join('%1d.%02d'%(book_ind, chapter_no), '/%02d.txt'%article_no)
-		path = os.path.join(DB_PATH, 'zohar', filename)
-		return open(filename).read()
 
-	@property
-	def translation(self):
-		filename = os.path.join('%1d.%02d'%(book_ind, chapter_no), '/%02dt.txt'%article_no)
-		path = os.path.join(DB_PATH, 'zohar', filename)
-		return open(filename).read()
 
-class ZoharChapter:
-	def __init__(self, number):
-		self.number = number
-		self.hebrew_number = hebrew_numbers.int_to_gematria(number)
-		#self.hno = hebrew_numbers.int_to_gematria(no, gershayim=False)
-		#self.hnog = hebrew_numbers.int_to_gematria(no)
-		self.articles = []
-"""
 
 #class Verse:
 #	def __init__(self, no, text):
@@ -374,65 +200,25 @@ class ZoharChapter:
 #		self.hnog = hebrew_numbers.int_to_gematria(no)
 #		self.text = text
 
-class SpanKind(Enum):
-
-	PLAIN = 0
-	LEGEND = 1
-	CITATION = 2
-	LINK = 3
-
-	MAJUSCULE = 4
-	MINUSCULE = 5
-
-	KRIKTIV = 6
-	ALIYA = 7
-
-	CHAPTERNO = 10
-	VERSENO = 11
-
-	ALTERNATIVE = 20
-	ADDITION = 21
-	NONLITERAL = 22
-	REFERENCE = 23
-
-	TITLE = 24
-	SUBTITLE = 25
-	INFO = 26
-	
-	BOLD = 27
-
-	SYNONYM = 28
-	EXPLANATION = 29
-	CORRECTION = 30
-
-#shaharit_ashkenaz = Prayer("ashkenaz", "shaharit")
-#shaharit_sefard = Prayer("sefard", "shaharit")
-#shaharit_mizrah = Prayer("mizrah", "shaharit")
-
-
-
-
-
-
 #class VerseKind(Enum):
 #	OPENED = 1
 #	CLOSED = 2
 #	BREAK = 3
-"""
-class Chapter:
-	def __init__(self, no):
-		self.no = no
-		self.hno = hebrew_numbers.int_to_gematria(no, gershayim=False)
-		self.hnog = hebrew_numbers.int_to_gematria(no)
-		self.verses = []
-		self.articles = []
 
-class Book:
-	def __init__(self, name, hname, ind):
-		self.name = name
-		self.hname = hname
-		self.ind = ind
-		self.chapters = []
+#class Chapter:
+#	def __init__(self, no):
+#		self.no = no
+#		self.hno = hebrew_numbers.int_to_gematria(no, gershayim=False)
+#		self.hnog = hebrew_numbers.int_to_gematria(no)
+#		self.verses = []
+#		self.articles = []
+
+#class Book:
+#	def __init__(self, name, hname, ind):
+#		self.name = name
+#		self.hname = hname
+#		self.ind = ind
+#		self.chapters = []
 		
 		
 		
@@ -448,22 +234,22 @@ class Book:
 #	def __init__(self):
 #		self.books = []
 
-class Order:
-	def __init__(self, name, hname):
-		self.name = name
-		self.hname = hname
-		self.books = []
-"""
-class Span:
-	def __init__(self, kind, value, alt=None):
-		self.kind = kind
-		self.value = value
-		self.alt = alt
+#class Order:
+#	def __init__(self, name, hname):
+#		self.name = name
+#		self.hname = hname
+#		self.books = []
 
-	def __repr__(self):
-		return 'span=%s'%self.kind + '\n' + self.value + '\n'
-"""
-class OLDNVerse:
+#class Span:
+#	def __init__(self, kind, value, alt=None):
+#		self.kind = kind
+#		self.value = value
+#		self.alt = alt
+#
+#	def __repr__(self):
+#		return 'span=%s'%self.kind + '\n' + self.value + '\n'
+
+class NVerse:
 	def __init__(self, chapter, number, text):
 		self.chapter = chapter
 		self.parasha = None
@@ -647,69 +433,6 @@ class OLDNVerse:
 			return VerseKind.BREAK
 		return None
 
-	def parse(self, text=''):
-		if not text:
-			return []
-		text = re.sub('"([^"]+)"', r'“\1”', text)
-		text = re.sub("'([^']+)'", r"‘\1’", text)
-		text = re.sub('^- ', '\u2015 ', text)
-		text = re.sub(' -', ' \u2013', text)
-		text = re.sub('-', '\u2011', text)
-		alternative_items = list(re.finditer('\[([^|]*)\|([^]]+)\]', text))
-		for item in alternative_items:
-			start, end = item.span()
-			text = text[0:start] + (end - start) * 'X' + text[end:]
-		nonliteral_items = list(re.finditer('_([^_]+)_', text))
-		for item in nonliteral_items:
-			start, end = item.span()
-			text = text[0:start] + (end - start) * 'X' + text[end:]
-		addition_items = list(re.finditer('\+([^+]+)\+', text))
-		for item in addition_items:
-			start, end = item.span()
-			text = text[0:start] + (end - start) * 'X' + text[end:]
-		synonym_items = list(re.finditer('\(\=([^)]+)\)', text))
-		for item in synonym_items:
-			start, end = item.span()
-			text = text[0:start] + (end - start) * 'X' + text[end:]
-		explanation_items = list(re.finditer('\(\~([^)]+)\)', text))
-		for item in explanation_items:
-			start, end = item.span()
-			text = text[0:start] + (end - start) * 'X' + text[end:]
-		correction_items = list(re.finditer('\[([^]]+)\]', text))
-		for item in correction_items:
-			start, end = item.span()
-			text = text[0:start] + (end - start) * 'X' + text[end:]
-
-		plain_items = list(re.finditer('([^X]+)', text))
-		for item in plain_items:
-			start, end = item.span()
-			text = text[0:start] + (end - start) * '.' + text[end:]
-		spans = []
-		for idx in range(len(text)):
-			for item in nonliteral_items + addition_items + alternative_items + \
-					synonym_items + explanation_items + correction_items + plain_items:
-				if idx == item.start():
-					groups = item.groups()
-					value = groups[0]
-					if len(groups) > 1:
-						alt = groups[1]
-					span = None
-					if item in nonliteral_items:
-						span = Span(SpanKind.NONLITERAL, value)
-					elif item in addition_items:
-						span = Span(SpanKind.ADDITION, value)
-					elif item in alternative_items:
-						span = Span(SpanKind.ALTERNATIVE, value, alt)
-					elif item in synonym_items:
-						span = Span(SpanKind.SYNONYM, value)
-					elif item in explanation_items:
-						span = Span(SpanKind.EXPLANATION, value)
-					elif item in correction_items:
-						span = Span(SpanKind.CORRECTION, value)
-					elif item in plain_items:
-						span = Span(SpanKind.PLAIN, value)
-					spans.append(span)
-		return spans
 
 	@property
 	def has_onkelos(self):
@@ -717,11 +440,11 @@ class OLDNVerse:
 
 	@property
 	def onkelos(self):
-		return self.parse(self.onkelos_text)
+		return parse(self.onkelos_text)
 
 	@property
 	def onkelos_trans(self):
-		return self.parse(self.onkelos_trans_text)
+		return parse(self.onkelos_trans_text)
 
 	@property
 	def has_jerusalmi(self):
@@ -729,11 +452,11 @@ class OLDNVerse:
 
 	@property
 	def jerusalmi(self):
-		return self.parse(self.jerusalmi_text)
+		return parse(self.jerusalmi_text)
 
 	@property
 	def jerusalmi_trans(self):
-		return self.parse(self.jerusalmi_trans_text)
+		return parse(self.jerusalmi_trans_text)
 
 	@property
 	def has_jonathan(self):
@@ -741,7 +464,7 @@ class OLDNVerse:
 
 	@property
 	def jonathan(self):
-		return self.parse(self.jonathan_text)
+		return parse(self.jonathan_text)
 
 	@property
 	def has_targum(self):
@@ -749,11 +472,11 @@ class OLDNVerse:
 
 	@property
 	def targum(self):
-		return self.parse(self.targum_text)
+		return parse(self.targum_text)
 
 	@property
 	def targum_trans(self):
-		return self.parse(self.targum_trans_text)
+		return parse(self.targum_trans_text)
 
 	@property
 	def mikra(self):
@@ -855,7 +578,7 @@ class OLDNVerse:
 					spans.append(span)
 		return spans
 
-def OLDverses_to_paragraphs(verses):
+def verses_to_paragraphs(verses):
 	paragraphs = []
 	vbuffer = []
 	sbuffer = []
@@ -878,7 +601,8 @@ def OLDverses_to_paragraphs(verses):
 	paragraphs.append(sbuffer)
 	#print (paragraphs[0])
 	return paragraphs
-	def verses_to_paragraphsx(verses):
+
+	"""def verses_to_paragraphsx(verses):
 	paragraphs = []
 	part = []
 	parts = []
@@ -900,7 +624,7 @@ def OLDverses_to_paragraphs(verses):
 	return paragraphs
 	"""
 
-"""class OLDNChapter:
+class NChapter:
 	def __init__(self, book, number):
 		self.book = book
 		self.number = number
@@ -940,7 +664,7 @@ def OLDverses_to_paragraphs(verses):
 	def has_targum(self):
 		return self.book.has_targum
 
-class OLDParasha:
+class Parasha:
 	def __init__(self, book, number, name, latin_name):
 		self.book = book
 		self.number = number
@@ -953,7 +677,7 @@ class OLDParasha:
 	def paragraphs(self):
 		return verses_to_paragraphs(self.verses)
 
-class OLDHaftara:
+class Haftara:
 	def __init__(self):
 		flavors = ['ashkenaz', 'sefard', 'mizrah', 'yemen']
 		self.book = 4 * [None]
@@ -967,7 +691,7 @@ class OLDHaftara:
 	def paragraphs(self):
 		return verses_to_paragraphs(self.verses)
 
-class OLDNBook:
+class NBook:
 	def __init__(self, number, name, latin_name):
 		self.number = number
 		self.name = name
@@ -1012,7 +736,7 @@ class OLDNBook:
 					chapter_idx += 1
 			self.parashot.append(parasha)
 
-class OLDTanakh:
+class Tanakh:
 	def __init__(self):
 		self.books = []
 		for x in range(len(bible_arr)):
@@ -1054,6 +778,7 @@ class OLDTanakh:
 				self.books[b].parashot[p].haftara = haftara
 
 
+
 #tanakh = Tanakh()
 #tanakh.__postinit__()
 
@@ -1066,158 +791,3 @@ class OLDTanakh:
 #		book.chapters.append(chapter)
 #	Bible.append(book)
 
-Mishnah = []
-for x in range(len(mishnah_arr)):
-	name, hname, tractate_arr = mishnah_arr[x]
-	order = Order(name, hname)
-	for t in range(len(tractate_arr)):
-		tractate_name, tractate_hname = tractate_arr[t]
-		tractate = Book(tractate_name, tractate_hname, t + 1)
-		order.books.append(tractate)
-	Mishnah.append(order)
-
-class NZohar:
-	def __init__(self):
-		self.books = []
-		for book_idx in range(len(zohar_arr)):
-			name, chapter_arr = zohar_arr[book_idx]
-			book = Book('', name, book_idx + 1)
-			self.books.append(book)
-			for chapter_idx in range(len(chapter_arr)):
-				start_daf, start_amud, start_verse, end_daf, end_amud, end_verse, hname = chapter_arr[chapter_idx]
-				chapter = Chapter(chapter_idx + 1)
-				chapter.hname = hname
-
-
-zohar = NZohar()
-
-Zohar = []
-for x in range(len(zohar_arr)):
-	hname, chapter_arr = zohar_arr[x]
-	book = Book('', hname, x + 1)
-	for c in range(len(chapter_arr)):
-		start_daf, start_amud, start_verse, end_daf, end_amud, end_verse, hname = chapter_arr[c]
-		chapter = Chapter(c + 1)
-		chapter.hname = hname
-		path = '../db/zohar/%1d.%02d/00.txt'%(book.ind, chapter.no)
-		if os.path.exists(path):
-			names = open(path).read().split('\n')[:-1]
-			for a in range(len(names)):
-				article = Article(a + 1, names[a], names[a])
-				chapter.articles.append(article)
-		book.chapters.append(chapter)
-	Zohar.append(book)
-""""""
-
-class Prayer:
-	def __init__(self, variation, kind):
-		self.variation = variation
-		self.kind = kind
-		filename = '%s-%s.txt'%(kind, variation)
-		path = os.path.join(DB_PATH, 'liturgy', filename)
-		text = open(path).read()
-		items = reversed(list(re.finditer('\{\{([a=/-z\-]+)\}\}', text, re.M)))
-		for item in items:
-			filename = '%s.txt'%item.groups()[0]
-			path = os.path.join(DB_PATH, 'liturgy', filename)
-			if os.path.isfile(path):
-				data = open(path).read()
-				text = text[0:item.start()] + data + text[item.end():]
-		self.text = text
-		lines = self.text.split('\n')
-
-	def parse_tags(self, text):
-		if not text:
-			return [[], '']
-
-		def search(pattern, text):
-			items = list(re.finditer(pattern, text, re.M))
-			for item in items:
-				text = text[0:item.start()] + (item.end() - item.start()) * 'X' + text[item.end():]
-			return items, text
-
-		""""""
-
-		# SUBSTIUTES
-		+subs = list(re.finditer('(?<!=\{)\{([^}]+)\}(?!=\})', text))
-		subs, text = search('(?<!=\{)\{([^}]+)\}(?!=\})', text)
-		for item in subs:
-			parts = item.groups()[0].split(' ')
-			if len(parts) not in [2, 3, 4]:
-				continue
-			book = None
-			book_name = parts[0]
-			for b in tanakh.books:
-				if b.name == book_name:
-					book = b
-					break
-			if not book:
-				continue
-			chapter_number = parts[1]
-			chapter_idx = hebrew_numbers.gematria_to_int(chapter_number) - 1
-			#print (chapter_idx, chapter_number)
-			chapter = book.chapters[chapter_idx]
-			if len(parts) == 3 and '-' not in parts[2]:
-				verse_number = parts[2]
-				verse_idx = hebrew_numbers.gematria_to_int(verse_number) - 1
-				verse = chapter.verses[verse_idx]
-				#spans.append(Span(SpanKind.LINK, 'xxx'))
-				print ("SUB", book.number, chapter.number, verse.number)
-		""""""
-		title_items, text = search('^==(.+)$', text)
-		subtitle_items, text = search('^=(.+)$', text)
-		info_items, text = search('\{\{([^}]+)\}\}', text)
-		bold_items, text = search('\<([^>]+)\>', text)
-		link_items, text = search('\[([^]]+)\]', text)
-		plain_items, text = search('([^X]+)', text)
-		items = list(title_items + subtitle_items + info_items + bold_items + link_items + plain_items)
-		items.sort(key=lambda x:x.start())
-		spans = []
-		for item in items:
-			groups = item.groups()
-			value = groups[0]
-			if len(groups) > 1:
-				alt = groups[1]
-			if value.endswith('\n'):
-				value = value[:-1]
-			if not value:
-				break
-			if item in title_items:
-				spans.append(Span(SpanKind.TITLE, value))
-			elif item in subtitle_items:
-				spans.append(Span(SpanKind.SUBTITLE, value))
-			elif item in info_items:
-				spans.append(Span(SpanKind.INFO, value))
-			elif item in bold_items:
-				spans.append(Span(SpanKind.BOLD, value))
-			elif item in link_items:
-				spans.append(Span(SpanKind.LINK, value))
-			elif item in plain_items:
-				spans.append(Span(SpanKind.PLAIN, value))#.replace('\n', ''))\
-		return spans
-
-	@property
-	def divs(self):
-		divs = []
-		divs_text = self.text.split('\n\n')
-		for div_text in divs_text:
-			paragraphs = []
-			paragraphs_text = div_text.split('\n')
-			for paragraph_text in paragraphs_text:
-				spans = self.parse_tags(paragraph_text)
-				paragraphs.append(spans)
-			divs.append(paragraphs)
-		return divs
-	
-	@property
-	def spans(self):
-		text = self.text
-		spans = self.parse_tags(text)
-		return spans
-
-class Siddur:
-	def __init__(self, variation):
-		self.variation = variation
-		self.prayers = []
-
-"""

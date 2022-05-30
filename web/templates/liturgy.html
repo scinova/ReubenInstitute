@@ -4,7 +4,62 @@
 <a href="/liturgy/ashkenaz/shaharit">shaharit ashkenaz</a><br />
 <a href="/liturgy/sefard/shaharit">shaharit sefard</a><br />
 <a href="/liturgy/mizrah/shaharit">shaharit mizrah</a><br />
+<a href="/liturgy/teiman/shaharit">shaharit teiman</a><br />
 <br />
+<a href="/liturgy/ashkenaz/minha">minha ashkenaz</a><br />
 <a href="/liturgy/sefard/minha">minha sefard</a><br />
 <a href="/liturgy/mizrah/minha">minha mizrah</a><br />
+<a href="/liturgy/teiman/minha">minha teiman</a><br />
+<br />
+<a href="/liturgy/ashkenaz/arvit">arvit ashkenaz</a><br />
+<a href="/liturgy/sefard/arvit">arvit sefard</a><br />
+<a href="/liturgy/mizrah/arvit">arvit mizrah</a><br />
+<a href="/liturgy/teiman/arvit">arvit teiman</a><br />
+<hr />
+
+
+<a href="/oldliturgy/ashkenaz/shaharit">shaharit ashkenaz</a><br />
+<a href="/oldliturgy/sefard/shaharit">shaharit sefard</a><br />
+<a href="/oldliturgy/mizrah/shaharit">shaharit mizrah</a><br />
+<br />
+<a href="/oldliturgy/sefard/minha">minha sefard</a><br />
+<a href="/oldliturgy/mizrah/minha">minha mizrah</a><br />
+
+
+
+{% set paragraphs = prayer.text.split('\n\n\n') %}
+<div>
+{% for paragraph in paragraphs %}
+	<div>
+	{% for variant in [0, 1, 2, 3] %}
+		<div style="float:right;width:25%;font-family:ReuvenSerif;">
+
+	<p>
+	{% set spans = prayer.parse(prayer.variant(paragraph, variant)) %}
+	{% for span in spans %}
+		{%- if span.kind == SpanKind.TITLE -%}
+			<h1>{{span.value}}</h1>
+		{%- elif span.kind == SpanKind.SUBTITLE -%}
+			<h2>{{span.value}}</h2>
+		{%- elif span.kind == SpanKind.INFO -%}
+			<span class="info">{{span.value}}</span>
+		{%- elif span.kind == SpanKind.BOLD -%}
+			<span class="bold">{{span.value}}</span>
+		{%- elif span.kind == SpanKind.LINK -%}
+			<span class="link">{{span.value}}</span>
+		{%- elif span.kind == SpanKind.CORRECTION -%}
+			<span class="correction">{{span.value}}</span>
+		{%- elif span.kind == SpanKind.PLAIN -%}
+			<span class="plain">{{span.value|replace('\n', '<br />')|safe}}</span>
+		{%- endif -%}
+	{% endfor %}
+	</p>
+	
+	
+		</div>
+	{% endfor %}
+	<div class="clear"></div>
+	</div>
+{% endfor %}
+</div>
 {% endblock %}

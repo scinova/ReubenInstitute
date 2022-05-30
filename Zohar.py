@@ -5,6 +5,7 @@ import hebrew_numbers
 import os
 import re
 from enum import Enum
+import unicodedata
 
 from common import Span, SpanKind
 
@@ -105,7 +106,7 @@ class Article:
 
 	@text.setter
 	def text(self, value):
-		self._text = value
+		self._text = unicodedata.normalize('NFC', value)
 		filename = os.path.join(DB_PATH, '%1d.%02d'%(self.book.number, self.chapter.number), '%02d.txt'%self.number)
 		open(filename, 'w').write(value)
 

@@ -1,9 +1,10 @@
-{% extends "base.html" %}
+{% if request.environ.HTTP_HOST == 'localhost:5000' %}
+	{% extends "base-standalone.html" %}
+{% else %}
+	{% extends "base.html" %}
+{% endif %}
 {% block title %}{% endblock %}
 {% block content %}
-<a href="/zohar">זהר</a>
-{{article.book.title}}
-<a href="/zohar/{{article.book.number}}/{{article.chapter.number}}">{{article.chapter.title}}</a><br />
 <h1>{{article.title}}</h1>
 {% for section_idx in range(article.sections|length) %}
 	{% if request.environ.HTTP_HOST == '127.0.0.1:5000' %}

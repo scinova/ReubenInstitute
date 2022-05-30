@@ -24,6 +24,14 @@ import re
 import unicodedata
 import os
 
+import Tanakh
+tanakh = Tanakh.Tanakh()
+tanakh.__postinit__()
+
+import Mishnah
+
+import Liturgy
+
 import Zohar
 ZOHAR = Zohar.Zohar()
 
@@ -31,6 +39,12 @@ import Aramaic
 aramaic = Aramaic.Aramaic()
 numbers = [hebrew_numbers.int_to_gematria(x) for x in range(0, 151)]
 
+@app.context_processor
+def inject_variables():
+	return dict(tanakh=tanakh, 
+	re=re, Span=common.Span, SpanKind=common.SpanKind,
+	VerseKind=Tanakh.VerseKind)
+    
 @app.route('/@@/<path:filename>')
 def files(filename):
     return send_from_directory('static', filename)
@@ -45,12 +59,26 @@ def main():
 
 @app.route('/liturgy/')
 def liturgy():
-	return render_template('liturgy.html')
+	prayer = Liturgy.Prayer('SHAHARIT')
+	return render_template('liturgy.html', prayer=prayer, re=re, Span=common.Span, SpanKind=common.SpanKind)
 
-@app.route('/liturgy/<string:variation>/<string:kind>')
-def prayer(variation, kind):
+@app.route('/liturgy/<string:variant>/<string:time>')
+def prayer(variant, time):
+	if variant == 'ashkenaz':
+		variant = 0
+	elif variant == 'sefard':
+		variant = 1
+	elif variant == 'mizrah':
+		variant = 2
+	elif variant == 'teiman':
+		variant = 3
+	prayer = Liturgy.Prayer(time)
+	return render_template('prayer.html', prayer=prayer, variant=variant, re=re, Span=common.Span, SpanKind=common.SpanKind)
+
+@app.route('/oldliturgy/<string:variation>/<string:kind>')
+def oldprayer(variation, kind):
 	p = common.Prayer(variation, kind)
-	return render_template('prayer.html', spans=p.spans, divs=p.divs, re=re, Span=common.Span, SpanKind=common.SpanKind)
+	return render_template('oldprayer.html', spans=p.spans, divs=p.divs, re=re, Span=common.Span, SpanKind=common.SpanKind)
 
 @app.route('/psalms/')
 def psalms():
@@ -70,34 +98,36 @@ def psalms():
 	return render_template('psalms.html', words=words, s=s, tanakh=common.tanakh, enumerate=enumerate)
 
 @app.route('/tanakh/')
-def tanakh():
-	return render_template('tanakh.html', tanakh=common.tanakh, enumerate=enumerate)
+def tanakh_main():
+	return render_template('tanakh.html', enumerate=enumerate)
 
 @app.route('/tanakh/<int:book_no>/<int:chapter_no>')
 def view_chapter(book_no, chapter_no):
-	book = common.tanakh.books[book_no - 1]
+	book = tanakh.books[book_no - 1]
 	chapter = book.chapters[chapter_no - 1]
 	if book.is_poem:
-		return render_template('tanakh-chapter-poem.html', chapter=chapter, re=re, Span=common.Span, SpanKind=common.SpanKind, VerseKind=common.VerseKind)
+		return render_template('tanakh-chapter-poem.html', chapter=chapter)
 	else:
-		return render_template('tanakh-chapter.html', chapter=chapter, re=re, Span=common.Span, SpanKind=common.SpanKind, VerseKind=common.VerseKind)
+		return render_template('tanakh-chapter.html', chapter=chapter)
 
 @app.route('/tanakh/<int:book_no>/p<int:parasha_no>')
 def view_parasha(book_no, parasha_no):
-	book = common.tanakh.books[book_no - 1]
+	book = tanakh.books[book_no - 1]
+	print (book)
 	parasha = book.parashot[parasha_no - 1]
-	return render_template('tanakh-parasha.html', parasha=parasha, re=re, Span=common.Span, SpanKind=common.SpanKind, VerseKind=common.VerseKind, ord=ord, chr=chr, list=list)
+	print (parasha)
+	return render_template('tanakh-parasha.html', parasha=parasha, ord=ord, chr=chr, list=list)
 
-@app.route('/tanakh/<int:book_no>/psmet/<int:parasha_no>')
-def view_parasha_smet(book_no, parasha_no):
-	book = common.tanakh.books[book_no - 1]
-	parasha = book.parashot[parasha_no - 1]
-	return render_template('tanakh-parasha-smet.html', parasha=parasha, re=re, Span=common.Span, SpanKind=common.SpanKind, VerseKind=common.VerseKind)
+#@app.route('/tanakh/<int:book_no>/psmet/<int:parasha_no>')
+#def view_parasha_smet(book_no, parasha_no):
+#	book = common.tanakh.books[book_no - 1]
+#	parasha = book.parashot[parasha_no - 1]
+#	return render_template('tanakh-parasha-smet.html', parasha=parasha, re=re, Span=common.Span, SpanKind=common.SpanKind, VerseKind=common.VerseKind)
 
 @app.route('/tanakh/<int:book_no>/<int:chapter_no>/<int:verse_no>/p<int:parasha_book_no>.<int:parasha_no>/edit', methods=['GET','POST'])
 @app.route('/tanakh/<int:book_no>/p<int:parasha_no>/<int:chapter_no>/<int:verse_no>/edit', methods=['GET','POST'])
 def verse_edit(book_no, chapter_no, verse_no, parasha_book_no=None, parasha_no=None):
-	book = common.tanakh.books[book_no - 1]
+	book = tanakh.books[book_no - 1]
 	chapter = book.chapters[chapter_no - 1]
 	verse = chapter.verses[verse_no - 1]
 	if request.method == 'POST':
@@ -141,15 +171,15 @@ def mishnah():
 @app.route('/mishnah/<int:order_no>/<int:tractate_no>')
 def view_tractate(order_no, tractate_no):
 	data = open('../db/mishnah/%1d.%02d.txt'%(order_no, tractate_no)).read()
-	order = common.Mishnah[order_no - 1]
+	order = Mishnah.Mishnah[order_no - 1]
 	tractate = order.books[tractate_no - 1]
 	chapters = []
 	parags = data.split('\n\n')
 	for c in range(len(parags)):
-		chapter = common.Chapter(c + 1)
+		chapter = Mishnah.Chapter(c + 1)
 		verses = parags[c].split('\n')
 		for v in range(len(verses)):
-			verse = common.Verse(v + 1, verses[v])
+			verse = Mishnah.Verse(v + 1, verses[v])
 			chapter.verses.append(verse)
 		chapters.append(chapter)
 	return render_template('mishnah-tractate.html', chapters=chapters, order=order, tractate=tractate)
