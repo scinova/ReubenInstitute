@@ -60,8 +60,36 @@ def main():
 
 @app.route('/liturgy/')
 def liturgy():
+	files = [f[:-4] for f in os.listdir('../db/liturgy') if f.endswith('.txt')]
 	prayer = Liturgy.Prayer('SHAHARIT')
-	return render_template('liturgy.html', prayer=prayer, re=re, Span=common.Span, SpanKind=common.SpanKind)
+	text = prayer._text
+#	prayers = [Prayer.something(0)[:25],
+#		Prayer.something(1)[:25],
+#		prayer.something(2)[:25],
+#		prayer.something(3)[:25]]
+	return render_template('liturgy.html', files=files, re=re, Span=common.Span, SpanKind=common.SpanKind)
+
+@app.route('/liturgy/<string:name>')
+def liturgy_file(name):
+	filename = '../db/liturgy/%s.txt'%name
+	data = open(filename).read()
+	prayers = [Liturgy.something(data, 0),
+		Liturgy.something(data, 1),
+		Liturgy.something(data, 2),
+		Liturgy.something(data, 3)]
+	return render_template('liturgy-file.html', name=name, data=data, prayers=prayers, re=re, Span=common.Span, SpanKind=common.SpanKind)
+
+@app.route('/liturgy/<string:name>/<int:section_number>/edit', methods=['GET','POST'])
+def liturgy_file_edit(name, section_number):
+	filename = '../db/liturgy/%s.txt'%name
+	text = open(filename).read()
+	sections = text.split('\n\n\n')
+	if request.method == 'POST':
+		sections[section_number - 1] = request.form['text']
+		open(filename, 'w').write('\n\n\n'.join(sections))
+		return redirect('/liturgy/%s#s%d'%(name, section_number))
+	text = sections[section_number - 1]
+	return render_template('liturgy-file-edit.html', name=name, text=text)
 
 @app.route('/liturgy/<string:variant>/<string:time>')
 def prayer(variant, time):

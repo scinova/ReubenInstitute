@@ -4,7 +4,10 @@
 {{prayer._variant}}
 {{prayer._time}}
 {% set paragraphs = prayer.text.split('\n\n\n')[:19] %}
+
 <div style="font-family:ReuvenSerif;">
+
+<!--
 {% for paragraph in paragraphs %}
 	<div>
 	{% set spans = prayer.parse(prayer.variant(paragraph, variant)) %}
@@ -27,5 +30,42 @@
 	{% endfor %}
 	</div>
 {% endfor %}
+<hr />
+-->
+
+{% for section in prayer.something(variant)[:25] %}
+	<div style="border:2px solid red">
+		{% for block in section %}
+			{% if block.option %}
+				<div style="background-color:#eee;padding: 5px;">
+			{% else %}
+				<div style="border:2px solid blue;padding: 5px;">
+			{% endif %}
+			{% for span in block.spans %}
+				{% set value = span.value.replace('\n', '<br />') %}
+				{%- if span.kind == SpanKind.TITLE -%}
+					<h1>{{value}}</h1>
+				{%- elif span.kind == SpanKind.SUBTITLE -%}
+					<h2>{{value}}</h2>
+				{%- elif span.kind == SpanKind.INFO -%}
+					<span class="info">{{span.value}}</span>
+				{%- elif span.kind == SpanKind.BOLD -%}
+					<span class="bold">{{span.value}}</span>
+				{%- elif span.kind == SpanKind.LINK -%}
+					<span class="link">{{span.value}}</span>
+				{%- elif span.kind == SpanKind.CORRECTION -%}
+					<span class="correction">{{span.value}}</span>
+				{%- elif span.kind == SpanKind.CITATION -%}
+					<span class="citation">{{span.value|safe}}</span>
+				{%- elif span.kind == SpanKind.PLAIN -%}
+					<span class="plain">{{value|safe}}</span>
+				{%- endif -%}
+			{% endfor %}
+			</div>
+		{% endfor %}
+	</div>
+{% endfor %}
+
+
 </div>
 {% endblock %}

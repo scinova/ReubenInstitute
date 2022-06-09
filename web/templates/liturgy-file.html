@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block title %}{% endblock %}
+{% block content %}
+
+
+{% set num_sections = prayers[0]|length %}
+
+<div class="liturgy">
+{% for section_no in range(num_sections) %}
+	<div>
+		<a name="s{{section_no + 1}}" href="/liturgy/{{name}}/{{section_no + 1}}/edit">edit</a><br />
+		{% for variant in [0, 1, 2, 3] %}
+			<div style="float:right;width:23%;font-family:ReuvenSerif;border:1px solid #99f;margin-left:5px;">
+				{% for block in prayers[variant][section_no] %}
+					<!--<div><pre>{{block.value|safe}}</pre></div>-->
+					{% if block.option %}
+						<div style="background-color:#ccc;padding:5px;margin-bottom:0px;">
+							<span style="color:white;">{{block.option}}</span><br />
+					{% else %}
+						<div style="border:1px solid #ccc;padding:5px;">
+					{% endif %}
+						{% for span in block.spans %}
+
+		{%- if span.kind == SpanKind.TITLE -%}
+			<h1>{{span.value}}</h1>
+		{%- elif span.kind == SpanKind.SUBTITLE -%}
+			<h2>{{span.value}}</h2>
+		{%- elif span.kind == SpanKind.BOLD -%}
+			<span class="bold">{{span.value}}</span>
+		{%- elif span.kind == SpanKind.INFO -%}
+			<span class="info">{{span.value}}</span>
+		{%- elif span.kind == SpanKind.MAJUSCULE -%}
+			<span class="majuscule">{{span.value}}</span>
+		{%- elif span.kind == SpanKind.MINUSCULE -%}
+			<span class="minuscule">{{span.value}}</span>
+		{%- elif span.kind == SpanKind.BOLD -%}
+			<span class="bold">{{span.value}}</span>
+		{%- elif span.kind == SpanKind.CITATION -%}
+			<span class="citation">{{span.value|replace('\n', '<br />')|safe}}</span>
+		{%- elif span.kind == SpanKind.LINK -%}
+			<span class="link">{{span.value}}</span>
+		{%- elif span.kind == SpanKind.CORRECTION -%}
+			<span class="correction">[{{span.value}}]</span>
+		{%- elif span.kind == SpanKind.PLAIN -%}
+			<span class="plain">{{span.value|replace('\n', '<br />')|safe}}</span>
+		{%- endif -%}
+	{% endfor %}
+
+					</div>
+				{% endfor %}
+			</div>
+		{% endfor %}
+		<div class="clear"></div>
+	</div>
+{% endfor %}
+</div>
+{% endblock %}

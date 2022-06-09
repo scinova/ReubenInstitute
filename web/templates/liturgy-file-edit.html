@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}{% endblock %}
+{% block content %}
+<h1></h1>
+<form method="post">
+	<div>
+		<label></label>
+		<textarea name="text" rows="20">{{text}}</textarea>
+	</div>
+	<!--<input type="hidden" name="name" value="{{name}}" />
+	<input type="hidden" name="paragraph_number" value="{{paragraph_number}}" />-->
+	<button type="submit">שמור</button>
+<form>
+
+<table>
+	<tr>
+		<td><button onclick="navigator.clipboard.writeText('׳');return false;">׳</button></td>
+		<td><button onclick="navigator.clipboard.writeText('״');return false;">״</button></td>
+		<td><button onclick="navigator.clipboard.writeText('־');return false;">־</button></td>
+		<td><button onclick="navigator.clipboard.writeText('…');return false;">…</button></td>
+		<td><button onclick="navigator.clipboard.writeText('“');return false;">“</button></td>
+		<td><button onclick="navigator.clipboard.writeText('”');return false;">”</button></td>
+		<td><button onclick="navigator.clipboard.writeText('‘');return false;">‘</button></td>
+		<td><button onclick="navigator.clipboard.writeText('’');return false;">’</button></td>
+	</tr>
+</table>
+
+{% endblock %}

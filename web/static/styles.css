@@ -1,6 +1,16 @@
 @font-face {
+	font-family: 'HadasimReuven';
+	src: url('/@@/fonts/HadasimReuven.ttf') format('truetype');
+	}
+
+@font-face {
 	font-family: 'ReuvenSerif';
 	src: url('/@@/fonts/ReuvenSerif.ttf') format('truetype');
+	}
+
+@font-face {
+	font-family: 'hadasim';
+	src: url('/@@/fonts/HadasimCLM-Regular.ttf') format('truetype');
 	}
 
 
@@ -141,7 +151,7 @@ h2 {
 	color: #d8b27e;
 	font-weight: normal;
 	xtext-align: center;
-	margin: 1em 0 0;
+	xmargin: 1em 0 0;
 	}
 
 h4 {
@@ -161,7 +171,7 @@ h5 {
 
 
 div.section {
-	font-family: ReuvenSerif;
+	xfont-family: ReuvenSerif;
 	}
 
 div.right {
@@ -340,6 +350,11 @@ span.citation {
 	vertical-align: center;
 	}
 
+div.liturgy span.citation {
+	font-family: ReuvenSerif;
+	font-size: 1.1em;
+	}
+
 span.info {
 	color: #999;
 	font-size: smaller;
@@ -352,6 +367,11 @@ span.link {
 	font-size: 70%;
 	xfont-family: script;
 }
+
+div.liturgy span.link {
+	color: #999;
+	font-size: 50%;
+	}
 
 span.reference {
 	color: red;
@@ -414,11 +434,11 @@ label {
 
 
 
-div.prayer {
-	font-family: ReuvenSerif;
+div.liturgy {
+	font-family: HadasimReuven;
 	}
 
-xdiv.prayer div {
+xdiv.liturgy div {
 	background-color: #eee;
 	padding: 10px;
 	margin-bottom: 10px;
@@ -432,27 +452,30 @@ div.prayer p {
 	xborder: 1px solid red;
 	}
 
-div.prayer h1 {
+div.liturgy h1 {
 	color: red;
 	color: orange;
 	margin: 0;
+	font-family: ReuvenSerif;
 	}
 
-div.prayer h2 {
+div.liturgy h2 {
 	color: orange;
 	text-align: right;
 	margin: 0;
+	font-family: ReuvenSerif;
+	font-size: 0.9em;
 	}
 
-div.prayer span.link {
+div.liturgy span.link {
 	color: blue;
 	}
 
-div.prayer span.bold {
-	color: red;
+div.liturgy span.bold {
+	color: #66F;
 }
 
-div.prayer span.info
+div.liturgy span.info {
 	color: #ccc;
 }
 

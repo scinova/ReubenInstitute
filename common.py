@@ -53,4 +53,4 @@ class Span:
 		self.alt = alt
 
 	def __repr__(self):
-		return 'span=%s'%self.kind + '\n' + self.value + '\n'
+		return '<Span.%s:%s>'%(self.kind, self.value)
