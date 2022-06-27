@@ -6,7 +6,8 @@ import re
 import Liturgy
 from common import Span, SpanKind
 
-data = open('/root/work/reubeninstitute/db/liturgy/Minchah.txt').read()
+data = open('/root/work/reubeninstitute/db/liturgy/Boker.txt').read()
+#data = open('/root/work/reubeninstitute/db/liturgy/Minchah.txt').read()
 #data = open('/root/work/reubeninstitute/db/liturgy/Shacharit.txt').read()
 sections = Liturgy.something(data, 1)
 #prayer = Liturgy.Prayer(Liturgy.Time.SHAHARIT)
@@ -25,21 +26,26 @@ serif = "ReuvenSerif Regular"
 sans = "Nachlieli CLM Light"
 charstyles = [
 	["Default Character Style", serif, 15, 'Black'],
-	["h1", sans, 22, 'Orange'],
-	["h2", sans, 18, 'Orange'],
-	["h4", sans, 15, 'Orange'],
-	["initial", serif, 15, 'Blue'],
-	["explanation", sans, 12, 'Silver'],
+	["h1", serif, 22, 'Orange'],
+	["h2", serif, 18, 'Orange'],
+	["h4", serif, 15, 'Orange'],
+	["bold", serif, 15, 'Blue'],
+	["majuscule", serif, 18, 'Black'],
+	["minuscule", serif, 12, 'Black'],
+	["addition", serif, 12, 'Silver'],
+	["explanation", serif, 12, 'Blue'],
 	["info", sans, 12, 'DarkGreen'],
 	["citation", serif, 16, 'DarkRed'],
-	["link", sans, 10, 'Red'],
-	["regular", serif, 15, 'Black'],
-	["holly", serif, 15, 'Black'],
-	["cantillation", serif, 15, 'Red']]
+	["link", serif, 10, 'Silver'],
+	["verseno", serif, 10, 'Silver'],
+#	["points", serif, 15, 'Green'],
+#	["accents", serif, 15, 'Red'],
+	["punctuation", serif, 15, 'Blue'],
+	["plain", serif, 15, 'Black']]
 for name, font, size, fillcolor in charstyles:
 	createCharStyle(name, font, size, fillcolor=fillcolor)
 
-createParagraphStyle("Default Paragraph Style", linespacingmode=1, linespacing=17, alignment=ALIGN_CENTERED, gapafter=0)
+createParagraphStyle("Default Paragraph Style", linespacingmode=0, linespacing=17, alignment=ALIGN_CENTERED, gapafter=0)
 #createParagraphStyle("poem", linespacingmode=0, linespacing=17, alignment=1,
 #		leftmargin=0, rightmargin=0, gapbefore=0, gapafter=6,
 #		firstindent=0, hasdropcap=0, dropcaplines=0, dropcapoffset=0)
@@ -73,8 +79,10 @@ for section in sections:
 			value = span.value
 			if span.kind == SpanKind.ADDITION:
 				value = '[%s]'%value
-			if span.kind == SpanKind.EXPLANATION:
+			if span.kind in [SpanKind.EXPLANATION, SpanKind.LINK]:
 				value = '[%s]'%value
+			if span.kind == SpanKind.VERSENO:
+				value = '%s '%value
 			#value = re.sub('\u05bd', '', value)
 			length = len(value)
 			pos = getTextLength(frame)
@@ -91,17 +99,25 @@ for section in sections:
 				setCharacterStyle("h4", frame)
 				insertText('\n', getTextLength(frame), frame)
 			elif span.kind == SpanKind.BOLD:
-				setCharacterStyle("initial", frame)
+				setCharacterStyle("bold", frame)
+			elif span.kind == SpanKind.MAJUSCULE:
+				setCharacterStyle("majuscule", frame)
+			elif span.kind == SpanKind.MINUSCULE:
+				setCharacterStyle("minuscule", frame)
+			elif span.kind == SpanKind.VERSENO:
+				setCharacterStyle("verseno", frame)
 			elif span.kind == SpanKind.ADDITION:
-				setCharacterStyle("explanation", frame)
+				setCharacterStyle("addition", frame)
 			elif span.kind == SpanKind.EXPLANATION:
 				setCharacterStyle("explanation", frame)
 			elif span.kind == SpanKind.INFO:
 				setCharacterStyle("info", frame)
+			elif span.kind == SpanKind.LINK:
+				setCharacterStyle("link", frame)
 			elif span.kind == SpanKind.CITATION:
 				setCharacterStyle("citation", frame)
 			else:
-				setCharacterStyle("regular", frame)
+				setCharacterStyle("plain", frame)
 
 		insertText('\n', getTextLength(frame), frame)
 
