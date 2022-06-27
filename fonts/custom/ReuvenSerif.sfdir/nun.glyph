@@ -1,0 +1,53 @@
+StartChar: nun
+Encoding: 107 1504 71
+Width: 520
+VWidth: 1738
+GlyphClass: 2
+Flags: W
+AnchorPoint: "accent bottom left" 255 0 basechar 0
+AnchorPoint: "accent top" 255 0 basechar 0
+AnchorPoint: "Top" 286 1119 basechar 0
+AnchorPoint: "Holam" 215 1104 basechar 0
+AnchorPoint: "Dagesh" 212 457 basechar 0
+AnchorPoint: "Bottom Narrow Point" 255 0 basechar 0
+AnchorPoint: "Bottom Regular Point" 255 0 basechar 0
+AnchorPoint: "Bottom Wide Point" 255 0 basechar 0
+LayerCount: 2
+Fore
+SplineSet
+414 475 m 0,0,1
+ 414 388 414 388 440 268 c 128,-1,2
+ 466 148 466 148 466 110 c 0,3,4
+ 466 33 466 33 458 0 c 1,5,-1
+ 59 0 l 1,6,-1
+ 90 204 l 1,7,-1
+ 347 204 l 1,8,-1
+ 344 315 l 1,9,-1
+ 344 338 l 2,10,11
+ 344 382 344 382 352 476.5 c 128,-1,12
+ 360 571 360 571 360 614 c 2,13,-1
+ 360 620 l 2,14,15
+ 360 653 360 653 346.5 671 c 128,-1,16
+ 333 689 333 689 297.5 689 c 128,-1,17
+ 262 689 262 689 236 699.5 c 128,-1,18
+ 210 710 210 710 196 725.5 c 128,-1,19
+ 182 741 182 741 174 762.5 c 128,-1,20
+ 166 784 166 784 164 799.5 c 128,-1,21
+ 162 815 162 815 162 832 c 2,22,-1
+ 162 835 l 2,23,24
+ 162 915 162 915 214 968 c 1,25,-1
+ 237 968 l 1,26,27
+ 244 926 244 926 254 915 c 0,28,29
+ 266 901 266 901 291 901 c 2,30,-1
+ 329 898 l 2,31,32
+ 444 885 444 885 444 781 c 0,33,34
+ 444 740 444 740 429 628 c 128,-1,35
+ 414 516 414 516 414 475 c 0,0,1
+EndSplineSet
+Validated: 1
+PairPos2: "kerning-2" ayin dx=-41 dy=0 dh=-41 dv=0 dx=0 dy=0 dh=0 dv=0
+PairPos2: "kerning-2" ayin.wide dx=-181 dy=0 dh=-181 dv=0 dx=0 dy=0 dh=0 dv=0
+PairPos2: "kerning-2" finaltsadi dx=-46 dy=0 dh=-46 dv=0 dx=0 dy=0 dh=0 dv=0
+PairPos2: "kerning-2" lamed dx=-45 dy=0 dh=-45 dv=0 dx=0 dy=0 dh=0 dv=0
+PairPos2: "kerning-2" shin dx=-36 dy=0 dh=-36 dv=0 dx=0 dy=0 dh=0 dv=0
+EndChar

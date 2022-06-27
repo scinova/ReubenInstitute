@@ -1,0 +1,22 @@
+StartChar: holam
+Encoding: 77 1465 41
+Width: 0
+VWidth: 1738
+GlyphClass: 4
+Flags: W
+AnchorPoint: "Holam" 2 1104 mark 0
+LayerCount: 2
+Fore
+SplineSet
+0 1037 m 0,0,1
+ -26 1037 -26 1037 -42.5 1057 c 128,-1,2
+ -59 1077 -59 1077 -59 1107 c 0,3,4
+ -59 1138 -59 1138 -42 1157.5 c 128,-1,5
+ -25 1177 -25 1177 0 1177 c 0,6,7
+ 26 1177 26 1177 42.5 1156.5 c 128,-1,8
+ 59 1136 59 1136 59 1107 c 0,9,10
+ 59 1076 59 1076 42 1056.5 c 128,-1,11
+ 25 1037 25 1037 0 1037 c 0,0,1
+EndSplineSet
+Validated: 1
+EndChar

@@ -1,0 +1,155 @@
+SplineFontDB: 3.2
+FontName: ReuvenSerif
+FullName: ReuvenSerif
+FamilyName: ReuvenSerif
+Weight: Book
+Copyright: Copyright (c) 2021, root
+Version: 001.000
+ItalicAngle: 0
+UnderlinePosition: -85
+UnderlineWidth: 43
+Ascent: 1440
+Descent: 608
+InvalidEm: 0
+sfntRevision: 0x00010000
+LayerCount: 2
+Layer: 0 1 "Back" 1
+Layer: 1 1 "Fore" 0
+XUID: [1021 672 -1348887164 13292361]
+StyleMap: 0x0040
+FSType: 0
+OS2Version: 4
+OS2_WeightWidthSlopeOnly: 0
+OS2_UseTypoMetrics: 1
+CreationTime: 1631515319
+ModificationTime: 1656079786
+PfmFamily: 17
+TTFWeight: 400
+TTFWidth: 5
+LineGap: 78
+VLineGap: 0
+Panose: 2 0 5 3 0 0 0 0 0 0
+OS2TypoAscent: 1391
+OS2TypoAOffset: 0
+OS2TypoDescent: -348
+OS2TypoDOffset: 0
+OS2TypoLinegap: 78
+OS2WinAscent: 1224
+OS2WinAOffset: 0
+OS2WinDescent: 544
+OS2WinDOffset: 0
+HheadAscent: 1224
+HheadAOffset: 0
+HheadDescent: -544
+HheadDOffset: 0
+OS2SubXSize: 1130
+OS2SubYSize: 1217
+OS2SubXOff: 0
+OS2SubYOff: 242
+OS2SupXSize: 1130
+OS2SupYSize: 1217
+OS2SupXOff: 0
+OS2SupYOff: 835
+OS2StrikeYSize: 87
+OS2StrikeYPos: 450
+OS2Vendor: 'PfEd'
+OS2CodePages: 00000020.00000000
+OS2UnicodeRanges: 00000800.40000000.00000000.00000000
+Lookup: 6 1 0 "special letters" { "he and dagesh"  "het and sheva"  } ['calt' ('hebr' <'dflt' > ) ]
+Lookup: 6 1 0 "he" { "he and sheva"  "ain sheva"  } ['calt' ('DFLT' <'dflt' > 'hebr' <'dflt' > 'latn' <'dflt' > ) ]
+Lookup: 4 1 0 "substitute bold diacritics" { "shva and dagesh"  } ['ccmp' ('DFLT' <'dflt' > 'hebr' <'dflt' > ) ]
+Lookup: 2 1 0 "substitute wide letters" { "wide letters"  } []
+Lookup: 260 1 0 "cantillations" { "cantillations"  } ['mark' ('DFLT' <'dflt' > 'hebr' <'dflt' > ) ]
+Lookup: 260 1 0 "dagesh" { "dagesh"  } ['mark' ('DFLT' <'dflt' > 'hebr' <'dflt' > ) ]
+Lookup: 260 1 0 "bottom marks" { "bottom points"  } ['mark' ('DFLT' <'dflt' > 'hebr' <'dflt' > ) ]
+Lookup: 264 1 0 "meteg and wowel" { "meteg and wowel-1"  } ['kern' ('DFLT' <'dflt' > 'hebr' <'dflt' > 'latn' <'dflt' > ) ]
+Lookup: 262 1 0 "meteg" { "meteg positioning"  } ['mkmk' ('DFLT' <'dflt' > 'hebr' <'dflt' > 'latn' <'dflt' > ) ]
+Lookup: 258 1 0 "kerning" { "kerning-2" [307,30,2] } ['kern' ('hebr' <'dflt' > ) ]
+Lookup: 257 1 0 "move vowel" { "move vowel"  } []
+MarkAttachClasses: 2
+"accent-upper" 18 segolta shalshelet
+DEI: 91125
+ChainPos2: coverage "meteg and wowel-1" 0 0 0 1
+ 1 0 1
+  Coverage: 89 sheva hatafsegol hatafpatah hatafqamats hiriq tsere segol patah qamats qubuts qamatskatan
+  FCoverage: 5 meteg
+ 1
+  SeqLookup: 0 "move vowel"
+EndFPST
+ChainSub2: coverage "ain sheva" 0 0 0 1
+ 1 0 1
+  Coverage: 4 ayin
+  FCoverage: 5 sheva
+ 1
+  SeqLookup: 0 "substitute wide letters"
+EndFPST
+ChainSub2: coverage "he and sheva" 0 0 0 1
+ 1 0 1
+  Coverage: 2 he
+  FCoverage: 5 sheva
+ 1
+  SeqLookup: 0 "substitute wide letters"
+EndFPST
+ChainSub2: coverage "het and sheva" 0 0 0 1
+ 1 0 1
+  Coverage: 3 het
+  FCoverage: 5 sheva
+ 1
+  SeqLookup: 0 "substitute wide letters"
+EndFPST
+ChainSub2: coverage "he and dagesh" 0 0 0 1
+ 1 0 1
+  Coverage: 2 he
+  FCoverage: 6 dagesh
+ 1
+  SeqLookup: 0 "substitute wide letters"
+EndFPST
+ChainSub2: coverage "he and dagesh" 0 0 0 1
+ 1 0 1
+  Coverage: 2 he
+  FCoverage: 6 dagesh
+ 1
+  SeqLookup: 0 "substitute wide letters"
+EndFPST
+ShortTable: cvt  2
+  68
+  1297
+EndShort
+ShortTable: maxp 16
+  1
+  0
+  96
+  95
+  5
+  18
+  2
+  2
+  0
+  1
+  1
+  0
+  64
+  46
+  2
+  1
+EndShort
+LangName: 1033 "" "" "Regular" "FontForge : ReuvenSerif : 13-9-2021"
+GaspTable: 1 65535 2 0
+Encoding: Custom
+Compacted: 1
+UnicodeInterp: none
+NameList: AGL For New Fonts
+DisplaySize: -72
+AntiAlias: 1
+FitToEm: 1
+WinInfo: 17 17 6
+BeginPrivate: 0
+EndPrivate
+Grid
+647 1106 m 5
+ -412 1106 l 1029
+951.520507812 425.7421875 m 1
+ -54 425.7421875 l 1025
+EndSplineSet
+AnchorClass2: "accent bottom left" "cantillations" "lower cantilation"""  "accent top" "cantillations" "Top" "bottom points" "bottom narrow point"""  "Bottom Narrow Point" "bottom points" "Dagesh" "dagesh" "Meteg" "meteg positioning" "ShinDot" "bottom points" "SinDot" "bottom points" "Holam" "dagesh" "Bottom Wide Point" "bottom points" "Bottom Regular Point" "bottom points"
+EndSplineFont

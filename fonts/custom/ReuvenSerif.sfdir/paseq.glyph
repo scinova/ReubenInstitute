@@ -1,0 +1,17 @@
+StartChar: paseq
+Encoding: 84 1472 48
+Width: 509
+VWidth: 1738
+GlyphClass: 2
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+290 -139 m 1,0,-1
+ 219 -139 l 1,1,-1
+ 219 1044 l 1,2,-1
+ 290 1044 l 1,3,-1
+ 290 -139 l 1,0,-1
+EndSplineSet
+Validated: 1
+EndChar

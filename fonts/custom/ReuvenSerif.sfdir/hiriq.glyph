@@ -1,0 +1,24 @@
+StartChar: hiriq
+Encoding: 72 1460 36
+Width: 0
+VWidth: 1738
+GlyphClass: 4
+Flags: W
+AnchorPoint: "Meteg" -187 0 basemark 0
+AnchorPoint: "Bottom Narrow Point" 0 0 mark 0
+LayerCount: 2
+Fore
+SplineSet
+0 -283 m 0,0,1
+ -26 -283 -26 -283 -42.5 -262.5 c 128,-1,2
+ -59 -242 -59 -242 -59 -213 c 0,3,4
+ -59 -182 -59 -182 -42 -162.5 c 128,-1,5
+ -25 -143 -25 -143 0 -143 c 0,6,7
+ 26 -143 26 -143 42.5 -163 c 128,-1,8
+ 59 -183 59 -183 59 -213 c 0,9,10
+ 59 -244 59 -244 42 -263.5 c 128,-1,11
+ 25 -283 25 -283 0 -283 c 0,0,1
+EndSplineSet
+Validated: 1
+Position2: "move vowel" dx=25 dy=0 dh=0 dv=0
+EndChar

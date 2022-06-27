@@ -1,0 +1,23 @@
+StartChar: maqaf
+Encoding: 82 1470 46
+Width: 535
+VWidth: 1738
+GlyphClass: 2
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+66 705 m 2,0,1
+ 62 705 62 705 63 710 c 0,2,3
+ 63 719 63 719 83 799 c 2,4,-1
+ 106 888 l 2,5,6
+ 109 894 109 894 113 894 c 2,7,-1
+ 477 894 l 2,8,9
+ 482 894 482 894 481 888 c 2,10,-1
+ 458 799 l 2,11,12
+ 450 764 450 764 441 729 c 0,13,14
+ 436 705 436 705 431 705 c 2,15,-1
+ 66 705 l 2,0,1
+EndSplineSet
+Validated: 1
+EndChar

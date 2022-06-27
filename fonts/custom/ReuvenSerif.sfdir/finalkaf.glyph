@@ -1,0 +1,46 @@
+StartChar: finalkaf
+Encoding: 101 1498 65
+Width: 717
+VWidth: 1738
+GlyphClass: 2
+Flags: W
+AnchorPoint: "accent top" 348 0 basechar 0
+AnchorPoint: "accent bottom left" 348 0 basechar 0
+AnchorPoint: "Top" 405 1119 basechar 0
+AnchorPoint: "Bottom Narrow Point" 348 661 basechar 0
+AnchorPoint: "Bottom Wide Point" 220 719 basechar 0
+AnchorPoint: "Bottom Regular Point" 289 684 basechar 0
+LayerCount: 2
+Fore
+SplineSet
+625 680 m 2,0,1
+ 611 663 611 663 611 619 c 2,2,3
+ 611 611 l 2,4,-1
+ 638 -151 l 2,5,6
+ 638 -156 638 -156 638.5 -162 c 128,-1,7
+ 639 -168 639 -168 639 -171 c 0,8,9
+ 639 -225 639 -225 621 -254.5 c 128,-1,10
+ 603 -284 603 -284 558 -300 c 1,11,-1
+ 543 -293 l 1,12,-1
+ 540 692 l 1,13,-1
+ 212 692 l 2,14,15
+ 153 692 153 692 122.5 727 c 128,-1,16
+ 92 762 92 762 92 817 c 0,17,18
+ 92 897 92 897 143 957 c 1,19,-1
+ 166 957 l 1,20,21
+ 179 898 179 898 256 898 c 2,22,-1
+ 563 897 l 2,23,24
+ 671 897 671 897 671 803 c 2,25,-1
+ 671 777 l 2,26,27
+ 671 740 671 740 652 720 c 1,28,-1
+ 625 680 l 2,0,1
+EndSplineSet
+Validated: 1
+PairPos2: "kerning-2" ayin.wide dx=-39 dy=0 dh=-39 dv=0 dx=0 dy=0 dh=0 dv=0
+PairPos2: "kerning-2" bet dx=-45 dy=0 dh=-45 dv=0 dx=0 dy=0 dh=0 dv=0
+PairPos2: "kerning-2" gimel dx=-113 dy=0 dh=-113 dv=0 dx=0 dy=0 dh=0 dv=0
+PairPos2: "kerning-2" kaf dx=-38 dy=0 dh=-38 dv=0 dx=0 dy=0 dh=0 dv=0
+PairPos2: "kerning-2" mem dx=-77 dy=0 dh=-77 dv=0 dx=0 dy=0 dh=0 dv=0
+PairPos2: "kerning-2" pe dx=-44 dy=0 dh=-44 dv=0 dx=0 dy=0 dh=0 dv=0
+PairPos2: "kerning-2" samekh dx=-25 dy=0 dh=-25 dv=0 dx=0 dy=0 dh=0 dv=0
+EndChar

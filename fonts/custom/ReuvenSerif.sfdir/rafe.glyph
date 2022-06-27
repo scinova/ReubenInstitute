@@ -1,0 +1,17 @@
+StartChar: rafe
+Encoding: 83 1471 47
+Width: 0
+VWidth: 1738
+GlyphClass: 2
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+132 1039 m 5,0,-1
+ -132 1039 l 5,1,-1
+ -132 1119 l 5,2,-1
+ 132 1119 l 5,3,-1
+ 132 1039 l 5,0,-1
+EndSplineSet
+Validated: 1
+EndChar

@@ -1,0 +1,52 @@
+StartChar: bet
+Encoding: 92 1489 56
+Width: 820
+VWidth: 1738
+GlyphClass: 2
+Flags: W
+AnchorPoint: "accent bottom left" 424 0 basechar 0
+AnchorPoint: "accent top" 424 0 basechar 0
+AnchorPoint: "Top" 431 1119 basechar 0
+AnchorPoint: "Holam" 214 1104 basechar 0
+AnchorPoint: "Dagesh" 427 457 basechar 0
+AnchorPoint: "Bottom Narrow Point" 424 0 basechar 0
+AnchorPoint: "Bottom Regular Point" 424 0 basechar 0
+AnchorPoint: "Bottom Wide Point" 424 0 basechar 0
+LayerCount: 2
+Fore
+SplineSet
+476 691 m 2,0,-1
+ 284 691 l 2,1,2
+ 223 691 223 691 189 727.5 c 128,-1,3
+ 155 764 155 764 155 820 c 0,4,5
+ 155 900 155 900 207 959 c 1,6,-1
+ 229 959 l 1,7,8
+ 243 896 243 896 315 897 c 2,9,-1
+ 438 897 l 2,10,11
+ 506 897 506 897 552.5 891 c 128,-1,12
+ 599 885 599 885 632.5 868.5 c 128,-1,13
+ 666 852 666 852 685.5 831 c 128,-1,14
+ 705 810 705 810 715 772 c 128,-1,15
+ 725 734 725 734 729 693 c 128,-1,16
+ 733 652 733 652 733 589 c 2,17,-1
+ 733 469 l 2,18,19
+ 733 370 733 370 721 313 c 128,-1,20
+ 709 256 709 256 678 204 c 1,21,-1
+ 801 204 l 1,22,23
+ 801 84 801 84 769 0 c 1,24,-1
+ 116 0 l 1,25,26
+ 111 22 111 22 112 39 c 0,27,28
+ 112 72 112 72 122 120 c 128,-1,29
+ 132 168 132 168 150 204 c 1,30,-1
+ 632 204 l 1,31,32
+ 654 313 654 313 652 446 c 0,33,34
+ 652 600 652 600 626 655 c 0,35,36
+ 614 678 614 678 580 684.5 c 128,-1,37
+ 546 691 546 691 476 691 c 2,0,-1
+EndSplineSet
+Validated: 33
+PairPos2: "kerning-2" ayin.wide dx=-142 dy=0 dh=-142 dv=0 dx=0 dy=0 dh=0 dv=0
+PairPos2: "kerning-2" kaf dx=-31 dy=0 dh=-31 dv=0 dx=0 dy=0 dh=0 dv=0
+PairPos2: "kerning-2" pe dx=-37 dy=0 dh=-37 dv=0 dx=0 dy=0 dh=0 dv=0
+PairPos2: "kerning-2" samekh dx=-28 dy=0 dh=-28 dv=0 dx=0 dy=0 dh=0 dv=0
+EndChar

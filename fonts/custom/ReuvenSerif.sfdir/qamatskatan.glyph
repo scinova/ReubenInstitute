@@ -1,0 +1,31 @@
+StartChar: qamatskatan
+Encoding: 90 1479 54
+Width: 0
+VWidth: 1738
+GlyphClass: 4
+Flags: W
+AnchorPoint: "Meteg" -271 0 basemark 0
+AnchorPoint: "Bottom Regular Point" 0 0 mark 0
+LayerCount: 2
+Fore
+SplineSet
+-20 -236 m 1,0,-1
+ -125 -236 l 1,1,-1
+ -125 -156 l 1,2,-1
+ 125 -156 l 1,3,-1
+ 125 -236 l 1,4,-1
+ 21 -236 l 1,5,-1
+ 21 -348 l 1,6,7
+ 21 -275 l 0,8,9
+ 21 -391 21 -391 30 -424 c 2,10,-1
+ 60 -534 l 5,11,12
+ 42 -583 42 -583 18 -607 c 5,13,14
+ -4 -611 -4 -611 -20 -607 c 5,15,16
+ -43 -586 -43 -586 -58 -534 c 5,17,-1
+ -28 -424 l 2,18,19
+ -20 -392 -20 -392 -20 -277 c 2,20,-1
+ -20 -273 l 1,21,22
+ -20 -236 l 1,0,-1
+EndSplineSet
+Validated: 5
+EndChar

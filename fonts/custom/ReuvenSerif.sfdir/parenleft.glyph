@@ -1,0 +1,18 @@
+StartChar: parenleft
+Encoding: 8 40 109
+Width: 615
+VWidth: 1738
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+515 1232 m 1,0,1
+ 227 1002 227 1002 226 479 c 0,2,3
+ 226 -44 226 -44 515 -272 c 1,4,-1
+ 479 -307 l 1,5,6
+ 92 -19 92 -19 94 479 c 0,7,8
+ 94 995 94 995 479 1266 c 1,9,-1
+ 515 1232 l 1,0,1
+EndSplineSet
+Validated: 33
+EndChar

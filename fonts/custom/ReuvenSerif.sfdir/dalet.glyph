@@ -1,0 +1,50 @@
+StartChar: dalet
+Encoding: 94 1491 58
+Width: 746
+VWidth: 1738
+GlyphClass: 2
+Flags: W
+AnchorPoint: "accent bottom left" 505 0 basechar 0
+AnchorPoint: "accent top" 505 0 basechar 0
+AnchorPoint: "Top" 388 1119 basechar 0
+AnchorPoint: "Dagesh" 304 457 basechar 0
+AnchorPoint: "Bottom Narrow Point" 505 0 basechar 0
+AnchorPoint: "Bottom Regular Point" 464 0 basechar 0
+AnchorPoint: "Bottom Wide Point" 380 0 basechar 0
+LayerCount: 2
+Fore
+SplineSet
+570 506 m 0,0,1
+ 570 458 570 458 579.5 327.5 c 128,-1,2
+ 589 197 589 197 589 149 c 0,3,4
+ 589 -1 589 -1 465 -22 c 1,5,-1
+ 451 0 l 1,6,7
+ 473 34 473 34 473 86 c 0,8,9
+ 473 145 473 145 469 233.5 c 128,-1,10
+ 465 322 465 322 465 359 c 0,11,12
+ 465 481 465 481 494.5 558 c 128,-1,13
+ 524 635 524 635 596 691 c 1,14,-1
+ 215 691 l 2,15,16
+ 151 691 151 691 118 726 c 128,-1,17
+ 85 761 85 761 85 817 c 0,18,19
+ 85 901 85 901 137 956 c 1,20,-1
+ 159 956 l 1,21,22
+ 173 897 173 897 243 897 c 2,23,-1
+ 595 897 l 2,24,25
+ 654 897 654 897 676.5 875 c 128,-1,26
+ 699 853 699 853 699 796 c 0,27,28
+ 699 764 699 764 694 744.5 c 128,-1,29
+ 689 725 689 725 679.5 713.5 c 128,-1,30
+ 670 702 670 702 658.5 693 c 128,-1,31
+ 647 684 647 684 630.5 666.5 c 128,-1,32
+ 614 649 614 649 599 625 c 0,33,34
+ 570 578 570 578 570 506 c 0,0,1
+EndSplineSet
+Validated: 1
+PairPos2: "kerning-2" ayin.wide dx=-33 dy=0 dh=-33 dv=0 dx=0 dy=0 dh=0 dv=0
+PairPos2: "kerning-2" bet dx=-40 dy=0 dh=-40 dv=0 dx=0 dy=0 dh=0 dv=0
+PairPos2: "kerning-2" gimel dx=-104 dy=0 dh=-104 dv=0 dx=0 dy=0 dh=0 dv=0
+PairPos2: "kerning-2" kaf dx=-35 dy=0 dh=-35 dv=0 dx=0 dy=0 dh=0 dv=0
+PairPos2: "kerning-2" mem dx=-73 dy=0 dh=-73 dv=0 dx=0 dy=0 dh=0 dv=0
+PairPos2: "kerning-2" pe dx=-41 dy=0 dh=-41 dv=0 dx=0 dy=0 dh=0 dv=0
+EndChar

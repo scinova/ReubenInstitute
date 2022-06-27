@@ -1,0 +1,19 @@
+StartChar: meteg
+Encoding: 81 1469 45
+Width: 0
+VWidth: 1738
+GlyphClass: 4
+Flags: W
+AnchorPoint: "Meteg" 0 0 mark 0
+AnchorPoint: "Bottom Regular Point" 0 0 mark 0
+LayerCount: 2
+Fore
+SplineSet
+41 -165 m 1,0,-1
+ 41 -498 l 1,1,-1
+ -38 -498 l 1,2,-1
+ -38 -165 l 1,3,-1
+ 41 -165 l 1,0,-1
+EndSplineSet
+Validated: 1
+EndChar

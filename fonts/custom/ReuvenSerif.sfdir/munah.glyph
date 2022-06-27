@@ -1,0 +1,21 @@
+StartChar: munah
+Encoding: 55 1443 19
+Width: 0
+VWidth: 1738
+GlyphClass: 4
+Flags: W
+AnchorPoint: "Meteg" 0 0 mark 0
+AnchorPoint: "accent bottom left" 0 0 mark 0
+LayerCount: 2
+Fore
+SplineSet
+124 -486 m 1,0,-1
+ -124 -486 l 1,1,-1
+ -116 -414 l 1,2,-1
+ 52 -414 l 1,3,-1
+ 52 -156 l 1,4,-1
+ 124 -148 l 1,5,-1
+ 124 -486 l 1,0,-1
+EndSplineSet
+Validated: 1
+EndChar

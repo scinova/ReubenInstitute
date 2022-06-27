@@ -1,0 +1,65 @@
+StartChar: he
+Encoding: 95 1492 59
+Width: 908
+VWidth: 1738
+GlyphClass: 2
+Flags: W
+AnchorPoint: "accent bottom left" 509 0 basechar 0
+AnchorPoint: "accent top" 509 0 basechar 0
+AnchorPoint: "Top" 473 1119 basechar 0
+AnchorPoint: "Dagesh" 514 457 basechar 0
+AnchorPoint: "Bottom Narrow Point" 492 0 basechar 0
+AnchorPoint: "Bottom Regular Point" 492 0 basechar 0
+AnchorPoint: "Bottom Wide Point" 492 0 basechar 0
+LayerCount: 2
+Fore
+SplineSet
+783 516 m 0,0,1
+ 783 459 783 459 802.5 332 c 128,-1,2
+ 822 205 822 205 822 149 c 0,3,4
+ 822 -2 822 -2 700 -22 c 1,5,-1
+ 687 -4 l 1,6,7
+ 709 35 709 35 709 86 c 0,8,9
+ 709 123 709 123 702 237 c 128,-1,10
+ 695 351 695 351 695 388 c 0,11,12
+ 695 497 695 497 712.5 566 c 128,-1,13
+ 730 635 730 635 778 691 c 1,14,-1
+ 294 691 l 2,15,16
+ 232 691 232 691 199.5 726 c 128,-1,17
+ 167 761 167 761 167 817 c 0,18,19
+ 167 901 167 901 218 956 c 1,20,-1
+ 241 956 l 1,21,22
+ 255 897 255 897 321 897 c 2,23,-1
+ 735 897 l 2,24,25
+ 801 897 801 897 822.5 873 c 128,-1,26
+ 844 849 844 849 844 796 c 2,27,-1
+ 844 753 l 2,28,29
+ 844 731 844 731 835 710.5 c 128,-1,30
+ 826 690 826 690 814 673 c 128,-1,31
+ 802 656 802 656 792.5 615.5 c 128,-1,32
+ 783 575 783 575 783 516 c 0,0,1
+306 249 m 0,33,34
+ 306 233 306 233 310 166.5 c 128,-1,35
+ 314 100 314 100 314 83 c 0,36,37
+ 314 31 314 31 281.5 1.5 c 128,-1,38
+ 249 -28 249 -28 186 -28 c 1,39,-1
+ 174 -9 l 1,40,41
+ 196 14 196 14 197 52 c 0,42,43
+ 197 68 197 68 194 132.5 c 128,-1,44
+ 191 197 191 197 191 212 c 0,45,46
+ 191 304 191 304 225 362.5 c 128,-1,47
+ 259 421 259 421 321 421 c 0,48,49
+ 338 421 338 421 350 415 c 1,50,-1
+ 350 391 l 1,51,52
+ 330 378 330 378 318 336 c 128,-1,53
+ 306 294 306 294 306 249 c 0,33,34
+EndSplineSet
+Validated: 1
+PairPos2: "kerning-2" ayin.wide dx=-122 dy=0 dh=-122 dv=0 dx=0 dy=0 dh=0 dv=0
+PairPos2: "kerning-2" kaf dx=-41 dy=0 dh=-41 dv=0 dx=0 dy=0 dh=0 dv=0
+PairPos2: "kerning-2" mem dx=-48 dy=0 dh=-48 dv=0 dx=0 dy=0 dh=0 dv=0
+PairPos2: "kerning-2" pe dx=-50 dy=0 dh=-50 dv=0 dx=0 dy=0 dh=0 dv=0
+PairPos2: "kerning-2" samekh dx=-41 dy=0 dh=-41 dv=0 dx=0 dy=0 dh=0 dv=0
+PairPos2: "kerning-2" tet dx=-35 dy=0 dh=-35 dv=0 dx=0 dy=0 dh=0 dv=0
+MultipleSubs2: "wide letters" he.wide
+EndChar
