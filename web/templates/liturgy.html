@@ -3,10 +3,10 @@
 {% block content %}
 
 {% for file in files %}
-	<a href="/liturgy/{{file}}">{{file}}</a><br />
+	<a name="{{file}}" href="/liturgy/{{file}}">{{file}}</a><br />
 {% endfor %}
 
-
+<!--
 <a href="/liturgy/siddur-shaharit"></a><br />
 <a href="/liturgy/siddur-minha-arvit"></a><br />
 <a href="/liturgy/siddur-shabat"></a><br />
@@ -35,5 +35,5 @@
 <br />
 <a href="/oldliturgy/sefard/minha">minha sefard</a><br />
 <a href="/oldliturgy/mizrah/minha">minha mizrah</a><br />
-
+-->
 {% endblock %}

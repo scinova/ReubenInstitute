@@ -1,0 +1,9 @@
+====קדיש שלם
+
+<kadish-base>
+
+<kadish-titkabbel>
+
+<kadish-yehe-shelama>
+
+<ose-shalom>

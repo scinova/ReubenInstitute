@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}ראשי{% endblock %}
+{% block content %}
+
+
+<div class="section">
+{% for l in range(1488, 1515) %}
+	{% set L = "%c"%l %}
+	{% for p in range(1488, 1515) %}
+		{% set P = "%c"%p -%}
+		{{L}}{{P}}
+	{%- endfor %}
+	<br />
+{% endfor %}
+</div>
+<hr />
+
+<div class="section">
+{% for l in range(1488, 1515) %}
+	{% set L = "%c"%l %}
+	{% for p in range(1456, 1468) %}
+		{% set P = "%c"%p -%}
+		{{L}}{{P}}{{L}}{{"\u05bc"}}{{P}}
+	{%- endfor %}
+	<br />
+{% endfor %}
+</div>
+
+
+<a href="/tanakh/">תנך</a><br />
+<a href="/mishnah/">משנה</a><br />
+<a href="/zohar/">זוהר</a><br />
+<a href="/psalms/">תהלים</a><br />
+
+{% endblock %}

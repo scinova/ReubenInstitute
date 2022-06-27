@@ -11,7 +11,7 @@
 	<a href="/zohar/{{article.book.number}}/{{article.chapter.number}}/{{article.number}}/edit/{{loop.index}}">edit</a><br />
 	{% endif %}
 	<a id="v{{loop.index}}"></a>
-	<div class="section">
+	<div class="section" style="font-family:ReuvenSerif;">
 		<div class="right justify">
 			{% for line in article.sections[section_idx] %}
 				{%- for span in article.parse(line) -%}

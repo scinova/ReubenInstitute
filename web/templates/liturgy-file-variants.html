@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% block title %}{% endblock %}
+{% block content %}
+
+{% set num_sections = [prayers[0]|length, prayers[1]|length, prayers[2]|length, prayers[3]|length]|max %}
+
+<div class="liturgy">
+
+{% for section_no in range(num_sections) %}
+	<div>
+		{% for variant in [0, 1, 2, 3] %}
+			<div style="float:right;width:24%;font-family:ReuvenSerif;margin:0 0px 30px;border:1px solid #339;">
+				{% for block in prayers[variant][section_no] %}
+					
+					<!--<div><pre>{{block.value|safe}}</pre></div>-->
+					{% if block.option %}
+						<div style="border:0px solid red;background-color:#fee;padding: 0 5px 10px;text-align:center;">
+					{% else %}
+						{% if "=" in (block.style or '') %}{% set style = "text-align:justify;" %}{% endif %}
+						{% if "-" in (block.style or '') %}{% set style = "font-size:0.8em;" %}{% endif %}
+						{% if "+" in (block.style or '') %}{% set style = "font-size:1.3em;" %}{% endif %}
+						<div style="background-color:#eef;margin-bottom:0px;border:2px solid #99a;padding:0 5px;{% if block.margin %}padding-bottom:35px;{% endif %}text-align:center;{{style}}">
+					{% endif %}
+
+					{% for span in block.spans %}
+		{%- if span.kind == SpanKind.TITLE -%}
+			<h1>{{span.value}}</h1>
+		{%- elif span.kind == SpanKind.SUBTITLE -%}
+			<h2>{{span.value}}</h2>
+		{%- elif span.kind == SpanKind.H1 -%}
+			<h1>{{span.value}}</h1>
+		{%- elif span.kind == SpanKind.H2 -%}
+			<h2>{{span.value}}</h2>
+		{%- elif span.kind == SpanKind.H3 -%}
+			<h3>{{span.value}}</h3>
+		{%- elif span.kind == SpanKind.H4 -%}
+			<h4>{{span.value}}</h4>
+		{%- elif span.kind == SpanKind.BOLD -%}
+			<span class="bold">{{span.value}}</span>
+		{%- elif span.kind == SpanKind.MAJUSCULE -%}
+			<span class="majuscule">{{span.value}}</span>
+		{%- elif span.kind == SpanKind.MINUSCULE -%}
+			<span class="minuscule">{{span.value}}</span>
+		{%- elif span.kind == SpanKind.BOLD -%}
+			<span class="bold">{{span.value}}</span>
+		{%- elif span.kind == SpanKind.ADDITION -%}
+			<span class="addition">[{{span.value}}]</span>
+		{%- elif span.kind == SpanKind.SYNONYM -%}
+			<span class="synonym">(={{span.value}})</span>
+		{%- elif span.kind == SpanKind.EXPLANATION -%}
+			<span class="explanation">[{{span.value}}]</span>
+		{%- elif span.kind == SpanKind.CORRECTION -%}
+			<span class="correction">[{{span.value}}]</span>
+		{%- elif span.kind == SpanKind.CITATION -%}
+			<span class="citation">{{span.value|replace('\n', '<br />')|safe}}</span>
+		{%- elif span.kind == SpanKind.LINK -%}
+			<span class="link">{{span.value}}</span>
+		{%- elif span.kind == SpanKind.INFO -%}
+			<span class="info">{{span.value|replace('\n', '<br />')|safe}}</span>
+		{%- elif span.kind == SpanKind.PLAIN -%}
+			<span class="plain">{{span.value|replace('\n', '<br />')|safe}}</span>
+		{%- endif -%}
+	{% endfor %}
+
+					</div>
+				{% endfor %}
+			</div>
+		{% endfor %}
+		<a name="s{{section_no + 1}}" href="/liturgy/{{name}}/{{section_no + 1}}/edit">edit</a><br />
+		<div class="clear"></div>
+	</div>
+{% endfor %}
+</div>
+{% endblock %}

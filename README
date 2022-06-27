@@ -35,16 +35,32 @@ MIKRA
 TARGUM
 ======
 _nonliteral_
-+addition+
 [alternative|version]
++addition+
 (=synonym)
 (~explanation)
 [correction]
 
 LITURGY
 =======
+=h1
+==h2
+===h3
+====h4
+
++addition+
+(=synonym)
+(~explanation)
+[correction]
+@info@
+^link^
+
+(+majuscule)
+(-minuscule)
 <bold>
-{replace}
+#number#
+
+((replace))
 
 ZOHAR
 =====

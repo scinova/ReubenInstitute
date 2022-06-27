@@ -1,57 +1,83 @@
 {% extends "base.html" %}
-{% block title %}{% endblock %}
+{% block title %}{{name}} - {% endblock %}
 {% block content %}
 
-
-{% set num_sections = prayers[0]|length %}
-
+{% set num_sections = [prayers[0]|length, prayers[1]|length, prayers[2]|length, prayers[3]|length]|max %}
 <div class="liturgy">
-{% for section_no in range(num_sections) %}
-	<div>
-		<a name="s{{section_no + 1}}" href="/liturgy/{{name}}/{{section_no + 1}}/edit">edit</a><br />
-		{% for variant in [0, 1, 2, 3] %}
-			<div style="float:right;width:23%;font-family:ReuvenSerif;border:1px solid #99f;margin-left:5px;">
-				{% for block in prayers[variant][section_no] %}
+{% for variant in [0, 1, 2, 3] %}
+	<div style="float:right;width:24%;font-family:ReuvenSerif;border:1px solid #ddd;line-height:1.1em;">
+		{% set outer_loop = loop %}
+		{% for section in prayers[variant] %}
+
+			<div style="margin:0 0px 30px;border:2px solid #339;">
+				{% if outer_loop.index == 1 %}
+					<br /><a name="s{{loop.index}}" href="/liturgy/{{name}}/{{loop.index}}/edit">עריכה</a>
+					{% if loop.index == 1 %}
+						<a href="/liturgy/#{{name}}">חזרה</a>
+					{% endif %}
+				{% endif %}
+				{% for block in section %}
+					
 					<!--<div><pre>{{block.value|safe}}</pre></div>-->
 					{% if block.option %}
-						<div style="background-color:#ccc;padding:5px;margin-bottom:0px;">
-							<span style="color:white;">{{block.option}}</span><br />
+						<div style="border:1px solid #ddb;background-color:#ffd;padding: 0 0 0px;text-align:center;">
 					{% else %}
-						<div style="border:1px solid #ccc;padding:5px;">
+						{% set style = '' %}
+						{% if "=" in (block.style or '') %}{% set style = style + "text-align:justify;text-align-last:center;" %}{% endif %}
+						{% if "-" in (block.style or '') %}{% set style = style + "font-size:0.8em;" %}{% endif %}
+						{% if "+" in (block.style or '') %}{% set style = style + "font-size:1.5em;" %}{% endif %}
+						<div style="xbackground-color:#eef;margin-bottom:0px;border-bottom:1px solid #99a;padding:8px;text-align:center;{{style}}">
 					{% endif %}
-						{% for span in block.spans %}
 
+					{% for span in block.spans %}
 		{%- if span.kind == SpanKind.TITLE -%}
 			<h1>{{span.value}}</h1>
 		{%- elif span.kind == SpanKind.SUBTITLE -%}
 			<h2>{{span.value}}</h2>
-		{%- elif span.kind == SpanKind.BOLD -%}
-			<span class="bold">{{span.value}}</span>
-		{%- elif span.kind == SpanKind.INFO -%}
-			<span class="info">{{span.value}}</span>
+		{%- elif span.kind == SpanKind.H1 -%}
+			<h1>{{span.value}}</h1>
+		{%- elif span.kind == SpanKind.H2 -%}
+			<h2>{{span.value}}</h2>
+		{%- elif span.kind == SpanKind.H3 -%}
+			<h3>{{span.value}}</h3>
+		{%- elif span.kind == SpanKind.H4 -%}
+			<h4>{{span.value}}</h4>
 		{%- elif span.kind == SpanKind.MAJUSCULE -%}
-			<span class="majuscule">{{span.value}}</span>
+			<span class="majuscule">{{span.value|replace('\n', '<br />')|safe}}</span>
 		{%- elif span.kind == SpanKind.MINUSCULE -%}
-			<span class="minuscule">{{span.value}}</span>
+			<span class="minuscule">{{span.value|replace('\n', '<br />')|safe}}</span>
+		{%- elif span.kind == SpanKind.VERSENO -%}
+			<span class="verseno">{{span.value}}</span>
 		{%- elif span.kind == SpanKind.BOLD -%}
 			<span class="bold">{{span.value}}</span>
+		{%- elif span.kind == SpanKind.KRIKTIV -%}
+			<span class="kriktiv">{{span.value}}</span>
+		{%- elif span.kind == SpanKind.ADDITION -%}
+			<span class="addition">[{{span.value|replace('\n', '<br />')|safe}}]</span>
+		{%- elif span.kind == SpanKind.SYNONYM -%}
+			<span class="synonym">(={{span.value}})</span>
+		{%- elif span.kind == SpanKind.EXPLANATION -%}
+			<span class="explanation">[{{span.value|replace('\n', '<br />')|safe}}]</span>
+		{%- elif span.kind == SpanKind.CORRECTION -%}
+			<span class="correction">[{{span.value}}]</span>
 		{%- elif span.kind == SpanKind.CITATION -%}
 			<span class="citation">{{span.value|replace('\n', '<br />')|safe}}</span>
 		{%- elif span.kind == SpanKind.LINK -%}
-			<span class="link">{{span.value}}</span>
-		{%- elif span.kind == SpanKind.CORRECTION -%}
-			<span class="correction">[{{span.value}}]</span>
+			<span class="link">[{{span.value}}]</span>
+		{%- elif span.kind == SpanKind.INFO -%}
+			<span class="info">{{span.value|replace('\n', '<br />')|safe}}</span>
 		{%- elif span.kind == SpanKind.PLAIN -%}
 			<span class="plain">{{span.value|replace('\n', '<br />')|safe}}</span>
 		{%- endif -%}
 	{% endfor %}
 
 					</div>
+
 				{% endfor %}
 			</div>
 		{% endfor %}
-		<div class="clear"></div>
 	</div>
 {% endfor %}
+<div class="clear"></div>
 </div>
 {% endblock %}

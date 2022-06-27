@@ -61,6 +61,7 @@ def main():
 @app.route('/liturgy/')
 def liturgy():
 	files = [f[:-4] for f in os.listdir('../db/liturgy') if f.endswith('.txt')]
+	files.sort()
 	prayer = Liturgy.Prayer('SHAHARIT')
 	text = prayer._text
 #	prayers = [Prayer.something(0)[:25],
@@ -86,7 +87,7 @@ def liturgy_file_edit(name, section_number):
 	sections = text.split('\n\n\n')
 	if request.method == 'POST':
 		sections[section_number - 1] = request.form['text']
-		open(filename, 'w').write('\n\n\n'.join(sections))
+		open(filename, 'w').write('\n\n\n'.join(sections).replace('\r\n', '\n'))
 		return redirect('/liturgy/%s#s%d'%(name, section_number))
 	text = sections[section_number - 1]
 	return render_template('liturgy-file-edit.html', name=name, text=text)
@@ -131,13 +132,25 @@ def tanakh_main():
 	return render_template('tanakh.html', enumerate=enumerate)
 
 @app.route('/tanakh/<int:book_no>/<int:chapter_no>')
-def view_chapter(book_no, chapter_no):
+def tanakh_chapter_view(book_no, chapter_no):
 	book = tanakh.books[book_no - 1]
 	chapter = book.chapters[chapter_no - 1]
-	if book.is_poem:
-		return render_template('tanakh-chapter-poem.html', chapter=chapter)
-	else:
-		return render_template('tanakh-chapter.html', chapter=chapter)
+	#if book.is_poem:
+	#	return render_template('tanakh-chapter-poem.html', chapter=chapter)
+	#else:
+	return render_template('tanakh-chapter.html', chapter=chapter)
+
+@app.route('/tanakh/<int:book_no>/<int:chapter_no>/<int:verse_no>/edit')
+def tanakh_verse_edit(book_no, chapter_no, verse_no):
+	book = tanakh.books[book_no - 1]
+	chapter = book.chapters[chapter_no - 1]
+	verse = chapter.verses[verse_no - 1]
+	if request.method == 'POST':
+		if verse.mikra_text != request.form['mikra_text']:
+			verse.mikra_text = request.form['mikra_text']
+			verse.mikra_text = unicodedata.normalize('NFD', verse.mikra_text)
+		return redirect('/tanakh/%d/%d#%d'%(book.number, verse.chapter.number, verse.number))
+	return render_template('tanakh-verse-edit2.html', verse=verse, parasha_no=parasha_no)
 
 @app.route('/tanakh/<int:book_no>/p<int:parasha_no>')
 def view_parasha(book_no, parasha_no):

@@ -29,7 +29,7 @@ bible_arr = [
 	['Kings 1', 22, 'מלכים א׳'],
 	['Kings 2', 25, 'מלכים ב׳'],
 
-	['Isaiah', 66, 'יְשַׁעְיָה'],
+	['Isaiah', 66, 'ישעיה'],
 	['Jeremiah', 52, 'ירמיה'],
 	['Ezekiel', 48, 'יחזקאל'],
 
@@ -700,3 +700,72 @@ class Tanakh:
 						chapter_idx += 1
 
 				self.books[b].parashot[p].haftara = haftara
+
+	def replace(self, text):
+		#print ('REPLACE', text)
+		parts = text.split(' ')
+		if (len(parts) != 3):
+			return []
+		n, c, v = parts
+		repeat = 1
+		if n[0].startswith('2') or n[0].startswith('3'):
+			repeat = int(n[0])
+			n = n[1:]
+		# = n.replace('־', ' ')
+		res = [book for book in self.books if book.name.replace('׳', '').replace(' ', '') == n]
+		if not res:
+			return []
+		book = res[0]
+		print ('BOOK', book)
+		cc = hebrew_numbers.gematria_to_int(c)
+		print ('CHAPTER', cc)
+		if cc > len(book.chapters):
+			return []
+		chapter = book.chapters[cc - 1]
+		print ('CHAPTER', chapter)
+		isrange = False
+		wholechapter = True
+		if '-' in v:
+			isrange = True
+			print ('IS RANGE')
+			start_verse, end_verse = v.split('-')
+			start_verse = hebrew_numbers.gematria_to_int(start_verse)
+			end_verse = hebrew_numbers.gematria_to_int(end_verse)
+			if start_verse > len(chapter.verses) or end_verse > len(chapter.verses):
+				return []
+			verses_range = range(start_verse - 1, end_verse)
+			if end_verse - start_verse + 1 == len(chapter.verses):
+				info = 'ספר %s, כל פרק %s'%(book.name, chapter.hebrew_number)
+			else:
+				info = 'ספר %s, פרק %s, פסוקים %s עד %s'%(book.name, chapter.hebrew_number, hebrew_numbers.int_to_gematria(start_verse), hebrew_numbers.int_to_gematria(end_verse))
+		else:
+			vv = hebrew_numbers.gematria_to_int(v)
+			verses_range = range(vv - 1, vv)
+			info = 'ספר %s, פרק %s, פסוק %s'%(book.name, chapter.hebrew_number, hebrew_numbers.int_to_gematria(vv))
+		if repeat == 2:
+			info += ', פעמיים'
+		if repeat == 3:
+			info += ', שלוש פעמים'
+		#print ('RANGE', verses_range)
+		#spans = []
+		verses = []
+		ispoem = False
+		for r in range(repeat):
+			for v in verses_range:
+				#if isrange:
+				#	spans.append(Span(SpanKind.VERSENO, hebrew_numbers.int_to_gematria(v + 1)))
+				#spans += chapter.verses[v].mikra
+				verses.append(chapter.verses[v])
+				#if v < verses_range.stop - 1:
+				if book.number in [27, 38] or repeat > 1:
+					ispoem = True
+					#if v + 1 < verses_range.stop:
+					#	spans.append(Span(SpanKind.PLAIN, '\n'))
+		#spans = [s for s in spans if s.kind != SpanKind.ALIYA]
+		return ispoem, repeat, info, verses
+
+if __name__ == '__main__':
+	t = Tanakh()
+	s = 'דבריcהימיםא א ב-ד'
+	spans = t.replace(s)
+	print (spans)

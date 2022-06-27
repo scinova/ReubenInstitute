@@ -4,10 +4,13 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<link rel="stylesheet" href="/@@/styles.css" />
-	<title>{% block title %}{% endblock %} - מכון ראובן</title>
+	<title>{% block title %}{% endblock %}מכון ראובן</title>
 </head>
 <body>
-	<div id="content">{% block content %}{% endblock %}</div>
+	<div id="content">
+	<!--a href="http://locahost:5000{{request.path}}">A</a>
+	<a href="http://127.0.0.1:5000{{request.path}}">B</a-->
+	{% block content %}{% endblock %}</div>
 	<div id="footer">
 		{% block footer %}
 		&copy; <strong>תשפ״א</strong> מכון ראובן
@@ -16,8 +19,8 @@
 		<a href="/tanakh/">תנך</a>
 		<a href="/mishnah/">משנה</a>
 		<a href="/zohar/">זוהר</a>
-		<a href="/liturgy/">liturgy</a>
-		<a href="/aramaic">aramaic</a>
+		<a href="/liturgy/">תפילה</a>
+		<a href="/aramaic">ארמית</a>
 	</div>
 </body>
 </html>

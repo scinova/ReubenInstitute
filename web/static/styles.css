@@ -1,4 +1,9 @@
 @font-face {
+	font-family: 'rashi';
+	src: url('/@@/fonts/Mekorot-Rashi.ttf') format('truetype');
+	}
+
+@font-face {
 	font-family: 'HadasimReuven';
 	src: url('/@@/fonts/HadasimReuven.ttf') format('truetype');
 	}
@@ -6,6 +11,11 @@
 @font-face {
 	font-family: 'ReuvenSerif';
 	src: url('/@@/fonts/ReuvenSerif.ttf') format('truetype');
+	}
+
+@font-face {
+	font-family: 'nachlieli';
+	src: url('/@@/fonts/NachlieliCLM-Light.ttf') format('opentype');
 	}
 
 @font-face {
@@ -276,11 +286,12 @@ div.mikra span.chapterno {
 	}
 
 span.verseno {
-	background-color: #dc9;
-	color: #fff;
+	xxbackground-color: #dc9;
+	color: #ccc;
 	padding: 0 5px;
-	border-radius: 5px;
+	xborder-radius: 5px;
 	font-size: 60%;
+	font-family: nachlieli;
 	}
 
 div.mikra span.verseno {
@@ -325,6 +336,11 @@ span.explanation {
 	font-size: 80%;
 	}
 
+div.liturgy span.explanation {
+	font-family: rashi;
+	font-size: 50%;
+	}
+
 span.correction {
 	color: #aba;
 	font-size: 70%;
@@ -344,6 +360,7 @@ span.legend {
 
 span.citation {
 	color: #600;
+	color: #c00;
 	font-family: sbl;
 	xfont-family: scripture;
 	xfont-weight: bold;
@@ -361,7 +378,7 @@ span.info {
 	}
 
 span.link {
-	color: #339;
+	color: #99c;
 	certical-align: top;
 	vertical-align: middle;
 	font-size: 70%;
@@ -369,8 +386,13 @@ span.link {
 }
 
 div.liturgy span.link {
-	color: #999;
-	font-size: 50%;
+	color: #99f;
+	font-size: 70%;
+	}
+
+div.liturgy span.verseno {
+	color: #99f;
+	font-size: 80%;
 	}
 
 span.reference {
@@ -453,36 +475,69 @@ div.prayer p {
 	}
 
 div.liturgy h1 {
-	color: red;
-	color: orange;
+	color: black;
 	margin: 0;
 	font-family: ReuvenSerif;
+	xfont-family: nachlieli;
+	font-weight: bold;
 	}
 
 div.liturgy h2 {
 	color: orange;
-	text-align: right;
 	margin: 0;
 	font-family: ReuvenSerif;
-	font-size: 0.9em;
+	xfont-family: nachlieli;
+	font-size: 1.6em;
+	font-weight: normal;
 	}
 
-div.liturgy span.link {
-	color: blue;
+div.liturgy h3 {
+	color: orange;
+	margin: 0;
+	font-family: ReuvenSerif;
+	xfont-family: nachlieli;
+	font-size: 1.4em;
+	border: none;
+	font-weight: normal;
+	}
+
+div.liturgy h4 {
+	color: orange;
+	margin: 0;
+	font-family: ReuvenSerif;
+	xfont-family: nachlieli;
+	font-size: 1.2em;
+	border: none;
+	font-weight: normal
 	}
 
 div.liturgy span.bold {
 	color: #66F;
-}
+	}
+
+div.liturgy span.verseno {
+	font-family: ReuvenSerif;
+	color: #ddd;
+	background: none;
+	border: none;
+	}
 
 div.liturgy span.info {
-	color: #ccc;
-}
+	color: #3C3;
+	font-family: nachlieli;
+	font-size: 50%;
+	}
 
+div.liturgy span.addition {
+	color: #999;
+	background: none;
+	}
 
-
-
-
+div.liturgy span.correction {
+	color: #c33;
+	font-family: ReuvenSerif;
+	font-size: 1.8em;
+	}
 
 
 
