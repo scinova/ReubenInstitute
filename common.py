@@ -46,6 +46,11 @@ class SpanKind(Enum):
 	EXPLANATION = 29
 	CORRECTION = 30
 
+	H1 = 31
+	H2 = 32
+	H3 = 33
+	H4 = 34
+
 class Span:
 	def __init__(self, kind, value, alt=None):
 		self.kind = kind
