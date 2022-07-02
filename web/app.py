@@ -62,53 +62,32 @@ def main():
 def liturgy():
 	files = [f[:-4] for f in os.listdir('../db/liturgy') if f.endswith('.txt')]
 	files.sort()
-	prayer = Liturgy.Prayer('SHAHARIT')
-	text = prayer._text
-#	prayers = [Prayer.something(0)[:25],
-#		Prayer.something(1)[:25],
-#		prayer.something(2)[:25],
-#		prayer.something(3)[:25]]
-	return render_template('liturgy.html', files=files, re=re, Span=common.Span, SpanKind=common.SpanKind)
+	return render_template('liturgy.html', files=files)
 
-@app.route('/liturgy/<string:name>')
-def liturgy_file(name):
+@app.route('/liturgy/<string:name>/edit', methods=['GET','POST'])
+def liturgy_file_edit(name):
 	filename = '../db/liturgy/%s.txt'%name
-	data = open(filename).read()
-	prayers = [Liturgy.something(data, 0),
-		Liturgy.something(data, 1),
-		Liturgy.something(data, 2),
-		Liturgy.something(data, 3)]
-	return render_template('liturgy-file.html', name=name, data=data, prayers=prayers, re=re, Span=common.Span, SpanKind=common.SpanKind)
-
-@app.route('/liturgy/<string:name>/<int:section_number>/edit', methods=['GET','POST'])
-def liturgy_file_edit(name, section_number):
-	filename = '../db/liturgy/%s.txt'%name
-	text = open(filename).read()
-	sections = text.split('\n\n\n')
 	if request.method == 'POST':
-		sections[section_number - 1] = request.form['text']
-		open(filename, 'w').write('\n\n\n'.join(sections).replace('\r\n', '\n'))
-		return redirect('/liturgy/%s#s%d'%(name, section_number))
-	text = sections[section_number - 1]
+		data = request.form['text'].replace('\r\n', '\n')
+		open(filename, 'w').write(data)
+		return redirect('/liturgy/%s/%s'%(request.args['variant'], name))
+	text = open(filename).read()
 	return render_template('liturgy-file-edit.html', name=name, text=text)
 
-@app.route('/liturgy/<string:variant>/<string:time>')
-def prayer(variant, time):
+@app.route('/liturgy/<string:variant>/<string:name>')
+def prayer(variant, name):
 	if variant == 'ashkenaz':
-		variant = 0
+		v = 0
 	elif variant == 'sefard':
-		variant = 1
+		v = 1
 	elif variant == 'mizrah':
-		variant = 2
+		v = 2
 	elif variant == 'teiman':
-		variant = 3
-	prayer = Liturgy.Prayer(time)
-	return render_template('prayer.html', prayer=prayer, variant=variant, re=re, Span=common.Span, SpanKind=common.SpanKind)
-
-@app.route('/oldliturgy/<string:variation>/<string:kind>')
-def oldprayer(variation, kind):
-	p = common.Prayer(variation, kind)
-	return render_template('oldprayer.html', spans=p.spans, divs=p.divs, re=re, Span=common.Span, SpanKind=common.SpanKind)
+		v = 3
+	filename = '../db/liturgy/%s.txt'%name
+	data = open(filename).read()
+	data = Liturgy.something(data, v)
+	return render_template('liturgy-file.html', data=data, name=name, variant=variant)
 
 @app.route('/psalms/')
 def psalms():

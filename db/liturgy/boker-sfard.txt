@@ -1,4 +1,4 @@
-≪boker-yadaim≫
+<ס:≪boker-yadaim≫
 
 
 ≪asher-yatzar≫
@@ -25,4 +25,4 @@
 ≪adon-olam≫
 
 
-≪yigdal-elohim-chai≫
+≪yigdal-elohim-chai≫>

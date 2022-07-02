@@ -19,7 +19,8 @@ class SpanKind(Enum):
 
 	PLAIN = 0
 	LEGEND = 1
-	CITATION = 2
+	#CITATION = 2
+	SCRIPTURE = 2
 	LINK = 3
 
 	MAJUSCULE = 4
@@ -51,11 +52,41 @@ class SpanKind(Enum):
 	H3 = 33
 	H4 = 34
 
+	PUNCTUATION = 36
+	POINT = 37
+	ACCENT = 38
+
+	BREAK = 40
+	TAB = 41
+
 class Span:
-	def __init__(self, kind, value, alt=None):
+	def __init__(self, kind, value=None, alt=None):
 		self.kind = kind
 		self.value = value
 		self.alt = alt
 
 	def __repr__(self):
-		return '<Span.%s:%s>'%(self.kind, self.value)
+		return '<Span.%s:%s>'%(self.kind, self.value or '')
+
+def fix_yhwh(text):
+	y = '\u05d9'
+	h = '\u05d4'
+	w = '\u05d5'
+	a = '([\u0591-\u05af\u05bd\u05c0\u05c3]*)'
+	p = '([\u05b0-\u05bc\u05c1\u05c2\u05c7]*)'
+	pattern = y + p + a + h + p + a + w + p + a + h + p + a
+	#print (pattern)
+	for match in reversed(list(re.finditer(pattern, text, re.M))):
+		orig = text[match.start():match.end()]
+		p1, a1, p2, a2, p3, a3, p4, a4 = match.groups()
+		out = y + a1 + '\ufb23' + a2 + w + a3 + '\ufb23' + a4
+		start, end = match.span()
+		text = text[0:start] + out + text[end:]
+	return text
+
+def fix_paseq(text):
+	return re.sub(' ׀', '׀', text)
+
+ACCENTS_REGEX = '[\u0591-\u05af\u05bd\u05c0\u05c3]'
+POINTS_REGEX = '[\u05b0-\u05bc\u05c1\u05c2\u05c7]'
+PUNCTUATION_REGEX = '[\?\!\;\:\.\,\-’‘”“]'

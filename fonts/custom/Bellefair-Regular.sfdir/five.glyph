@@ -1,0 +1,97 @@
+StartChar: five
+Encoding: 53 53 330
+Width: 448
+Flags: W
+TtInstrs:
+NPUSHB
+ 42
+ 23
+ 1
+ 4
+ 72
+ 0
+ 0
+ 0
+ 3
+ 2
+ 0
+ 3
+ 103
+ 0
+ 5
+ 5
+ 4
+ 93
+ 0
+ 4
+ 4
+ 33
+ 75
+ 0
+ 2
+ 2
+ 1
+ 95
+ 0
+ 1
+ 1
+ 34
+ 1
+ 76
+ 18
+ 33
+ 36
+ 33
+ 39
+ 16
+ 6
+ 8
+ 26
+CALL
+EndTTInstrs
+LayerCount: 2
+Fore
+SplineSet
+109 472 m 1,0,1
+ 191 470 191 470 246 453 c 0,2,3
+ 319 430 319 430 358 378 c 128,-1,4
+ 397 326 397 326 397 259 c 0,5,6
+ 397 182 397 182 353 121.5 c 128,-1,7
+ 309 61 309 61 234 27 c 128,-1,8
+ 159 -7 159 -7 70 -7 c 2,9,-1
+ 59 -7 l 1,10,-1
+ 41 33 l 1,11,-1
+ 51 33 l 2,12,13
+ 180 33 180 33 256 86 c 128,-1,14
+ 332 139 332 139 332 237 c 0,15,16
+ 332 316 332 316 275.5 363.5 c 128,-1,17
+ 219 411 219 411 98 411 c 2,18,-1
+ 52 411 l 1,19,-1
+ 120 688 l 1,20,-1
+ 293 688 l 2,21,22
+ 375 688 375 688 392 705 c 1,23,-1
+ 372 624 l 1,24,-1
+ 145 624 l 1,25,-1
+ 109 472 l 1,0,1
+EndSplineSet
+Validated: 1
+PairPos2: "'kern' Horizontal Kerning lookup 2 per glyph data 3" uni05D6 dx=10 dy=0 dh=10 dv=0 dx=0 dy=0 dh=0 dv=0
+PairPos2: "'kern' Horizontal Kerning lookup 2 per glyph data 3" uni05E9 dx=10 dy=0 dh=10 dv=0 dx=0 dy=0 dh=0 dv=0
+PairPos2: "'kern' Horizontal Kerning lookup 2 per glyph data 3" question dx=10 dy=0 dh=10 dv=0 dx=0 dy=0 dh=0 dv=0
+PairPos2: "'kern' Horizontal Kerning lookup 2 per glyph data 3" uni05E7 dx=10 dy=0 dh=10 dv=0 dx=0 dy=0 dh=0 dv=0
+PairPos2: "'kern' Horizontal Kerning lookup 2 per glyph data 3" uni05DE dx=-10 dy=0 dh=-10 dv=0 dx=0 dy=0 dh=0 dv=0
+PairPos2: "'kern' Horizontal Kerning lookup 2 per glyph data 3" uni05BE dx=20 dy=0 dh=20 dv=0 dx=0 dy=0 dh=0 dv=0
+PairPos2: "'kern' Horizontal Kerning lookup 2 per glyph data 3" uni05DC dx=10 dy=0 dh=10 dv=0 dx=0 dy=0 dh=0 dv=0
+PairPos2: "'kern' Horizontal Kerning lookup 2 per glyph data 3" uni05F3 dx=30 dy=0 dh=30 dv=0 dx=0 dy=0 dh=0 dv=0
+PairPos2: "'kern' Horizontal Kerning lookup 2 per glyph data 3" uni05D3 dx=10 dy=0 dh=10 dv=0 dx=0 dy=0 dh=0 dv=0
+PairPos2: "'kern' Horizontal Kerning lookup 2 per glyph data 3" quotesinglbase dx=-50 dy=0 dh=-50 dv=0 dx=0 dy=0 dh=0 dv=0
+PairPos2: "'kern' Horizontal Kerning lookup 2 per glyph data 3" quotedblbase dx=-50 dy=0 dh=-50 dv=0 dx=0 dy=0 dh=0 dv=0
+PairPos2: "'kern' Horizontal Kerning lookup 2 per glyph data 3" period dx=-50 dy=0 dh=-50 dv=0 dx=0 dy=0 dh=0 dv=0
+PairPos2: "'kern' Horizontal Kerning lookup 2 per glyph data 3" ellipsis dx=-50 dy=0 dh=-50 dv=0 dx=0 dy=0 dh=0 dv=0
+PairPos2: "'kern' Horizontal Kerning lookup 2 per glyph data 3" comma dx=-50 dy=0 dh=-50 dv=0 dx=0 dy=0 dh=0 dv=0
+PairPos2: "'kern' Horizontal Kerning lookup 2 per glyph data 3" uni00AD dx=-20 dy=0 dh=-20 dv=0 dx=0 dy=0 dh=0 dv=0
+PairPos2: "'kern' Horizontal Kerning lookup 2 per glyph data 3" hyphen dx=-20 dy=0 dh=-20 dv=0 dx=0 dy=0 dh=0 dv=0
+PairPos2: "'kern' Horizontal Kerning lookup 2 per glyph data 3" endash dx=-20 dy=0 dh=-20 dv=0 dx=0 dy=0 dh=0 dv=0
+PairPos2: "'kern' Horizontal Kerning lookup 2 per glyph data 3" emdash dx=-20 dy=0 dh=-20 dv=0 dx=0 dy=0 dh=0 dv=0
+PairPos2: "'kern' Horizontal Kerning lookup 2 per glyph data 2" uni05DA dx=10 dy=0 dh=10 dv=0 dx=0 dy=0 dh=0 dv=0
+EndChar

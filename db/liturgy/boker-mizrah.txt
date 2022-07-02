@@ -1,4 +1,4 @@
-≪boker-yadaim≫
+<מ:≪boker-yadaim≫
 
 
 ≪asher-yatzar≫
@@ -10,4 +10,4 @@
 ≪birkot-haboker≫
 
 
-≪birkot-hatorah≫
+≪birkot-hatorah≫>

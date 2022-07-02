@@ -2,82 +2,100 @@
 {% block title %}{{name}} - {% endblock %}
 {% block content %}
 
-{% set num_sections = [prayers[0]|length, prayers[1]|length, prayers[2]|length, prayers[3]|length]|max %}
 <div class="liturgy">
-{% for variant in [0, 1, 2, 3] %}
-	<div style="float:right;width:24%;font-family:ReuvenSerif;border:1px solid #ddd;line-height:1.1em;">
-		{% set outer_loop = loop %}
-		{% for section in prayers[variant] %}
-
-			<div style="margin:0 0px 30px;border:2px solid #339;">
-				{% if outer_loop.index == 1 %}
-					<br /><a name="s{{loop.index}}" href="/liturgy/{{name}}/{{loop.index}}/edit">עריכה</a>
-					{% if loop.index == 1 %}
-						<a href="/liturgy/#{{name}}">חזרה</a>
-					{% endif %}
-				{% endif %}
-				{% for block in section %}
-					
-					<!--<div><pre>{{block.value|safe}}</pre></div>-->
-					{% if block.option %}
-						<div style="border:1px solid #ddb;background-color:#ffd;padding: 0 0 0px;text-align:center;">
-					{% else %}
-						{% set style = '' %}
-						{% if "=" in (block.style or '') %}{% set style = style + "text-align:justify;text-align-last:center;" %}{% endif %}
-						{% if "-" in (block.style or '') %}{% set style = style + "font-size:0.8em;" %}{% endif %}
-						{% if "+" in (block.style or '') %}{% set style = style + "font-size:1.5em;" %}{% endif %}
-						<div style="xbackground-color:#eef;margin-bottom:0px;border-bottom:1px solid #99a;padding:8px;text-align:center;{{style}}">
-					{% endif %}
-
-					{% for span in block.spans %}
-		{%- if span.kind == SpanKind.TITLE -%}
-			<h1>{{span.value}}</h1>
-		{%- elif span.kind == SpanKind.SUBTITLE -%}
-			<h2>{{span.value}}</h2>
-		{%- elif span.kind == SpanKind.H1 -%}
-			<h1>{{span.value}}</h1>
-		{%- elif span.kind == SpanKind.H2 -%}
-			<h2>{{span.value}}</h2>
-		{%- elif span.kind == SpanKind.H3 -%}
-			<h3>{{span.value}}</h3>
-		{%- elif span.kind == SpanKind.H4 -%}
-			<h4>{{span.value}}</h4>
-		{%- elif span.kind == SpanKind.MAJUSCULE -%}
-			<span class="majuscule">{{span.value|replace('\n', '<br />')|safe}}</span>
-		{%- elif span.kind == SpanKind.MINUSCULE -%}
-			<span class="minuscule">{{span.value|replace('\n', '<br />')|safe}}</span>
-		{%- elif span.kind == SpanKind.VERSENO -%}
-			<span class="verseno">{{span.value}}</span>
-		{%- elif span.kind == SpanKind.BOLD -%}
-			<span class="bold">{{span.value}}</span>
-		{%- elif span.kind == SpanKind.KRIKTIV -%}
-			<span class="kriktiv">{{span.value}}</span>
-		{%- elif span.kind == SpanKind.ADDITION -%}
-			<span class="addition">[{{span.value|replace('\n', '<br />')|safe}}]</span>
-		{%- elif span.kind == SpanKind.SYNONYM -%}
-			<span class="synonym">(={{span.value}})</span>
-		{%- elif span.kind == SpanKind.EXPLANATION -%}
-			<span class="explanation">[{{span.value|replace('\n', '<br />')|safe}}]</span>
-		{%- elif span.kind == SpanKind.CORRECTION -%}
-			<span class="correction">[{{span.value}}]</span>
-		{%- elif span.kind == SpanKind.CITATION -%}
-			<span class="citation">{{span.value|replace('\n', '<br />')|safe}}</span>
-		{%- elif span.kind == SpanKind.LINK -%}
-			<span class="link">[{{span.value}}]</span>
-		{%- elif span.kind == SpanKind.INFO -%}
-			<span class="info">{{span.value|replace('\n', '<br />')|safe}}</span>
-		{%- elif span.kind == SpanKind.PLAIN -%}
-			<span class="plain">{{span.value|replace('\n', '<br />')|safe}}</span>
-		{%- endif -%}
-	{% endfor %}
-
-					</div>
-
-				{% endfor %}
-			</div>
-		{% endfor %}
-	</div>
+<a href="/liturgy/{{name}}/edit?variant={{variant}}">עריכה</a>
+<a href="/liturgy/#{{name}}">חזרה</a>
+{% for v in ['ashkenaz', 'sefard', 'mizrah', 'teiman'] %}
+	<a href="/liturgy/{{v}}/{{name}}">{{v}}</a>
 {% endfor %}
-<div class="clear"></div>
+{%- for section in data -%}
+	<div class="section">
+	{%- for outerblock in section -%}
+		{% set style = '' %}
+		{% set klass = '' %}
+		{% if outerblock.option %}
+			{% set klass = klass + " optional" %}
+			{#% if outerblock.option not in ['nottendays', 'summer', 'winter'] %}
+				{% set style = style + "background-color:#ffd;" %}
+			{% endif %#}
+		{% endif %}
+		{% if outerblock.style %}
+			{% if "T" in (outerblock.style or '') %}{% set klass = klass + " translation" %}{% endif %}
+			{% if ")" in (outerblock.style or '') %}{% set klass = klass + " left halfwide" %}{% endif %}
+			{% if "(" in (outerblock.style or '') %}{% set klass = klass + " right halfwide" %}{% endif %}
+			{% if "=" in (outerblock.style or '') %}{% set style = style + "text-align:justify;text-align-last:center;" %}{% endif %}
+			{% if "-" in (outerblock.style or '') %}{% set klass = klass + " smaller" %}{% endif %}
+			{% if "+" in (outerblock.style or '') %}{% set klass = klass + " larger" %}{% endif %}
+			{% if "1" in (outerblock.style or '') %}{% set klass = klass + " fromtanakh" %}{% endif %}
+			{% if "2" in (outerblock.style or '') %}{% set klass = klass + " frommishnah" %}{% endif %}
+			{% if "3" in (outerblock.style or '') %}{% set klass = klass + " fromgmara" %}{% endif %}
+			{% if "4" in (outerblock.style or '') %}{% set klass = klass + " fromzohar" %}{% endif %}
+		{% endif %}
+		<div class="outer block {{klass}}" style="{{style}}">
+		{%- for block in outerblock.blocks -%}
+			<div class="block">
+			{%- for line in block.lines -%}
+				{% set kriktivs = [] %}
+				<div class="line">
+				{%- for span in line -%}
+					{%- if span.kind == SpanKind.H1 -%}
+						<h1>{{span.value}}</h1>
+					{%- elif span.kind == SpanKind.H2 -%}
+						<h2>{{span.value}}</h2>
+					{%- elif span.kind == SpanKind.H3 -%}
+						<h3>{{span.value}}</h3>
+					{%- elif span.kind == SpanKind.H4 -%}
+						<h4>{{span.value}}</h4>
+					{%- elif span.kind == SpanKind.MAJUSCULE -%}
+						<span class="majuscule">{{span.value}}</span>
+					{%- elif span.kind == SpanKind.MINUSCULE -%}
+						<span class="minuscule">{{span.value}}</span>
+					{%- elif span.kind == SpanKind.VERSENO -%}
+						<span class="verseno">{{span.value}}</span>
+					{%- elif span.kind == SpanKind.BOLD -%}
+						<span class="bold">{{span.value}}</span>
+					{%- elif span.kind == SpanKind.KRIKTIV -%}
+						{% set x = kriktivs.append(span) %}
+						<span class="kriktiv">{{span.value}}</span>
+					{%- elif span.kind == SpanKind.ADDITION -%}
+						<span class="addition">[{{span.value}}]</span>
+					{%- elif span.kind == SpanKind.SYNONYM -%}
+						<span class="synonym">(={{span.value}})</span>
+					{%- elif span.kind == SpanKind.EXPLANATION -%}
+						<span class="explanation">({{span.value}})</span>
+					{%- elif span.kind == SpanKind.CORRECTION -%}
+						<span class="correction">[{{span.value}}]</span>
+					{%- elif span.kind == SpanKind.SCRIPTURE -%}
+						<span class="scripture">{{span.value}}</span>
+					{%- elif span.kind == SpanKind.LINK -%}
+						<span class="link">{{span.value}}</span>
+					{%- elif span.kind == SpanKind.INFO -%}
+						<span class="info">{{span.value}}</span>
+					{%- elif span.kind == SpanKind.PUNCTUATION -%}
+						<span class="punctuation">{{span.value}}</span>
+					{%- else -%}
+						<span class="plain">{{span.value}}</span>
+					{%- endif -%}
+				{%- endfor -%}
+				</div>
+				{% if kriktivs %}
+					<div class="line">
+					{% for span in kriktivs %}
+						<span class="explanation">* כתוב “{{span.alt}}”, קוראים “{{span.value}}”</span>
+					{% endfor %}
+					<div>
+				{% endif %}
+				{%- if ")" in (outerblock.style or '') -%}
+					<div style="clear:both;" class="clear"></div>
+				{%- endif -%}
+			{%- endfor -%}
+			</div>
+
+		{%- endfor -%}
+		</div>
+	{%- endfor -%}
+	</div>
+<div style="clear:both;" class="clear"></div>
+{%- endfor -%}
 </div>
 {% endblock %}

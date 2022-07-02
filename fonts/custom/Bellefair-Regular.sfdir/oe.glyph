@@ -1,0 +1,158 @@
+StartChar: oe
+Encoding: 339 339 211
+Width: 715
+Flags: W
+TtInstrs:
+NPUSHB
+ 83
+ 16
+ 1
+ 6
+ 7
+ 29
+ 2
+ 2
+ 4
+ 3
+ 2
+ 74
+ 0
+ 6
+ 0
+ 3
+ 4
+ 6
+ 3
+ 101
+ 8
+ 11
+ 2
+ 7
+ 7
+ 1
+ 95
+ 2
+ 1
+ 1
+ 1
+ 42
+ 75
+ 0
+ 4
+ 4
+ 0
+ 95
+ 10
+ 5
+ 2
+ 0
+ 0
+ 40
+ 75
+ 0
+ 9
+ 9
+ 0
+ 95
+ 10
+ 5
+ 2
+ 0
+ 0
+ 40
+ 0
+ 76
+ 33
+ 33
+ 0
+ 0
+ 51
+ 49
+ 44
+ 42
+ 33
+ 39
+ 33
+ 38
+ 36
+ 35
+ 0
+ 32
+ 0
+ 31
+ 35
+ 18
+ 36
+ 38
+ 36
+ 12
+ 8
+ 25
+CALL
+EndTTInstrs
+LayerCount: 2
+Fore
+SplineSet
+443 9.5 m 128,-1,1
+ 406 31 406 31 384 67 c 1,2,3
+ 357 31 357 31 316 9.5 c 128,-1,4
+ 275 -12 275 -12 228 -12 c 0,5,6
+ 175 -12 175 -12 132 12.5 c 128,-1,7
+ 89 37 89 37 64.5 79 c 128,-1,8
+ 40 121 40 121 40 171 c 0,9,10
+ 40 223 40 223 65.5 269.5 c 128,-1,11
+ 91 316 91 316 136 344 c 128,-1,12
+ 181 372 181 372 236 372 c 0,13,14
+ 283 372 283 372 323 352 c 128,-1,15
+ 363 332 363 332 389 297 c 1,16,17
+ 413 333 413 333 449.5 352.5 c 128,-1,18
+ 486 372 486 372 524 372 c 0,19,20
+ 584 372 584 372 627.5 328.5 c 128,-1,21
+ 671 285 671 285 675 208 c 1,22,-1
+ 415 208 l 1,23,24
+ 415 160 415 160 433 123.5 c 128,-1,25
+ 451 87 451 87 481.5 67.5 c 128,-1,26
+ 512 48 512 48 548 48 c 0,27,28
+ 642 48 642 48 675 108 c 1,29,30
+ 666 54 666 54 626 21 c 128,-1,31
+ 586 -12 586 -12 528 -12 c 0,32,0
+ 480 -12 480 -12 443 9.5 c 128,-1,1
+450 311.5 m 128,-1,34
+ 422 284 422 284 416 240 c 1,35,-1
+ 598 240 l 1,36,37
+ 598 286 598 286 573.5 312.5 c 128,-1,38
+ 549 339 549 339 517 339 c 0,39,33
+ 478 339 478 339 450 311.5 c 128,-1,34
+336 243 m 128,-1,41
+ 320 284 320 284 291 310 c 128,-1,42
+ 262 336 262 336 224 336 c 0,43,44
+ 171 336 171 336 141.5 296 c 128,-1,45
+ 112 256 112 256 112 200 c 0,46,47
+ 112 158 112 158 128 117 c 128,-1,48
+ 144 76 144 76 173 50 c 128,-1,49
+ 202 24 202 24 240 24 c 0,50,51
+ 293 24 293 24 322.5 64 c 128,-1,52
+ 352 104 352 104 352 160 c 0,53,40
+ 352 202 352 202 336 243 c 128,-1,41
+EndSplineSet
+Validated: 1
+PairPos2: "'kern' Horizontal Kerning lookup 2 per glyph data 3" uni05D6 dx=10 dy=0 dh=10 dv=0 dx=0 dy=0 dh=0 dv=0
+PairPos2: "'kern' Horizontal Kerning lookup 2 per glyph data 3" uni05E9 dx=10 dy=0 dh=10 dv=0 dx=0 dy=0 dh=0 dv=0
+PairPos2: "'kern' Horizontal Kerning lookup 2 per glyph data 3" question dx=10 dy=0 dh=10 dv=0 dx=0 dy=0 dh=0 dv=0
+PairPos2: "'kern' Horizontal Kerning lookup 2 per glyph data 3" uni05E7 dx=10 dy=0 dh=10 dv=0 dx=0 dy=0 dh=0 dv=0
+PairPos2: "'kern' Horizontal Kerning lookup 2 per glyph data 3" uni05DE dx=-10 dy=0 dh=-10 dv=0 dx=0 dy=0 dh=0 dv=0
+PairPos2: "'kern' Horizontal Kerning lookup 2 per glyph data 3" uni05BE dx=20 dy=0 dh=20 dv=0 dx=0 dy=0 dh=0 dv=0
+PairPos2: "'kern' Horizontal Kerning lookup 2 per glyph data 3" uni05DC dx=10 dy=0 dh=10 dv=0 dx=0 dy=0 dh=0 dv=0
+PairPos2: "'kern' Horizontal Kerning lookup 2 per glyph data 3" uni05F3 dx=30 dy=0 dh=30 dv=0 dx=0 dy=0 dh=0 dv=0
+PairPos2: "'kern' Horizontal Kerning lookup 2 per glyph data 3" uni05D3 dx=10 dy=0 dh=10 dv=0 dx=0 dy=0 dh=0 dv=0
+PairPos2: "'kern' Horizontal Kerning lookup 2 per glyph data 3" quotesinglbase dx=-50 dy=0 dh=-50 dv=0 dx=0 dy=0 dh=0 dv=0
+PairPos2: "'kern' Horizontal Kerning lookup 2 per glyph data 3" quotedblbase dx=-50 dy=0 dh=-50 dv=0 dx=0 dy=0 dh=0 dv=0
+PairPos2: "'kern' Horizontal Kerning lookup 2 per glyph data 3" period dx=-50 dy=0 dh=-50 dv=0 dx=0 dy=0 dh=0 dv=0
+PairPos2: "'kern' Horizontal Kerning lookup 2 per glyph data 3" ellipsis dx=-50 dy=0 dh=-50 dv=0 dx=0 dy=0 dh=0 dv=0
+PairPos2: "'kern' Horizontal Kerning lookup 2 per glyph data 3" comma dx=-50 dy=0 dh=-50 dv=0 dx=0 dy=0 dh=0 dv=0
+PairPos2: "'kern' Horizontal Kerning lookup 2 per glyph data 3" uni00AD dx=-20 dy=0 dh=-20 dv=0 dx=0 dy=0 dh=0 dv=0
+PairPos2: "'kern' Horizontal Kerning lookup 2 per glyph data 3" hyphen dx=-20 dy=0 dh=-20 dv=0 dx=0 dy=0 dh=0 dv=0
+PairPos2: "'kern' Horizontal Kerning lookup 2 per glyph data 3" endash dx=-20 dy=0 dh=-20 dv=0 dx=0 dy=0 dh=0 dv=0
+PairPos2: "'kern' Horizontal Kerning lookup 2 per glyph data 3" emdash dx=-20 dy=0 dh=-20 dv=0 dx=0 dy=0 dh=0 dv=0
+PairPos2: "'kern' Horizontal Kerning lookup 2 per glyph data 2" uni05DA dx=10 dy=0 dh=10 dv=0 dx=0 dy=0 dh=0 dv=0
+EndChar

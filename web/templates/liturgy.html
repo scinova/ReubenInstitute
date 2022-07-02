@@ -1,39 +1,7 @@
 {% extends "base.html" %}
 {% block title %}{% endblock %}
 {% block content %}
-
 {% for file in files %}
-	<a name="{{file}}" href="/liturgy/{{file}}">{{file}}</a><br />
+	<a name="{{file}}" href="/liturgy/ashkenaz/{{file}}">{{file}}</a><br />
 {% endfor %}
-
-<!--
-<a href="/liturgy/siddur-shaharit"></a><br />
-<a href="/liturgy/siddur-minha-arvit"></a><br />
-<a href="/liturgy/siddur-shabat"></a><br />
-<a href="/liturgy/siddur-shalem"></a><br />
-
-<a href="/liturgy/ashkenaz/shaharit">shaharit ashkenaz</a><br />
-<a href="/liturgy/sefard/shaharit">shaharit sefard</a><br />
-<a href="/liturgy/mizrah/shaharit">shaharit mizrah</a><br />
-<a href="/liturgy/teiman/shaharit">shaharit teiman</a><br />
-<br />
-<a href="/liturgy/ashkenaz/minha">minha ashkenaz</a><br />
-<a href="/liturgy/sefard/minha">minha sefard</a><br />
-<a href="/liturgy/mizrah/minha">minha mizrah</a><br />
-<a href="/liturgy/teiman/minha">minha teiman</a><br />
-<br />
-<a href="/liturgy/ashkenaz/arvit">arvit ashkenaz</a><br />
-<a href="/liturgy/sefard/arvit">arvit sefard</a><br />
-<a href="/liturgy/mizrah/arvit">arvit mizrah</a><br />
-<a href="/liturgy/teiman/arvit">arvit teiman</a><br />
-<hr />
-
-
-<a href="/oldliturgy/ashkenaz/shaharit">shaharit ashkenaz</a><br />
-<a href="/oldliturgy/sefard/shaharit">shaharit sefard</a><br />
-<a href="/oldliturgy/mizrah/shaharit">shaharit mizrah</a><br />
-<br />
-<a href="/oldliturgy/sefard/minha">minha sefard</a><br />
-<a href="/oldliturgy/mizrah/minha">minha mizrah</a><br />
--->
 {% endblock %}

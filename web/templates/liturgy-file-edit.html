@@ -7,8 +7,8 @@
 		<label></label>
 		<textarea name="text" rows="20" style="font-size:2em;">{{text}}</textarea>
 	</div>
-	<!--<input type="hidden" name="name" value="{{name}}" />
-	<input type="hidden" name="paragraph_number" value="{{paragraph_number}}" />-->
+	<input type="hidden" name="variant" value="{{variant}}" />
+	<!--<input type="hidden" name="paragraph_number" value="{{paragraph_number}}" />-->
 	<button type="submit">שמור</button>
 <form>
 
@@ -29,6 +29,7 @@
 		<td><button onclick="navigator.clipboard.writeText('≪');return false;">≪</button></td>
 		<td><button onclick="navigator.clipboard.writeText('≫');return false;">≫</button></td>
 		<td><button onclick="navigator.clipboard.writeText('&#x2028;');return false;">&#x2028;</button></td>
+		<td><button onclick="navigator.clipboard.writeText('&bullet;;');return false;">&bullet;</button></td>
 	</tr>
 </table>
 

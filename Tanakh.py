@@ -5,6 +5,7 @@ import hebrew_numbers
 import os
 import re
 from enum import Enum
+import common
 from common import Span, SpanKind
 
 ROOT_PATH = os.path.dirname(os.path.abspath(__file__))
@@ -126,6 +127,77 @@ parashot_arr = [
 		[32, 1, 32, 52, 'Haazinu', 'הַאֲזִינוּ', 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
 		[33, 1, 34, 12, 'VeZot Haberakha', 'וְזֹאת הַבְּרָכָה', 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]]
 	]
+
+def newparse(text):
+		text = re.sub('"([^"]+)"', r'“\1”', text)
+		text = re.sub("'([^']+)'", r"‘\1’", text)
+		text = re.sub(' -', ' \u2013', text)
+		text = re.sub('-', '\u2011', text)
+		aliyot_items = list(re.finditer('\{(ראשון|שני|שלישי|רביעי|חמישי|ששי|שביעי|מפטיר)\} ', text))
+		for item in aliyot_items:
+			start, end = item.span()
+			text = text[0:start] + (end - start) * 'X' + text[end:]
+		kriktiv_items = list(re.finditer('\[([^|]+)\|([^]]+)\]', text))
+		for item in kriktiv_items:
+			start, end = item.span()
+			text = text[0:start] + (end - start) * 'X' + text[end:]
+		majuscule_items = list(re.finditer('<<([^>]+)>>', text))
+		for item in majuscule_items:
+			start, end = item.span()
+			text = text[0:start] + (end - start) * 'X' + text[end:]
+		minuscule_items = list(re.finditer('>>([^<]+)<<', text))
+		for item in minuscule_items:
+			start, end = item.span()
+			text = text[0:start] + (end - start) * 'X' + text[end:]
+		punctuation_items = list(re.finditer('([\,\.\;\:\?\!’‘”“]+)', text))
+		for item in punctuation_items:
+			start, end = item.span()
+			text = text[0:start] + (end - start) * 'X' + text[end:]
+		#point_items = list(re.finditer('(%s+)'%common.POINTS_REGEX, text))
+		#for item in point_items:
+		#	start, end = item.span()
+		#	text = text[0:start] + (end - start) * 'X' + text[end:]
+		#accent_items = list(re.finditer('(%s+)'%common.ACCENTS_REGEX, text))
+		#for item in accent_items:
+		#	start, end = item.span()
+		#	text = text[0:start] + (end - start) * 'X' + text[end:]
+		tab_items = list(re.finditer('(\t)', text))
+		for item in tab_items:
+			start, end = item.span()
+			text = text[0:start] + (end - start) * 'X' + text[end:]
+		plain_items = list(re.finditer('([^X]+)', text))
+		for item in plain_items:
+			start, end = item.span()
+			text = text[0:start] + (end - start) * '.' + text[end:]
+		spans = []
+		for idx in range(len(text)):
+			for item in aliyot_items + kriktiv_items + \
+					majuscule_items + minuscule_items + \
+					punctuation_items + tab_items + plain_items:
+				if idx == item.start():
+					groups = item.groups()
+					value = groups[0]
+					if len(groups) > 1:
+						alt = groups[1]
+					span = None
+					if item in aliyot_items:
+						span = Span(SpanKind.ALIYA, value)
+					elif item in kriktiv_items:
+						span = Span(SpanKind.KRIKTIV, alt, value)
+					elif item in majuscule_items:
+						span = Span(SpanKind.MAJUSCULE, value)
+					elif item in minuscule_items:
+						span = Span(SpanKind.MINUSCULE, value)
+					elif item in punctuation_items:
+						span = Span(SpanKind.PUNCTUATION, value)
+					elif item in tab_items:
+						span = Span(SpanKind.TAB, value)
+					elif item in plain_items:
+						value = re.sub('\{\{[^\}]+\}\}\s* ', '', value) # parasha
+						value = re.sub('\{[^\}]+\}\s*', '', value) # open/closed portion
+						span = Span(SpanKind.SCRIPTURE, value)
+					spans.append(span)
+		return spans
 
 def parse(text):
 	if not text:
@@ -427,7 +499,8 @@ class NVerse:
 	@property
 	def mikra(self):
 		text = self.mikra_text
-		text = re.sub('"([^"]+)"', r'“\1”', text)
+		return newparse(text)
+		"""text = re.sub('"([^"]+)"', r'“\1”', text)
 		text = re.sub("'([^']+)'", r"‘\1’", text)
 		text = re.sub(' -', ' \u2013', text)
 		text = re.sub('-', '\u2011', text)
@@ -447,13 +520,27 @@ class NVerse:
 		for item in minuscule_items:
 			start, end = item.span()
 			text = text[0:start] + (end - start) * 'X' + text[end:]
+		punctuation_items = list(re.finditer('([\,\.\;\:\?\!’‘”“]+)', text))
+		for item in punctuation_items:
+			start, end = item.span()
+			text = text[0:start] + (end - start) * 'X' + text[end:]
+		point_items = list(re.finditer('(%s+)'%common.POINTS_REGEX, text))
+		for item in point_items:
+			start, end = item.span()
+			text = text[0:start] + (end - start) * 'X' + text[end:]
+		accent_items = list(re.finditer('(%s+)'%common.ACCENTS_REGEX, text))
+		for item in accent_items:
+			start, end = item.span()
+			text = text[0:start] + (end - start) * 'X' + text[end:]
 		plain_items = list(re.finditer('([^X]+)', text))
 		for item in plain_items:
 			start, end = item.span()
 			text = text[0:start] + (end - start) * '.' + text[end:]
 		spans = []
 		for idx in range(len(text)):
-			for item in aliyot_items + kriktiv_items + majuscule_items + minuscule_items + plain_items:
+			for item in aliyot_items + kriktiv_items + \
+					majuscule_items + minuscule_items + \
+					punctuation_items + accent_items + point_items + plain_items:
 				if idx == item.start():
 					groups = item.groups()
 					value = groups[0]
@@ -468,12 +555,18 @@ class NVerse:
 						span = Span(SpanKind.MAJUSCULE, value)
 					elif item in minuscule_items:
 						span = Span(SpanKind.MINUSCULE, value)
+					elif item in punctuation_items:
+						span = Span(SpanKind.PUNCTUATION, value)
+					elif item in point_items:
+						span = Span(SpanKind.POINT, value)
+					elif item in accent_items:
+						span = Span(SpanKind.ACCENT, value)
 					elif item in plain_items:
-						value = re.sub('\{\{[^\}]+\}\}\s* ', '', value)
+						value = re.sub('\{\{[^\}]+\}\}\s* ', '', value) # parasha
 						value = re.sub('\{[^\}]+\}\s*', '', value) # open/closed portion
 						span = Span(SpanKind.PLAIN, value)
 					spans.append(span)
-		return spans
+		return spans"""
 
 	@property
 	def rashi(self):
@@ -511,6 +604,7 @@ class NVerse:
 						span = Span(SpanKind.LEGEND, value)
 					elif item in citation_items:
 						#value = re.sub('"([^"]+)"', r'“\1”', value)
+						valy
 						span = Span(SpanKind.CITATION, value)
 					elif item in link_items:
 						value = re.sub(' ', '\u00a0', value)
@@ -716,18 +810,18 @@ class Tanakh:
 		if not res:
 			return []
 		book = res[0]
-		print ('BOOK', book)
+		#print ('BOOK', book)
 		cc = hebrew_numbers.gematria_to_int(c)
-		print ('CHAPTER', cc)
+		#print ('CHAPTER', cc)
 		if cc > len(book.chapters):
 			return []
 		chapter = book.chapters[cc - 1]
-		print ('CHAPTER', chapter)
+		#print ('CHAPTER', chapter)
 		isrange = False
 		wholechapter = True
 		if '-' in v:
 			isrange = True
-			print ('IS RANGE')
+			#print ('IS RANGE')
 			start_verse, end_verse = v.split('-')
 			start_verse = hebrew_numbers.gematria_to_int(start_verse)
 			end_verse = hebrew_numbers.gematria_to_int(end_verse)
@@ -746,22 +840,13 @@ class Tanakh:
 			info += ', פעמיים'
 		if repeat == 3:
 			info += ', שלוש פעמים'
-		#print ('RANGE', verses_range)
-		#spans = []
 		verses = []
 		ispoem = False
 		for r in range(repeat):
 			for v in verses_range:
-				#if isrange:
-				#	spans.append(Span(SpanKind.VERSENO, hebrew_numbers.int_to_gematria(v + 1)))
-				#spans += chapter.verses[v].mikra
 				verses.append(chapter.verses[v])
-				#if v < verses_range.stop - 1:
 				if book.number in [27, 38] or repeat > 1:
 					ispoem = True
-					#if v + 1 < verses_range.stop:
-					#	spans.append(Span(SpanKind.PLAIN, '\n'))
-		#spans = [s for s in spans if s.kind != SpanKind.ALIYA]
 		return ispoem, repeat, info, verses
 
 if __name__ == '__main__':

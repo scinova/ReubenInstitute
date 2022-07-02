@@ -1,0 +1,464 @@
+@font-face {
+	font-family: main;
+	src: url('/@@/fonts/Bellefair-Regular.ttf') format('truetype');
+	}
+
+@font-face {
+	font-family: regular;
+	src: url('/@@/fonts/HadasimCLM-Regular.ttf') format('truetype');
+	src: url('/@@/fonts/ReuvenSerif.ttf') format('truetype');
+	src: url('/@@/fonts/NotoSerifHebrew-Regular.ttf') format('truetype');
+	}
+
+@font-face {
+	font-family: rashi;
+	src: url('/@@/fonts/Mekorot-Rashi.ttf') format('truetype');
+	xsrc: url('/@@/fonts/BenOrRashiRegular.ttf') format('truetype');
+	}
+
+@font-face {
+	font-family: scripture;
+	src: url('/@@/fonts/KeterYG-Medium.ttf') format('truetype');
+	}
+
+/*	src: url('/@@/fonts/Mekorot-Vilna-Bold.ttf') format('truetype');
+	src: url('/@@/fonts/SBL_Hbrw.ttf') format('truetype');
+	src: url('/@@/fonts/DorianCLM-BookItalic.ttf') format('truetype');
+	src: url('/@@/fonts/ShlomoStam.ttf') format('truetype');
+	src: url('/@@/fonts/StamAshkenazCLM.ttf') format('truetype');
+	src: url('/@@/fonts/TaameyAshkenaz-Medium.ttf') format('truetype');
+	src: url('/@@/fonts/Mekorot-Vilna.ttf') format('truetype');
+	src: url('/@@/fonts/TaameyFrankCLM-Medium.ttf') format('truetype');
+	src: url('/@@/fonts/KeterAramTsova.ttf') format('truetype');
+	src: url('/@@/fonts/KeterYG-Medium.ttf') format('truetype');
+	src: url('/@@/fonts/TaameyFrankCLM-Bold.ttf') format('truetype');
+	src: url('/@@/fonts/Mekorot-Vilna.ttf') format('truetype');
+	src: url('/@@/fonts/NachlieliCLM-Light.ttf') format('opentype');
+	src: url('/@@/fonts/ShofarRegular.ttf') format('truetype');*/
+
+* {
+	spacing: 0;
+	margin: 0;
+	}
+
+html {
+	background-color: #333;
+	}
+
+body {
+	סpadding: 10px;
+	xmax-width: 1200px;
+	margin: 0 auto;
+	font-family: main;
+	}
+
+div#footer {
+	color: white;
+	}
+
+div#content {
+	border-radius: 3px;
+	padding: 10px;
+	background-color: #f4eadc;
+	background-color: #ffffff;
+	zfont-size: 1.5em;
+	}
+
+a:visited,a {
+	color: #669;
+	text-decoration: none;
+	}
+
+div.mikra h1 {
+	font-size: 150%;
+	font-weight: normal;
+	text-align: center;
+	}
+
+div.mikra h2 {
+	font-size: 200%;
+	color: #d8b27e;
+	font-weight: normal;
+	}
+
+div.mikra h4 {
+	font-size: 75%;
+	cfont-family: sans;
+	color: #330;
+	font-weight: normal;
+	color: #d8b27e;
+	margin-bottom: .5em;
+	margin-top: 1em;
+	border-bottom: 2px solid #d8b27e;
+	}
+
+div.mikra h5 {
+	margin-top: 10px;
+	}
+
+div.right {
+	width: 48%;
+	float: right;
+	padding-left: 10px;
+	border-left: 1px solid #ccc;
+	}
+
+div.left {
+	width: 48%;
+	float: left;
+	}
+
+div.mikra {
+	font-family: sbl;
+	font-size: 170%;
+	line-height: 1.1em;
+	xmargin-top: 1em;
+	xmargin-bottom: 10px;
+	background-color: #d6af78;
+	background-color: #e1c59d;
+	background-color: #fed;
+	xbackground-image: url(/@@/papyrus2.jpg);
+	color: 1f1609;
+	padding: 10px 20px;
+	border-radius: 5px;
+	text-align-last: center;
+	font-weight: normal;
+	}
+
+div.onkelos {
+	}
+
+div.jerusalmi {
+	}
+
+div.targum {
+	color: #333;
+	margin-bottom: 10px;
+	}
+
+div.targum_trans {
+	color: #666;
+	}
+
+div.rashi {
+	font-family: sbl;
+	zcolumn-count: 2;
+	background-color: #ffd;
+	padding: 1em;
+	}
+
+div.variations {
+	xfont-family: sbl;
+	border-top: 1px solid #ccc;
+	padding-top: .5em;
+	font-size: 70%;
+	xbackground-color: #fcc;
+	xbackground-color: #fdd;
+	margin-top: .5em;
+	}
+
+p {
+	margin-bottom: .5em;
+	}
+
+span {
+	display: block-inline;
+	}
+
+span.tag {
+	border: 1px solid red;
+	}
+
+div.mikra span.punctuation {
+	color: #b00;
+	}
+
+div.mikra span.cantillations {
+	color: #f4eadc;
+	}
+
+span.silent {
+	color: #999;
+	}
+
+div.mikra span.chapterno {
+	color: #fff;
+	font-size: 60%;
+	background-color: #cb8;
+	padding: 0 5px;
+	color: #fcf9f5;
+	border-radius: 5px;
+	}
+
+div.mikra span.verseno {
+	color: #ccc;
+	padding: 0 5px;
+	color: #fcf9f5;
+	background-color: #d9b684;
+	font-family: sbl;
+	font-family: nachlieli;
+	font-size: 60%;
+	}
+
+div.mikra span.title {
+	color: #900;
+	}
+
+div.mikra span.addition {
+	color: #003;
+	background-color: #eef;
+	}
+
+div.mikra span.nonliteral {
+	color: #700;
+	background-color: #ffb;
+	}
+
+div.mikra span.alternative {
+	background-color: #fdd;
+	}
+
+div.mikra span.aliya {
+	color: #fcf9f5;
+	font-style: italic;
+	font-size: 60%;
+	}
+
+div.mikra span.synonym {
+	color: #aba;
+	font-family: sans;
+	font-size: 80%;
+	}
+
+div.mikra span.explanation {
+	color: #aba;
+	font-family: sans;
+	font-size: 80%;
+	}
+
+
+div.mikra span.correction {
+	color: #aba;
+	font-size: 70%;
+	}
+
+div.mikra span.hollyname {
+	color: #c33;
+	}
+
+div.mikra span.legend {
+	font-family: scripture;
+	font-family: sbl;
+	font-size: 130%;
+	vertical-align: bottom;
+	color: #006;
+	}
+
+div.mikra span.citation {
+	color: #600;
+	color: #c00;
+	font-family: sbl;
+	xfont-family: scripture;
+	xfont-weight: bold;
+	vertical-align: center;
+	}
+
+div.mikra span.info {
+	color: #999;
+	font-size: smaller;
+	}
+
+div.mikra span.link {
+	color: #99c;
+	certical-align: top;
+	vertical-align: middle;
+	font-size: 70%;
+	xfont-family: script;
+}
+
+div.mikra span.reference {
+	color: red;
+	font-size: smaller
+	}
+
+a:link,
+a:visited,
+a:hover,
+a:active {
+	color: #0099cc;
+	text-decoration: none;
+	}
+
+div.justify {
+	text-align: justify;
+	}
+
+div.clear {
+	clear: both;
+	}
+
+hr {
+	margin: 1em auto;
+	background-image: url(/@@/separator.png);
+	sbackground-align: center;
+	sbackground-repeat: no-repeat;
+	height: 52px;
+	width: 233px;
+	border: 0;
+	align: center;
+	}
+
+textarea {
+	width: 100%;
+	border: 1px solid #333;
+	font-family: regular;
+	font-size: 1.2em;
+	}
+
+input {
+	border: 1px solid #333;
+	font-family: regular;
+	font-size: 1.2em;
+	}
+
+label {
+	font-family: regular;
+	}
+
+
+span.majuscule {
+	font-size: 20px;
+	}
+
+span.minuscule {
+	font-size: 10px;
+	}
+
+div.liturgy {
+	}
+
+div.liturgy div.section {
+	xborder: 1px solid #669;
+	margin: 0 0 30px;
+	}
+
+div.liturgy div.section div {
+	border: 0px solid green;
+	}
+
+div.liturgy div.section div div.block {
+	padding: 5px;
+	border-bottom: 1px solid #eee;
+	text-align: justify;
+	text-align-last: center;
+	}
+
+div.liturgy h1 {
+	font-weight: normal;
+	font-size: 1.8em;
+	color: black;
+	margin: 0;
+	}
+
+div.liturgy h2 {
+	font-weight: normal;
+	font-size: 1.6em;
+	color: orange;
+	margin: 0;
+	}
+
+div.liturgy h3 {
+	font-weight: normal;
+	font-size: 1.4em;
+	color: orange;
+	margin: 0;
+	}
+
+div.liturgy h4 {
+	font-weight: normal;
+	font-size: 1.2em;
+	color: orange;
+	margin: 0;
+	}
+
+div.liturgy span {
+	font-family: regular;
+	}
+
+div.liturgy span.plain {
+	}
+
+div.liturgy span.citation {
+	font-family: scripture;
+	font-size: 20px;
+	color: #933;
+	}
+
+div.liturgy span.punctuation {
+	font-family: scripture;
+	font-size: 20px;
+	color: black;
+	}
+
+div.liturgy span.point {
+	font-family: scripture;
+	font-size: 20px;
+	color: blue;
+	}
+
+div.liturgy span.accent {
+	font-family: scripture;
+	font-size: 20px;
+	color: green;
+	}
+
+div.liturgy span.verseno {
+	font-family: main;
+	font-size: 80%;
+	color: #ddd;
+	margin: 0 10px;
+	background: none;
+	border: none;
+	}
+
+div.liturgy span.bold {
+	color: #66F;
+	}
+
+div.liturgy span.info {
+	font-family: main;
+	font-size: 15px;
+	color: #3c3;
+	padding: 0;
+	}
+
+div.liturgy div.section div.block-styled span.info {
+	font-size: 15px;
+	}
+
+div.liturgy span.addition {
+	color: #999;
+	background: none;
+	}
+
+div.liturgy span.correction {
+	סfont-size: 1.8em;
+	color: #ccc;
+	}
+
+div.liturgy span.explanation {
+	font-family: rashi;
+	font-size: 10px;
+	color: #ccc;
+	}
+
+div.liturgy span.link {
+	font-family: main;
+	font-size: 10px;
+	color: #99f;
+	}
+
+div.liturgy div.section div.block-styled span.link {
+	font-size: 10px;
+	}
+
