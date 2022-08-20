@@ -205,7 +205,7 @@ class Article:
 					elif item in correction_items:
 						span = Span(SpanKind.CORRECTION, value)
 					elif item in citation_items:
-						span = Span(SpanKind.CITATION, value)
+						span = Span(SpanKind.SCRIPTURE, value)
 					elif item in link_items:
 						span = Span(SpanKind.LINK, value)
 					elif item in plain_items:

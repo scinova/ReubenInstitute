@@ -6,7 +6,8 @@ import re
 import Liturgy
 from common import Span, SpanKind
 
-data = open('/root/work/reubeninstitute/db/liturgy/Boker.txt').read()
+data = open('/root/work/reubeninstitute/db/liturgy/korbanot-tamid.txt').read()
+#data = open('/root/work/reubeninstitute/db/liturgy/Boker.txt').read()
 #data = open('/root/work/reubeninstitute/db/liturgy/Minchah.txt').read()
 #data = open('/root/work/reubeninstitute/db/liturgy/Shacharit.txt').read()
 sections = Liturgy.something(data, 1)
@@ -35,7 +36,7 @@ charstyles = [
 	["addition", serif, 12, 'Silver'],
 	["explanation", serif, 12, 'Blue'],
 	["info", sans, 12, 'DarkGreen'],
-	["citation", serif, 16, 'DarkRed'],
+	["scripture", serif, 16, 'DarkRed'],
 	["link", serif, 10, 'Silver'],
 	["verseno", serif, 10, 'Silver'],
 #	["points", serif, 15, 'Green'],
@@ -54,7 +55,10 @@ createParagraphStyle("Default Paragraph Style", linespacingmode=0, linespacing=1
 #createParagraphStyle("justified", alignment=ALIGN_BLOCK)
 #"""
 
-createParagraphStyle("optional", linespacingmode=0, linespacing=17, alignment=ALIGN_BLOCK, gapafter=6)
+createParagraphStyle("centered", linespacingmode=1, alignment=ALIGN_CENTERED)
+createParagraphStyle("justified", linespacingmode=1, alignment=ALIGN_BLOCK)
+createParagraphStyle("block", linespacingmode=1, alignment=ALIGN_BLOCK)
+createParagraphStyle("optional", linespacingmode=1, alignment=ALIGN_BLOCK)
 
 def add_text(frame, text, char_style=None, paragraph_style=None):
 	length = len(text)
@@ -74,61 +78,36 @@ setTextDirection(DIRECTION_RTL, frame)
 #createMasterPage('right')
 
 for section in sections:
-	for block in section:
-		for span in block.spans:
-			value = span.value
-			if span.kind == SpanKind.ADDITION:
-				value = '[%s]'%value
-			if span.kind in [SpanKind.EXPLANATION, SpanKind.LINK]:
-				value = '[%s]'%value
-			if span.kind == SpanKind.VERSENO:
-				value = '%s '%value
-			#value = re.sub('\u05bd', '', value)
-			length = len(value)
-			pos = getTextLength(frame)
-			insertText(value, pos, frame)
-			selectText(pos, length, frame)
-			print (span.kind, span.value)
-			if span.kind == SpanKind.H1:
-				setCharacterStyle("h1", frame)
+	for outerblock in section:
+		for block in outerblock.blocks:
+			blockpos = getTextLength(frame)
+			for line in block.lines:
+				for span in line:
+					value = span.value
+					if span.kind == SpanKind.ADDITION:
+						value = '[%s]'%value
+					if span.kind in [SpanKind.EXPLANATION, SpanKind.LINK]:
+						value = '[%s]'%value
+					if span.kind == SpanKind.VERSENO:
+						value = '%s '%value
+					pos = getTextLength(frame)
+					insertText(value, pos, frame)
+					selectText(pos, len(value), frame)
+					setCharacterStyle(span.kind.name.lower(), frame)
 				insertText('\n', getTextLength(frame), frame)
-			elif span.kind == SpanKind.H2:
-				setCharacterStyle("h2", frame)
-				insertText('\n', getTextLength(frame), frame)
-			elif span.kind == SpanKind.H4:
-				setCharacterStyle("h4", frame)
-				insertText('\n', getTextLength(frame), frame)
-			elif span.kind == SpanKind.BOLD:
-				setCharacterStyle("bold", frame)
-			elif span.kind == SpanKind.MAJUSCULE:
-				setCharacterStyle("majuscule", frame)
-			elif span.kind == SpanKind.MINUSCULE:
-				setCharacterStyle("minuscule", frame)
-			elif span.kind == SpanKind.VERSENO:
-				setCharacterStyle("verseno", frame)
-			elif span.kind == SpanKind.ADDITION:
-				setCharacterStyle("addition", frame)
-			elif span.kind == SpanKind.EXPLANATION:
-				setCharacterStyle("explanation", frame)
-			elif span.kind == SpanKind.INFO:
-				setCharacterStyle("info", frame)
-			elif span.kind == SpanKind.LINK:
-				setCharacterStyle("link", frame)
-			elif span.kind == SpanKind.CITATION:
-				setCharacterStyle("citation", frame)
+
+			sspans = [span for span in line if span.kind == SpanKind.SCRIPTURE]
+			vspans = [span for span in line if span.kind == SpanKind.VERSENO]
+			print (len(vspans), len(sspans))
+			if len(vspans) > 1 and len(sspans) > len(vspans):
+				style = "justified"
 			else:
-				setCharacterStyle("plain", frame)
-
-		insertText('\n', getTextLength(frame), frame)
-
+				style = "centered"
+				
+			pos = getTextLength(frame)
+			selectText(blockpos, pos - blockpos, frame)
+			setParagraphStyle(style, frame)
 setTextDirection(DIRECTION_RTL, frame)
-
-#selectText(0, getTextLength(frame), frame)
-#content = unicode(getAllText(frame))
-#for i in reversed(tuple(re.finditer(u'[\u0591-\u05af\u05bd\u05c3]+', content))):
-#	print ("XXX", i.start(), i.end() - i.start(), len(content))
-#	selectText(i.start(), i.end() - i.start(), frame)
-#	setCharacterStyle('cantillation', frame)
 
 p = 1
 while textOverflows(str(p)):
@@ -138,7 +117,7 @@ while textOverflows(str(p)):
 	linkTextFrames('%s'%(p - 1), '%s'%p)
 
 setRedraw(True)
-saveDocAs('/root/siddur-out.sla')
+#saveDocAs('/root/siddur-out.sla')
 pdf = PDFfile()
 pdf.file = '/sdcard/Download/siddur.pdf'
 pdf.save()

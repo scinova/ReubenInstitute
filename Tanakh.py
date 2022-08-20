@@ -129,6 +129,8 @@ parashot_arr = [
 	]
 
 def newparse(text):
+		text = common.fix_yhwh(text)
+		text = common.fix_paseq(text)
 		text = re.sub('"([^"]+)"', r'“\1”', text)
 		text = re.sub("'([^']+)'", r"‘\1’", text)
 		text = re.sub(' -', ' \u2013', text)
@@ -149,7 +151,7 @@ def newparse(text):
 		for item in minuscule_items:
 			start, end = item.span()
 			text = text[0:start] + (end - start) * 'X' + text[end:]
-		punctuation_items = list(re.finditer('([\,\.\;\:\?\!’‘”“]+)', text))
+		punctuation_items = list(re.finditer('([\,\.\;\:\?\!’‘”“–]+ )', text))
 		for item in punctuation_items:
 			start, end = item.span()
 			text = text[0:start] + (end - start) * 'X' + text[end:]
@@ -161,10 +163,19 @@ def newparse(text):
 		#for item in accent_items:
 		#	start, end = item.span()
 		#	text = text[0:start] + (end - start) * 'X' + text[end:]
+		accent_items = list(re.finditer('([׀׃]+)', text))
+		for item in accent_items:
+			start, end = item.span()
+			text = text[0:start] + (end - start) * 'X' + text[end:]
 		tab_items = list(re.finditer('(\t)', text))
 		for item in tab_items:
 			start, end = item.span()
 			text = text[0:start] + (end - start) * 'X' + text[end:]
+		space_items = list(re.finditer('( )', text))
+		for item in space_items:
+			start, end = item.span()
+			text = text[0:start] + (end - start) * 'X' + text[end:]
+
 		plain_items = list(re.finditer('([^X]+)', text))
 		for item in plain_items:
 			start, end = item.span()
@@ -173,7 +184,8 @@ def newparse(text):
 		for idx in range(len(text)):
 			for item in aliyot_items + kriktiv_items + \
 					majuscule_items + minuscule_items + \
-					punctuation_items + tab_items + plain_items:
+					accent_items + \
+					punctuation_items + tab_items + space_items + plain_items:
 				if idx == item.start():
 					groups = item.groups()
 					value = groups[0]
@@ -188,10 +200,14 @@ def newparse(text):
 						span = Span(SpanKind.MAJUSCULE, value)
 					elif item in minuscule_items:
 						span = Span(SpanKind.MINUSCULE, value)
+					if item in accent_items:
+						span = Span(SpanKind.ACCENT, value)
 					elif item in punctuation_items:
 						span = Span(SpanKind.PUNCTUATION, value)
 					elif item in tab_items:
 						span = Span(SpanKind.TAB, value)
+					elif item in space_items:
+						span = Span(SpanKind.SPACE, ' ')
 					elif item in plain_items:
 						value = re.sub('\{\{[^\}]+\}\}\s* ', '', value) # parasha
 						value = re.sub('\{[^\}]+\}\s*', '', value) # open/closed portion
@@ -199,7 +215,7 @@ def newparse(text):
 					spans.append(span)
 		return spans
 
-def parse(text):
+def xparse(text):
 	if not text:
 		return []
 	text = re.sub('"([^"]+)"', r'“\1”', text)
@@ -500,73 +516,6 @@ class NVerse:
 	def mikra(self):
 		text = self.mikra_text
 		return newparse(text)
-		"""text = re.sub('"([^"]+)"', r'“\1”', text)
-		text = re.sub("'([^']+)'", r"‘\1’", text)
-		text = re.sub(' -', ' \u2013', text)
-		text = re.sub('-', '\u2011', text)
-		aliyot_items = list(re.finditer('\{(ראשון|שני|שלישי|רביעי|חמישי|ששי|שביעי|מפטיר)\} ', text))
-		for item in aliyot_items:
-			start, end = item.span()
-			text = text[0:start] + (end - start) * 'X' + text[end:]
-		kriktiv_items = list(re.finditer('\[([^|]+)\|([^]]+)\]', text))
-		for item in kriktiv_items:
-			start, end = item.span()
-			text = text[0:start] + (end - start) * 'X' + text[end:]
-		majuscule_items = list(re.finditer('<<([^>]+)>>', text))
-		for item in majuscule_items:
-			start, end = item.span()
-			text = text[0:start] + (end - start) * 'X' + text[end:]
-		minuscule_items = list(re.finditer('>>([^<]+)<<', text))
-		for item in minuscule_items:
-			start, end = item.span()
-			text = text[0:start] + (end - start) * 'X' + text[end:]
-		punctuation_items = list(re.finditer('([\,\.\;\:\?\!’‘”“]+)', text))
-		for item in punctuation_items:
-			start, end = item.span()
-			text = text[0:start] + (end - start) * 'X' + text[end:]
-		point_items = list(re.finditer('(%s+)'%common.POINTS_REGEX, text))
-		for item in point_items:
-			start, end = item.span()
-			text = text[0:start] + (end - start) * 'X' + text[end:]
-		accent_items = list(re.finditer('(%s+)'%common.ACCENTS_REGEX, text))
-		for item in accent_items:
-			start, end = item.span()
-			text = text[0:start] + (end - start) * 'X' + text[end:]
-		plain_items = list(re.finditer('([^X]+)', text))
-		for item in plain_items:
-			start, end = item.span()
-			text = text[0:start] + (end - start) * '.' + text[end:]
-		spans = []
-		for idx in range(len(text)):
-			for item in aliyot_items + kriktiv_items + \
-					majuscule_items + minuscule_items + \
-					punctuation_items + accent_items + point_items + plain_items:
-				if idx == item.start():
-					groups = item.groups()
-					value = groups[0]
-					if len(groups) > 1:
-						alt = groups[1]
-					span = None
-					if item in aliyot_items:
-						span = Span(SpanKind.ALIYA, value)
-					elif item in kriktiv_items:
-						span = Span(SpanKind.KRIKTIV, value, alt)
-					elif item in majuscule_items:
-						span = Span(SpanKind.MAJUSCULE, value)
-					elif item in minuscule_items:
-						span = Span(SpanKind.MINUSCULE, value)
-					elif item in punctuation_items:
-						span = Span(SpanKind.PUNCTUATION, value)
-					elif item in point_items:
-						span = Span(SpanKind.POINT, value)
-					elif item in accent_items:
-						span = Span(SpanKind.ACCENT, value)
-					elif item in plain_items:
-						value = re.sub('\{\{[^\}]+\}\}\s* ', '', value) # parasha
-						value = re.sub('\{[^\}]+\}\s*', '', value) # open/closed portion
-						span = Span(SpanKind.PLAIN, value)
-					spans.append(span)
-		return spans"""
 
 	@property
 	def rashi(self):

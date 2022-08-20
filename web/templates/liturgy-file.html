@@ -33,10 +33,19 @@
 		{% endif %}
 		<div class="outer block {{klass}}" style="{{style}}">
 		{%- for block in outerblock.blocks -%}
-			<div class="block">
+			<div class="block" style="text-align: justify;">
 			{%- for line in block.lines -%}
 				{% set kriktivs = [] %}
-				<div class="line">
+				<div class="line" zstyle="
+border:1px solid red;
+display: flex;
+flex-direction: row;
+flex-wrap: wrap;
+flex-flow: row wrap;
+justify-content: space-between;
+gap: .5em;
+text-align-last: center;
+">
 				{%- for span in line -%}
 					{%- if span.kind == SpanKind.H1 -%}
 						<h1>{{span.value}}</h1>
@@ -56,7 +65,7 @@
 						<span class="bold">{{span.value}}</span>
 					{%- elif span.kind == SpanKind.KRIKTIV -%}
 						{% set x = kriktivs.append(span) %}
-						<span class="kriktiv">{{span.value}}</span>
+						<span class="plain">{{span.value}}</span>
 					{%- elif span.kind == SpanKind.ADDITION -%}
 						<span class="addition">[{{span.value}}]</span>
 					{%- elif span.kind == SpanKind.SYNONYM -%}
@@ -65,14 +74,25 @@
 						<span class="explanation">({{span.value}})</span>
 					{%- elif span.kind == SpanKind.CORRECTION -%}
 						<span class="correction">[{{span.value}}]</span>
+					{%- elif span.kind == SpanKind.SPACE -%}
+						<!--<div style="display:inline-block;border:1px solid orange;">-->
+						<!--<span style="display:inline-block;" class="scriptureLPA"> </span><!--</div>-->
 					{%- elif span.kind == SpanKind.SCRIPTURE -%}
-						<span class="scripture">{{span.value}}</span>
+						<div style="display:inline-block;border:0px solid red;">
+							<span style="position:absolute;" class="scriptureLP">{{span.value}}</span>
+							<span style="position:absolute;" class="scriptureL">{{span.value}}</span>
+							<span class="scriptureLPA">{{span.value}}</span>
+						</div>
 					{%- elif span.kind == SpanKind.LINK -%}
 						<span class="link">{{span.value}}</span>
 					{%- elif span.kind == SpanKind.INFO -%}
 						<span class="info">{{span.value}}</span>
+					{%- elif span.kind == SpanKind.ACCENT -%}
+						<span class="accent">{{span.value}}</span>
 					{%- elif span.kind == SpanKind.PUNCTUATION -%}
 						<span class="punctuation">{{span.value}}</span>
+					{%- elif span.kind == SpanKind.TAB -%}
+						<br />
 					{%- else -%}
 						<span class="plain">{{span.value}}</span>
 					{%- endif -%}

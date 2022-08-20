@@ -58,6 +58,7 @@ class SpanKind(Enum):
 
 	BREAK = 40
 	TAB = 41
+	SPACE = 42
 
 class Span:
 	def __init__(self, kind, value=None, alt=None):
@@ -67,6 +68,10 @@ class Span:
 
 	def __repr__(self):
 		return '<Span.%s:%s>'%(self.kind, self.value or '')
+
+	@property
+	def style(self):
+		return ''
 
 def fix_yhwh(text):
 	y = '\u05d9'

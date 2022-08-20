@@ -7,10 +7,11 @@
 	font-family: regular;
 	src: url('/@@/fonts/HadasimCLM-Regular.ttf') format('truetype');
 	src: url('/@@/fonts/ReuvenSerif.ttf') format('truetype');
-	src: url('/@@/fonts/NotoSerifHebrew-Regular.ttf') format('truetype');
 	src: url('/@@/fonts/NotoSerifHebrew-CondensedBlack.ttf') format('truetype');
 	src: url('/@@/fonts/NotoSerifHebrew-Condensed.ttf') format('truetype');
-	xsrc: url('/@@/fonts/NotoSerifHebrew-ExtraCondensed.ttf') format('truetype');
+	src: url('/@@/fonts/NotoSerifHebrew-Regular.ttf') format('truetype');
+	src: url('/@@/fonts/NotoSerifHebrew-ExtraCondensed.ttf') format('truetype');
+	xsrc: url('/@@/fonts/ReuvenSerif.ttf') format('truetype');
 	}
 
 @font-face {
@@ -19,9 +20,32 @@
 	xsrc: url('/@@/fonts/BenOrRashiRegular.ttf') format('truetype');
 	}
 
-@font-face {
+@xfont-face {
 	font-family: scripture;
 	src: url('/@@/fonts/KeterYG-Medium.ttf') format('truetype');
+	src: url('/@@/fonts/custom/KeterYG-Medium-LPA.ttf') format('truetype');
+	src: url('/@@/fonts/custom/SBLHebrew-LPA.ttf') format('truetype');
+	}
+
+@font-face {
+	font-family: scriptureLPA;
+	src: url('/@@/fonts/custom/KeterYG-Medium-LPA.ttf') format('truetype');
+	src: url('/@@/fonts/custom/SBLHebrew-LPA.ttf') format('truetype');
+	color: green;
+	}
+
+@font-face {
+	font-family: scriptureLP;
+	src: url('/@@/fonts/custom/KeterYG-Medium-LP.ttf') format('truetype');
+	src: url('/@@/fonts/custom/SBLHebrew-LP.ttf') format('truetype');
+	color: orange;
+	}
+
+@font-face {
+	font-family: scriptureL;
+	src: url('/@@/fonts/custom/KeterYG-Medium-L.ttf') format('truetype');
+	src: url('/@@/fonts/custom/SBLHebrew-L.ttf') format('truetype');
+	color: black;
 	}
 
 * {
@@ -54,8 +78,6 @@ div#content {
 	background-color: #f4eadc;
 	background-color: #ffffff;
 	zfont-size: 1.5em;
-
-
 	}
 
 
@@ -94,14 +116,15 @@ label {
 	}
 
 span {
-	display: block-inline;
+	display: inline-block;
+	xfont-size: 1em;
 	}
 
 div.liturgy {
 	}
 
 div.liturgy div.section {
-	xborder: 1px solid #669;
+	border-bottom: 1px solid #669;
 	margin: 0 0 30px;
 	}
 
@@ -111,10 +134,10 @@ div.liturgy div.section div {
 
 div.liturgy div.section div.outer div.block {
 	padding: 8px 0;
-	border-bottom: 1px solid #ccc;
 	text-align: justify;
 	text-align-last: center;
 	display: block-inline;
+	border-bottom: 1px solid #ccc;
 	}
 
 div.liturgy div.translation {
@@ -170,34 +193,37 @@ div.liturgy h4 {
 
 div.liturgy span {
 	font-family: regular;
+	font-size: 1.2em;
 	vertical-align: middle;
+	xborder: 1px solid green;
 	}
 
 div.liturgy span.plain {
+	color: saddlebrown;
 	}
 
 div.liturgy span.punctuation {
-	font-family: scripture;
-	font-size: 1em;
-	color: black;
+	font-family: scriptureLPA;
+	font-size: 1.2em;
+	color: blue;
 	}
 
 div.liturgy span.point {
 	font-family: scripture;
 	font-size: 1em;
-	color: blue;
 	}
 
 div.liturgy span.accent {
-	font-family: scripture;
+	font-family: scriptureLPA;
 	font-size: 1em;
-	color: green;
+	color: red;
 	}
 
 div.liturgy span.verseno {
-	font-family: scripture;
-	color: #999;
+	font-family: scriptureL;
+	color: #ccc;
 	margin: 0 10px;
+	font-size: .7em;
 	}
 
 div.liturgy span.bold {
@@ -236,17 +262,41 @@ div.liturgy span.link {
 	font-family: main;
 	font-size: .5em;
 	color: #99f;
+	color: #ccc;
 	}
 
 div.liturgy span.scripture,
 div.liturgy span.kriktiv {
-	font-family: scripture;
+	font-family: scriptureLPA;
 	color: #933;
-	font-size: 1em;
+	color: green;
+	font-size: 1.2em;
+	}
+
+div.liturgy span.scriptureL {
+	font-family: scriptureL;
+	color: black;
+	font-size: 1.2em;
+	}
+
+div.liturgy span.scriptureLP {
+	font-family: scriptureLP;
+	color: saddlebrown;
+	color: burlywood;
+	color: #9c9;
+	font-size: 1.2em;
+	}
+
+div.liturgy span.scriptureLPA {
+	font-family: scriptureLPA;
+	color: red;
+	font-size: 1.2em;
 	}
 
 div.liturgy span.kriktiv {
+	font-family: scriptureLPA;
 	background-color: #ffd;
+	font-size: 1.2em;
 	}
 
 div.liturgy div.section div.larger {
@@ -258,9 +308,13 @@ div.liturgy div.section div.smaller {
 	}
 
 div.liturgy div.section span.majuscule {
+	font-family: scriptureLPA;
+	font-size: 1.6em;
 	zfont-size: 2em;
 	}
 
 div.liturgy div.section span.minuscule {
+	font-family: scriptureLPA;
+	font-size: 0.7em;
 	zfont-size: .5em;
 	}

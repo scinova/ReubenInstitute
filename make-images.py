@@ -62,12 +62,13 @@ scribus.progressReset()
 progress = 0
 for article in articles:
 	p = article.text.split('\n\n\n')
-	t = article.translation.split('\n\n\n')
+	#t = article.translation.split('\n\n\n')
 	paragraphs = []
 	for i in range(len(p)):
 		paragraphs.append(p[i])
 		#paragraphs.append(t[i])
 	paragraph_number = 0
+	#sections = article.parse(article.text)
 	for paragraph in paragraphs:
 		paragraph_number += 1
 		frame = createText(marginLeft, marginTop, pageWidth - marginLeft - marginRight, pageHeight - marginTop - marginBottom, '1')
@@ -86,7 +87,7 @@ for article in articles:
 				elif span.kind == Zohar.SpanKind.CORRECTION:
 					value = '[%s]'%value
 					style = "correction"
-				elif span.kind == Zohar.SpanKind.CITATION:
+				elif span.kind == Zohar.SpanKind.SCRIPTURE:
 					value = '“%s”'%value
 					style = 'citation'
 				elif span.kind == Zohar.SpanKind.LINK:

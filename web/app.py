@@ -86,6 +86,8 @@ def prayer(variant, name):
 		v = 3
 	filename = '../db/liturgy/%s.txt'%name
 	data = open(filename).read()
+	data = re.sub('\u05b0\u05b0', '\u05b0', data)
+	data = re.sub('\u05bc\u05bc', '\u05bc', data)
 	data = Liturgy.something(data, v)
 	return render_template('liturgy-file.html', data=data, name=name, variant=variant)
 
