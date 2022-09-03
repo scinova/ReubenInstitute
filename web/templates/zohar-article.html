@@ -1,5 +1,5 @@
 {% if request.environ.HTTP_HOST == 'localhost:5000' %}
-	{% extends "base-standalone.html" %}
+	{% extends "base.html" %}
 {% else %}
 	{% extends "base.html" %}
 {% endif %}
@@ -7,11 +7,11 @@
 {% block content %}
 <h1>{{article.title}}</h1>
 {% for section_idx in range(article.sections|length) %}
-	{% if request.environ.HTTP_HOST == '127.0.0.1:5000' %}
+	{#% if request.environ.HTTP_HOST == '127.0.0.1:5000' %#}
 	<a href="/zohar/{{article.book.number}}/{{article.chapter.number}}/{{article.number}}/edit/{{loop.index}}">edit</a><br />
-	{% endif %}
+	{#% endif %#}
 	<a id="v{{loop.index}}"></a>
-	<div class="section" style="font-family:ReuvenSerif;">
+	<div class="zohar section" style="font-family:regular;">
 		<div class="right justify">
 			{% for line in article.sections[section_idx] %}
 				{%- for span in article.parse(line) -%}
@@ -23,6 +23,8 @@
 						<span class="correction">[{{span.value}}]</span>
 					{%- elif span.kind == SpanKind.CITATION -%}
 						<span class="citation">“{{span.value}}”</span>
+					{%- elif span.kind == SpanKind.SCRIPTURE -%}
+						<span class="scripture">“{{span.value}}”</span>
 					{%- elif span.kind == SpanKind.ALTERNATIVE -%}
 						<span class="alternative">{{span.value}}</span>
 					{%- elif span.kind == SpanKind.PLAIN -%}
@@ -43,6 +45,8 @@
 						<span class="correction">[{{span.value}}]</span>
 					{%- elif span.kind == SpanKind.CITATION -%}
 						<span class="citation">“{{span.value}}”</span>
+					{%- elif span.kind == SpanKind.SCRIPTURE -%}
+						<span class="scripture">“{{span.value}}”</span>
 					{%- elif span.kind == SpanKind.LINK -%}
 						<span class="link">{{span.value}}</span>
 					{%- elif span.kind == SpanKind.ALTERNATIVE -%}

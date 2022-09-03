@@ -11,7 +11,7 @@
 	src: url('/@@/fonts/NotoSerifHebrew-Condensed.ttf') format('truetype');
 	src: url('/@@/fonts/NotoSerifHebrew-Regular.ttf') format('truetype');
 	src: url('/@@/fonts/NotoSerifHebrew-ExtraCondensed.ttf') format('truetype');
-	xsrc: url('/@@/fonts/ReuvenSerif.ttf') format('truetype');
+	src: url('/@@/fonts/custom/ReuvenSerif.ttf') format('truetype');
 	}
 
 @font-face {
@@ -20,28 +20,26 @@
 	xsrc: url('/@@/fonts/BenOrRashiRegular.ttf') format('truetype');
 	}
 
-@xfont-face {
+@font-face {
 	font-family: scripture;
-	src: url('/@@/fonts/KeterYG-Medium.ttf') format('truetype');
-	src: url('/@@/fonts/custom/KeterYG-Medium-LPA.ttf') format('truetype');
-	src: url('/@@/fonts/custom/SBLHebrew-LPA.ttf') format('truetype');
+	src: url('/@@/fonts/custom/ReuvenSerif.ttf') format('truetype');
 	}
 
-@font-face {
+@cfont-face {
 	font-family: scriptureLPA;
 	src: url('/@@/fonts/custom/KeterYG-Medium-LPA.ttf') format('truetype');
 	src: url('/@@/fonts/custom/SBLHebrew-LPA.ttf') format('truetype');
 	color: green;
 	}
 
-@font-face {
+@cfont-face {
 	font-family: scriptureLP;
 	src: url('/@@/fonts/custom/KeterYG-Medium-LP.ttf') format('truetype');
 	src: url('/@@/fonts/custom/SBLHebrew-LP.ttf') format('truetype');
 	color: orange;
 	}
 
-@font-face {
+@cfont-face {
 	font-family: scriptureL;
 	src: url('/@@/fonts/custom/KeterYG-Medium-L.ttf') format('truetype');
 	src: url('/@@/fonts/custom/SBLHebrew-L.ttf') format('truetype');
@@ -59,11 +57,11 @@ html {
 
 body {
 	סpadding: 10px;
-	xmax-width: 1200px;
+	max-width: 900px;
 	margin: 0 auto;
 	font-family: main;
 
-	max-width: 500px;
+	xmax-width: 500px;
 	margin: 0 auto;
 
 	}
@@ -115,17 +113,20 @@ label {
 	font-family: main;
 	}
 
-span {
-	display: inline-block;
+div.liturgy span {
+	Xdisplay: inline-block;
 	xfont-size: 1em;
 	}
 
 div.liturgy {
+	font-size: 2em;
+	סborder: 1px solid red;
 	}
 
 div.liturgy div.section {
 	border-bottom: 1px solid #669;
 	margin: 0 0 30px;
+	סborder: 1px solid green;
 	}
 
 div.liturgy div.section div {
@@ -135,7 +136,7 @@ div.liturgy div.section div {
 div.liturgy div.section div.outer div.block {
 	padding: 8px 0;
 	text-align: justify;
-	text-align-last: center;
+	xtext-align-last: center;
 	display: block-inline;
 	border-bottom: 1px solid #ccc;
 	}
@@ -145,12 +146,14 @@ div.liturgy div.translation {
 	color: #666;
 	}
 
-div.liturgy div.left {
+div.left {
 	float: left;
+	width: 49%;
 	}
 
-div.liturgy div.right {
+div.right {
 	float: right;
+	width: 49%;
 	}
 
 div.liturgy div.section div.optional {
@@ -195,11 +198,12 @@ div.liturgy span {
 	font-family: regular;
 	font-size: 1.2em;
 	vertical-align: middle;
-	xborder: 1px solid green;
+	border: 0px solid green;
+	white-space: pre;
 	}
 
 div.liturgy span.plain {
-	color: saddlebrown;
+	color: #000;
 	}
 
 div.liturgy span.punctuation {
@@ -214,13 +218,13 @@ div.liturgy span.point {
 	}
 
 div.liturgy span.accent {
-	font-family: scriptureLPA;
+	font-family: scripture;
 	font-size: 1em;
 	color: red;
 	}
 
 div.liturgy span.verseno {
-	font-family: scriptureL;
+	font-family: scripture;
 	color: #ccc;
 	margin: 0 10px;
 	font-size: .7em;
@@ -228,6 +232,7 @@ div.liturgy span.verseno {
 
 div.liturgy span.bold {
 	color: #66F;
+	color: #f33;
 	}
 
 div.liturgy span.info {
@@ -246,9 +251,10 @@ div.liturgy span.correction {
 
 div.liturgy span.explanation {
 	font-family: rashi;
-	font-size: .4em;
+	font-size: .3em;
 	color: #ccc;
 	}
+
 
 div.liturgy div.translation span.synonym {
 	color: #ccc;
@@ -267,10 +273,10 @@ div.liturgy span.link {
 
 div.liturgy span.scripture,
 div.liturgy span.kriktiv {
-	font-family: scriptureLPA;
+	font-family: scripture;
 	color: #933;
-	color: green;
-	font-size: 1.2em;
+	ccolor: green;
+	זfont-size: 1.2em;
 	}
 
 div.liturgy span.scriptureL {
@@ -318,3 +324,42 @@ div.liturgy div.section span.minuscule {
 	font-size: 0.7em;
 	zfont-size: .5em;
 	}
+
+
+xspan.explanation {
+	color: #ccc;
+	}
+
+
+div.zohar {
+	border-bottom: 1px solid #ccc;
+	}
+
+div.zohar span.explanation {
+	color: #ccc;
+	}
+
+div.zohar span.correction {
+	color: #ccc;
+	}
+
+div.zohar span.addition {
+	color: #ccc;
+	}
+
+div.zohar span.synonym {
+	color: #ccc;
+	}
+
+div.zohar span.scripture {
+	color: #900;
+	}
+
+div.zohar span.citation {
+	color: #900;
+	}
+
+div.zohar span.silent {
+	color: #ccc;
+	}
+

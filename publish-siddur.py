@@ -6,7 +6,8 @@ import re
 import Liturgy
 from common import Span, SpanKind
 
-data = open('/root/work/reubeninstitute/db/liturgy/korbanot-tamid.txt').read()
+data = open('/root/work/reubeninstitute/db/liturgy/Slichot.txt').read()
+#data = open('/root/work/reubeninstitute/db/liturgy/ben-adam-ma-lechah-nirdam.txt').read()
 #data = open('/root/work/reubeninstitute/db/liturgy/Boker.txt').read()
 #data = open('/root/work/reubeninstitute/db/liturgy/Minchah.txt').read()
 #data = open('/root/work/reubeninstitute/db/liturgy/Shacharit.txt').read()
@@ -15,7 +16,8 @@ sections = Liturgy.something(data, 1)
 #text = prayer.variant(prayer.text, 0)
 
 #openDoc('/root/SIDDUR.sla')
-newDocument((135, 205), (10, 10, 10, 10), PORTRAIT, 1, UNIT_MILLIMETERS, PAGE_1, 0, 1)
+#newDocument((135, 205), (10, 10, 10, 10), PORTRAIT, 1, UNIT_MILLIMETERS, PAGE_1, 0, 1)
+newDocument((116, 165), (10, 10, 13, 8), PORTRAIT, 1, UNIT_MILLIMETERS, PAGE_1, 0, 1)
 setRedraw(False)
 setUnit(UNIT_PT)
 defineColorRGB("Orange", 255, 165, 0)
@@ -29,14 +31,17 @@ charstyles = [
 	["Default Character Style", serif, 15, 'Black'],
 	["h1", serif, 22, 'Orange'],
 	["h2", serif, 18, 'Orange'],
-	["h4", serif, 15, 'Orange'],
+	["h4", serif, 22, 'Orange'],
 	["bold", serif, 15, 'Blue'],
 	["majuscule", serif, 18, 'Black'],
 	["minuscule", serif, 12, 'Black'],
 	["addition", serif, 12, 'Silver'],
 	["explanation", serif, 12, 'Blue'],
+	["correction", serif, 12, 'Black'],
 	["info", sans, 12, 'DarkGreen'],
 	["scripture", serif, 16, 'DarkRed'],
+	["accent", serif, 16, 'DarkRed'],
+	["point", serif, 16, 'DarkRed'],
 	["link", serif, 10, 'Silver'],
 	["verseno", serif, 10, 'Silver'],
 #	["points", serif, 15, 'Green'],
@@ -46,7 +51,6 @@ charstyles = [
 for name, font, size, fillcolor in charstyles:
 	createCharStyle(name, font, size, fillcolor=fillcolor)
 
-createParagraphStyle("Default Paragraph Style", linespacingmode=0, linespacing=17, alignment=ALIGN_CENTERED, gapafter=0)
 #createParagraphStyle("poem", linespacingmode=0, linespacing=17, alignment=1,
 #		leftmargin=0, rightmargin=0, gapbefore=0, gapafter=6,
 #		firstindent=0, hasdropcap=0, dropcaplines=0, dropcapoffset=0)
@@ -55,10 +59,11 @@ createParagraphStyle("Default Paragraph Style", linespacingmode=0, linespacing=1
 #createParagraphStyle("justified", alignment=ALIGN_BLOCK)
 #"""
 
-createParagraphStyle("centered", linespacingmode=1, alignment=ALIGN_CENTERED)
-createParagraphStyle("justified", linespacingmode=1, alignment=ALIGN_BLOCK)
+createParagraphStyle("Default Paragraph Style", linespacingmode=0, linespacing=16, alignment=ALIGN_RIGHT, gapafter=7)
 createParagraphStyle("block", linespacingmode=1, alignment=ALIGN_BLOCK)
-createParagraphStyle("optional", linespacingmode=1, alignment=ALIGN_BLOCK)
+createParagraphStyle("optional", linespacingmode=0, linespacing=16, alignment=ALIGN_RIGHT, gapafter=7)
+#createParagraphStyle("centered", linespacingmode=1, alignment=ALIGN_CENTERED)
+#createParagraphStyle("justified", linespacingmode=1, alignment=ALIGN_BLOCK)
 
 def add_text(frame, text, char_style=None, paragraph_style=None):
 	length = len(text)
@@ -93,20 +98,23 @@ for section in sections:
 					pos = getTextLength(frame)
 					insertText(value, pos, frame)
 					selectText(pos, len(value), frame)
+					print (span.kind.name.lower())
 					setCharacterStyle(span.kind.name.lower(), frame)
-				insertText('\n', getTextLength(frame), frame)
+				if line != block.lines[-1]:
+					insertText('\u2028', getTextLength(frame), frame)
+			insertText('\n', getTextLength(frame), frame)
 
-			sspans = [span for span in line if span.kind == SpanKind.SCRIPTURE]
-			vspans = [span for span in line if span.kind == SpanKind.VERSENO]
-			print (len(vspans), len(sspans))
-			if len(vspans) > 1 and len(sspans) > len(vspans):
-				style = "justified"
-			else:
-				style = "centered"
+			#sspans = [span for span in line if span.kind == SpanKind.SCRIPTURE]
+			#vspans = [span for span in line if span.kind == SpanKind.VERSENO]
+			#print (len(vspans), len(sspans))
+			#if len(vspans) > 1 and len(sspans) > len(vspans):
+			#	style = "justified"
+			#else:
+			#	style = "centered"
 				
-			pos = getTextLength(frame)
-			selectText(blockpos, pos - blockpos, frame)
-			setParagraphStyle(style, frame)
+			#pos = getTextLength(frame)
+			#selectText(blockpos, pos - blockpos, frame)
+			#setParagraphStyle(style, frame)
 setTextDirection(DIRECTION_RTL, frame)
 
 p = 1
@@ -117,7 +125,7 @@ while textOverflows(str(p)):
 	linkTextFrames('%s'%(p - 1), '%s'%p)
 
 setRedraw(True)
-#saveDocAs('/root/siddur-out.sla')
+saveDocAs('/root/siddur-out.sla')
 pdf = PDFfile()
 pdf.file = '/sdcard/Download/siddur.pdf'
 pdf.save()

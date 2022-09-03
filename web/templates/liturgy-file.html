@@ -78,11 +78,7 @@ text-align-last: center;
 						<!--<div style="display:inline-block;border:1px solid orange;">-->
 						<!--<span style="display:inline-block;" class="scriptureLPA"> </span><!--</div>-->
 					{%- elif span.kind == SpanKind.SCRIPTURE -%}
-						<div style="display:inline-block;border:0px solid red;">
-							<span style="position:absolute;" class="scriptureLP">{{span.value}}</span>
-							<span style="position:absolute;" class="scriptureL">{{span.value}}</span>
-							<span class="scriptureLPA">{{span.value}}</span>
-						</div>
+						<span class="scripture">{{span.value}}</span>
 					{%- elif span.kind == SpanKind.LINK -%}
 						<span class="link">{{span.value}}</span>
 					{%- elif span.kind == SpanKind.INFO -%}

@@ -474,11 +474,11 @@ class NVerse:
 
 	@property
 	def onkelos(self):
-		return parse(self.onkelos_text)
+		return newparse(self.onkelos_text)
 
 	@property
 	def onkelos_trans(self):
-		return parse(self.onkelos_trans_text)
+		return newparse(self.onkelos_trans_text)
 
 	@property
 	def has_jerusalmi(self):
@@ -486,11 +486,11 @@ class NVerse:
 
 	@property
 	def jerusalmi(self):
-		return parse(self.jerusalmi_text)
+		return newparse(self.jerusalmi_text)
 
 	@property
 	def jerusalmi_trans(self):
-		return parse(self.jerusalmi_trans_text)
+		return newparse(self.jerusalmi_trans_text)
 
 	@property
 	def has_jonathan(self):
@@ -498,7 +498,7 @@ class NVerse:
 
 	@property
 	def jonathan(self):
-		return parse(self.jonathan_text)
+		return newparse(self.jonathan_text)
 
 	@property
 	def has_targum(self):
@@ -506,11 +506,11 @@ class NVerse:
 
 	@property
 	def targum(self):
-		return parse(self.targum_text)
+		return newparse(self.targum_text)
 
 	@property
 	def targum_trans(self):
-		return parse(self.targum_trans_text)
+		return newparse(self.targum_trans_text)
 
 	@property
 	def mikra(self):
@@ -553,7 +553,6 @@ class NVerse:
 						span = Span(SpanKind.LEGEND, value)
 					elif item in citation_items:
 						#value = re.sub('"([^"]+)"', r'“\1”', value)
-						valy
 						span = Span(SpanKind.CITATION, value)
 					elif item in link_items:
 						value = re.sub(' ', '\u00a0', value)

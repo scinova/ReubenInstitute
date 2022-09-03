@@ -326,8 +326,8 @@ def parse(text, classic=False):
 								continue
 							if span.kind in [SpanKind.PLAIN]:
 								span.kind = SpanKind.SCRIPTURE
-							#elif span.kind == SpanKind.SPACE:
-							#	span.kind = SpanKind.SCRIPTURE
+							elif span.kind == SpanKind.SPACE:
+								span.kind = SpanKind.SCRIPTURE
 							span.value = common.fix_paseq(span.value)
 							line.append(span)
 						if ispoem:
