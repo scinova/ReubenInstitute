@@ -1,0 +1,115 @@
+div.tanakh {
+	font-family: plain;
+	}
+
+div.tanakh div.section {
+	}
+
+div.tanakh h1,
+div.tanakh h2,
+div.tanakh h3,
+div.tanakh h4 {
+	font-weight: normal;
+	color: black;
+	text-align: center;
+	}
+
+div.tanakh h2 {
+	color: orange;
+	margin: 60px 0 20px;
+	}
+
+div.tanakh h4 {
+	font-size: 80%;
+	color: #bbb;
+	stext-decoration: underline;
+	text-align: right;
+	}
+
+div.tanakh div.section {
+	margin-bottom: 20px;
+	}
+
+div.tanakh div.rashi {
+	font-size: 75%;
+	xfont-family: rashi;
+	}
+
+div.tanakh div.mikra {
+	xborder: 1px solid #ccc;
+	background-color: #ffd;
+	border-radius: 5px;
+	padding: 10px;
+	font-family: holly;
+	font-size: 150%;
+	margin-bottom: 20px;
+	}
+
+div.tanakh span {
+	display: block-inline;
+	}
+
+div.tanakh span.nonliteral {
+	background-color: #ffc;
+	}
+
+
+div.tanakh span.punctuation {
+	color: #ccc;
+	}
+
+div.tanakh span.cantillations {
+	color: #eee;
+	}
+
+div.tanakh span.verseno {
+	color: #ccf;
+	font-size: 70%;
+	}
+
+div.tanakh span.link {
+	color: #ccf;
+	font-size: 70%;
+	}
+
+div.tanakh span.legend {
+	font-weight: bold;
+	}
+
+div.tanakh span.addition {
+	xcolor: blue;
+	background-color: #eef;
+	}
+	
+div.tanakh span.correction {
+	color: #ccc;
+	}
+
+div.tanakh span.synonym {
+	color: #ccc;
+	}
+
+div.tanakh span.explanation {
+	color: #ccc;
+	}
+
+div.tanakh span.scripture {
+	color: #900;
+	}
+
+div.tanakh div.targum span,
+div.tanakh div.targum_trans span
+ {
+	sfont-family: scripture;
+	}
+
+hr {
+	margin: 1em auto;
+	background-image: url(/@@/separator.png);
+	sbackground-align: center;
+	sbackground-repeat: no-repeat;
+	height: 52px;
+	width: 233px;
+	border: 0;
+	align: center;
+	}

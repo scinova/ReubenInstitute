@@ -72,6 +72,7 @@ def liturgy_file_edit(name):
 		open(filename, 'w').write(data)
 		return redirect('/liturgy/%s/%s'%(request.args['variant'], name))
 	text = open(filename).read()
+	#text = Liturgy.reorder_unicode(text)
 	return render_template('liturgy-file-edit.html', name=name, text=text)
 
 @app.route('/liturgy/<string:variant>/<string:name>')
@@ -86,9 +87,10 @@ def prayer(variant, name):
 		v = 3
 	filename = '../db/liturgy/%s.txt'%name
 	data = open(filename).read()
-	data = re.sub('\u05b0\u05b0', '\u05b0', data)
-	data = re.sub('\u05bc\u05bc', '\u05bc', data)
+	#data = re.sub('\u05b0\u05b0', '\u05b0', data)
+	#data = re.sub('\u05bc\u05bc', '\u05bc', data)
 	data = Liturgy.something(data, v)
+	print (data)
 	return render_template('liturgy-file.html', data=data, name=name, variant=variant)
 
 @app.route('/psalms/')
@@ -290,16 +292,16 @@ def edit_zohar_paragraph(book_number, chapter_number, article_number, paragraph_
 	chapter = book.chapters[chapter_number - 1]
 	article = chapter.articles[article_number - 1]
 	if request.method == 'POST':
-		paragraphs = article.text.split('\n\n\n')
+		paragraphs = article.text.split('\n\n')
 		paragraphs[paragraph_number - 1] = request.form['text'].replace('\r\n', '\n').replace('\r', '')
-		article.text = '\n\n\n'.join(paragraphs).replace('\r\n', '\n')
-		paragraphs = article.translation.split('\n\n\n')
+		article.text = '\n\n'.join(paragraphs).replace('\r\n', '\n')
+		paragraphs = article.translation.split('\n\n')
 		paragraphs[paragraph_number - 1] = request.form['translation'].replace('\r\n', '\n')
-		article.translation = '\n\n\n'.join(paragraphs)
+		article.translation = '\n\n'.join(paragraphs)
 		return redirect('/zohar/%d/%d/%d#v%d'%(book_number, chapter_number, article_number, paragraph_number))
 	if request.method == 'GET':
-		text = article.text.split("\n\n\n")[paragraph_number - 1]
-		translation = article.translation.split("\n\n\n")[paragraph_number - 1]
+		text = article.text.split("\n\n")[paragraph_number - 1]
+		translation = article.translation.split("\n\n")[paragraph_number - 1]
 
 		return render_template('zohar-edit-paragraph.html', re=re, aramaic=aramaic, text=text, translation=translation,
 				book=book, chapter=chapter, article=article, Zohar=Zohar, article_number=article_number, paragraph_number=paragraph_number)

@@ -73,6 +73,9 @@ class Span:
 	def style(self):
 		return ''
 
+def fix_yy(text):
+	return text.replace('יְיָ', 'יי')
+
 def fix_yhwh(text):
 	y = '\u05d9'
 	h = '\u05d4'

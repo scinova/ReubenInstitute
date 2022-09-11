@@ -1,7 +1,6 @@
 {% extends "base.html" %}
 {% block title %}{% endblock %}
 {% block content %}
-<h1>סֵפֶר ‘{{parasha.book.name}}’, פָּרָשַׁת ‘{{parasha.name}}’</h1>
 
 <!--
 <div class="section">
@@ -14,6 +13,8 @@
 </div>
 -->
 
+<div class="tanakh">
+<h1>ספר ‘{{parasha.book.name}}’, פרשת ‘{{parasha.name}}’</h1>
 {% for paragraph in parasha.paragraphs %}
 	{% if paragraph != parasha.paragraphs[0] %}<hr />{% endif %}
 	{% for subparagraph in paragraph %}
@@ -44,7 +45,7 @@
 				<a href="/tanakh/{{verse.chapter.book.number}}/p{{parasha.number}}/{{verse.chapter.number}}/{{verse.number}}/edit"><span class="verseno">{{verse.hebrew_number}}</span></a>&nbsp;
 				{%- for span in spans %}
 					{% set value = span.value.replace('\f', '') %}
-					{% set value = value.replace('הְ', 'ﬣְ').replace('עְ',
+					{% set xvalue = value.replace('הְ', 'ﬣְ').replace('עְ',
 							'ﬠְ').replace('הּ', 'ﬣּ') %}
 					{% set value = re.sub('([\.\,\;\:\!\?\u2013\u2011“”‘’"]+)', '<span class="punctuation">\\1</span>', value) %}
 					{% set value = re.sub('([׃׀]+)', '<span class="cantillations">\\1</span>', value) %}
@@ -59,7 +60,7 @@
 					{%- elif span.kind == SpanKind.PLAIN -%}
 						<span class="plain">{{value|safe}}</span>
 					{%- else -%}
-						<span class="unknown">{{value}}</span>
+						<span class="unknown">{{value|safe}}</span>
 					{%- endif -%}
 				{% endfor %}
 			{% endfor %}
@@ -77,14 +78,14 @@
 		{% if parasha.book.has_onkelos %}
 			<div class="section onkelos">
 				<div class="right targum justify">
-					<h4>אוּנְקְלוֹס</h4>
+					<h4>אונקלוס</h4>
 					{% for verse in subparagraph %}
 						<a href="/tanakh/{{verse.chapter.book.number}}/p{{parasha.number}}/{{verse.chapter.number}}/{{verse.number}}/edit"><span class="verseno">{{verse.hebrew_number}}</span></a>&nbsp;
 						{% set spans = verse.onkelos %}
 						{% for span in spans %}
 							{% set value = span.value %}
-							{% set value = re.sub('הּ', 'ﬣּ', value) %}
-							{% set value = re.sub('(יְיָ|ה׳)', '<span class="hollyname">\\1</span>', value) %}
+							{% set xvalue = re.sub('הּ', 'ﬣּ', value) %}
+							{% set xvalue = re.sub('(יְיָ|ה׳)', '<span class="hollyname">\\1</span>', value) %}
 							{%- if span.kind == SpanKind.NONLITERAL -%}
 								<span class="nonliteral">{{value|safe}}</span>
 							{%- elif span.kind == SpanKind.ADDITION -%}
@@ -108,14 +109,14 @@
 					{% endif %}
 				</div>
 				<div class="left targum_trans justify">
-					<h4>אוּנְקְלוֹס  מְתֻרְגָּם</h4>
+					<h4>אונקלוס מתורגם</h4>
 					{% for verse in subparagraph %}
 						<a href="/tanakh/{{verse.chapter.book.number}}/p{{parasha.number}}/{{verse.chapter.number}}/{{verse.number}}/edit"><span class="verseno">{{verse.hebrew_number}}</span></a>
 						{% set spans = verse.onkelos_trans %}
 						{% for span in spans %}
 							{% set value = span.value %}
-							{% set value = re.sub('הּ', 'ﬣּ', value) %}
-							{% set value = re.sub('(יְיָ|ה׳)', '<span class="hollyname">\\1</span>', value) %}
+							{% set xvalue = re.sub('הּ', 'ﬣּ', value) %}
+							{% set xvalue = re.sub('(יְיָ|ה׳)', '<span class="hollyname">\\1</span>', value) %}
 							{%- if span.kind == SpanKind.NONLITERAL -%}
 								<span class="nonliteral">{{value|safe}}</span>
 							{%- elif span.kind == SpanKind.ADDITION -%}
@@ -146,16 +147,17 @@
 				</div>
 				<div class="clear"></div>
 			</div>
+
 			<div class="section jerusalmi">
 				<div class="right targum justify">
-					<h4>יְרוּשַׁלְמִי</h4>
+					<h4>ירושלמי</h4>
 					{% for verse in subparagraph %}
 						<a href="/tanakh/{{verse.chapter.book.number}}/p{{parasha.number}}/{{verse.chapter.number}}/{{verse.number}}/edit"><span class="verseno">{{verse.hebrew_number}}</span></a>&nbsp;
 						{% set spans = verse.jerusalmi %}
 						{% for span in spans %}
 							{% set value = span.value %}
-							{% set value = re.sub('הּ', 'ﬣּ', value) %}
-							{% set value = re.sub('(יְיָ|ה׳)', '<span class="hollyname">\\1</span>', value) %}
+							{% set xvalue = re.sub('הּ', 'ﬣּ', value) %}
+							{% set xvalue = re.sub('(יְיָ|ה׳)', '<span class="hollyname">\\1</span>', value) %}
 							{%- if span.kind == SpanKind.NONLITERAL -%}
 								<span class="nonliteral">{{value|safe}}</span>
 							{%- elif span.kind == SpanKind.ADDITION -%}
@@ -186,16 +188,17 @@
 				</div>
 
 				<div class="left targum_trans justify">
-					<h4>יְרוּשַׁלְמִי מְתֻרְגָּם</h4>
+					<h4>ירושלמי מתורגם</h4>
 					{% for verse in subparagraph %}
 						<a href="/tanakh/{{verse.chapter.book.number}}/p{{parasha.number}}/{{verse.chapter.number}}/{{verse.number}}/edit"><span class="verseno">{{verse.hebrew_number}}</span></a>&nbsp;
 						{% set spans = verse.jerusalmi_trans %}
 						{% for span in spans -%}
-							{% set value = re.sub('הּ', 'ﬣּ', span.value) %}
-							{% set value = re.sub('ע ַ', 'ﬠ', value) %}
-							{% set value = re.sub('ח ַ', '', value) %}
-							{% set value = re.sub('הּ', 'ﬣּ', value) %}
-							{% set value = re.sub('(יְיָ|ה׳)', '<span class="hollyname">\\1</span>', value) %}
+							{% set value = span.value %}
+							{% set xvalue = re.sub('הּ', 'ﬣּ', span.value) %}
+							{% set xvalue = re.sub('ע ַ', 'ﬠ', value) %}
+							{% set xvalue = re.sub('ח ַ', '', value) %}
+							{% set xvalue = re.sub('הּ', 'ﬣּ', value) %}
+							{% set xvalue = re.sub('(יְיָ|ה׳)', '<span class="hollyname">\\1</span>', value) %}
 							{%- if span.kind == SpanKind.NONLITERAL -%}
 								<span class="nonliteral">{{value|safe}}</span>
 							{%- elif span.kind == SpanKind.ADDITION -%}
@@ -227,9 +230,35 @@
 				<div class="clear"></div>
 			</div>
 		{% endif %}
+
+	<div class="section rashi justify">
+		<h4>רש״י</h4>
+		{% for verse in subparagraph %}
+		{%- if verse.rashi_text -%}
+		<span class="verseno">{{verse.hebrew_number}}</span>
+			{% for span in verse.rashi %}
+				{% if span.kind == SpanKind.LEGEND -%}
+					<span class="legend">“{{span.value}}”</span>
+				{% elif span.kind == SpanKind.SCRIPTURE -%}
+					<span class="scripture">“{{span.value}}”</span>
+				{% elif span.kind == SpanKind.LINK -%}
+					<span class="link">({{span.value}})</span>
+				{% elif span.kind == SpanKind.REFERENCE -%}
+					<span class="reference">R{{span.value}}</span>
+				{% else %}
+					{{span.value}}
+				{%- endif -%}
+			{% endfor %}
+		{%- endif -%}
+		{% endfor %}
+	</div>
+		
+		
+		
+		
 	{% endfor %}
 {% endfor %}
-
+</div>
 
 
 {#% endfor %}
@@ -238,7 +267,7 @@
 <div class="clear"></div>
 
 
-<div style="font-sixze: 90%;">
+<div class="tanakh haftara">
 {% set start_chapter = parasha.haftara.start_chapter|min %}
 <h1>הַפְטָרָה לְפָרָשַׁת ‘{{parasha.name}}’ -
 סֵפֶר ‘{{parasha.haftara.book.0.name}}’,
@@ -248,8 +277,7 @@
 {% for paragraph in parasha.haftara.paragraphs %}
 	{% if paragraph != parasha.haftara.paragraphs[0] %}<hr />{% endif %}
 	{% for subparagraph in paragraph %}
-		<div class="section" style="margin-bottom: 1em;">
-		
+		<div class="section">
 		<div class="clear">
 			{% set verse = subparagraph[0] %}
 			{% set start_versions = [] %}
@@ -269,9 +297,8 @@
 			{% endfor -%}
 		</div>
 
-		
 		<div class="right">
-			<div class="mikra justify" style="font-size: 100%;"
+			<div class="mikra justify">
 			{% set mikra_variations = [] %}
 			{% for verse in subparagraph %}
 				<span><a name="h{{verse.chapter.book.number}}.{{verse.chapter.number}}.{{verse.number}}"></a></span>
@@ -300,16 +327,17 @@
 						<span class="alternative">{{value}}*</span>
 					{%- elif span.kind == SpanKind.ALIYA -%}
 					{%- elif span.kind == SpanKind.PLAIN -%}
-						<span class="plain">{{value|safe}}</span>
+						<span class="scripture">{{value|safe}}</span>
 					{%- else -%}
-						<span class="unknown">{{value}}</span>
+						<span class="scripture">{{value|safe}}</span>
 					{%- endif -%}
 				{% endfor %}
 			{% endfor %}
 			</div>
 		</div>
+
 		{% if mikra_variations %}
-			<div class="variations">
+			<div class="variations clear">
 				{% for span in mikra_variations %}
 					{% if span.value and span.alt %}
 						<span class="alternative">* כתוב: <em>‘{{span.alt}}’</em>, קוראים: <strong>‘{{span.value}}’</strong></span>

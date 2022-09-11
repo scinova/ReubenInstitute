@@ -131,6 +131,7 @@ parashot_arr = [
 def newparse(text):
 		text = common.fix_yhwh(text)
 		text = common.fix_paseq(text)
+		text = re.sub('{[ספ]}', '', text)
 		text = re.sub('"([^"]+)"', r'“\1”', text)
 		text = re.sub("'([^']+)'", r"‘\1’", text)
 		text = re.sub(' -', ' \u2013', text)
@@ -218,9 +219,10 @@ def newparse(text):
 def xparse(text):
 	if not text:
 		return []
+		text = common.fix_yy(text)
 	text = re.sub('"([^"]+)"', r'“\1”', text)
 	text = re.sub("'([^']+)'", r"‘\1’", text)
-	text = re.sub('^- ', '\u2015 ', text)
+	#text = re.sub('^- ', '\u2015 ', text)
 	text = re.sub(' -', ' \u2013', text)
 	text = re.sub('-', '\u2011', text)
 	alternative_items = list(re.finditer('\[([^|]*)\|([^]]+)\]', text))
@@ -474,11 +476,11 @@ class NVerse:
 
 	@property
 	def onkelos(self):
-		return newparse(self.onkelos_text)
+		return xparse(self.onkelos_text)
 
 	@property
 	def onkelos_trans(self):
-		return newparse(self.onkelos_trans_text)
+		return xparse(self.onkelos_trans_text)
 
 	@property
 	def has_jerusalmi(self):
@@ -486,11 +488,11 @@ class NVerse:
 
 	@property
 	def jerusalmi(self):
-		return newparse(self.jerusalmi_text)
+		return xparse(self.jerusalmi_text)
 
 	@property
 	def jerusalmi_trans(self):
-		return newparse(self.jerusalmi_trans_text)
+		return xparse(self.jerusalmi_trans_text)
 
 	@property
 	def has_jonathan(self):
@@ -498,7 +500,7 @@ class NVerse:
 
 	@property
 	def jonathan(self):
-		return newparse(self.jonathan_text)
+		return xparse(self.jonathan_text)
 
 	@property
 	def has_targum(self):
@@ -506,11 +508,11 @@ class NVerse:
 
 	@property
 	def targum(self):
-		return newparse(self.targum_text)
+		return xparse(self.targum_text)
 
 	@property
 	def targum_trans(self):
-		return newparse(self.targum_trans_text)
+		return xparse(self.targum_trans_text)
 
 	@property
 	def mikra(self):
@@ -519,6 +521,8 @@ class NVerse:
 
 	@property
 	def rashi(self):
+		#if not self.rashi_text:
+		#	return []
 		text = self.rashi_text.replace('\u2028', '\n')
 		legend_items = list(re.finditer('^([^\.]+)\.', text, re.M))
 		for item in legend_items:
@@ -552,16 +556,17 @@ class NVerse:
 						#value = value[:-1]
 						span = Span(SpanKind.LEGEND, value)
 					elif item in citation_items:
-						#value = re.sub('"([^"]+)"', r'“\1”', value)
-						span = Span(SpanKind.CITATION, value)
+						value = re.sub('"([^"]+)"', r'“\1”', value)
+						span = Span(SpanKind.SCRIPTURE, value)
 					elif item in link_items:
-						value = re.sub(' ', '\u00a0', value)
+						#value = re.sub(' ', '\u00a0', value)
 						span = Span(SpanKind.LINK, value)
 					elif item in reference_items:
-						value = re.sub(' ', '\u00a0', value)
+						#value = re.sub(' ', '\u00a0', value)
 						span = Span(SpanKind.REFERENCE, value)
-					elif item in plain_items:
-						value = re.sub("'([^']+)'", r"‘\1’", value)
+					#elif item in plain_items:
+					else:
+						#value = re.sub("'([^']+)'", r"‘\1’", value)
 						span = Span(SpanKind.PLAIN, value)
 					spans.append(span)
 		return spans
@@ -709,6 +714,7 @@ class Tanakh:
 			latin_name, num_chapters, name = bible_arr[x]
 			book = NBook(x + 1, name, latin_name)
 			self.books.append(book)
+
 	def __postinit__(self):
 		for b in range(5):
 			book = self.books[b]

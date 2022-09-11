@@ -1,12 +1,16 @@
 =סליחות
 
+<kamti-beashmoret>
+
+
 <ben-adam-ma-lechah-nirdam>
 
 
 <lekha-adonai-hatsdakkah>
 
 
-<lemaancha-elohai>
+{{ten: @בין ראש השנה ליום הכיפורים אומרים:@
+<lemaancha-elohai>}}
 
 "אֲדֹנָ֤י׀ שְׁמָ֙עָה֙, אֲדֹנָ֣י׀ סְלָ֔חָה,
 אֲדֹנָ֛י הַֽקְשִׁ֥יבָה וַעֲשֵׂ֖ה, אַל־תְּאַחַ֑ר!
@@ -15,7 +19,8 @@
 "הֲשִׁיבֵ֨נוּ יﬣו֤ﬣ׀ אֵלֶ֙יךָ֙ וְְֽנָשׁ֔וּבָה,
 חַדֵּּ֥שׁ יָמֵ֖ינוּ כְְּקֶֽדֶם!׃" ^איכה ה כא^
 
-<elohei-hatsvaot>
+{{ten: @בין ראש השנה ליום הכיפורים יש שאומרים:@
+<elohei-hatsvaot>}}
 
 
 <shevet-israel-bedochak>
@@ -24,13 +29,18 @@
 <el-melekh>
 
 
-<shem-el-kamti-levarekh>
+{{ten: @בין ראש השנה ליום הכיפורים יש שאומרים:@
+<shem-el-kamti-levarekh>}}
 
 
 <bedil-vayaavor>
 
 
-<ana-keav-zedoni-timchehu>
+<shloshesreh-middot>
+
+
+{{ten: @בין ראש השנה ליום הכיפורים אומרים:@
+<ana-keav-zedoni-timchehu>}}
 
 
 <anshei-emunah-avadu>
@@ -50,14 +60,40 @@
 
 <etvade-al-averot>
 
-====וידוי?
 
+<vidui>
+
+... וידוי ארוך ...
 
 <ashamnu-mikkol-am>
+
+====לאדני אלהינו הרחמים והסליחות
+
+@חזן:@ "לַאדֹנָי אֱלֹהֵֽינוּ הָרַחֲמִים וְְהַסְְּּלִחוֹת"
+@קהל:@ כִּי חָטָאנוּ לוֹ. ^לפי דניאל ט ט^
+
+@חזן:@ "לַאדֹנָי אֱלֹהֵֽינוּ הָרַחֲמִים וְְהַסְְּּלִחוֹת"
+@קהל:@ "כִּי מָרַֽדְנוּ בּוֹ." ^דניאל ט ט^
+
+@חזן:@ "אַל נָא תָשֵׁת עָלֵֽינוּ חַטָּּאת"
+@קהל:@ "אֲשֶׁר נוֹאַֽלְנוּ וַאֲשֶׁר חָטָֽאנוּ." ^במדבר יב יא^
+
+@חזן:@ חָטָֽאנוּ צוּרֵֽנוּ, סְְלַח לָֽנוּ יוצְְרֵֽנו!
+@קהל:@ חָטָֽאנוּ צוּרֵֽנוּ, סְְלַח לָֽנוּ יוצְְרֵֽנו!
+
+@חזן:@ (+שְְׁ)מַע יִשְׂרָאֵל! יﬣו֥ﬣ אֱלֹהֵֽינוּ, יﬣוﬣ׀ אֶחָ(+ד)! ^דברים ו ל^
+@קהל:@ (+שְְׁ)מַע יִשְׂרָאֵל! יﬣו֥ﬣ אֱלֹהֵֽינוּ, יﬣוﬣ׀ אֶחָ(+ד)!
+(+שְְׁ)מַע יִשְׂרָאֵל! יﬣו֥ﬣ אֱלֹהֵֽינוּ, יﬣוﬣ׀ אֶחָ(+ד)!
+
+@חזן:@ "יﬣוﬣ הוּא הָאֱלֹהִים, יﬣוﬣ הוּא הָאֱלֹהִֽים!" ^מלכים־א יח לט^
+@קהל:@ "יﬣוﬣ הוּא הָאֱלֹהִים, יﬣוﬣ הוּא הָאֱלֹהִֽים!" 
+"יﬣוﬣ הוּא הָאֱלֹהִים, יﬣוﬣ הוּא הָאֱלֹהִֽים!"
 
 
 <erelei-maalah>
 
+
+יהוה מלך..
 
 <beterem-shchakim-vaarakim-nimtachu>
 
@@ -68,7 +104,10 @@
 <eloheinu-shebashamaim>
 
 
-עוד משהו
+...ברוגז רחם תזכור...
+
+
+<attah-yadata-leivalti>
 
 
 <anenu-avinu-anenu>
@@ -83,10 +122,12 @@
 <el-rachum-shimkha>
 
 
-<reeh-baoni-ammekha>
+{{ten: @בין ראש השנה ליום הכיפורים אומרים:@
+<reeh-baoni-ammekha>}}
 
 
-<honnenu-vahakimenu>
+{{ten: @בין ראש השנה ליום הכיפורים אומרים:@
+<honnenu-vahakimenu>}}
 
 
 <aseh-lemaan-shemekha>
@@ -95,7 +136,8 @@
 <rachamana-deanei>
 
 
-<yah-shema-evioneikha>
+{{ten: @בין ראש השנה ליום הכיפורים אומרים:@
+<yah-shema-evioneikha>}}
 
 
 <im-afes-rova-hakken>
@@ -119,11 +161,19 @@
 
 <tchinnot>
 
-
 <al-tiktsaf-ad-meod>
 
 
 <atanu-lechallot-panekha>
+
+
+<marana-devishmaiya>
+
+
+<mahei-umassei>
+
+
+<rachamim-pshutim>
 
 
 <elekha-nasati-einai>
@@ -132,10 +182,7 @@
 <avinu-av-harachaman>
 
 
-<marana-devishmaiya>
-
-
-<mahei-umassei>
+אבינו מלכנו
 
 
 <shomer-israel>

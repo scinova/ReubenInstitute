@@ -1,0 +1,212 @@
+div.liturgy span {
+	Xdisplay: inline-block;
+	xfont-size: 1em;
+	}
+
+div.liturgy {
+	font-size: 2em;
+	סborder: 1px solid red;
+	}
+
+div.liturgy div.section {
+	border-bottom: 1px solid #669;
+	margin: 0 0 30px;
+	סborder: 1px solid green;
+	}
+
+div.liturgy div.section div {
+	border: 0px solid green;
+	}
+
+div.liturgy div.section div.outer div.block {
+	padding: 8px 0;
+	text-align: justify;
+	xtext-align-last: center;
+	display: block-inline;
+	border-bottom: 1px solid #ccc;
+	}
+
+div.liturgy div.translation {
+	border-right: 1px solid #666;
+	color: #666;
+	}
+
+div.left {
+	float: left;
+	width: 49%;
+	}
+
+div.right {
+	float: right;
+	width: 49%;
+	}
+
+div.liturgy div.section div.optional {
+	border: 1px solid #999;
+	border-radius: 10px;
+	padding: 10px;
+	background-color: #f0f0f0;
+	}
+
+div.liturgy div.section div.halfwide {
+	width: 49%;
+	font-size: 1em;
+	}
+
+div.liturgy h1 {
+	font-weight: normal;
+	font-size: 1.8em;
+	color: black;
+	margin: 0;
+	}
+
+div.liturgy h2 {
+	font-weight: normal;
+	font-size: 1.6em;
+	color: orange;
+	margin: 0;
+	}
+
+div.liturgy h3 {
+	font-weight: normal;
+	font-size: 1.4em;
+	color: orange;
+	margin: 0;
+	}
+
+div.liturgy h4 {
+	font-weight: normal;
+	font-size: 1.2em;
+	color: orange;
+	margin: 0;
+	}
+
+div.liturgy span {
+	font-family: regular;
+	font-size: 1.2em;
+	vertical-align: middle;
+	border: 0px solid green;
+	white-space: pre;
+	}
+
+div.liturgy span.plain {
+	color: #000;
+	}
+
+div.liturgy span.punctuation {
+	font-family: scripture;
+	font-size: 1.2em;
+	color: #933;
+	}
+
+div.liturgy span.point {
+	font-family: scripture;
+	font-size: 1em;
+	}
+
+div.liturgy span.accent {
+	font-family: scripture;
+	font-size: 1em;
+	color: red;
+	}
+
+div.liturgy span.verseno {
+	font-family: scripture;
+	color: #ccc;
+	margin: 0 10px;
+	font-size: .7em;
+	}
+
+div.liturgy span.bold {
+	color: #66F;
+	color: #f33;
+	}
+
+div.liturgy span.info {
+	font-family: main;
+	font-size: .7em;
+	color: #3c3;
+	}
+
+div.liturgy span.addition {
+	color: #ccc;
+	}
+
+div.liturgy span.correction {
+	color: #ccc;
+	}
+
+div.liturgy span.explanation {
+	font-family: rashi;
+	font-size: .3em;
+	color: #ccc;
+	}
+
+
+div.liturgy div.translation span.synonym {
+	color: #ccc;
+	}
+
+div.liturgy div.translation span.explanation {
+	font-family: regular;
+	}
+
+div.liturgy span.link {
+	font-family: main;
+	font-size: .5em;
+	color: #99f;
+	color: #ccc;
+	}
+
+div.liturgy span.scripture,
+div.liturgy span.kriktiv {
+	font-family: scripture;
+	color: #933;
+	ccolor: green;
+	זfont-size: 1.2em;
+	}
+
+div.liturgy span.scriptureL {
+	font-family: scriptureL;
+	color: black;
+	font-size: 1.2em;
+	}
+
+div.liturgy span.scriptureLP {
+	font-family: scriptureLP;
+	color: saddlebrown;
+	color: burlywood;
+	color: #9c9;
+	font-size: 1.2em;
+	}
+
+div.liturgy span.scriptureLPA {
+	font-family: scriptureLPA;
+	color: red;
+	font-size: 1.2em;
+	}
+
+div.liturgy span.kriktiv {
+	font-family: scriptureLPA;
+	background-color: #ffd;
+	font-size: 1.2em;
+	}
+
+div.liturgy div.section div.larger {
+	zfont-size: 200%;
+	}
+
+div.liturgy div.section div.smaller {
+	zfont-size: 50%;
+	}
+
+div.liturgy div.section span.majuscule {
+	font-family: scripture;
+	font-size: 1.8em;
+	}
+
+div.liturgy div.section span.minuscule {
+	font-family: scriptureLPA;
+	font-size: 0.7em;
+	zfont-size: .5em;
+	}

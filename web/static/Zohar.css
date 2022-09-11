@@ -1,0 +1,46 @@
+div.zohar {
+	}
+
+div.zohar div.section div.left,
+div.zohar div.section div.right {
+	border-bottom: 1px solid #ccc;
+	padding-bottom: 10px;
+	margin-bottom: 10px;
+	}
+
+div.zohar span {
+	xborder: 1px solid red;
+	}
+
+div.zohar span.explanation {
+	color: #aaa;
+	}
+
+div.zohar span.correction {
+	color: #aaa;
+	}
+
+div.zohar span.addition {
+	color: #aaa;
+	}
+
+div.zohar span.synonym {
+	color: #aaa;
+	}
+
+div.zohar span.scripture {
+	color: #900;
+	}
+
+div.zohar span.citation {
+	color: #900;
+	}
+
+div.zohar span.silent {
+	color: #999;
+	}
+
+div.zohar span.link {
+	font-size: 80%;
+	color: #999;
+	}
