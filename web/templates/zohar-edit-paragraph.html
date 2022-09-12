@@ -18,6 +18,7 @@
 <form>
 
 
+{#
 <div>
 <hr />
 {% for s in article.parse(text) %}
@@ -25,7 +26,6 @@
 {% endfor %}
 <hr />
 </div>
-
 <div>
 {% set t = aramaic.remove_diacritics(text) %}
 {% set t = re.compile('[\-\,\.\:\!\?]').sub('', text) %}
@@ -38,5 +38,6 @@
 	<br />
 {% endfor %}
 </div>
+#}
 
 {% endblock %}

@@ -302,57 +302,8 @@ def edit_zohar_paragraph(book_number, chapter_number, article_number, paragraph_
 	if request.method == 'GET':
 		text = article.text.split("\n\n")[paragraph_number - 1]
 		translation = article.translation.split("\n\n")[paragraph_number - 1]
-
 		return render_template('zohar-edit-paragraph.html', re=re, aramaic=aramaic, text=text, translation=translation,
 				book=book, chapter=chapter, article=article, Zohar=Zohar, article_number=article_number, paragraph_number=paragraph_number)
-
-
-def older():
-	text = article.sections
-#	book = common.Zohar[book_ind - 1]
-#	chapter = book.chapters[chapter_no - 1]
-	ar_texts = open('../db/zohar/%1d.%02d/%02d.txt'%(book_ind, chapter_no, article_no)).read().split('\n\n\n')
-	he_texts = open('../db/zohar/%1d.%02d/%02dt.txt'%(book_ind, chapter_no, article_no)).read().split('\n\n\n')
-	if request.method == 'POST':
-		ar_texts[paragraph_no - 1] = request.form['ar_text'].replace('\r\n', '\n')
-		he_texts[paragraph_no - 1] = request.form['he_text'].replace('\r\n', '\n')
-		ar_text = '\n\n\n'.join(ar_texts)
-		t = ''
-		for i in range(len(ar_text)):
-			t += unicodedata.normalize('NFD', ar_text[i])
-		ar_text = t
-		he_text = '\n\n\n'.join(he_texts)
-		t = ''
-		for i in range(len(he_text)):
-			t += unicodedata.normalize('NFD', he_text[i])
-		he_text = t
-		f = '../db/zohar/%1d.%02d/%02d.txt'%(book_ind, chapter_no, article_no)
-		open(f, 'w').write(ar_text)
-		f = '../db/zohar/%1d.%02d/%02dt.txt'%(book_ind, chapter_no, article_no)
-		open(f, 'w').write(he_text)
-		return redirect('/zohar/%d/%d/%d#v%d'%(book_ind, chapter_no, article_no, paragraph_no))
-#	if request.method == 'GET':
-	if True:
-		translate = request.args.get('t') == '1'
-		data = open('../dictionary.txt').read().split('\n')[:-1]
-		dictionary = {}
-		for line in data:
-			words = line.split(' ')
-			print (line, len(words))
-			key = words[0]
-			trs = words[1:len(words)]
-			dictionary[key] = trs
-			print (key, trs, len(words))
-	#	print (dictionary)
-		ar_text = ar_texts[paragraph_no - 1]
-		he_text = he_texts[paragraph_no - 1]
-		if not he_text:
-			he_text = ar_text
-			for key in dictionary:
-				#print (key, dictionary[key])
-				he_text = re.sub(' ' + key + '(?!=[\u0591-\u05bd\u05bf-\u05c7א-ת])', ' ' + dictionary[key][0], he_text)
-		return render_template('zohar-edit-paragraph.html', ar_text=ar_text, he_text=he_text, re=re,
-				book=book, chapter=chapter, article_no=article_no, paragraph_no=paragraph_no)
 
 @app.route('/x/zohar/<int:book_ind>/<int:chapter_no>')
 def OLDview_zohar_chapter(book_ind, chapter_no):

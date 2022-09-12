@@ -12,7 +12,7 @@
 	<div class="section" style="font-family:regular;">
 		<div class="right justify">
 			{% for line in article.sections[section_idx] %}
-				{%- for span in article.parse(line) -%}
+				{%- for span in line -%}
 					{%- if span.kind == SpanKind.SYNONYM -%}
 						<span class="synonym">(={{span.value}})</span>
 					{%- elif span.kind == SpanKind.EXPLANATION -%}
@@ -37,7 +37,7 @@
 		</div>
 		<div class="left justify">
 			{% for line in article.translation_sections[section_idx] %}
-				{%- for span in article.parse(line) -%}
+				{%- for span in line -%}
 					{%- if span.kind == SpanKind.SYNONYM -%}
 						<span class="synonym">(={{span.value}})</span>
 					{%- elif span.kind == SpanKind.EXPLANATION -%}

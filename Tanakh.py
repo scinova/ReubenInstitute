@@ -540,7 +540,6 @@ class NVerse:
 		for item in reference_items:
 			start, end = item.span()
 			text = text[0:start] + (end - start) * 'X' + text[end:]
-#		text = text.replace('\n', '\u2028')
 		plain_items = list(re.finditer('([^X]+)', text))
 		for item in plain_items:
 			start, end = item.span()
@@ -551,6 +550,7 @@ class NVerse:
 				if idx == item.start():
 					groups = item.groups()
 					value = groups[0]
+					value = value.replace('\n', '')
 					span = None
 					if item in legend_items:
 						#value = value[:-1]

@@ -367,10 +367,6 @@ class Prayer:
 		pass
 
 def reorder_unicode(text):
-	#print (">>>>>")
-	#for c in text:
-	#	print (c, ord(c))
-	#print ("-------")
 	order = ['\u05d0-\u05ea', #letters
 			'\u05c1\u05c2', #sin/shin dots
 			'\u05bc', #dagesh
@@ -378,14 +374,6 @@ def reorder_unicode(text):
 			'\u05b1-\u05bb\u05c7', #diacritics
 			'\u0591-\u05af\u05bd' #cantillations
 			]
-	#regexp = '([' + ''.join(order) + ']+)'
-	#res = list(re.finditer(regexp, text))
-	#s = text
-	#for m in res:
-	#	word = m.groups()[0]
-		#print (word, len(word))
-
-
 	regexp = '([%s]{1}[%s%s%s%s%s]+)'%(order[0], order[1], order[2], order[3], order[4], order[5])
 	tavs = list(re.finditer(regexp, text, re.M))
 	for tav in tavs:
@@ -395,40 +383,12 @@ def reorder_unicode(text):
 		for o in order:
 			for c in ttav:
 				if re.match('[%s]'%o, c):
-					#print ('match: ', hex(ord(c)), c)
-					#if tav.start() == 0:
-					#	print ("FUCLK")
 					out = out + c
 		text = text[:tav.start()] + out + text[tav.end():]
-	#print ('%s - %s %d %d'%(word, out, len(word), len(out)))
-	#print()
-	#return s
-	
-#	text = re.sub('\u05b0\u05b0', '\u05b0', text)
-#	text = re.sub('\u05bc\u05bc', '\u05bc', text)
 	return text
 
 if __name__ == '__main__':
-	#p = Prayer(Time.SHAHARIT)
-#	data = open(os.path.join(DB_PATH, 'Slichot.txt')).read()
-	data = open(os.path.join(DB_PATH, 'ben-adam-ma-lechah-nirdam.txt'), encoding='utf-8').read()
-
-	#print (data)
-	data = reorder_unicode(data)
-	#exit()
-
-
-
-#	sections = something(data, 2)
-	#print (sections)
-#	for section in sections:
-#		for oblock in section:
-#			#print (dir(oblock))
-#			#exit()
-#			for block in oblock.blocks:
-#				print ("X")
-#				for line in block.lines:
-#					#for span in spans
-#					print (line)
-#	#print (data)
 	pass
+#	p = Prayer(Time.SHAHARIT)
+#	data = open(os.path.join(DB_PATH, 'Slichot.txt')).read()
+#	data = reorder_unicode(data)

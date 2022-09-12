@@ -85,6 +85,86 @@ DATA = [
 		]]
 	]
 
+
+def parse(text=''):
+	if not text:
+		return []
+	text = re.sub('"([^"]+)"', r'“\1”', text)
+	text = re.sub("'([^']+)'", r"‘\1’", text)
+	text = re.sub('^- ', '\u2015 ', text)#―
+	text = re.sub(' -', ' \u2013', text)#–
+	text = re.sub('-', '\u2011', text)
+	text = re.sub('{[^}]*}', '', text) #remove zohar page no
+	text = re.sub(' +', ' ', text)
+
+	alternative_items = list(re.finditer('\[([^|]*)\|([^]]+)\]', text))
+	for item in alternative_items:
+		start, end = item.span()
+		text = text[0:start] + (end - start) * 'X' + text[end:]
+	nonliteral_items = list(re.finditer('_([^_]+)_', text))
+	for item in nonliteral_items:
+		start, end = item.span()
+		text = text[0:start] + (end - start) * 'X' + text[end:]
+	addition_items = list(re.finditer('\+([^+]+)\+', text))
+	for item in addition_items:
+		start, end = item.span()
+		text = text[0:start] + (end - start) * 'X' + text[end:]
+	synonym_items = list(re.finditer('\(\=([^)]+)\)', text))
+	for item in synonym_items:
+		start, end = item.span()
+		text = text[0:start] + (end - start) * 'X' + text[end:]
+	explanation_items = list(re.finditer('\(\~([^)]+)\)', text))
+	for item in explanation_items:
+		start, end = item.span()
+		text = text[0:start] + (end - start) * 'X' + text[end:]
+	correction_items = list(re.finditer('\[([^]]+)\]', text))
+	for item in correction_items:
+		start, end = item.span()
+		text = text[0:start] + (end - start) * 'X' + text[end:]
+	citation_items = list(re.finditer('“([^”]+)”', text))
+	for item in citation_items:
+		start, end = item.span()
+		text = text[0:start] + (end - start) * 'X' + text[end:]
+	link_items = list(re.finditer('\(([\u05d0-\u05ea־]+ [\u05d0-\u05ea]{1,3} [\u05d0-\u05ea]{1,3})\)', text))
+	for item in link_items:
+		start, end = item.span()
+		text = text[0:start] + (end - start) * 'X' + text[end:]
+	plain_items = list(re.finditer('([^X]+)', text))
+	for item in plain_items:
+		start, end = item.span()
+		text = text[0:start] + (end - start) * '.' + text[end:]
+	spans = []
+	for idx in range(len(text)):
+		for item in nonliteral_items + addition_items + alternative_items + \
+				synonym_items + explanation_items + correction_items + \
+				citation_items + link_items + plain_items:
+			if idx == item.start():
+				groups = item.groups()
+				value = groups[0]
+				if len(groups) > 1:
+					alt = groups[1]
+				span = None
+				if item in nonliteral_items:
+					span = Span(SpanKind.NONLITERAL, value)
+				elif item in addition_items:
+					span = Span(SpanKind.ADDITION, value)
+				elif item in alternative_items:
+					span = Span(SpanKind.ALTERNATIVE, value, alt)
+				elif item in synonym_items:
+					span = Span(SpanKind.SYNONYM, value)
+				elif item in explanation_items:
+					span = Span(SpanKind.EXPLANATION, value)
+				elif item in correction_items:
+					span = Span(SpanKind.CORRECTION, value)
+				elif item in citation_items:
+					span = Span(SpanKind.SCRIPTURE, value)
+				elif item in link_items:
+					span = Span(SpanKind.LINK, value)
+				elif item in plain_items:
+					span = Span(SpanKind.PLAIN, value)
+				spans.append(span)
+	return spans
+
 class Article:
 	def __init__(self, chapter, number, title):
 		self.chapter = chapter
@@ -129,94 +209,12 @@ class Article:
 		return self.chapter.book
 
 	@property
-	def translation_sections(self):
-		return [[line for line in part.split('\n')] for part in self.translation.split('\n\n')]
-		#return [[line for line in part.split('\n\n')] for part in self.translation.split('\n\n\n')]
+	def sections(self):
+		return [[parse(line) for line in part.split('\n')] for part in self.text.split('\n\n')]
 
 	@property
-	def sections(self):
-		return [[line for line in part.split('\n')] for part in self.text.split('\n\n')]
-		#return [[line for line in part.split('\n\n')] for part in self.text.split('\n\n\n')]
-
-	@staticmethod
-	def parse(text=''):
-		if not text:
-			return []
-		text = re.sub('"([^"]+)"', r'“\1”', text)
-		text = re.sub("'([^']+)'", r"‘\1’", text)
-		text = re.sub('^- ', '\u2015 ', text)#―
-		text = re.sub(' -', ' \u2013', text)#–
-		text = re.sub('-', '\u2011', text)
-		text = re.sub('{[^}]*}', '', text) #remove zohar page no
-		text = re.sub(' +', ' ', text)
-		
-		alternative_items = list(re.finditer('\[([^|]*)\|([^]]+)\]', text))
-		for item in alternative_items:
-			start, end = item.span()
-			text = text[0:start] + (end - start) * 'X' + text[end:]
-		nonliteral_items = list(re.finditer('_([^_]+)_', text))
-		for item in nonliteral_items:
-			start, end = item.span()
-			text = text[0:start] + (end - start) * 'X' + text[end:]
-		addition_items = list(re.finditer('\+([^+]+)\+', text))
-		for item in addition_items:
-			start, end = item.span()
-			text = text[0:start] + (end - start) * 'X' + text[end:]
-		synonym_items = list(re.finditer('\(\=([^)]+)\)', text))
-		for item in synonym_items:
-			start, end = item.span()
-			text = text[0:start] + (end - start) * 'X' + text[end:]
-		explanation_items = list(re.finditer('\(\~([^)]+)\)', text))
-		for item in explanation_items:
-			start, end = item.span()
-			text = text[0:start] + (end - start) * 'X' + text[end:]
-		correction_items = list(re.finditer('\[([^]]+)\]', text))
-		for item in correction_items:
-			start, end = item.span()
-			text = text[0:start] + (end - start) * 'X' + text[end:]
-		citation_items = list(re.finditer('“([^”]+)”', text))
-		for item in citation_items:
-			start, end = item.span()
-			text = text[0:start] + (end - start) * 'X' + text[end:]
-		link_items = list(re.finditer('\(([\u05d0-\u05ea־]+ [\u05d0-\u05ea]{1,3} [\u05d0-\u05ea]{1,3})\)', text))
-		for item in link_items:
-			start, end = item.span()
-			text = text[0:start] + (end - start) * 'X' + text[end:]
-		plain_items = list(re.finditer('([^X]+)', text))
-		for item in plain_items:
-			start, end = item.span()
-			text = text[0:start] + (end - start) * '.' + text[end:]
-		spans = []
-		for idx in range(len(text)):
-			for item in nonliteral_items + addition_items + alternative_items + \
-					synonym_items + explanation_items + correction_items + \
-					citation_items + link_items + plain_items:
-				if idx == item.start():
-					groups = item.groups()
-					value = groups[0]
-					if len(groups) > 1:
-						alt = groups[1]
-					span = None
-					if item in nonliteral_items:
-						span = Span(SpanKind.NONLITERAL, value)
-					elif item in addition_items:
-						span = Span(SpanKind.ADDITION, value)
-					elif item in alternative_items:
-						span = Span(SpanKind.ALTERNATIVE, value, alt)
-					elif item in synonym_items:
-						span = Span(SpanKind.SYNONYM, value)
-					elif item in explanation_items:
-						span = Span(SpanKind.EXPLANATION, value)
-					elif item in correction_items:
-						span = Span(SpanKind.CORRECTION, value)
-					elif item in citation_items:
-						span = Span(SpanKind.SCRIPTURE, value)
-					elif item in link_items:
-						span = Span(SpanKind.LINK, value)
-					elif item in plain_items:
-						span = Span(SpanKind.PLAIN, value)
-					spans.append(span)
-		return spans
+	def translation_sections(self):
+		return [[parse(line) for line in part.split('\n')] for part in self.translation.split('\n\n')]
 
 class Chapter:
 	def __init__(self, book, number, title):
