@@ -54,8 +54,7 @@ class Div:
 		#scribus.setFillColor('Red', name)
 		scribus.setTextDistances(0, 0, 1, 1, name)
 		scribus.setTextDirection(scribus.DIRECTION_RTL, name)
-		#scribus.setTextAlignment(scribus.ALIGN_BLOCK, name)
-		scribus.setTextAlignment(scribus.ALIGN_RIGHT, name)
+		scribus.setTextAlignment(scribus.ALIGN_BLOCK, name)
 
 	def enlarge(self):
 		while scribus.textOverflows(self.name):
@@ -128,7 +127,7 @@ class Print:
 			self.pos += max(rdiv.height, ldiv.height)
 
 	def publish(self, name):
-		#scribus.saveDocAs('-.sla')
+		scribus.saveDocAs('/tmp/x.sla')
 		pdf = scribus.PDFfile()
 		pdf.file = name
 		pdf.save()
@@ -158,13 +157,26 @@ class ZoharPrint(Print):
 		super().__init__()
 
 	def render(self):
-		paragraphs = zohar.books[0].chapters[0].articles[17].sections
-		txparagraphs = zohar.books[0].chapters[0].articles[17].translation_sections
+		articles = [
+			[0, 0, 17],
+			[2, 26, 0],
+			[2, 27, 0]
+			]
+		for b, c, a in articles:
+			article = zohar.books[b].chapters[c].articles[a]
+			self.render_article(article)
+
+	def render_article(self, article):
+		div = Div(self.contentWidth, 'title %d %d %d'%(article.book.number, article.chapter.number, article.number))
+		div.render([Span(SpanKind.H1, article.title)])
+		self.adddiv(div)
+		paragraphs = article.sections
+		txparagraphs = article.translation_sections
 		for paragraph_id in range(len(paragraphs)):
-			name = '%s'%paragraph_id
+			prefix = '%d %d %d %d'%(article.book.number, article.chapter.number, article.number, paragraph_id)
 			#zohar
 			paragraph = paragraphs[paragraph_id]
-			rdiv = Div(self.contentWidth / 2, 'zohar' + name)
+			rdiv = Div(self.contentWidth / 2, 'zohar' + prefix)
 			spans = []
 			for line in paragraph:
 				spans += line
@@ -172,7 +184,7 @@ class ZoharPrint(Print):
 					spans.append(Span(SpanKind.PLAIN, '\n'))
 			rdiv.render(spans)
 			#translation
-			ldiv = Div(self.contentWidth / 2, 'zohartx' + name)
+			ldiv = Div(self.contentWidth / 2, 'zohartx' + prefix)
 			paragraph = txparagraphs[paragraph_id]
 			spans = []
 			for line in paragraph:
@@ -238,8 +250,8 @@ class MikraotPrint(Print):
 				self.adddiv(div)
 
 if __name__ == '__main__':
-	p = LiturgyPrint()
+	#p = LiturgyPrint()
 	#p = MikraotPrint()
-	#p = ZoharPrint()
+	p = ZoharPrint()
 	p.render()
 	#p.publish('/sdcard/Download/siddur.pdf')
