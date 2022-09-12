@@ -57,7 +57,13 @@ class Div:
 		#scribus.setTextAlignment(scribus.ALIGN_BLOCK, name)
 		scribus.setTextAlignment(scribus.ALIGN_RIGHT, name)
 
+	def enlarge(self):
+		while scribus.textOverflows(self.name):
+			scribus.sizeObject(self.width, self.height + 1, self.name)
+			self.height = scribus.getSize(self.name)[1]
+
 	def render(self, spans):
+		scribus.setRedraw(False)
 		for span in spans:
 			text = span.value
 			style = span.kind.name.lower()
@@ -69,10 +75,7 @@ class Div:
 			scribus.selectText(pos, length, self.name)
 			scribus.setCharacterStyle(style, self.name)
 			scribus.setRedraw(True)
-		scribus.setRedraw(False)
-		while scribus.textOverflows(self.name):
-			scribus.sizeObject(self.width, self.height + 1, self.name)
-			self.height = scribus.getSize(self.name)[1]
+		self.enlarge()
 		scribus.setRedraw(True)
 
 class Print:
@@ -82,7 +85,7 @@ class Print:
 		self.marginLeft, self.marginRight, self.marginTop, self.marginBottom = margins
 		self.contentWidth = self.pageWidth - self.marginLeft - self.marginRight
 		self.contentHeight = self.pageHeight - self.marginTop - self.marginBottom
-		self.pos = self.marginTop
+		self.pos = 0
 		scribus.newDocument(size, margins, scribus.PORTRAIT, 1, scribus.UNIT_MILLIMETERS, scribus.PAGE_1, 0, 1)
 		scribus.setUnit(scribus.UNIT_PT)
 		for color, r, g, b in _colors:
@@ -93,19 +96,36 @@ class Print:
 		scribus.setUnit(scribus.UNIT_MM)
 
 	def adddiv(self, div):
-		scribus.moveObject(self.marginLeft, self.pos, div.name)
-		self.pos += div.height
-		if self.pos > self.marginTop + self.contentHeight:
+		scribus.moveObject(self.marginLeft, self.marginTop + self.pos, div.name)
+		if self.pos + div.height > self.contentHeight:
+			scribus.sizeObject(self.contentWidth, self.contentHeight - self.pos, div.name)
 			scribus.newPage(-1)
-			self.pos = self.marginTop
+			d = Div(self.contentWidth, div.name + 'X')
+			scribus.linkTextFrames(div.name, d.name)
+			d.enlarge()
+			scribus.moveObject(self.marginLeft, self.marginTop, d.name)
+			self.pos = d.height
+		else:
+			self.pos += div.height
 
 	def adddivs(self, rdiv, ldiv):
-		scribus.moveObject(self.marginLeft, self.pos, ldiv.name)
-		scribus.moveObject(self.marginLeft + self.contentWidth / 2, self.pos, rdiv.name)
-		self.pos += max(rdiv.height, ldiv.height)
-		if self.pos > self.marginTop + self.contentHeight:
+		scribus.moveObject(self.marginLeft, self.marginTop + self.pos, ldiv.name)
+		scribus.moveObject(self.marginLeft + self.contentWidth / 2, self.marginTop + self.pos, rdiv.name)
+		if self.pos + max(rdiv.height, ldiv.height) > self.contentHeight:
+			scribus.sizeObject(rdiv.width, self.contentHeight - self.pos, rdiv.name)
+			scribus.sizeObject(ldiv.width, self.contentHeight - self.pos, ldiv.name)
 			scribus.newPage(-1)
-			self.pos = self.marginTop
+			rd = Div(rdiv.width, rdiv.name + 'X')
+			ld = Div(ldiv.width, ldiv.name + 'X')
+			scribus.linkTextFrames(rdiv.name, rd.name)
+			scribus.linkTextFrames(ldiv.name, ld.name)
+			rd.enlarge()
+			ld.enlarge()
+			scribus.moveObject(self.marginLeft, self.marginTop, rd.name)
+			scribus.moveObject(self.marginLeft + self.contentWidth / 2, self.marginTop, ld.name)
+			self.pos = max(rd.height, ld.height)
+		else:
+			self.pos += max(rdiv.height, ldiv.height)
 
 	def publish(self, name):
 		#scribus.saveDocAs('-.sla')
