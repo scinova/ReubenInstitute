@@ -14,6 +14,7 @@ div.zohar span {
 
 div.zohar span.explanation {
 	color: #aaa;
+	font-family: main;
 	}
 
 div.zohar span.correction {
@@ -25,6 +26,7 @@ div.zohar span.addition {
 	}
 
 div.zohar span.synonym {
+	font-family: main;
 	color: #aaa;
 	}
 

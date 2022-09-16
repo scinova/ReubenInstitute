@@ -6,6 +6,14 @@
 {% block title %}{% endblock %}
 {% block content %}
 <h1>{{article.title}}</h1>
+
+{% if article.chapter.articles|length > article.number %}
+	<a href="/zohar/{{article.book.number}}/{{article.chapter.number}}/{{article.number + 1}}">n</a>
+{% endif %}
+{% if article.number > 1 %}
+	<a href="/zohar/{{article.book.number}}/{{article.chapter.number}}/{{article.number - 1}}">p</a>
+{% endif %}
+
 <div class="zohar">
 {% for section_idx in range(article.sections|length) %}
 	<a id="v{{loop.index}}"></a>
@@ -16,9 +24,9 @@
 					{%- if span.kind == SpanKind.SYNONYM -%}
 						<span class="synonym">(={{span.value}})</span>
 					{%- elif span.kind == SpanKind.EXPLANATION -%}
-						<span class="explanation"">(~{{span.value}})</span>
+						<span class="explanation"">({{span.value}})</span>
 					{%- elif span.kind == SpanKind.CORRECTION -%}
-						<span class="correction">[{{span.value}}]</span>
+						<span class="correction">{{span.value}}</span>
 					{%- elif span.kind == SpanKind.CITATION -%}
 						<span xclass="citation">“{{span.value}}”</span>
 					{%- elif span.kind == SpanKind.SCRIPTURE -%}
@@ -41,7 +49,7 @@
 					{%- if span.kind == SpanKind.SYNONYM -%}
 						<span class="synonym">(={{span.value}})</span>
 					{%- elif span.kind == SpanKind.EXPLANATION -%}
-						<span class="explanation"">(~{{span.value}})</span>
+						<span class="explanation"">({{span.value}})</span>
 					{%- elif span.kind == SpanKind.CORRECTION -%}
 						<span class="correction">[{{span.value}}]</span>
 					{%- elif span.kind == SpanKind.CITATION -%}

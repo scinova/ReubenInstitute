@@ -9,11 +9,14 @@ from enum import Enum
 ROOT_PATH = os.path.dirname(os.path.abspath(__file__))
 DB_PATH = os.path.join(ROOT_PATH, 'db')
 
-def remove_cantillations(text):
-	return re.sub('[\u0591-\u05ae\u05bd\u05c0\u05c3]', '', text)
+def remove_accents(text):
+	return re.sub('[\u0591-\u05ae]', '', text)
 
-def remove_diacritics(text):
+def remove_points(text):
 	return re.sub('[\u05b0-\u05bc\u05c7\u05c1\u05c2]', '', text)
+
+def remove_meteg(text):
+	return re.sub('\u05bd', '', text)
 
 class SpanKind(Enum):
 
@@ -98,3 +101,23 @@ def fix_paseq(text):
 ACCENTS_REGEX = '[\u0591-\u05af\u05bd\u05c0\u05c3]'
 POINTS_REGEX = '[\u05b0-\u05bc\u05c1\u05c2\u05c7]'
 PUNCTUATION_REGEX = '[\?\!\;\:\.\,\-’‘”“]'
+
+def unicode_reorder(text):
+	order = ['\u05d0-\u05ea', #letters
+			'\u05c1\u05c2', #sin/shin dots
+			'\u05bc', #dagesh
+			'\u05b0', #shva
+			'\u05b1-\u05bb\u05c7', #diacritics
+			'\u0591-\u05af\u05bd' #cantillations
+			]
+	regexp = '([%s]{1}[%s%s%s%s%s]+)'%(order[0], order[1], order[2], order[3], order[4], order[5])
+	tavs = list(re.finditer(regexp, text, re.M))
+	for tav in tavs:
+		ttav = tav.groups()[0]
+		out = ''
+		for o in order:
+			for c in ttav:
+				if re.match('[%s]'%o, c):
+					out = out + c
+		text = text[:tav.start()] + out + text[tav.end():]
+	return text

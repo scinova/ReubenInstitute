@@ -1,5 +1,6 @@
 import scribus
 import re
+import common
 from common import Span, SpanKind
 
 import Liturgy
@@ -14,7 +15,7 @@ _colors = (
 		('DarkRed', 0xc0, 0, 0),
 		('Silver', 0xcc, 0xcc, 0xcc),
 		('DarkGreen', 0x33, 0xcc, 0x33))
-serif = "SBL Hebrew Regular"
+#serif = "SBL Hebrew Regular"
 serif = "Frank Ruehl CLM Medium"
 sans = "Nachlieli CLM Light"
 _charstyles = [
@@ -26,13 +27,13 @@ _charstyles = [
 	["majuscule", serif, 18./15, 'Black'],
 	["minuscule", serif, 12./15, 'Black'],
 	["addition", serif, 12./15, 'Silver'],
-	["synonym", serif, 1, 'Silver'],
+	["synonym", serif, 12./15, 'Silver'],
 	["explanation", serif, 12./15, 'Silver'],
-	["correction", serif, 12./15, 'Black'],
+	["correction", serif, 1, 'Silver'],
 	["info", sans, 12./15, 'DarkGreen'],
-	["scripture", serif, 16./15, 'DarkRed'],
-	["accent", serif, 16./15, 'DarkRed'],
-	["point", serif, 16./15, 'DarkRed'],
+	["scripture", serif, 1, 'DarkRed'],
+	["accent", serif, 12./15, 'DarkRed'],
+	["point", serif, 12./15, 'DarkRed'],
 	["link", serif, 12./15, 'Silver'],
 	["verseno", serif, 10./15, 'Silver'],
 #	["points", serif, 1, 'Green'],
@@ -52,7 +53,7 @@ class Div:
 		self.name = name
 		scribus.createText(0, 0, self.width, 1, name)
 		#scribus.setFillColor('Red', name)
-		scribus.setTextDistances(0, 0, 1, 1, name)
+		scribus.setTextDistances(5, 5, 2, 2, name)
 		scribus.setTextDirection(scribus.DIRECTION_RTL, name)
 		scribus.setTextAlignment(scribus.ALIGN_BLOCK, name)
 
@@ -78,7 +79,8 @@ class Div:
 		scribus.setRedraw(True)
 
 class Print:
-	def __init__(self, size=(116, 165), margins=(10, 10, 13, 8)):
+#	def __init__(self, size=(116, 165), margins=(10, 10, 13, 8)):
+	def __init__(self, size=(210, 297), margins=(9, 9, 13, 8)):
 		self.frame = None
 		self.pageWidth, self.pageHeight = size
 		self.marginLeft, self.marginRight, self.marginTop, self.marginBottom = margins
@@ -120,16 +122,16 @@ class Print:
 			scribus.linkTextFrames(ldiv.name, ld.name)
 			rd.enlarge()
 			ld.enlarge()
-			scribus.moveObject(self.marginLeft, self.marginTop, rd.name)
-			scribus.moveObject(self.marginLeft + self.contentWidth / 2, self.marginTop, ld.name)
+			scribus.moveObject(self.marginLeft, self.marginTop, ld.name)
+			scribus.moveObject(self.marginLeft + self.contentWidth / 2, self.marginTop, rd.name)
 			self.pos = max(rd.height, ld.height)
 		else:
 			self.pos += max(rdiv.height, ldiv.height)
 
 	def publish(self, name):
-		scribus.saveDocAs('/tmp/x.sla')
+		scribus.saveDocAs('/root/%s.sla'%name)
 		pdf = scribus.PDFfile()
-		pdf.file = name
+		pdf.file = '/root/%s.pdf'%name
 		pdf.save()
 
 class LiturgyPrint(Print):
@@ -158,13 +160,52 @@ class ZoharPrint(Print):
 
 	def render(self):
 		articles = [
+			[2, 26, 1],
+			[0, 0, 18],
+			[0, 0, 10]
+		]
+		c = [
+			[0, 0, 2],
+			[0, 0, 3],
+			[0, 0, 4],
+			[0, 0, 5],
+			[0, 0, 6],
+			[0, 0, 7],
+			[0, 0, 8],
+			[0, 0, 9],
+			[0, 0, 10],
+			[0, 0, 11],
+			[0, 0, 12],
+			[0, 0, 13],
+			[0, 0, 14],
+			[0, 0, 15],
+			[0, 0, 16],
 			[0, 0, 17],
-			[2, 26, 0],
-			[2, 27, 0]
+			[0, 0, 18],
+			[0, 0, 19],
+			[0, 0, 20],
+			[0, 0, 21],
+			[0, 0, 22],
+			[0, 0, 23],
+			[0, 0, 24],
+			[0, 0, 25],
+			[0, 0, 26],
+			[0, 0, 27],
+			[0, 0, 28],
+			[0, 0, 29],
+			[0, 0, 30],
+			[0, 0, 31],
+			[0, 0, 33],
+			[0, 0, 34],
+			[2, 26, 1],
+			[2, 26, 7],
+			[2, 27, 1]
 			]
+			
 		for b, c, a in articles:
-			article = zohar.books[b].chapters[c].articles[a]
+			article = zohar.books[b].chapters[c].articles[a - 1]
 			self.render_article(article)
+			scribus.redrawAll()
 
 	def render_article(self, article):
 		div = Div(self.contentWidth, 'title %d %d %d'%(article.book.number, article.chapter.number, article.number))
@@ -182,6 +223,7 @@ class ZoharPrint(Print):
 				spans += line
 				if line != paragraph[-1]:
 					spans.append(Span(SpanKind.PLAIN, '\n'))
+			spans = self.format_spans(spans)
 			rdiv.render(spans)
 			#translation
 			ldiv = Div(self.contentWidth / 2, 'zohartx' + prefix)
@@ -191,8 +233,35 @@ class ZoharPrint(Print):
 				spans += line
 				if line != paragraph[-1]:
 					spans.append(Span(SpanKind.PLAIN, '\n'))
+			spans = self.format_spans(spans, tx=True)
 			ldiv.render(spans)
 			self.adddivs(rdiv, ldiv)
+
+	def format_spans(self, spans, tx=False):
+		for i in range(len(spans)):
+			span = spans[i]
+			value = span.value
+			value = common.unicode_reorder(value)
+			value = common.fix_yhwh(value)
+			value = common.remove_accents(value)
+			value = common.remove_meteg(value)
+			if tx:
+				if span.kind != SpanKind.SCRIPTURE:
+					value = common.remove_points(value)
+			if span.kind == SpanKind.SCRIPTURE:
+				value = '“%s”'%value
+			if span.kind == SpanKind.SYNONYM:
+				value = '(=%s)'%value
+			if span.kind == SpanKind.EXPLANATION:
+				value = '(~%s)'%value
+			if span.kind == SpanKind.CORRECTION:
+				value = '[%s]'%value
+			if span.kind == SpanKind.LINK:
+				#value = '(%s)'%value
+				a, b, c = value.split(' ')
+				value = '%s.%s:%s'%(a, b, c)
+			spans[i].value = value
+		return spans
 
 class MikraotPrint(Print):
 	def __init__(self):
@@ -216,12 +285,14 @@ class MikraotPrint(Print):
 				for verse in paragraph:
 					spans += [Span(SpanKind.VERSENO, verse.hebrew_number)]
 					spans += verse.onkelos
+				spans = self.format_spans(spans)
 				rdiv = Div(self.contentWidth / 2, 'onkelos' + name)
 				rdiv.render(spans)
 				spans = []
 				for verse in paragraph:
 					spans += [Span(SpanKind.VERSENO, verse.hebrew_number)]
 					spans += verse.onkelos_trans
+				spans = self.format_spans(spans)
 				ldiv = Div(self.contentWidth / 2, 'onkelostx' + name)
 				ldiv.render(spans)
 				self.adddivs(rdiv, ldiv)
@@ -230,12 +301,14 @@ class MikraotPrint(Print):
 				for verse in paragraph:
 					spans += [Span(SpanKind.VERSENO, verse.hebrew_number)]
 					spans += verse.jerusalmi
+				spans = self.format_spans(spans)
 				rdiv = Div(self.contentWidth / 2, 'jerusalmi' + name)
 				rdiv.render(spans)
 				spans = []
 				for verse in paragraph:
 					spans += [Span(SpanKind.VERSENO, verse.hebrew_number)]
 					spans += verse.jerusalmi_trans
+				spans = self.format_spans(spans)
 				ldiv = Div(self.contentWidth / 2, 'jerusalmitx' + name)
 				ldiv.render(spans)
 				self.adddivs(rdiv, ldiv)
@@ -244,14 +317,32 @@ class MikraotPrint(Print):
 				for verse in paragraph:
 					spans += [Span(SpanKind.VERSENO, verse.hebrew_number)]
 					spans += verse.rashi
+				spans = self.format_spans(spans)
 				div = Div(self.contentWidth, 'rashi' + name)
 				#scribus.setColumns(3, div.name)
 				div.render(spans)
 				self.adddiv(div)
+
+	def format_spans(self, spans):
+		for i in range(len(spans)):
+			span = spans[i]
+			value = span.value
+			if span.kind == SpanKind.SCRIPTURE:
+				value = '“%s”'%span.value
+			if span.kind == SpanKind.SYNONYM:
+				value = '(=%s)'%span.value
+			if span.kind == SpanKind.EXPLANATION:
+				value = '(~%s)'%span.value
+			if span.kind == SpanKind.CORRECTION:
+				value = '[%s]'%span.value
+			if span.kind == SpanKind.LINK:
+				value = '(%s)'%span.value
+			spans[i].value = value
+		return spans
 
 if __name__ == '__main__':
 	#p = LiturgyPrint()
 	#p = MikraotPrint()
 	p = ZoharPrint()
 	p.render()
-	#p.publish('/sdcard/Download/siddur.pdf')
+	p.publish('zohar')

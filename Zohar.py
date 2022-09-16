@@ -181,6 +181,8 @@ class Article:
 		if not self._text:
 			filename = os.path.join(DB_PATH, '%1d.%02d'%(self.book.number, self.chapter.number), '%02d.txt'%self.number)
 			data = open(filename).read()
+			#if '\n\n\n' in data:
+				#data = re.sub('\n\n', '\n', data, re.M)
 			self._text = data
 		return self._text
 
@@ -195,6 +197,9 @@ class Article:
 		if not self._translation:
 			filename = os.path.join(DB_PATH, '%1d.%02d'%(self.book.number, self.chapter.number), '%02dt.txt'%self.number)
 			data = open(filename).read()
+			#if '\n\n' in data:
+				#data = re.sub('\n\n', '\n', data, re.M)
+				#open(filename, 'w').write(data)
 			self._translation = data
 		return self._translation
 
