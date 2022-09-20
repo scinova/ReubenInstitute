@@ -159,10 +159,18 @@ class Print:
 #		else:
 #			self.pos += max(rdiv.height, ldiv.height) + gap
 
-	def adddivs(self, rdiv, ldiv, gap=0):
+	def adddivs(self, rdiv, ldiv, gap=0, sync=True):
+		if type(gap) == list:
+			rgap, lgap = gap
+		else:
+			rgap, lgap = gap, gap
 		scribus.gotoPage(1)
 		ldiv.enlarge()
 		rdiv.enlarge()
+		if sync:
+			height = max(rdiv.height, ldiv.height)
+			scribus.sizeObject(rdiv.width, height, rdiv.name)
+			scribus.sizeObject(ldiv.width, height, ldiv.name)
 		lastpage = scribus.pageCount()
 		if self.pos + 30 > self.contentHeight:
 			scribus.newPage(-1)
@@ -234,9 +242,9 @@ class LiturgyPrint(Print):
 class ZoharPrint(Print):
 	def __init__(self):
 		self.articles = [
-			[0, 0, 10],
-			[0, 0, 15],
-			[0, 0, 18]#,
+			[0, 0, 10]#,
+			#[0, 0, 15],
+			#[0, 0, 18]#,
 			#[0, 0, 20]#,
 			#[2, 26, 1],
 			#[2, 26, 7]#,
@@ -319,10 +327,12 @@ class ZoharPrint(Print):
 					spans = txparagraph[line_id]
 					spans = self.format_spans(spans, tx=True)
 					ldiv = Div(self.contentWidth / 1, 'zohartx' + prefix, spans)
+					sync = [span.kind for span in paragraph[line_id] + txparagraph[line_id]] == [SpanKind.H1, SpanKind.H1]
+						
 					gap = 0
 					if line_id == len(paragraph) - 1:
 						gap = 16
-					self.adddivs(rdiv, ldiv, gap=gap)
+					self.adddivs(rdiv, ldiv, gap=gap, sync=sync)
 
 	def format_spans(self, spans, tx=False):
 		for i in range(len(spans)):
