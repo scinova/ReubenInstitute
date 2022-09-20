@@ -84,7 +84,6 @@ class Div:
 			scribus.setCharacterStyle(style, self.name)
 			scribus.setRedraw(True)
 		scribus.setTextDirection(scribus.DIRECTION_RTL, self.name)
-		#self.enlarge()
 		scribus.setRedraw(True)
 
 def MM2PT(values):
@@ -101,7 +100,6 @@ class Print:
 		self.contentWidth = self.pageWidth - self.marginLeft - self.marginRight
 		self.contentHeight = self.pageHeight - self.marginTop - self.marginBottom
 		self.pos = 0
-		#self.create()
 
 	def create(self):
 		scribus.newDocument((self.pageWidth, self.pageHeight),
@@ -163,9 +161,7 @@ class Print:
 
 	def adddivs(self, rdiv, ldiv, gap=0):
 		scribus.gotoPage(1)
-		#ldiv.render()
 		ldiv.enlarge()
-		#rdiv.render(alt=True)
 		rdiv.enlarge()
 		lastpage = scribus.pageCount()
 		if self.pos + 30 > self.contentHeight:
@@ -205,11 +201,9 @@ class Print:
 			scribus.linkTextFrames(ldiv.name, ld.name)
 			rd.enlarge()
 			ld.enlarge()
-			#scribus.gotoPage(scribus.pageCount() - 1)
 			self.pos = max(rd.height, ld.height) + gap
 		else:
 			self.pos += max(rdiv.height, ldiv.height) + gap
-		#scribus.gotoPage(scribus.pageCount())
 
 	def publish(self, name):
 		scribus.saveDocAs('/root/%s.sla'%name)
@@ -308,7 +302,6 @@ class ZoharPrint(Print):
 					spans = self.format_spans(spans, tx=True)
 					ldiv = Div(self.contentWidth / 1, 'zohartx' + prefix, spans)
 					ldiv.render()
-			#self.r2(article)
 
 	def move(self):
 		for b, c, a in self.articles:
