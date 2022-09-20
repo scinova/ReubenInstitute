@@ -21,7 +21,9 @@
 		<div class="right justify">
 			{% for line in article.sections[section_idx] %}
 				{%- for span in line -%}
-					{%- if span.kind == SpanKind.SYNONYM -%}
+					{%- if span.kind == SpanKind.H1 -%}
+						<h1>{{span.value}}</h1>
+					{%- elif span.kind == SpanKind.SYNONYM -%}
 						<span class="synonym">(={{span.value}})</span>
 					{%- elif span.kind == SpanKind.EXPLANATION -%}
 						<span class="explanation"">({{span.value}})</span>
@@ -46,10 +48,12 @@
 		<div class="left justify">
 			{% for line in article.translation_sections[section_idx] %}
 				{%- for span in line -%}
-					{%- if span.kind == SpanKind.SYNONYM -%}
+					{%- if span.kind == SpanKind.H1 -%}
+						<h1>{{span.value}}</h1>
+					{%- elif span.kind == SpanKind.SYNONYM -%}
 						<span class="synonym">(={{span.value}})</span>
 					{%- elif span.kind == SpanKind.EXPLANATION -%}
-						<span class="explanation"">({{span.value}})</span>
+						<span class="explanation">({{span.value}})</span>
 					{%- elif span.kind == SpanKind.CORRECTION -%}
 						<span class="correction">[{{span.value}}]</span>
 					{%- elif span.kind == SpanKind.CITATION -%}

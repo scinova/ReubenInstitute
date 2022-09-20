@@ -13,29 +13,33 @@ tanakh.__postinit__()
 _colors = (
 		('Orange', 255, 165, 0),
 		('DarkRed', 0xc0, 0, 0),
-		('Silver', 0xcc, 0xcc, 0xcc),
+		('Silver', 0x99, 0x99, 0x99),
 		('DarkGreen', 0x33, 0xcc, 0x33))
 #serif = "SBL Hebrew Regular"
-serif = "Frank Ruehl CLM Medium"
+serif = "Hadasim CLM Regular"
 sans = "Nachlieli CLM Light"
+sans = "Bellefair Regular"
+scripture = "Keter YG Medium"
+text = "ReuvenSerif Regular"
+text = "Frank Ruehl CLM Medium"
 _charstyles = [
 	["Default Character Style", serif, 1, 'Black'],
-	["h1", serif, 2, 'Black'],
-	["h2", serif, 18./15, 'Orange'],
-	["h4", serif, 22./15, 'Orange'],
+	["h1", sans, 2, 'Silver'],
+	["h2", serif, 1.4, 'Orange'],
+	["h4", serif, 1.5, 'Orange'],
 	["bold", serif, 1, 'Blue'],
 	["majuscule", serif, 18./15, 'Black'],
-	["minuscule", serif, 12./15, 'Black'],
-	["addition", serif, 12./15, 'Silver'],
-	["synonym", serif, 12./15, 'Silver'],
-	["explanation", serif, 12./15, 'Silver'],
+	["minuscule", serif, 0.8, 'Black'],
+	["addition", serif, 0.8, 'Silver'],
+	["synonym", sans, 0.8, 'Silver'],
+	["explanation", sans, 0.8, 'Silver'],
 	["correction", serif, 1, 'Silver'],
-	["info", sans, 12./15, 'DarkGreen'],
-	["scripture", serif, 1, 'DarkRed'],
-	["accent", serif, 12./15, 'DarkRed'],
-	["point", serif, 12./15, 'DarkRed'],
-	["link", serif, 12./15, 'Silver'],
-	["verseno", serif, 10./15, 'Silver'],
+	["info", sans, 0.8, 'DarkGreen'],
+	["scripture", scripture, 1, 'DarkRed'],
+	["accent", serif, 0.8, 'DarkRed'],
+	["point", serif, 0.8, 'DarkRed'],
+	["link", sans, 0.8, 'Silver'],
+	["verseno", serif, 0.7, 'Silver'],
 #	["points", serif, 1, 'Green'],
 #	["accents", serif, 1, 'Red'],
 	["punctuation", serif, 1, 'Blue'],
@@ -43,31 +47,35 @@ _charstyles = [
 	["alternative", serif, 1, 'Green'],
 	["legend", serif, 1, 'Green'],
 	["space", serif, 1, 'Black'],
+	["text", text, 1.3, 'Black'],
 	["plain", serif, 1, 'Black']]
 
 class Div:
 	"""div of lines of spans"""
-	def __init__(self, width, name):
+	def __init__(self, width, name, spans=[]):
 		self.width = width
-		self.height = 1
+		self.height = 20
 		self.name = name
-		scribus.createText(0, 0, self.width, 1, name)
-		#scribus.setFillColor('Red', name)
-		scribus.setTextDistances(5, 5, 2, 2, name)
-		scribus.setTextDirection(scribus.DIRECTION_RTL, name)
-		scribus.setTextAlignment(scribus.ALIGN_BLOCK, name)
+		self.spans = spans
 
 	def enlarge(self):
-		while scribus.textOverflows(self.name):
-			scribus.sizeObject(self.width, self.height + 1, self.name)
-			self.height = scribus.getSize(self.name)[1]
-
-	def render(self, spans):
 		scribus.setRedraw(False)
-		for span in spans:
+		while scribus.textOverflows(self.name):
+			scribus.sizeObject(self.width, self.height + 4, self.name)
+			self.height = scribus.getSize(self.name)[1]
+		scribus.setRedraw(True)
+
+	def render(self, alt=False):
+		scribus.setRedraw(False)
+		scribus.createText(0, 0, self.width, self.height, self.name)
+		scribus.setTextDistances(0, 0, 0, 0, self.name)
+		scribus.setTextDirection(scribus.DIRECTION_RTL, self.name)
+		scribus.setTextAlignment(scribus.ALIGN_BLOCK, self.name)
+		for span in self.spans:
 			text = span.value
 			style = span.kind.name.lower()
-			print (style)
+			if alt and span.kind in [SpanKind.PLAIN, SpanKind.SCRIPTURE]:
+				style = "text"
 			scribus.setRedraw(False)
 			length = len(text)
 			pos = scribus.getTextLength(self.name)
@@ -75,58 +83,133 @@ class Div:
 			scribus.selectText(pos, length, self.name)
 			scribus.setCharacterStyle(style, self.name)
 			scribus.setRedraw(True)
-		self.enlarge()
+		scribus.setTextDirection(scribus.DIRECTION_RTL, self.name)
+		#self.enlarge()
 		scribus.setRedraw(True)
 
+def MM2PT(values):
+	return tuple([v / 127. * 360 for v in values])
+
 class Print:
-#	def __init__(self, size=(116, 165), margins=(10, 10, 13, 8)):
-	def __init__(self, size=(210, 297), margins=(9, 9, 13, 8)):
+	def __init__(self, size=(116, 165), margins=(10, 10, 13, 8)):
+	#def __init__(self, size=(210, 297), margins=(9, 9, 13, 8)): #A4
+		size = MM2PT(size)
+		margins = MM2PT(margins)
 		self.frame = None
 		self.pageWidth, self.pageHeight = size
 		self.marginLeft, self.marginRight, self.marginTop, self.marginBottom = margins
 		self.contentWidth = self.pageWidth - self.marginLeft - self.marginRight
 		self.contentHeight = self.pageHeight - self.marginTop - self.marginBottom
 		self.pos = 0
-		scribus.newDocument(size, margins, scribus.PORTRAIT, 1, scribus.UNIT_MILLIMETERS, scribus.PAGE_1, 0, 1)
-		scribus.setUnit(scribus.UNIT_PT)
+		#self.create()
+
+	def create(self):
+		scribus.newDocument((self.pageWidth, self.pageHeight),
+				(self.marginLeft, self.marginRight, self.marginTop, self.marginBottom),
+				scribus.PORTRAIT, 1, scribus.UNIT_PT, scribus.FACINGPAGES, scribus.FIRSTPAGELEFT, 2)
+		scribus.gotoPage(1)
 		for color, r, g, b in _colors:
 			scribus.defineColorRGB(color, r, g, b)
 		for name, font, size, fillcolor in _charstyles:
-			scribus.createCharStyle(name, font, size * 10. * (0.8/0.784), fillcolor=fillcolor)
-		scribus.createParagraphStyle("Default Paragraph Style", linespacingmode=1, linespacing=16, alignment=scribus.ALIGN_RIGHT)#, gapafter=7)
-		scribus.setUnit(scribus.UNIT_MM)
+			scribus.createCharStyle(name, font, 13 * size, fillcolor=fillcolor)
+		scribus.createParagraphStyle("Default Paragraph Style", linespacingmode=1, linespacing=13, alignment=scribus.ALIGN_BLOCK)
 
-	def adddiv(self, div):
+	def adddiv(self, div, gap=0):
 		scribus.moveObject(self.marginLeft, self.marginTop + self.pos, div.name)
 		if self.pos + div.height > self.contentHeight:
 			scribus.sizeObject(self.contentWidth, self.contentHeight - self.pos, div.name)
 			scribus.newPage(-1)
 			d = Div(self.contentWidth, div.name + 'X')
 			scribus.linkTextFrames(div.name, d.name)
-			d.enlarge()
+			d.enlarge(self.baseline)
 			scribus.moveObject(self.marginLeft, self.marginTop, d.name)
 			self.pos = d.height
 		else:
-			self.pos += div.height
+			self.pos += div.height + gap
 
-	def adddivs(self, rdiv, ldiv):
+	def adddiv2(self, div, gap=0):
+		scribus.moveObject(self.marginLeft, self.marginTop + self.pos, div.name)
+		if self.pos + div.height > self.contentHeight:
+			scribus.sizeObject(self.contentWidth, self.contentHeight - self.pos, div.name)
+			scribus.newPage(-1)
+			scribus.newPage(-1)
+			scribus.gotoPage(1)
+			d = Div(self.contentWidth, div.name + 'X')
+			scribus.linkTextFrames(div.name, d.name)
+			d.enlarge(self.baseline)
+			scribus.moveObject(self.marginLeft, self.marginTop, d.name)
+			self.pos = d.height + gap
+		else:
+			self.pos += div.height + gap
+
+#	def xadddivs(self, rdiv, ldiv, gap=0):
+#		scribus.moveObject(self.marginLeft, self.marginTop + self.pos, ldiv.name)
+#		scribus.moveObject(self.marginLeft + self.contentWidth / 2, self.marginTop + self.pos, rdiv.name)
+#		if self.pos + max(rdiv.height, ldiv.height) > self.contentHeight:
+#			scribus.sizeObject(rdiv.width, self.contentHeight - self.pos, rdiv.name)
+#			scribus.sizeObject(ldiv.width, self.contentHeight - self.pos, ldiv.name)
+#			scribus.newPage(-1)
+#			rd = Div(rdiv.width, rdiv.name + 'X')
+#			ld = Div(ldiv.width, ldiv.name + 'X')
+#			scribus.linkTextFrames(rdiv.name, rd.name)
+#			scribus.linkTextFrames(ldiv.name, ld.name)
+#			rd.enlarge(self.baseline)
+#			ld.enlarge(self.baseline)
+#			scribus.moveObject(self.marginLeft, self.marginTop, ld.name)
+#			scribus.moveObject(self.marginLeft + self.contentWidth / 2, self.marginTop, rd.name)
+#			self.pos = max(rd.height, ld.height)
+#		else:
+#			self.pos += max(rdiv.height, ldiv.height) + gap
+
+	def adddivs(self, rdiv, ldiv, gap=0):
+		scribus.gotoPage(1)
+		#ldiv.render()
+		ldiv.enlarge()
+		#rdiv.render(alt=True)
+		rdiv.enlarge()
+		lastpage = scribus.pageCount()
+		if self.pos + 30 > self.contentHeight:
+			scribus.newPage(-1)
+			scribus.newPage(-1)
+			self.pos = 0
+		lastpage = scribus.pageCount()
+		scribus.gotoPage(1)
+		scribus.copyObject(ldiv.name)
+		scribus.deleteObject(ldiv.name)
+		scribus.gotoPage(lastpage)
+		scribus.pasteObject()
 		scribus.moveObject(self.marginLeft, self.marginTop + self.pos, ldiv.name)
-		scribus.moveObject(self.marginLeft + self.contentWidth / 2, self.marginTop + self.pos, rdiv.name)
+		scribus.gotoPage(1)
+		scribus.copyObject(rdiv.name)
+		scribus.deleteObject(rdiv.name)
+		scribus.gotoPage(lastpage - 1)
+		scribus.pasteObject()
+		scribus.moveObject(self.marginLeft, self.marginTop + self.pos, rdiv.name)
+
 		if self.pos + max(rdiv.height, ldiv.height) > self.contentHeight:
 			scribus.sizeObject(rdiv.width, self.contentHeight - self.pos, rdiv.name)
 			scribus.sizeObject(ldiv.width, self.contentHeight - self.pos, ldiv.name)
 			scribus.newPage(-1)
+			scribus.newPage(-1)
+
+			lastpage = scribus.pageCount()
+			scribus.gotoPage(lastpage - 1)
 			rd = Div(rdiv.width, rdiv.name + 'X')
+			rd.render()
+			scribus.moveObject(self.marginLeft, self.marginTop, rd.name)
+			scribus.gotoPage(lastpage)
 			ld = Div(ldiv.width, ldiv.name + 'X')
+			ld.render()
+			scribus.moveObject(self.marginLeft, self.marginTop, ld.name)
 			scribus.linkTextFrames(rdiv.name, rd.name)
 			scribus.linkTextFrames(ldiv.name, ld.name)
 			rd.enlarge()
 			ld.enlarge()
-			scribus.moveObject(self.marginLeft, self.marginTop, ld.name)
-			scribus.moveObject(self.marginLeft + self.contentWidth / 2, self.marginTop, rd.name)
-			self.pos = max(rd.height, ld.height)
+			#scribus.gotoPage(scribus.pageCount() - 1)
+			self.pos = max(rd.height, ld.height) + gap
 		else:
-			self.pos += max(rdiv.height, ldiv.height)
+			self.pos += max(rdiv.height, ldiv.height) + gap
+		#scribus.gotoPage(scribus.pageCount())
 
 	def publish(self, name):
 		scribus.saveDocAs('/root/%s.sla'%name)
@@ -156,15 +239,16 @@ class LiturgyPrint(Print):
 
 class ZoharPrint(Print):
 	def __init__(self):
-		super().__init__()
-
-	def render(self):
-		articles = [
-			[2, 26, 1],
-			[0, 0, 18],
-			[0, 0, 10]
-		]
+		self.articles = [
+			[0, 0, 10],
+			[0, 0, 15],
+			[0, 0, 18]#,
+			#[0, 0, 20]#,
+			#[2, 26, 1],
+			#[2, 26, 7]#,
+			]
 		c = [
+			[0, 0, 1],
 			[0, 0, 2],
 			[0, 0, 3],
 			[0, 0, 4],
@@ -173,15 +257,15 @@ class ZoharPrint(Print):
 			[0, 0, 7],
 			[0, 0, 8],
 			[0, 0, 9],
-			[0, 0, 10],
+			#[0, 0, 10],
 			[0, 0, 11],
 			[0, 0, 12],
 			[0, 0, 13],
 			[0, 0, 14],
-			[0, 0, 15],
+			#[0, 0, 15],
 			[0, 0, 16],
 			[0, 0, 17],
-			[0, 0, 18],
+			#[0, 0, 18],
 			[0, 0, 19],
 			[0, 0, 20],
 			[0, 0, 21],
@@ -201,41 +285,51 @@ class ZoharPrint(Print):
 			[2, 26, 7],
 			[2, 27, 1]
 			]
-			
-		for b, c, a in articles:
-			article = zohar.books[b].chapters[c].articles[a - 1]
-			self.render_article(article)
-			scribus.redrawAll()
+		super().__init__()
 
-	def render_article(self, article):
-		div = Div(self.contentWidth, 'title %d %d %d'%(article.book.number, article.chapter.number, article.number))
-		div.render([Span(SpanKind.H1, article.title)])
-		self.adddiv(div)
-		paragraphs = article.sections
-		txparagraphs = article.translation_sections
-		for paragraph_id in range(len(paragraphs)):
-			prefix = '%d %d %d %d'%(article.book.number, article.chapter.number, article.number, paragraph_id)
-			#zohar
-			paragraph = paragraphs[paragraph_id]
-			rdiv = Div(self.contentWidth / 2, 'zohar' + prefix)
-			spans = []
-			for line in paragraph:
-				spans += line
-				if line != paragraph[-1]:
-					spans.append(Span(SpanKind.PLAIN, '\n'))
-			spans = self.format_spans(spans)
-			rdiv.render(spans)
-			#translation
-			ldiv = Div(self.contentWidth / 2, 'zohartx' + prefix)
-			paragraph = txparagraphs[paragraph_id]
-			spans = []
-			for line in paragraph:
-				spans += line
-				if line != paragraph[-1]:
-					spans.append(Span(SpanKind.PLAIN, '\n'))
-			spans = self.format_spans(spans, tx=True)
-			ldiv.render(spans)
-			self.adddivs(rdiv, ldiv)
+	def render(self):
+		for b, c, a in self.articles:
+			article = zohar.books[b].chapters[c].articles[a - 1]
+			paragraphs = article.sections
+			txparagraphs = article.translation_sections
+
+			for paragraph_id in range(len(paragraphs)):
+				paragraph = paragraphs[paragraph_id]
+				txparagraph = txparagraphs[paragraph_id]
+				for line_id in range(len(paragraph)):
+					prefix = '%d-%d-%d-%d-%d'%(article.book.number, article.chapter.number, article.number, paragraph_id, line_id)
+					#zohar
+					spans = paragraph[line_id]
+					spans = self.format_spans(spans)
+					rdiv = Div(self.contentWidth / 1, 'zohar' + prefix, spans)
+					rdiv.render(alt=True)
+					#translation
+					spans = txparagraph[line_id]
+					spans = self.format_spans(spans, tx=True)
+					ldiv = Div(self.contentWidth / 1, 'zohartx' + prefix, spans)
+					ldiv.render()
+			#self.r2(article)
+
+	def move(self):
+		for b, c, a in self.articles:
+			article = zohar.books[b].chapters[c].articles[a - 1]
+			paragraphs = article.sections
+			txparagraphs = article.translation_sections
+			for paragraph_id in range(len(paragraphs)):
+				paragraph = paragraphs[paragraph_id]
+				txparagraph = txparagraphs[paragraph_id]
+				for line_id in range(len(paragraph)):
+					prefix = '%d-%d-%d-%d-%d'%(article.book.number, article.chapter.number, article.number, paragraph_id, line_id)
+					spans = paragraph[line_id]
+					spans = self.format_spans(spans)
+					rdiv = Div(self.contentWidth / 1, 'zohar' + prefix, spans)
+					spans = txparagraph[line_id]
+					spans = self.format_spans(spans, tx=True)
+					ldiv = Div(self.contentWidth / 1, 'zohartx' + prefix, spans)
+					gap = 0
+					if line_id == len(paragraph) - 1:
+						gap = 16
+					self.adddivs(rdiv, ldiv, gap=gap)
 
 	def format_spans(self, spans, tx=False):
 		for i in range(len(spans)):
@@ -253,13 +347,13 @@ class ZoharPrint(Print):
 			if span.kind == SpanKind.SYNONYM:
 				value = '(=%s)'%value
 			if span.kind == SpanKind.EXPLANATION:
-				value = '(~%s)'%value
+				value = '(%s)'%value
 			if span.kind == SpanKind.CORRECTION:
 				value = '[%s]'%value
 			if span.kind == SpanKind.LINK:
-				#value = '(%s)'%value
-				a, b, c = value.split(' ')
-				value = '%s.%s:%s'%(a, b, c)
+				value = '(%s)'%value
+				#a, b, c = value.split(' ')
+				#value = '%s,%s,%s'%(a, b, c)
 			spans[i].value = value
 		return spans
 
@@ -323,7 +417,7 @@ class MikraotPrint(Print):
 				div.render(spans)
 				self.adddiv(div)
 
-	def format_spans(self, spans):
+	def xformat_spans(self, spans):
 		for i in range(len(spans)):
 			span = spans[i]
 			value = span.value
@@ -343,6 +437,17 @@ class MikraotPrint(Print):
 if __name__ == '__main__':
 	#p = LiturgyPrint()
 	#p = MikraotPrint()
+
 	p = ZoharPrint()
+	p.create()
 	p.render()
 	p.publish('zohar')
+	scribus.closeDoc()
+
+	filename = '/root/zohar.sla'
+	data = open(filename).read()
+	data = re.sub('FLOP="0"', 'FLOP="1"', data)
+	open(filename, 'w').write(data)
+	scribus.openDoc(filename)
+
+	p.move()

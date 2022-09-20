@@ -91,12 +91,16 @@ def parse(text=''):
 		return []
 	text = re.sub('"([^"]+)"', r'“\1”', text)
 	text = re.sub("'([^']+)'", r"‘\1’", text)
-	text = re.sub('^- ', '\u2015 ', text)#―
-	text = re.sub(' -', ' \u2013', text)#–
-	text = re.sub('-', '\u2011', text)
+	#text = re.sub('^- ', '\u2015 ', text)#―
+	#text = re.sub(' -', ' \u2013', text)#–
+	#text = re.sub('-', '\u2011', text)
 	text = re.sub('{[^}]*}', '', text) #remove zohar page no
 	text = re.sub(' +', ' ', text)
 
+	h1_items = list(re.finditer('^=([^\n]+)', text, re.M))
+	for item in h1_items:
+		start, end = item.span()
+		text = text[0:start] + (end - start) * 'X' + text[end:]
 	alternative_items = list(re.finditer('\[([^|]*)\|([^]]+)\]', text))
 	for item in alternative_items:
 		start, end = item.span()
@@ -125,7 +129,8 @@ def parse(text=''):
 	for item in citation_items:
 		start, end = item.span()
 		text = text[0:start] + (end - start) * 'X' + text[end:]
-	link_items = list(re.finditer('\(([\u05d0-\u05ea־]+ [\u05d0-\u05ea]{1,3} [\u05d0-\u05ea]{1,3})\)', text))
+	link_items = list(re.finditer('\(([\u05d0-\u05ea־]+ [\u05d0-\u05ea]{1,3} [\u05d0-\u05ea]{1,3})\)', text)) + \
+			list(re.finditer('\^([^^]+)\^', text))
 	for item in link_items:
 		start, end = item.span()
 		text = text[0:start] + (end - start) * 'X' + text[end:]
@@ -137,14 +142,16 @@ def parse(text=''):
 	for idx in range(len(text)):
 		for item in nonliteral_items + addition_items + alternative_items + \
 				synonym_items + explanation_items + correction_items + \
-				citation_items + link_items + plain_items:
+				citation_items + link_items + plain_items + h1_items:
 			if idx == item.start():
 				groups = item.groups()
 				value = groups[0]
 				if len(groups) > 1:
 					alt = groups[1]
 				span = None
-				if item in nonliteral_items:
+				if item in h1_items:
+					span = Span(SpanKind.H1, value)
+				elif item in nonliteral_items:
 					span = Span(SpanKind.NONLITERAL, value)
 				elif item in addition_items:
 					span = Span(SpanKind.ADDITION, value)

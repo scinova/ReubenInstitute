@@ -12,6 +12,11 @@ div.zohar span {
 	xborder: 1px solid red;
 	}
 
+div.zohar h1 {
+	color: #aaa;
+	font-family: main;
+	}
+
 div.zohar span.explanation {
 	color: #aaa;
 	font-family: main;
@@ -31,10 +36,12 @@ div.zohar span.synonym {
 	}
 
 div.zohar span.scripture {
+	font-family: scripture;
 	color: #900;
 	}
 
 div.zohar span.citation {
+	font-family: scripture;
 	color: #900;
 	}
 
@@ -46,3 +53,4 @@ div.zohar span.link {
 	font-size: 80%;
 	color: #999;
 	}
+

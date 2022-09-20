@@ -44,7 +44,12 @@
 @font-face {
 	font-family: scripture;
 	src: url('/@@/fonts/custom/ReuvenSerif.ttf') format('truetype');
+	src: url('/@@/fonts/TaameyFrankCLM-Medium.ttf') format('truetype');
+	src: url('/@@/fonts/StamAshkenazCLM.ttf') format('truetype');
+	src: url('/@@/fonts/KeterAramTsova.ttf') format('truetype');
 	src: url('/@@/fonts/FrankRuehlCLM-Medium.ttf') format('truetype');
+	src: url('/@@/fonts/ShlomoSemiStam.ttf') format('truetype');
+	src: url('/@@/fonts/KeterYG-Bold.ttf') format('truetype');
 	}
 
 @cfont-face {
