@@ -11,31 +11,28 @@ def files(filename):
 	return send_from_directory('static', filename)
 
 @zohar_bp.route('/zohar/')
-def zohar():
-	return render_template('zohar.html')
+def main():
+	return render_template('main.html')
 
 @zohar_bp.route('/zohar/<int:book_number>/<int:chapter_number>')
-def view_zohar_chapter(book_number, chapter_number):
-	#filename = '../db/zohar/%1d.%02d.txt'%(book_number, chapter_number)
-	#data = open(filename).read().split('\n')
+def view_chapter(book_number, chapter_number):
 	chapter = Zohar.books[book_number - 1].chapters[chapter_number - 1]
-	return render_template('zohar-chapter.html', chapter=chapter)#, data=data)
+	return render_template('chapter.html', chapter=chapter)#, data=data)
 
 @zohar_bp.route('/zohar/<int:book_number>/<int:chapter_number>/<int:article_number>')
-def view_zohar_article(book_number, chapter_number, article_number):
-	#data = ''#open('../db/zohar/3.08.txt').read()
+def view_article(book_number, chapter_number, article_number):
 	book = Zohar.books[book_number - 1]
 	chapter = book.chapters[chapter_number - 1]
 	article = chapter.articles[article_number - 1]
-	return render_template('zohar-article.html', article=article)#, data=data)
+	return render_template('article.html', article=article)#, data=data)
 
 @zohar_bp.route('/zohar/issues/<int:issue_number>')
-def view_zohar_issue(issue_number):
+def view_issue(issue_number):
 	issue = Zohar.issues[issue_number - 1]
-	return render_template('zohar-issue.html', issue=issue)
+	return render_template('issue.html', issue=issue)
 
 @zohar_bp.route('/zohar/<int:book_number>/<int:chapter_number>/<int:article_number>/edit/<int:paragraph_number>', methods=['GET','POST'])
-def edit_zohar_paragraph(book_number, chapter_number, article_number, paragraph_number):
+def edit_paragraph(book_number, chapter_number, article_number, paragraph_number):
 	book = Zohar.books[book_number - 1]
 	chapter = book.chapters[chapter_number - 1]
 	article = chapter.articles[article_number - 1]
@@ -48,13 +45,11 @@ def edit_zohar_paragraph(book_number, chapter_number, article_number, paragraph_
 		text = text.replace('\u05c7', '\u05b8')
 		article.text = text
 		#ZOHAR.books[book_number - 1].chapters[chapter_number - 1].articles[article_number - 1].text = text
-
 		paragraphs = article.translation.split('\n\n')
 		paragraphs[paragraph_number - 1] = request.form['translation'].replace('\r\n', '\n')
 		text = '\n\n'.join(paragraphs)
 		article.translation = text
 		#ZOHAR.books[book_number - 1].chapters[chapter_number - 1].articles[article_number - 1].translation = text
-
 		return redirect('/zohar/%d/%d/%d#v%d'%(book_number, chapter_number, article_number, paragraph_number))
 	if request.method == 'GET':
 		text = article.text.split("\n\n")[paragraph_number - 1]
@@ -88,5 +83,5 @@ def edit_zohar_paragraph(book_number, chapter_number, article_number, paragraph_
 			text = common.fix_yhwh(text)
 			text = common.unicode_reorder(text)
 		translation = article.translation.split("\n\n")[paragraph_number - 1]
-		return render_template('zohar-edit-paragraph.html', text=text, translation=translation,
+		return render_template('paragraph-edit.html', text=text, translation=translation,
 				book=book, chapter=chapter, article=article, article_number=article_number, paragraph_number=paragraph_number)

@@ -8,7 +8,7 @@ aramaic_bp = Blueprint('aramaic_bp', __name__, template_folder='templates', stat
 
 @aramaic_bp.route('/aramaic')
 def aramaic_main():
-	return render_template('aramaic.html')
+	return render_template('main.html')
 
 @aramaic_bp.route('/aramaic/<string:name>', methods=['GET'])
 def aramaic_dictionary(name):
@@ -19,7 +19,7 @@ def aramaic_dictionary(name):
 		groups = [[word for word in dictionary.words if word.root == root] for root in roots]
 	else:
 		groups = [dictionary.words]
-	return render_template('aramaic-dictionary.html', dictionary=dictionary, groups=groups)
+	return render_template('dictionary.html', dictionary=dictionary, groups=groups)
 
 @aramaic_bp.route('/aramaic/<string:name>', methods=['POST'])
 def save_dictionary(name):
@@ -46,7 +46,7 @@ def aramaic_word(dictionary, word):
 				w = Aramaic.Number('%s:,,='%word)
 			else:
 				w = Aramaic.Word('%s:='%word)
-		return render_template('aramaic-word.html', word=w)
+		return render_template('word.html', word=w)
 	if request.method == 'POST':
 		d = Aramaic._dictionaries[dictionary]
 		value = request.form['value']

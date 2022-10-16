@@ -6,12 +6,12 @@ mishnah_bp = Blueprint('mishnah_bp', __name__, template_folder='templates')
 
 @mishnah_bp.route('/mishnah/')
 def main():
-	return render_template('mishnah.html')
+	return render_template('main.html')
 
 @mishnah_bp.route('/mishnah/<int:order_no>/<int:tractate_no>')
 def view_tractate(order_no, tractate_no):
 	tractate = Mishnah.orders[order_no - 1].tractates[tractate_no - 1]
-	return render_template('mishnah-tractate.html', tractate=tractate)
+	return render_template('tractate.html', tractate=tractate)
 
 @mishnah_bp.route('/mishnah/<int:order_no>/<int:tractate_no>/<int:chapter_no>/edit/<int:verse_no>', methods=['GET'])
 def edit_verse(order_no, tractate_no, chapter_no, verse_no):
@@ -38,7 +38,5 @@ def save_verse(order_no, tractate_no, chapter_no, verse_no):
 	cs = tractate.bartenura_text.split('\n\n')
 	cs[chapter_no - 1] = ct
 	tractate.bartenura_text = '\n\n'.join(cs)
-	
-	#verse.chapter.tractate.save()
+
 	return redirect('/mishnah/%d/%d#%d.%d'%(tractate.order.number, tractate.number, chapter.number, verse.number))
-#	return render_template('chapter-edit.html', chapter=chapter)
