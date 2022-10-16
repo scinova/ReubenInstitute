@@ -5,7 +5,7 @@ sys.path.append('..')
 import common
 import Tanakh
 
-tanakh_bp = Blueprint('tanakh_bp', __name__, template_folder='templates')
+tanakh_bp = Blueprint('tanakh_bp', __name__)#, template_folder='templates')
 
 @tanakh_bp.route('/psalms/')
 def psalms():
@@ -22,32 +22,32 @@ def psalms():
 			s += ' ' + x
 	words = list(set(s.split(' ')))
 	words.sort()
-	return render_template('psalms.html', words=words, s=s, tanakh=common.tanakh, enumerate=enumerate)
+	return render_template('tanakh/psalms.html', words=words, s=s, tanakh=common.tanakh, enumerate=enumerate)
 
 @tanakh_bp.route('/tanakh/')
 def tanakh_main():
-	return render_template('tanakh.html')#, enumerate=enumerate)
+	return render_template('tanakh/main.html')#, enumerate=enumerate)
 
 @tanakh_bp.route('/tanakh/<int:book_no>/<int:chapter_no>')
 def tanakh_chapter_view(book_no, chapter_no):
 	book = Tanakh.books[book_no - 1]
 	chapter = book.chapters[chapter_no - 1]
 	if book.is_poem:
-		return render_template('tanakh-chapter-poem.html', chapter=chapter)
+		return render_template('tanakh/chapter-poem.html', chapter=chapter)
 	else:
-		return render_template('tanakh-chapter.html', chapter=chapter)
+		return render_template('tanakh/chapter.html', chapter=chapter)
 
-@tanakh_bp.route('/tanakh/<int:book_no>/<int:chapter_no>/<int:verse_no>/edit')
-def tanakh_verse_edit(book_no, chapter_no, verse_no):
-	book = Tanakh.books[book_no - 1]
-	chapter = book.chapters[chapter_no - 1]
-	verse = chapter.verses[verse_no - 1]
-	if request.method == 'POST':
-		if verse.mikra_text != request.form['mikra_text']:
-			verse.mikra_text = request.form['mikra_text']
-			verse.mikra_text = unicodedata.normalize('NFD', verse.mikra_text)
-		return redirect('/tanakh/%d/%d#%d'%(book.number, verse.chapter.number, verse.number))
-	return render_template('tanakh-verse-edit2.html', verse=verse, parasha_no=parasha_no)
+#@tanakh_bp.route('/tanakh/<int:book_no>/<int:chapter_no>/<int:verse_no>/edit')
+#def tanakh_verse_edit(book_no, chapter_no, verse_no):
+#	book = Tanakh.books[book_no - 1]
+#	chapter = book.chapters[chapter_no - 1]
+#	verse = chapter.verses[verse_no - 1]
+#	if request.method == 'POST':
+#		if verse.mikra_text != request.form['mikra_text']:
+#			verse.mikra_text = request.form['mikra_text']
+#			verse.mikra_text = unicodedata.normalize('NFD', verse.mikra_text)
+#		return redirect('/tanakh/%d/%d#%d'%(book.number, verse.chapter.number, verse.number))
+#	return render_template('verse-edit2.html', verse=verse, parasha_no=parasha_no)
 
 @tanakh_bp.route('/tanakh/<int:book_no>/p<int:parasha_no>')
 def view_parasha(book_no, parasha_no):
@@ -55,7 +55,7 @@ def view_parasha(book_no, parasha_no):
 	#print (book)
 	parasha = book.parashot[parasha_no - 1]
 	#print (parasha)
-	return render_template('tanakh-parasha.html', parasha=parasha)
+	return render_template('tanakh/parasha.html', parasha=parasha)
 
 #@tanakh_bp.route('/tanakh/<int:book_no>/psmet/<int:parasha_no>')
 #def view_parasha_smet(book_no, parasha_no):
@@ -101,4 +101,4 @@ def verse_edit(book_no, chapter_no, verse_no, parasha_book_no=None, parasha_no=N
 			return redirect('/tanakh/%d/p%d#%d.%d'%(book.number, parasha_no, chapter.number, verse.number))
 		else:
 			return redirect('/tanakh/%d/%d#%d'%(book.number, verse.chapter.number, verse.number))
-	return render_template('tanakh-verse-edit2.html', verse=verse, parasha_no=parasha_no)
+	return render_template('tanakh/tanakh-verse-edit2.html', verse=verse, parasha_no=parasha_no)

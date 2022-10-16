@@ -4,32 +4,32 @@ sys.path.append('..')
 import Zohar
 import common
 
-zohar_bp = Blueprint('zohar_bp', __name__, template_folder='templates')
+zohar_bp = Blueprint('zohar_bp', __name__)#, template_folder='templates')
 
-@zohar_bp.route('/@@/<path:filename>')
-def files(filename):
-	return send_from_directory('static', filename)
-
+#@zohar_bp.route('/@@/<path:filename>')
+#def files(filename):
+#	return send_from_directory('static', filename)
+#
 @zohar_bp.route('/zohar/')
 def main():
-	return render_template('main.html')
+	return render_template('zohar/main.html')
 
 @zohar_bp.route('/zohar/<int:book_number>/<int:chapter_number>')
 def view_chapter(book_number, chapter_number):
 	chapter = Zohar.books[book_number - 1].chapters[chapter_number - 1]
-	return render_template('chapter.html', chapter=chapter)#, data=data)
+	return render_template('zohar/chapter.html', chapter=chapter)#, data=data)
 
 @zohar_bp.route('/zohar/<int:book_number>/<int:chapter_number>/<int:article_number>')
 def view_article(book_number, chapter_number, article_number):
 	book = Zohar.books[book_number - 1]
 	chapter = book.chapters[chapter_number - 1]
 	article = chapter.articles[article_number - 1]
-	return render_template('article.html', article=article)#, data=data)
+	return render_template('zohar/article.html', article=article)#, data=data)
 
 @zohar_bp.route('/zohar/issues/<int:issue_number>')
 def view_issue(issue_number):
 	issue = Zohar.issues[issue_number - 1]
-	return render_template('issue.html', issue=issue)
+	return render_template('zohar/issue.html', issue=issue)
 
 @zohar_bp.route('/zohar/<int:book_number>/<int:chapter_number>/<int:article_number>/edit/<int:paragraph_number>', methods=['GET','POST'])
 def edit_paragraph(book_number, chapter_number, article_number, paragraph_number):
@@ -83,5 +83,5 @@ def edit_paragraph(book_number, chapter_number, article_number, paragraph_number
 			text = common.fix_yhwh(text)
 			text = common.unicode_reorder(text)
 		translation = article.translation.split("\n\n")[paragraph_number - 1]
-		return render_template('paragraph-edit.html', text=text, translation=translation,
+		return render_template('zohar/paragraph-edit.html', text=text, translation=translation,
 				book=book, chapter=chapter, article=article, article_number=article_number, paragraph_number=paragraph_number)

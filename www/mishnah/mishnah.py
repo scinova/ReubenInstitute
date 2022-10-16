@@ -2,21 +2,21 @@ from flask import Blueprint, g, render_template, request, redirect
 import common
 import Mishnah
 
-mishnah_bp = Blueprint('mishnah_bp', __name__, template_folder='templates')
+mishnah_bp = Blueprint('mishnah_bp', __name__)#, template_folder='templates')
 
 @mishnah_bp.route('/mishnah/')
 def main():
-	return render_template('main.html')
+	return render_template('mishnah/main.html')
 
 @mishnah_bp.route('/mishnah/<int:order_no>/<int:tractate_no>')
 def view_tractate(order_no, tractate_no):
 	tractate = Mishnah.orders[order_no - 1].tractates[tractate_no - 1]
-	return render_template('tractate.html', tractate=tractate)
+	return render_template('mishnah/tractate.html', tractate=tractate)
 
 @mishnah_bp.route('/mishnah/<int:order_no>/<int:tractate_no>/<int:chapter_no>/edit/<int:verse_no>', methods=['GET'])
 def edit_verse(order_no, tractate_no, chapter_no, verse_no):
 	verse = Mishnah.orders[order_no - 1].tractates[tractate_no - 1].chapters[chapter_no - 1].verses[verse_no - 1]
-	return render_template('verse-edit.html', verse=verse)
+	return render_template('mishnah/verse-edit.html', verse=verse)
 
 @mishnah_bp.route('/mishnah/<int:order_no>/<int:tractate_no>/<int:chapter_no>/edit/<int:verse_no>', methods=['POST'])
 def save_verse(order_no, tractate_no, chapter_no, verse_no):
