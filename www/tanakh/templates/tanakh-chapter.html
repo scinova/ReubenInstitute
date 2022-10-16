@@ -1,7 +1,7 @@
 5{% extends "base.html" %}
-{% block title %}{{chapter.book.name}}, פרק {{chapter.hebrew_number}}{% endblock %}
+{% block title %}תנ״ך • ספר ‘{{chapter.book.name}}’ • פרק {{chapter.hebrew_number}}{% endblock %}
 {% block content %}
-<h1>{{chapter.book.name}}, פרק {{chapter.hebrew_number}}</h1>
+<h1>ספר ‘{{chapter.book.name}}’ • פרק ‘{{chapter.hebrew_number}}’</h1>
 
 <div class="mikra justify">
 	{%- for verse in chapter.verses -%}
@@ -12,6 +12,8 @@
 			{%- elif span.kind == SpanKind.MINUSCULE -%}
 				<span class="minuscule">{{span.value}}</span>
 			{%- elif span.kind == SpanKind.PLAIN -%}
+				<span class="plain">{{span.value}}</span>
+			{%- else -%}
 				<span class="plain">{{span.value}}</span>
 			{%- endif -%}
 		{%- endfor -%}

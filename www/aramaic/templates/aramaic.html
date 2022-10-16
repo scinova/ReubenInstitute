@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}{% endblock %}
+{% block content %}
+{% set new = request.args.new %}
+<table dir="ltr">
+{% for d in Aramaic.dictionaries %}
+	<tr>
+		<td><a href="/aramaic/{{d.name}}{% if new %}/{{new}}{% endif %}">{{d.name}}</a></td>
+		<td>{{d.numwords}}</td>
+		<td>{% if d.numvariations %}{{d.numvariations}}{% endif %}</td>
+	</tr>
+{% endfor %}
+	<tr>
+		<td></td>
+		<td>{{Aramaic.numwords}}</td>
+		<td>{{Aramaic.numvariations}}</td>
+	</tr>
+</table>
+{% endblock %}

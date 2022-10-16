@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}מסכת {{tractate.name}} (סדר {{tractate.order.name}}){% endblock %}
+{% block header %}<link rel="stylesheet" href="/@@/Mishnah.css" />{% endblock %}
+{% block content %}
+	<h1>מסכת {{tractate.name}} (סדר {{tractate.order.name}})</h1>
+	{% for chapter in tractate.chapters %}
+		<h2>פרק {{chapter.hebrew_number}}</h2>
+		{%- for verse in chapter.verses -%}
+		<div class="verse justify">
+			<span class="verseno"><a name="{{chapter.number}}.{{verse.number}}" href="/mishnah/{{tractate.order.number}}/{{tractate.number}}/{{chapter.number}}/edit/{{verse.number}}">{{verse.hebrew_number}}</a></span>
+			{%- for span in verse.mishnah -%}
+				{%- if span.kind == SpanKind.SCRIPTURE -%}
+					<span class="scripture">{{span.value}}</span><!--“”-->
+				{%- elif span.kind == SpanKind.LINK -%}
+					<span class="link">({{span.value}})</span>
+				{%- else -%}
+					{% set value = re.sub('(”[^”]+”)', '<span class="citation">\\1</span>', span.value) %}
+					<span class="plain">{{value|safe}}</span>
+				{%- endif -%}
+			{%- endfor -%}
+		</div>
+		<div class="verse justify" style="font-size:70%">
+			{%- for span in verse.bartenura -%}
+				{%- if not loop.first %} {% endif -%}
+				{%- if span.kind == SpanKind.LEGEND -%}
+					<span class="legend">{{span.value}}:</span>
+				{%- elif span.kind == SpanKind.SCRIPTURE -%}
+					<span class="scripture">{{span.value}}</span><!--“”-->
+				{%- elif span.kind == SpanKind.LINK -%}
+					<span class="link">({{span.value}})</span>
+				{%- else -%}
+					<span class="plain">{{span.value}}</span>
+				{%- endif -%}
+			{%- endfor -%}
+		</div>
+		{%- endfor -%}
+	{% endfor %}
+{% endblock %}

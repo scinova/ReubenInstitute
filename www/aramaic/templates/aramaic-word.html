@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+{% block title %}{% endblock %}
+{% block content %}
+
+{{word.value}}<br />
+{% for variation in word.variations %}
+	{{variation.value}}<br />
+{% endfor %}
+<form method="post">
+	<label for="value"></label>
+	<input class="short"  type="text" id="value" name="value" value="{{word.value}}" />
+	<br />
+	<br />
+	{% if 'root' in dir(word) %}
+		<label for="root">שורש</label>
+		<input class="short" type="text" id="root" name="root" value="{{word.root}}" />
+	{% endif %}
+	{% if type(word) in [Verb] %}
+		<label for="stem">בניין</label>
+		<select id="stem" name="stem">
+			{% for i in Stem %}
+				<option value="{{i.value}}"{% if word.stem == i.value %} selected="selected"{% endif %}>{{i.value}} {{i.name}}</option>
+			{% endfor %}
+		</select>
+		<label for="tense">זמן</label>
+		<select id="tense" name="tense">
+			{% for i in Tense %}
+				<option{% if word.tense == i.value %} selected="selected"{% endif %}>{{i.value}}</option>
+			{% endfor %}
+		</select>
+	{% endif %}
+	{% if type(word) in [Pronoun, Verb] %}
+		<select name="person">
+			{% if type(word) in [Verb] %}
+				<option value="">-</option>
+			{% endif %}
+			{% for p in Person %}
+				<option{% if word.person == p.value %} selected="selected"{% endif %}>{{p.value}}</option>
+			{% endfor %}
+		</select>
+	{% endif %}
+	{% if type(word) in [Noun, Number, Pronoun, Verb] %}
+		<select name="gender">
+			{% if type(word) in [Number, Pronoun, Verb] %}
+				<option value="">-</option>
+			{% endif %}
+			{% for i in Gender %}
+				<option{% if word.gender == i.value %} selected="selected"{% endif %}>{{i.value}}</option>
+			{% endfor %}
+		</select>
+	{% endif %}
+	{% if type(word) in [Noun, Pronoun, Verb] %}
+		<select name="count">
+			{% if type(word) in [Verb] %}
+				<option value="">-</option>
+			{% endif %}
+			{% for c in Count %}
+				<option{% if word.kount == c.value %} selected="selected"{% endif %}>{{c.value}}</option>
+			{% endfor %}
+		</select>
+	{% endif %}
+	<br />
+	<label for="translation"></label>
+	<input type="text" id="translation" name="translation" value="{{word.translation}}" />
+
+	<br /><br />
+
+	{% for variation in word.variations %}
+		<input name="x" type="text" value="{{variation.value}}" />
+		
+		<!--<select>
+			<option value="">-</option>
+			{% for p in Person %}
+				{% for s in Gender %}
+					{% for c in Count %}
+						<option>{{p.value}},{{s.value}},{{c.value}}</option>
+					{% endfor %}
+				{% endfor %}
+			{% endfor %}
+		</select>-->
+		<input name="x" type="text" value="{{variation.translation}}" />
+		{{','.join(variation.params)}}
+
+		<br />
+	{% endfor %}
+	<button type="submit">שמור</button>
+
+
+
+
+<form>
+{% endblock %}

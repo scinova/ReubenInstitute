@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block title %}זהר{% endblock %}
+{% block content %}
+
+
+{% set marks = 'ְֱֲֳִֵֶַָֹֻ' %}
+{% set letters = 'אבגדהוזחטיכלמנסעפקצרשת' %}
+
+<div style="font-family:frank;display:none;">
+{%- for m in marks -%}
+	{%- for b in letters -%}
+		{{b}}{{m}}<span style="font-family:frankorig;color:blue;">{{b}}{{m}}</span>
+	{%- endfor -%}
+	<br />
+{%- endfor -%}
+<br />
+{%- for b in letters -%}
+	{%- for m in marks -%}
+		{{b}}{{m}}<span style="font-family:frankorig;color:blue;">{{b}}{{m}}</span>
+	{%- endfor -%}
+	<br />
+{%- endfor -%}
+<br />
+</div>
+
+{#%- for b in 'אבגדהוזחטיכלמנסעפקצרשת' -%}
+	{%- for m in [1488-32+12] + list(range(1488-32, 1488-32+9)) + [1488-32+11] -%}
+		{{b}}{{chr(m)}}
+	{%- endfor -%}<br />
+{%- endfor -%#}
+
+{% for issue in Zohar.issues %}
+	<a href="/zohar/issues/{{loop.index}}">גליון {{issue.number}} {{issue.name}}</a><br />
+	<table>
+	{% for article in issue.articles %}
+		<tr>
+			<td class="max">
+			<a href="/zohar/{{article.book.number}}/{{article.chapter.number}}/{{article.number}}">{{article.title}}</a></td>
+			<td>{{len(article.text.split(" "))}}</td>
+			<td>{{len(article.translation.split(" "))}}</td>
+			<td>{{int(len(article.translation.split(" ")) * 100.0 / len(article.text.split(" ")))}}%</td>
+		</tr>
+	{% endfor %}
+	<tr>
+		<td></td>
+		<td>{{issue.textlen}}</td>
+		<td>{{issue.translationlen}}</td>
+		<td>{#{int(issue.translationlen * 100.0 / issue.textlen)}}%#}</td>
+	</tr>
+	</table>
+{% endfor %}
+
+{% for book in Zohar.books %}
+	{% set oloop = loop %}
+	<h2>{{book.title}}</h2>
+	{% for chapter in book.chapters %}
+		<a href="/zohar/{{book.number}}/{{chapter.number}}">{{chapter.title}}</a><br />
+	{% endfor %}
+	<br />
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block title %}{% endblock %}
+{% block content %}
+<h1></h1>
+<form method="post">
+<div class="right">
+	<div סclass="verse">
+		<textarea cols="45" rows="20" name="text" style="font-family:reuven">{{text}}</textarea>
+	</div>
+</div>
+<div class="left">
+	<div סclass="verse">
+		<textarea cols="45" rows="20" name="translation">{{translation}}</textarea>
+	</div>
+</div>
+<div class="clear"></div>
+	<button type="submit">שמור</button>
+<form>
+
+<table>
+	<tr>
+		<td><button onclick="navigator.clipboard.writeText('׳');return false;">׳</button></td>
+		<td><button onclick="navigator.clipboard.writeText('״');return false;">״</button></td>
+		<td><button onclick="navigator.clipboard.writeText('־');return false;">־</button></td>
+		<td><button onclick="navigator.clipboard.writeText('…');return false;">…</button></td>
+		<td><button onclick="navigator.clipboard.writeText('“');return false;">“</button></td>
+		<td><button onclick="navigator.clipboard.writeText('”');return false;">”</button></td>
+		<td><button onclick="navigator.clipboard.writeText('‘');return false;">‘</button></td>
+		<td><button onclick="navigator.clipboard.writeText('’');return false;">’</button></td>
+		<td><button onclick="navigator.clipboard.writeText('ֽ');return false;">ֽ</button></td>
+		<td><button onclick="navigator.clipboard.writeText('ׇ');return false;">ׇ</button></td>
+		<td><button onclick="navigator.clipboard.writeText('וֹ');return false;">וֹ</button></td>
+		<td><button onclick="navigator.clipboard.writeText('וֺ');return false;">וֺ</button></td>
+		<td><button onclick="navigator.clipboard.writeText('שׁ');return false;">שׁ</button></td>
+		<td><button onclick="navigator.clipboard.writeText('שׂ');return false;">שׂ</button></td>
+		<td><button onclick="navigator.clipboard.writeText('ֻ');return false;">אֻ</button></td>
+		<td><button onclick="navigator.clipboard.writeText('\u00a0');return false;">nbsp</button></td>
+	</tr>
+</table>
+
+
+{#
+<div>
+<hr />
+{% for s in article.parse(text) %}
+	<textarea>{{aramaic.spell(s.value)}}</textarea><br /><br />
+{% endfor %}
+<hr />
+</div>
+<div>
+{% set t = aramaic.remove_diacritics(text) %}
+{% set t = re.compile('[\-\,\.\:\!\?]').sub('', text) %}
+{% set t = re.compile('\s+').sub(' ', t) %}
+{{t}}
+{% set words = t.split(' ') %}
+{% for word in words %}
+	{{word}}
+	{{aramaic.search(word)}}
+	<br />
+{% endfor %}
+</div>
+#}
+
+{% endblock %}

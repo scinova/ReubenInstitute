@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}{% endblock %}
+{% block content %}
+{% set w = dictionary.words[0] %}
+<table>
+<tr>
+	<th>שם</th>
+	{% if 'stem' in dir(w) %}<th>בניין</th>{% endif %}
+	{% if 'root' in dir(w) %}<th>שורש</th>{% endif %}
+	{% if 'tense' in dir(w) %}<th>זמן</th>{% endif %}
+	{% if 'person' in dir(w) %}<th>גוף</th>{% endif %}
+	{% if 'gender' in dir(w) %}<th>מין</th>{% endif %}
+	{% if 'kount' in dir(w) %}<th>מספר</th>{% endif %}
+	{% if 'translation' in dir(w) %}<th>תרגום</th>{% endif %}
+	<th>וריאציות</th>
+</tr>
+{% for group in groups %}
+	{% set outerloop = loop %}
+	{% for word in group %}
+		<tr class="{% if loop.first %}first {% endif %}{% if loop.last %}last {% endif %}{{outerloop.cycle('odd','even')}}">
+			<td><a href="/aramaic/{{dictionary.name}}/{{word.value}}">{{word.value}}</a></td>
+			{% if 'stem' in dir(w) %}<td>{{word.stem}}</td>{% endif %}
+			{% if 'root' in dir(w) %}<td>{{word.root}}</td>{% endif %}
+			{% if 'tense' in dir(w) %}<td>{{word.tense}}</td>{% endif %}
+			{% if 'person' in dir(w) %}<td>{{word.person}}</td>{% endif %}
+			{% if 'gender' in dir(w) %}<td>{{word.gender}}</td>{% endif %}
+			{% if 'kount' in dir(w) %}<td>{{word.kount}}</td>{% endif %}
+			{% if 'translation' in dir(w) %}<td>{{word.translation}}</td>{% endif %}
+			<td>
+				{% for variation in word.variations %}
+					{{variation.value}}
+				{% endfor %}
+			</td>
+		</tr>
+	{% endfor %}
+{% endfor %}
+</table>
+<form method="post">
+	<div>
+		<textarea rows="20" name="text" style="font-family:reuven">{{Aramaic._dictionaries[dictionary.name].string}}</textarea>
+	</div>
+	<button type="submit">שמור</button>
+<form>
+{% endblock %}

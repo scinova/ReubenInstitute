@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}תנך{% endblock %}
+{% block title %}תנ״ך{% endblock %}
 {% block content %}
 <h1>תנך</h1>
 {% set sections = [
@@ -12,7 +12,7 @@
 	[35, 39, 'אחרים']] %}
 {% for start_book, end_book, section in sections %}
 	<h2>{{section}}</h2>
-	{% for book in tanakh.books[start_book - 1:end_book]  %}
+	{% for book in Tanakh.books[start_book - 1:end_book]  %}
 		<h3>{{book.name}}</h3>
 		{% if 6 > book.number %}
 			{% for number, parasha in enumerate(book.parashot, start=1) %}

@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}{% endblock %}
+{% block title %}תנ״ך •  פרשת ‘{{parasha.name}}’ • ספר ‘{{parasha.book.name}}’{% endblock %}
 {% block content %}
 
 <!--
@@ -14,7 +14,7 @@
 -->
 
 <div class="tanakh">
-<h1>ספר ‘{{parasha.book.name}}’, פרשת ‘{{parasha.name}}’</h1>
+<h1>פָּרָשַׁת ‘{{parasha.name}}’ • סֵפֶר ‘{{parasha.book.name}}’, </h1>
 {% for paragraph in parasha.paragraphs %}
 	{% if paragraph != parasha.paragraphs[0] %}<hr />{% endif %}
 	{% for subparagraph in paragraph %}
