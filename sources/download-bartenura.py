@@ -1,11 +1,11 @@
 import sys
 sys.path.append('..')
-import common
+import Mishnah
 import os
 
 for order in Mishnah.orders:
 	for t in order.tractates:
-		name = t.name
+		name = t.latin_name
 		if name == 'Avot':
 			prefix = 'Pirkei'
 		else:
@@ -18,5 +18,8 @@ for order in Mishnah.orders:
 			aname = 'Oktzin'
 		else:
 			aname = name
-		cmd = 'wget "https://www.sefaria.org.il/download/version/%s %s - he - Torat Emet 357.plain.txt" -O "mishnah/%s.txt"'%(prefix, aname, name)
-		os.system(cmd)
+		filename = 'bartenura/%s.txt'%t.latin_name
+		cmd = 'wget "https://www.sefaria.org.il/download/version/Bartenura on %s %s - he - On Your Way.plain.txt" -O "%s"'%(prefix, aname, filename)
+
+		if not os.path.exists(filename):
+			os.system(cmd)
