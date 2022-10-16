@@ -1,0 +1,177 @@
+@font-face {
+	font-family: bellefair;
+	src: url('/@@/fonts/Bellefair.ttf') format('truetype');
+	}
+
+@font-face {
+	font-family: frank;
+	src: url('/@@/fonts/TaameyFrankRI-Medium.ttf') format('truetype');
+	}
+
+@font-face {
+	font-family: frankorig;
+	src: url('/@@/fonts/TaameyFrankCLM-Medium.ttf') format('truetype');
+	}
+
+@font-face {
+	font-family: scripture;
+	src: url('/@@/fonts/KeterYG-Bold.ttf') format('truetype');
+	src: url('/@@/fonts/HebrewCaligraphicStamStd-Bold.otf') format('opentype');
+	}
+
+@font-face {
+	font-family: reuven;
+	src: url('/@@/fonts/ReuvenSerif.ttf') format('truetype');
+	}
+
+@font-face {
+	font-family: sbl;
+	src: url('/@@/fonts/SBLHebrew.ttf') format('truetype');
+	}
+
+* {
+	spacing: 0;
+	margin: 0;
+	}
+
+div.left {
+	float: left;
+	}
+
+div.right {
+	float: right;
+	}
+
+div.justify {
+	text-align: justify;
+	}
+
+div.clear {
+	clear: both;
+	}
+
+
+html {
+	background-color: #333;
+	}
+
+body {
+	font-family: bellefair;
+	font-family: sbl;
+	font-size: 1.4em;
+	}
+
+div#menu {
+	height: 50px;
+	display: block;
+	position: absolute;
+	top: 0;
+	width: 100%;
+	}
+
+div#footer {
+	color: white;
+	}
+
+div#content {
+	margin-top: 50px;
+	padding: 15px;
+	xbackground-color: #f4eadc;
+	background-color: #ffffff;
+	xbackground-image: url(/@@/papyrus2.jpg);
+	}
+
+a:visited, a {
+	color: #669;
+	text-decoration: none;
+	}
+
+a:link,
+a:visited,
+a:hover,
+a:active {
+	color: #0099cc;
+	text-decoration: none;
+	}
+
+form * {
+	font-size: 30px;
+	}
+
+form {
+	border-radius:10px;
+	background-color: #ddd;
+	padding: 10px;
+	}
+
+fieldset {
+	border: none;
+	}
+
+textarea {
+	width: 100%;
+	border: 1px solid #333;
+	font-family: reuven;
+	}
+
+input {
+	border: 1px solid #ccc;
+	font-family: reuven;
+	}
+
+input.short {
+	width: 4em;
+	}
+
+select {
+	font-family: reuven;
+	}
+
+label {
+	display: none;
+	}
+
+button {
+	display: block;
+	background-color: #0099cc;
+	color: white;
+	border: none;
+	padding: 5px 20px;
+	border-radius: 4px;
+	}
+
+table {
+	border-collapse: collapse;
+	margin-bottom: 1em;
+	}
+
+table td {
+	border: 1px solid #ccc;
+	padding: 2px 10px;
+	background-color: #e8e8e8;
+	}
+
+table th {
+	background-color: black;
+	color: white;
+	text-align: right;
+	font-weight: normal;
+	font-size: 80%;
+	padding-right: 10px;
+	}
+
+td.max {
+	width: 100%;
+	}
+
+table tr.last td {
+	border-bottom: 14px solid white;
+	}
+
+table tr.sodd td {
+	background-color: #eee;
+	}
+
+table tr.seven td {
+	background-color: white;
+	}

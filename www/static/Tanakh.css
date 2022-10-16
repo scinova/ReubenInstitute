@@ -1,5 +1,4 @@
 div.tanakh {
-	font-family: plain;
 	}
 
 div.tanakh div.section {
@@ -30,17 +29,29 @@ div.tanakh div.section {
 	margin-bottom: 20px;
 	}
 
+div.tanakh div.section div.left,
+div.tanakh div.section div.right {
+	width: 48%;
+	}
+
 div.tanakh div.rashi {
 	font-size: 75%;
 	xfont-family: rashi;
 	}
 
+div.tanakh div.rashi span.scripture {
+	font-family: scripture;
+	}
+
+div.tanakh div.rashi span.legend {
+	font-family: scripture;
+	}
+
 div.tanakh div.mikra {
-	xborder: 1px solid #ccc;
 	background-color: #ffd;
 	border-radius: 5px;
 	padding: 10px;
-	font-family: holly;
+	font-family: scripture;
 	font-size: 150%;
 	margin-bottom: 20px;
 	}

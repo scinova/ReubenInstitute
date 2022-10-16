@@ -1,0 +1,32 @@
+div.verse {
+	text-align: justify;
+	margin-bottom: .5em;
+	line-height: 1.25em;
+	}
+
+span.verseno {
+	background-color: #ccc;
+	color: white;
+	padding: 1px 4px;
+	border-radius: 3px;
+	margin-left: .5em;
+	}
+
+span.scripture {
+	font-family: scripture;
+	color: #900;
+	}
+
+span.link {
+	font-size: 60%;
+	color: #ccc;
+	}
+
+span.legend {
+	font-weight: bold;
+	}
+
+span.citation {
+	font-style: italic;
+	color: brown;
+	}
