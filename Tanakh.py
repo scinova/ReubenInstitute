@@ -707,48 +707,47 @@ class NBook:
 					chapter_idx += 1
 			self.parashot.append(parasha)
 
-class Tanakh:
-	def __init__(self):
-		self.books = []
-		for x in range(len(bible_arr)):
-			latin_name, num_chapters, name = bible_arr[x]
-			book = NBook(x + 1, name, latin_name)
-			self.books.append(book)
+#class Tanakh:
+#	def __init__(self):
+books = []
+for x in range(len(bible_arr)):
+	latin_name, num_chapters, name = bible_arr[x]
+	book = NBook(x + 1, name, latin_name)
+	books.append(book)
+for b in range(5):
+	book = books[b]
+	for p in range(len(book.parashot)):
+		parasha = book.parashot[p]
+		haftara = Haftara()
+#for number, value in enumerate(parashot_arr[self.number - 1], start=1):
+		book_number = parashot_arr[b][p][6]
+		haftara.book[0] = books[book_number - 1]
+		haftara.start_chapter[0], haftara.start_verse[0], haftara.start_chapter[1], haftara.start_verse[1], \
+			haftara.start_chapter[2], haftara.start_verse[2], haftara.start_chapter[3], haftara.start_verse[3], \
+			haftara.end_chapter[0], haftara.end_verse[0], haftara.end_chapter[1], haftara.end_verse[1], \
+			haftara.end_chapter[2], haftara.end_verse[2], haftara.end_chapter[3], haftara.end_verse[3] = parashot_arr[b][p][7:]
+		start_chapter = min(haftara.start_chapter)
+		start_verse = min([haftara.start_verse[x] for x in [i for i in range(4) if start_chapter == haftara.start_chapter[i]]])
+		end_chapter = max(haftara.end_chapter)
+		end_verse = max([haftara.end_verse[x] for x in [i for i in range(4) if end_chapter == haftara.end_chapter[i]]])
+		chapter_idx = start_chapter - 1
+		verse_idx = start_verse - 1
+		while True:
+			chapter = haftara.book[0].chapters[chapter_idx]
+			verse = chapter.verses[verse_idx]
+			verse.parasha = parasha
+			haftara.verses.append(verse)
+			if chapter_idx == end_chapter - 1 and verse_idx == end_verse - 1:
+				break
+			if verse_idx < len(chapter.verses) - 1:
+				verse_idx += 1
+			else:
+				verse_idx = 0
+				chapter_idx += 1
 
-	def __postinit__(self):
-		for b in range(5):
-			book = self.books[b]
-			for p in range(len(book.parashot)):
-				parasha = book.parashot[p]
-				haftara = Haftara()
-#		for number, value in enumerate(parashot_arr[self.number - 1], start=1):
-				book_number = parashot_arr[b][p][6]
-				haftara.book[0] = self.books[book_number - 1]
-				haftara.start_chapter[0], haftara.start_verse[0], haftara.start_chapter[1], haftara.start_verse[1], \
-					haftara.start_chapter[2], haftara.start_verse[2], haftara.start_chapter[3], haftara.start_verse[3], \
-					haftara.end_chapter[0], haftara.end_verse[0], haftara.end_chapter[1], haftara.end_verse[1], \
-					haftara.end_chapter[2], haftara.end_verse[2], haftara.end_chapter[3], haftara.end_verse[3] = parashot_arr[b][p][7:]
-				start_chapter = min(haftara.start_chapter)
-				start_verse = min([haftara.start_verse[x] for x in [i for i in range(4) if start_chapter == haftara.start_chapter[i]]])
-				end_chapter = max(haftara.end_chapter)
-				end_verse = max([haftara.end_verse[x] for x in [i for i in range(4) if end_chapter == haftara.end_chapter[i]]])
-				chapter_idx = start_chapter - 1
-				verse_idx = start_verse - 1
-				while True:
-					chapter = haftara.book[0].chapters[chapter_idx]
-					verse = chapter.verses[verse_idx]
-					verse.parasha = parasha
-					haftara.verses.append(verse)
-					if chapter_idx == end_chapter - 1 and verse_idx == end_verse - 1:
-						break
-					if verse_idx < len(chapter.verses) - 1:
-						verse_idx += 1
-					else:
-						verse_idx = 0
-						chapter_idx += 1
+		books[b].parashot[p].haftara = haftara
 
-				self.books[b].parashot[p].haftara = haftara
-
+class X:
 	def replace(self, text):
 		#print ('REPLACE', text)
 		parts = text.split(' ')
@@ -803,8 +802,8 @@ class Tanakh:
 					ispoem = True
 		return ispoem, repeat, info, verses
 
-if __name__ == '__main__':
-	t = Tanakh()
-	s = 'דבריcהימיםא א ב-ד'
-	spans = t.replace(s)
-	print (spans)
+#if __name__ == '__main__':
+#	t = Tanakh()
+#	s = 'דבריcהימיםא א ב-ד'
+#	spans = t.replace(s)
+#	print (spans)

@@ -43,7 +43,7 @@ _charstyles = [
 #	["points", serif, 1, 'Green'],
 #	["accents", serif, 1, 'Red'],
 	["punctuation", serif, 1, 'Blue'],
-	["nonliteral", serif, 1, 'Blue'],
+	["nonliteral", serif, 1, 'Black'],
 	["alternative", serif, 1, 'Green'],
 	["legend", serif, 1, 'Green'],
 	["space", serif, 1, 'Black'],
@@ -159,7 +159,13 @@ class Print:
 #		else:
 #			self.pos += max(rdiv.height, ldiv.height) + gap
 
-	def adddivs(self, rdiv, ldiv, gap=0, sync=True):
+	def newPage(self):
+		scribus.newPage(-1)
+		scribus.newPage(-1)
+		self.pos = 0
+		scribus.gotoPage(1)
+
+	def adddivs(self, rdiv, ldiv, gap=0, sync=True, height=None):
 		if type(gap) == list:
 			rgap, lgap = gap
 		else:
@@ -167,10 +173,15 @@ class Print:
 		scribus.gotoPage(1)
 		ldiv.enlarge()
 		rdiv.enlarge()
-		if sync:
-			height = max(rdiv.height, ldiv.height)
+		if height:
 			scribus.sizeObject(rdiv.width, height, rdiv.name)
+			rdiv.height = height
 			scribus.sizeObject(ldiv.width, height, ldiv.name)
+			ldiv.height = height
+		#if sync:
+		#	height = max(rdiv.height, ldiv.height)
+		#	scribus.sizeObject(rdiv.width, height, rdiv.name)
+		#	scribus.sizeObject(ldiv.width, height, ldiv.name)
 		lastpage = scribus.pageCount()
 		if self.pos + 30 > self.contentHeight:
 			scribus.newPage(-1)
@@ -209,9 +220,13 @@ class Print:
 			scribus.linkTextFrames(ldiv.name, ld.name)
 			rd.enlarge()
 			ld.enlarge()
-			self.pos = max(rd.height, ld.height) + gap
+			self.pos = max(rd.height, ld.height)
 		else:
-			self.pos += max(rdiv.height, ldiv.height) + gap
+			self.pos += max(rdiv.height, ldiv.height)
+		if self.pos + gap >= self.contentHeight:
+			self.newPage()
+		else:
+			self.pos += gap
 
 	def publish(self, name):
 		scribus.saveDocAs('/root/%s.sla'%name)
@@ -242,9 +257,12 @@ class LiturgyPrint(Print):
 class ZoharPrint(Print):
 	def __init__(self):
 		self.articles = [
-			[0, 0, 10]#,
-			#[0, 0, 15],
-			#[0, 0, 18]#,
+			[0, 0, 10],
+			[0, 0, 15]
+
+			#[0, 0, 18],
+			#[0, 1, 1]
+
 			#[0, 0, 20]#,
 			#[2, 26, 1],
 			#[2, 26, 7]#,
@@ -327,12 +345,18 @@ class ZoharPrint(Print):
 					spans = txparagraph[line_id]
 					spans = self.format_spans(spans, tx=True)
 					ldiv = Div(self.contentWidth / 1, 'zohartx' + prefix, spans)
-					sync = [span.kind for span in paragraph[line_id] + txparagraph[line_id]] == [SpanKind.H1, SpanKind.H1]
 						
 					gap = 0
 					if line_id == len(paragraph) - 1:
-						gap = 16
-					self.adddivs(rdiv, ldiv, gap=gap, sync=sync)
+						if paragraph_id == len(paragraphs) - 1:
+							gap = 30
+						else:
+							gap = 15
+					sync = [span.kind for span in paragraph[line_id] + txparagraph[line_id]] == [SpanKind.H1, SpanKind.H1]
+					height = None if not sync else 40
+					self.adddivs(rdiv, ldiv, gap=gap, height=height)
+			if self.pos > self.contentHeight / 2. and paragraph != paragraphs[-1]:
+				self.newPage()
 
 	def format_spans(self, spans, tx=False):
 		for i in range(len(spans)):
@@ -343,7 +367,8 @@ class ZoharPrint(Print):
 			value = common.remove_accents(value)
 			value = common.remove_meteg(value)
 			if tx:
-				if span.kind != SpanKind.SCRIPTURE:
+				value = re.sub('…', '...', value)
+				if span.kind not in [SpanKind.SCRIPTURE, SpanKind.NONLITERAL]:
 					value = common.remove_points(value)
 			if span.kind == SpanKind.SCRIPTURE:
 				value = '“%s”'%value
@@ -355,8 +380,9 @@ class ZoharPrint(Print):
 				value = '[%s]'%value
 			if span.kind == SpanKind.LINK:
 				value = '(%s)'%value
-				#a, b, c = value.split(' ')
-				#value = '%s,%s,%s'%(a, b, c)
+				if len(value.split(' ')) == 3:
+					a, b, c = value.split(' ')
+					value = '%s\u00a0%s\u00a0%s'%(a, b, c)
 			spans[i].value = value
 		return spans
 

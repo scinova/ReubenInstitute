@@ -8,6 +8,7 @@ from enum import Enum
 import unicodedata
 
 from common import Span, SpanKind
+import common
 
 ROOT_PATH = os.path.dirname(os.path.abspath(__file__))
 DB_PATH = os.path.join(ROOT_PATH, 'db', 'zohar')
@@ -91,17 +92,16 @@ def parse(text=''):
 		return []
 	text = re.sub('"([^"]+)"', r'“\1”', text)
 	text = re.sub("'([^']+)'", r"‘\1’", text)
-	#text = re.sub('^- ', '\u2015 ', text)#―
-	#text = re.sub(' -', ' \u2013', text)#–
-	#text = re.sub('-', '\u2011', text)
+	text = re.sub('^- ', '\u2015 ', text)#―
+	text = re.sub(' -', ' \u2013', text)#–
+	text = re.sub('-', '\u2011', text)
 	text = re.sub('{[^}]*}', '', text) #remove zohar page no
 	text = re.sub(' +', ' ', text)
-
 	h1_items = list(re.finditer('^=([^\n]+)', text, re.M))
 	for item in h1_items:
 		start, end = item.span()
 		text = text[0:start] + (end - start) * 'X' + text[end:]
-	alternative_items = list(re.finditer('\[([^|]*)\|([^]]+)\]', text))
+	alternative_items = list(re.finditer('\[([^|\]]*)\|([^]]+)\]', text))
 	for item in alternative_items:
 		start, end = item.span()
 		text = text[0:start] + (end - start) * 'X' + text[end:]
@@ -180,39 +180,39 @@ class Article:
 		#self.hebrew_number = hebrew_numbers.int_to_gematria(number)
 		#self.hebrew_number_nog = hebrew_numbers.int_to_gematria(number, gershayim=False)
 		#self.title = title
-		self._text = ''
-		self._translation = ''
+		#self._text = ''
+		#self._translation = ''
 
 	@property
 	def text(self):
-		if not self._text:
-			filename = os.path.join(DB_PATH, '%1d.%02d'%(self.book.number, self.chapter.number), '%02d.txt'%self.number)
-			data = open(filename).read()
+		#if not self._text:
+		filename = os.path.join(DB_PATH, '%1d.%02d'%(self.book.number, self.chapter.number), '%02d.txt'%self.number)
+		text = open(filename).read()
 			#if '\n\n\n' in data:
 				#data = re.sub('\n\n', '\n', data, re.M)
-			self._text = data
-		return self._text
+			#self._text = data
+		return text
 
 	@text.setter
 	def text(self, value):
-		self._text = unicodedata.normalize('NFC', value)
+		#self._text = unicodedata.normalize('NFC', value)
 		filename = os.path.join(DB_PATH, '%1d.%02d'%(self.book.number, self.chapter.number), '%02d.txt'%self.number)
 		open(filename, 'w').write(value)
 
 	@property
 	def translation(self):
-		if not self._translation:
-			filename = os.path.join(DB_PATH, '%1d.%02d'%(self.book.number, self.chapter.number), '%02dt.txt'%self.number)
-			data = open(filename).read()
+		#if not self._translation:
+		filename = os.path.join(DB_PATH, '%1d.%02d'%(self.book.number, self.chapter.number), '%02dt.txt'%self.number)
+		text = open(filename).read()
 			#if '\n\n' in data:
 				#data = re.sub('\n\n', '\n', data, re.M)
 				#open(filename, 'w').write(data)
-			self._translation = data
-		return self._translation
+			#self._translation = data
+		return text
 
 	@translation.setter
 	def translation(self, value):
-		self._translation = value
+		#self._translation = value
 		filename = os.path.join(DB_PATH, '%1d.%02d'%(self.book.number, self.chapter.number), '%02dt.txt'%self.number)
 		open(filename, 'w').write(value)
 
@@ -244,20 +244,47 @@ class Book:
 		self.title = title
 		self.chapters = []
 
-class Zohar:
-	def __init__(self):
-		self.books = []
-		for book_idx in range(len(DATA)):
-			name, data = DATA[book_idx]
-			book = Book(book_idx + 1, name)
-			for chapter_idx in range(len(data)):
-				start_daf, start_amud, start_verse, end_daf, end_amud, end_verse, name = data[chapter_idx]
-				chapter = Chapter(book, chapter_idx + 1, name)
-				filename = os.path.join(DB_PATH, '%1d.%02d'%(book.number, chapter.number), '00.txt')
-				if os.path.exists(filename):
-					names = open(filename).read().split('\n')[:-1]
-					for article_idx in range(len(names)):
-						article = Article(chapter, article_idx + 1, names[article_idx])
-						chapter.articles.append(article)
-				book.chapters.append(chapter)
-			self.books.append(book)
+class Issue:
+	def __init__(self, number, name, articles):
+		self.name = name
+		self.number = number
+		self.articles = articles
+
+	@property
+	def textlen(self):
+		return sum([len(article.text.split(' ')) for article in self.articles])
+
+	@property
+	def translationlen(self):
+		return sum([len(article.translation.split(' ')) for article in self.articles])
+
+books = []
+for book_idx in range(len(DATA)):
+	name, data = DATA[book_idx]
+	book = Book(book_idx + 1, name)
+	for chapter_idx in range(len(data)):
+		start_daf, start_amud, start_verse, end_daf, end_amud, end_verse, name = data[chapter_idx]
+		chapter = Chapter(book, chapter_idx + 1, name)
+		filename = os.path.join(DB_PATH, '%1d.%02d'%(book.number, chapter.number), '00.txt')
+		if os.path.exists(filename):
+			names = open(filename).read().split('\n')[:-1]
+			for article_idx in range(len(names)):
+				article = Article(chapter, article_idx + 1, names[article_idx])
+				chapter.articles.append(article)
+		book.chapters.append(chapter)
+	books.append(book)
+issues = []
+TOC = [
+		['תשרי תשפ״ג פרשת ‘וילך’', [3, 8, 1]],
+		['תשרי תשפ״ג פרשת ‘האזינו’', [3, 12, 1], [3, 8, 3]],
+		['תשרי תשפ״ג חול המועד בסוכות', [3, 8, 2], [1, 1, 18], [1, 1, 15]],
+		['תשרי תשפ״ג פרשת ‘בראשית’', [1, 2, 1], [1, 1, 10]],
+		['תשרי תשפ״ג פרשת ‘נח’', [1, 3, 1], [3, 26, 1]],
+		
+		['x', [1, 1, 20], [2, 7, 1], [2, 12, 1], [3, 27, 1]]
+		]
+for number, toc in enumerate(TOC, start=1):
+	name = toc[0]
+	articles = toc[1:]
+	issues.append(Issue(number, name, [books[b - 1].chapters[c - 1].articles[a - 1] for b, c, a in articles]))
+#issues = [Issue(number, [books[b - 1].chapters[c - 1].articles[a - 1] for b, c, a in issue]) for issue in TOC]

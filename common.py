@@ -9,6 +9,15 @@ from enum import Enum
 ROOT_PATH = os.path.dirname(os.path.abspath(__file__))
 DB_PATH = os.path.join(ROOT_PATH, 'db')
 
+ENSPACE = '\u2002'
+EMSPACE = '\u2003'
+THICKSPACE = '\u2004'
+MIDSPACE = '\u2005'
+THINSPACE = '\u2009'
+HAIRSPACE = '\u200a'
+NARROWNOBREAKSPACE = '\u202f'
+ZEROWIDTHSPAVE = ''
+
 def remove_accents(text):
 	return re.sub('[\u0591-\u05ae]', '', text)
 
