@@ -27,6 +27,4 @@ def prayer(version_name, name):
 	elif version_name == 'teiman':
 		version = 3
 	prayer = Liturgy.prayers[name]
-	prayer.text = re.sub('\u05b0\u05b0', '\u05b0', prayer.text)
-	prayer.text = re.sub('\u05bc\u05bc', '\u05bc', prayer.text)
 	return render_template('liturgy/prayer.html', prayer=prayer, version=version, version_name=version_name)

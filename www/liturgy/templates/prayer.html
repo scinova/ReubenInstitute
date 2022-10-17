@@ -9,6 +9,7 @@
 	<a href="/liturgy/{{v}}/{{name}}">{{v}}</a>
 {% endfor %}
 {%- for section in prayer.prayer -%}
+
 	<div class="section">
 	{%- for outerblock in section -%}
 		{% set style = '' %}
@@ -90,7 +91,7 @@ text-align-last: center;
 					{%- elif span.kind == SpanKind.TAB -%}
 						<br />
 					{%- else -%}
-						<span class="plain">{{span.value}}</span>
+						<span class="plain">{{span.value.replace('\u05b0\u05b0', '\u05b0').replace('\u05bc\u05bc', '\u05bc')}}</span>
 					{%- endif -%}
 				{%- endfor -%}
 				</div>
