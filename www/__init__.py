@@ -15,9 +15,7 @@ import Zohar
 import Aramaic
 import Tanakh
 import Mishnah
-
-#numbers = [hebrew_numbers.int_to_gematria(x) for x in range(0, 151)]
-
+import Liturgy
 
 class User:
 	def __init__(self):
@@ -39,6 +37,8 @@ def create_app():
 		app.register_blueprint(tanakh.tanakh_bp)
 		from .mishnah import mishnah
 		app.register_blueprint(mishnah.mishnah_bp)
+		from .liturgy import liturgy
+		app.register_blueprint(liturgy.liturgy_bp)
 
 
 	@app.before_request
@@ -63,7 +63,7 @@ def create_app():
 		request=request, common=common,
 		#aramaic=aramaic,
 		#user=user
-		Zohar=Zohar
+		Zohar=Zohar, Liturgy=Liturgy
 		)
 
 	@app.route('/@@/<path:filename>')

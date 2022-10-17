@@ -10,10 +10,8 @@ import common
 from common import Span, SpanKind
 
 import Tanakh
-tanakh = Tanakh.Tanakh()
 
-ROOT_PATH = os.path.dirname(os.path.abspath(__file__))
-DB_PATH = os.path.join(ROOT_PATH, 'db', 'liturgy')
+DATABASE_FOLDER = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'db', 'liturgy')
 
 def remove_cantillations(text):
 	return re.sub('[\u0591-\u05ae\u05bd]', '', text) #\u05c0\u05c3
@@ -44,18 +42,6 @@ class Block:
 	def __repr__(self):
 		return "Block: %s"%self.value
 
-def includes(text, variant):
-		files = os.listdir(DB_PATH)
-		for f in files:
-			if not f.endswith('.txt'):
-				continue
-			data = open(os.path.join(DB_PATH, f)).read()
-			data = variantf(data, variant)
-			text = re.sub('≪%s≫'%f[:-4], data, text)
-			text = re.sub('\<%s\>'%f[:-4], data, text)
-		#text = variantf(text, variant)
-		return text
-
 def variantf(text='', variant=0):
 	l = '\u05d0\u05e1\u05de\u05ea'[variant]
 	tags = list(reversed(list(re.finditer('\<[^>]+\>', text))))
@@ -76,6 +62,18 @@ def variantf(text='', variant=0):
 		else:
 			text = text[:start] + text[end:]
 	return text
+
+def includes(text, variant):
+		#files = os.listdir(DB_PATH)
+		#for f in files:
+		#	if not f.endswith('.txt'):
+		#		continue
+			#data = open(os.path.join(DB_PATH, f)).read()
+			#data = variantf(data, variant)
+			#text = re.sub('≪%s≫'%f[:-4], data, text)
+			#text = re.sub('\<%s\>'%f[:-4], data, text)
+		###text = variantf(text, variant)
+		return text
 
 def something(text='', variant=0, oxn=['עשרת ימי תשובה'], on=[], off=[]):
 		text = variantf(text, variant)
@@ -342,7 +340,46 @@ def parse(text, classic=False):
 	return lines
 
 class Prayer:
-	def __init__(self, time):
+	def __init__(self, name):
+		self.name = name
+
+	def __getitem__(self, key):
+		text = self.text
+		l = '\u05d0\u05e1\u05de\u05ea'[key]
+		tags = list(reversed(list(re.finditer('\<[^>]+\>', text))))
+		for tag in tags:
+			t = tag.group()
+			sub = ''
+			vs = list(re.compile('(?<=[\<\|])([\u05d0\u05e1\u05de\u05ea]{1,3})\:([^|\>]+)(?=[\|\>])').finditer(t))
+			if not vs:
+				continue
+			for i in vs:
+				letters = i.groups()[0]
+				if l in letters:
+					sub = i.groups()[1]
+			start, end = tag.span()
+			if sub:
+				text = text[:start] + sub + text[end:]
+			else:
+				text = text[:start] + text[end:]
+		return text
+
+	@property
+	def text(self):
+		filename = os.path.join(DATABASE_FOLDER, '%s.txt'%self.name)
+		return open(filename).read()
+
+	@text.setter
+	def text(self, value):
+		filename = os.path.join(DATABASE_FOLDER, '%s.txt'%self.name)
+		open(filename, 'w').write(value)
+
+	@property
+	def prayer(self):
+		return something(self.text)
+
+"""
+	def OLD(self):
 		self._time = time
 		self.macros = {}
 		f = os.path.join(DB_PATH, 'liturgy.txt')
@@ -358,13 +395,6 @@ class Prayer:
 			self._text = re.sub('\<%s\>'%f[:-4], data, self._text)
 		print (self.macros.keys())
 
-	@property
-	def text(self):
-		return self._text
-
-	@text.setter
-	def text(self, value):
-		pass
 
 def reorder_unicode(text):
 	order = ['\u05d0-\u05ea', #letters
@@ -386,9 +416,30 @@ def reorder_unicode(text):
 					out = out + c
 		text = text[:tav.start()] + out + text[tav.end():]
 	return text
+"""
 
-if __name__ == '__main__':
-	pass
-#	p = Prayer(Time.SHAHARIT)
-#	data = open(os.path.join(DB_PATH, 'Slichot.txt')).read()
-#	data = reorder_unicode(data)
+class Prayers:
+	def __init__(self):
+		self.prayers = {}
+
+	def __getitem__(self, key):
+		return self.prayers[key]
+
+	def __setitem__(self, key, value):
+		self.prayers[key] = value
+
+	def append(self, prayer):
+		self.prayers[prayer.name] = prayer
+
+	def __iter__(self):
+		prayers_list = [self.prayers[key] for key in [key for key in sorted(self.prayers.keys())]]
+		return prayers_list.__iter__()
+
+	def __next__(self):
+		prayers_list = [self.prayers[key] for key in [key for key in sorted(self.prayers.keys())]]
+		return prayers_list.__next__()
+
+prayers = Prayers()
+for name in [filename[:-4] for filename in os.listdir(DATABASE_FOLDER) if filename.endswith('.txt')]:
+	prayer = Prayer(name)
+	prayers.append(prayer)

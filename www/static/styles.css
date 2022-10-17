@@ -29,6 +29,11 @@
 	src: url('/@@/fonts/SBLHebrew.ttf') format('truetype');
 	}
 
+@font-face {
+	font-family: main;
+	src: url('/@@/fonts/SBLHebrew.ttf') format('truetype');
+	}
+
 * {
 	spacing: 0;
 	margin: 0;

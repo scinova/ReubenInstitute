@@ -1,17 +1,12 @@
 div.liturgy span {
-	Xdisplay: inline-block;
-	xfont-size: 1em;
 	}
 
 div.liturgy {
-	font-size: 2em;
-	סborder: 1px solid red;
 	}
 
 div.liturgy div.section {
 	border-bottom: 1px solid #669;
 	margin: 0 0 30px;
-	סborder: 1px solid green;
 	}
 
 div.liturgy div.section div {
@@ -21,7 +16,6 @@ div.liturgy div.section div {
 div.liturgy div.section div.outer div.block {
 	padding: 8px 0;
 	text-align: justify;
-	xtext-align-last: center;
 	display: block-inline;
 	border-bottom: 1px solid #ccc;
 	}
@@ -50,12 +44,11 @@ div.liturgy div.section div.optional {
 
 div.liturgy div.section div.halfwide {
 	width: 49%;
-	font-size: 1em;
 	}
 
 div.liturgy h1 {
 	font-weight: normal;
-	font-size: 1.8em;
+	font-size: 180%;
 	color: black;
 	margin: 0;
 	}
@@ -76,14 +69,14 @@ div.liturgy h3 {
 
 div.liturgy h4 {
 	font-weight: normal;
-	font-size: 1.2em;
+	font-size: 120%;
 	color: orange;
 	margin: 0;
 	}
 
 div.liturgy span {
-	font-family: regular;
-	font-size: 1.2em;
+	font-family: main;
+	xfont-size: 1.2em;
 	vertical-align: middle;
 	border: 0px solid green;
 	white-space: pre;
@@ -95,18 +88,15 @@ div.liturgy span.plain {
 
 div.liturgy span.punctuation {
 	font-family: scripture;
-	font-size: 1.2em;
 	color: #933;
 	}
 
 div.liturgy span.point {
 	font-family: scripture;
-	font-size: 1em;
 	}
 
 div.liturgy span.accent {
 	font-family: scripture;
-	font-size: 1em;
 	color: red;
 	}
 
@@ -114,7 +104,7 @@ div.liturgy span.verseno {
 	font-family: scripture;
 	color: #ccc;
 	margin: 0 10px;
-	font-size: .7em;
+	font-size: 70%;
 	}
 
 div.liturgy span.bold {
@@ -124,7 +114,7 @@ div.liturgy span.bold {
 
 div.liturgy span.info {
 	font-family: main;
-	font-size: .7em;
+	font-size: 70%;
 	color: #3c3;
 	}
 
@@ -137,8 +127,8 @@ div.liturgy span.correction {
 	}
 
 div.liturgy span.explanation {
-	font-family: rashi;
-	font-size: .3em;
+	font-family: main;
+	font-size: 80%;
 	color: #ccc;
 	}
 
@@ -148,7 +138,7 @@ div.liturgy div.translation span.synonym {
 	}
 
 div.liturgy div.translation span.explanation {
-	font-family: regular;
+	font-family: main;
 	}
 
 div.liturgy span.link {
@@ -162,32 +152,10 @@ div.liturgy span.scripture,
 div.liturgy span.kriktiv {
 	font-family: scripture;
 	color: #933;
-	ccolor: green;
-	זfont-size: 1.2em;
-	}
-
-div.liturgy span.scriptureL {
-	font-family: scriptureL;
-	color: black;
-	font-size: 1.2em;
-	}
-
-div.liturgy span.scriptureLP {
-	font-family: scriptureLP;
-	color: saddlebrown;
-	color: burlywood;
-	color: #9c9;
-	font-size: 1.2em;
-	}
-
-div.liturgy span.scriptureLPA {
-	font-family: scriptureLPA;
-	color: red;
-	font-size: 1.2em;
 	}
 
 div.liturgy span.kriktiv {
-	font-family: scriptureLPA;
+	font-family: scripture;
 	background-color: #ffd;
 	font-size: 1.2em;
 	}
@@ -206,7 +174,6 @@ div.liturgy div.section span.majuscule {
 	}
 
 div.liturgy div.section span.minuscule {
-	font-family: scriptureLPA;
+	font-family: scripture;
 	font-size: 0.7em;
-	zfont-size: .5em;
 	}

@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block title %}{% endblock %}
+{% block content %}
+{% for prayer in Liturgy.prayers %}
+	<a name="{{prayer.name}}" href="/liturgy/ashkenaz/{{prayer.name}}">{{prayer.name}}</a><br />
+{% endfor %}
+{% endblock %}
