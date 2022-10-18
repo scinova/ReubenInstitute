@@ -1,0 +1,38 @@
+{%- for span in spans -%}
+	{% set value = span.value %}
+	{%- if span.kind == SpanKind.H1 -%}
+		<h1>{{value}}</h1>
+	{%- elif span.kind == SpanKind.CORRECTION -%}
+		<span class="correction">{{value}}</span>
+	{%- elif span.kind == SpanKind.SCRIPTURE -%}
+		<span class="scripture">“{{value}}”</span>
+	{%- elif span.kind == SpanKind.ALTERNATIVE -%}
+		<span class="alternative">{{value}}</span>
+	{%- elif span.kind == SpanKind.LINK -%}
+		<span class="link">({{value.replace(' ', common.NARROWNOBREAKSPACE)}})</span>
+	{%- elif span.kind == SpanKind.PLAIN -%}
+		{% set pisuk = " \-\u2011\u2013\u2015\,\.\;\:\!\?־‘’\(\)" %}
+		{#<span class="plain">{{re.sub('\[([^]]+)\]', '<span class="silent">\\1</span>', Aramaic.spell(value)[1]|safe)}}</span>#}
+		{#%- set words = re.split('([ \-\u2011\u2013\u2015\,\.\;\:\!\?־‘’\(\)]+)', value) -%#}
+		{%- set words = re.split('([' + pisuk + ']+)', value) -%}
+		{%- for word in words -%}
+			{%- if not re.findall('[ \-\u2011\u2013\u2015\,\.\;\:\!\?־‘’\(\)]+', word) -%}
+				{%- set known, text = Aramaic.spell(word) -%}
+				{%- if known -%}
+					{%- set text = re.sub('\[([^]]+)\]', '<span class="silent">\\1</span>', text) -%}
+					<span class="plain">{{text|safe}}</span><!--<span class="plain" style="font-family:frankorig;color:blue;">{{word}}</span>-->
+				{%- else -%}
+					{%- if g.user.isloggedin -%}
+						<a target="_blank" href="/aramaic?new={{word}}"><span class="unknown">{{word}}</span></a>
+					{%- else -%}
+						<span class="plain">{{word}}</span>
+					{%- endif -%}
+				{%- endif -%}
+			{%- else -%}
+				<span class="plain">{{word}}</span>
+			{%- endif -%}
+		{%- endfor -%}
+	{%- else -%}
+		<span class="unknxown">{{value}}</span>
+	{%- endif -%}
+{%- endfor -%}

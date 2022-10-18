@@ -4,27 +4,23 @@ sys.path.append('..')
 import Zohar
 import common
 
-zohar_bp = Blueprint('zohar_bp', __name__)#, template_folder='templates')
+zohar_bp = Blueprint('zohar_bp', __name__)
 
-#@zohar_bp.route('/@@/<path:filename>')
-#def files(filename):
-#	return send_from_directory('static', filename)
-#
 @zohar_bp.route('/zohar/')
 def main():
-	return render_template('zohar/main.html')
+	return render_template('zohar/index.html')
 
 @zohar_bp.route('/zohar/<int:book_number>/<int:chapter_number>')
 def view_chapter(book_number, chapter_number):
 	chapter = Zohar.books[book_number - 1].chapters[chapter_number - 1]
-	return render_template('zohar/chapter.html', chapter=chapter)#, data=data)
+	return render_template('zohar/chapter.html', chapter=chapter)
 
 @zohar_bp.route('/zohar/<int:book_number>/<int:chapter_number>/<int:article_number>')
 def view_article(book_number, chapter_number, article_number):
 	book = Zohar.books[book_number - 1]
 	chapter = book.chapters[chapter_number - 1]
 	article = chapter.articles[article_number - 1]
-	return render_template('zohar/article.html', article=article)#, data=data)
+	return render_template('zohar/article.html', article=article)
 
 @zohar_bp.route('/zohar/issues/<int:issue_number>')
 def view_issue(issue_number):

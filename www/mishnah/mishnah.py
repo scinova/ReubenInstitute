@@ -6,7 +6,7 @@ mishnah_bp = Blueprint('mishnah_bp', __name__)#, template_folder='templates')
 
 @mishnah_bp.route('/mishnah/')
 def main():
-	return render_template('mishnah/main.html')
+	return render_template('mishnah/index.html')
 
 @mishnah_bp.route('/mishnah/<int:order_no>/<int:tractate_no>')
 def view_tractate(order_no, tractate_no):

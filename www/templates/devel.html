@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}{% endblock %}
+{% block content %}
+{% set marks = 'ְֱֲֳִֵֶַָֹֻ' %}
+{% set letters = 'אבגדהוזחטיכלמנסעפקצרשת' %}
+<div style="font-family:frank;display:none;">
+{%- for m in marks -%}
+	{%- for b in letters -%}
+		{{b}}{{m}}<span style="font-family:frankorig;color:blue;">{{b}}{{m}}</span>
+	{%- endfor -%}
+	<br />
+{%- endfor -%}
+<br />
+{%- for b in letters -%}
+	{%- for m in marks -%}
+		{{b}}{{m}}<span style="font-family:frankorig;color:blue;">{{b}}{{m}}</span>
+	{%- endfor -%}
+	<br />
+{%- endfor -%}
+</div>
+{% endblock %}

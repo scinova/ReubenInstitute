@@ -236,19 +236,19 @@
 		{% for verse in subparagraph %}
 		{%- if verse.rashi_text -%}
 		<span class="verseno">{{verse.hebrew_number}}</span>
-			{% for span in verse.rashi %}
-				{% if span.kind == SpanKind.LEGEND -%}
+			{%- for span in verse.rashi -%}
+				{%- if span.kind == SpanKind.LEGEND -%}
 					<span class="legend">“{{span.value}}”</span>
-				{% elif span.kind == SpanKind.SCRIPTURE -%}
+				{%- elif span.kind == SpanKind.SCRIPTURE -%}
 					<span class="scripture">“{{span.value}}”</span>
-				{% elif span.kind == SpanKind.LINK -%}
+				{%- elif span.kind == SpanKind.LINK -%}
 					<span class="link">({{span.value}})</span>
-				{% elif span.kind == SpanKind.REFERENCE -%}
+				{%- elif span.kind == SpanKind.REFERENCE -%}
 					<span class="reference">R{{span.value}}</span>
-				{% else %}
+				{%- else -%}
 					{{span.value}}
 				{%- endif -%}
-			{% endfor %}
+			{%- endfor -%}
 		{%- endif -%}
 		{% endfor %}
 	</div>

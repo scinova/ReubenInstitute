@@ -1,7 +1,6 @@
 {% extends "base.html" %}
 {% block title %}{% endblock %}
 {% block content %}
-
 <div class="zohar">
 {% for section_idx in range(article.sections|length) %}
 	<a id="v{{loop.index}}"></a>
@@ -12,76 +11,12 @@
 					{%- if g.user.isloggedin and not line_idx -%}
 						<a href="/zohar/{{article.book.number}}/{{article.chapter.number}}/{{article.number}}/edit/{{section_idx + 1}}">{{section_idx + 1}}</a>
 					{%- endif -%}
-					{%- set line = article.sections[section_idx][line_idx] -%}
-					{%- for span in line -%}
-						{% set value = span.value %}
-						{%- if span.kind == SpanKind.H1 -%}
-							<h1>{{value}}</h1>
-						{%- elif span.kind == SpanKind.CORRECTION -%}
-							<span class="correction">{{value}}</span>
-						{%- elif span.kind == SpanKind.SCRIPTURE -%}
-							<span class="scripture">“{{value}}”</span>
-						{%- elif span.kind == SpanKind.ALTERNATIVE -%}
-							<span class="alternative">{{value}}</span>
-						{%- elif span.kind == SpanKind.LINK -%}
-							<span class="link">({{value.replace(' ', common.NARROWNOBREAKSPACE)}})</span>
-						{%- elif span.kind == SpanKind.PLAIN -%}
-							{% set pisuk = " \-\u2011\u2013\u2015\,\.\;\:\!\?־‘’\(\)" %}
-							{#<span class="plain">{{re.sub('\[([^]]+)\]', '<span class="silent">\\1</span>', Aramaic.spell(value)[1]|safe)}}</span>#}
-							{#%- set words = re.split('([ \-\u2011\u2013\u2015\,\.\;\:\!\?־‘’\(\)]+)', value) -%#}
-							{%- set words = re.split('([' + pisuk + ']+)', value) -%}
-							{%- for word in words -%}
-								{%- if not re.findall('[ \-\u2011\u2013\u2015\,\.\;\:\!\?־‘’\(\)]+', word) -%}
-									{%- set known, text = Aramaic.spell(word) -%}
-									{%- if known -%}
-										{%- set text = re.sub('\[([^]]+)\]', '<span class="silent">\\1</span>', text) -%}
-										<span class="plain">{{text|safe}}</span><!--<span class="plain" style="font-family:frankorig;color:blue;">{{word}}</span>-->
-									{%- else -%}
-										{%- if g.user.isloggedin -%}
-											<a target="_blank" href="/aramaic?new={{word}}"><span class="unknown">{{word}}</span></a>
-										{%- else -%}
-											<span class="plain">{{word}}</span>
-										{%- endif -%}
-									{%- endif -%}
-								{%- else -%}
-									<span class="plain">{{word}}</span>
-								{%- endif -%}
-							{%- endfor -%}
-						{%- else -%}
-							<span class="unknxown">{{value}}</span>
-						{%- endif -%}
-					{%- endfor -%}
+					{% set spans = article.sections[section_idx][line_idx] %}
+					{% include 'zohar/block-zohar.html' %}
 				</div>
-
 				<div class="left">
-					{% set line = article.translation_sections[section_idx][line_idx] %}
-					{%- for span in line -%}
-						{% set value = span.value %}
-						{#% if span.kind not in [SpanKind.SCRIPTURE, SpanKind.NONLITERAL] %}
-							{% set value = common.remove_points(value) %}
-						{% endif %#}
-						{%- if span.kind == SpanKind.H1 -%}
-							<h1>{{value}}</h1>
-						{%- elif span.kind == SpanKind.NONLITERAL -%}
-							<span class="nonliteral">{{value}}</span>
-						{%- elif span.kind == SpanKind.SYNONYM -%}
-							<span class="synonym">(={{value}})</span>
-						{%- elif span.kind == SpanKind.EXPLANATION -%}
-							<span class="explanation">({{value}})</span>
-						{%- elif span.kind == SpanKind.CORRECTION -%}
-							<span class="correction">{{value}}</span>
-						{%- elif span.kind == SpanKind.SCRIPTURE -%}
-							<span class="scripture">“{{re.sub('\#([^#]+)\#', '<span class="completion">\\1</span>', value)|safe}}”</span>
-						{%- elif span.kind == SpanKind.LINK -%}
-							<span class="link">({{value.replace(' ', common.NARROWNOBREAKSPACE)}})</span>
-						{%- elif span.kind == SpanKind.ALTERNATIVE -%}
-							<span class="alternative">{{value}}</span>
-						{%- elif span.kind == SpanKind.PLAIN -%}
-							<span class="plain">{{value}}</span>
-						{%- else -%}
-							<span class="unknown">{{value}}</span>
-						{%- endif -%}
-					{%- endfor -%}
+					{% set spans = article.translation_sections[section_idx][line_idx] %}
+					{% include 'zohar/block-translation.html' %}
 				</div>
 				<div class="clear"></div>
 			</div>
@@ -89,8 +24,4 @@
 	</div>
 {% endfor %}
 </div>
-
-
-
-
 {% endblock %}

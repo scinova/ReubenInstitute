@@ -13,68 +13,12 @@
 					{%- if g.user.isloggedin and not line_idx -%}
 						<a href="/zohar/{{article.book.number}}/{{article.chapter.number}}/{{article.number}}/edit/{{section_idx + 1}}">{{section_idx + 1}}</a>
 					{%- endif -%}
-					{%- set line = article.sections[section_idx][line_idx] -%}
-					{%- for span in line -%}
-						{% set value = span.value %}
-						{%- if span.kind == SpanKind.H1 -%}
-							<h1>{{value}}</h1>
-						{%- elif span.kind == SpanKind.CORRECTION -%}
-							<span class="correction">{{value}}</span>
-						{%- elif span.kind == SpanKind.SCRIPTURE -%}
-							<span class="scripture">“{{value}}”</span>
-						{%- elif span.kind == SpanKind.ALTERNATIVE -%}
-							<span class="alternative">{{value}}</span>
-						{%- elif span.kind == SpanKind.LINK -%}
-							<span class="link">({{value}})</span>
-						{%- elif span.kind == SpanKind.PLAIN -%}
-							{% set words = re.split('[\s\-\,\.\;\:\!\?־‘’\(\)]+', value) %}
-							{% for word in words %}
-								{% set known, text = Aramaic.spell(word) %}
-								{% if known %}
-									{% set text = re.sub('\[([^]]+)\]', '<span class="silent">\\1</span>', text) %}
-									<span class="plain">{{text|safe}}</span>
-								{% else %}
-									<a target="_blank" href="/aramaic?new={{word}}"><span class="unknown">{{word}}</span></a>
-								{% endif %}
-							{% endfor %}
-							{#<span class="plain">{{re.sub('\[([^]]+)\]', '<span class="silent">\\1</span>', aramaic.spell(value))|safe}}</span>#}
-						{%- else -%}
-							<span class="unknown">{{value}}</span>
-						{%- endif -%}
-					{%- endfor -%}
+					{% set spans = article.sections[section_idx][line_idx] %}
+					{% include 'zohar/block-zohar.html' %}
 				</div>
-
 				<div class="left">
-					{% set line = article.translation_sections[section_idx][line_idx] %}
-					{%- for span in line -%}
-						{% set value = span.value %}
-						{% if span.kind not in [SpanKind.SCRIPTURE, SpanKind.NONLITERAL] %}
-							{% set value = common.remove_points(value) %}
-						{% endif %}
-						{%- if span.kind == SpanKind.H1 -%}
-							<h1>{{value}}</h1>
-						{%- elif span.kind == SpanKind.NONLITERAL -%}
-							<span class="nonliteral">{{value}}</span>
-						{%- elif span.kind == SpanKind.SYNONYM -%}
-							<span class="synonym">(={{value}})</span>
-						{%- elif span.kind == SpanKind.EXPLANATION -%}
-							<span class="explanation">({{value}})</span>
-						{%- elif span.kind == SpanKind.CITATION -%}
-							<span class="citation">“{{value}}”</span>
-						{%- elif span.kind == SpanKind.CORRECTION -%}
-							<span class="correction">[{{value}}]</span>
-						{%- elif span.kind == SpanKind.SCRIPTURE -%}
-							<span class="scripture">“{{value}}”</span>
-						{%- elif span.kind == SpanKind.LINK -%}
-							<span class="link">({{value.replace(' ', '\u00a0')}})</span>
-						{%- elif span.kind == SpanKind.ALTERNATIVE -%}
-							<span class="alternative">{{value}}</span>
-						{%- elif span.kind == SpanKind.PLAIN -%}
-							<span class="plain">{{value}}</span>
-						{%- else -%}
-							<span class="unknown">{{value}}</span>
-						{%- endif -%}
-					{%- endfor -%}
+					{% set spans = article.translation_sections[section_idx][line_idx] %}
+					{% include 'zohar/block-translation.html' %}
 				</div>
 				<div class="clear"></div>
 			</div>
@@ -84,8 +28,4 @@
 </div>
 {% endfor %}
 </div>
-
-
-
-
 {% endblock %}

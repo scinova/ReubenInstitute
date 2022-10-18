@@ -8,7 +8,7 @@ aramaic_bp = Blueprint('aramaic_bp', __name__)#, template_folder='templates', st
 
 @aramaic_bp.route('/aramaic')
 def aramaic_main():
-	return render_template('aramaic/main.html')
+	return render_template('aramaic/index.html')
 
 @aramaic_bp.route('/aramaic/<string:name>', methods=['GET'])
 def aramaic_dictionary(name):

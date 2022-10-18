@@ -8,7 +8,6 @@
 		{{loop.index}} <!--{{article.text|length}} {{article.translation|length}}-->
 		<a href="/zohar/{{article.book.number}}/{{article.chapter.number}}/{{article.number}}">{{article.title}}</a><br />
 	{% endfor %}
-
 	{% for line in data %}
 		<div style="font-family:reuven;padding:1em;text-align:justify">{{line}}</div>
 	{% endfor %}

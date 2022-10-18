@@ -6,7 +6,7 @@ liturgy_bp = Blueprint('liturgy_bp', '__name__')
 
 @liturgy_bp.route('/liturgy/')
 def liturgy():
-	return render_template('liturgy/main.html')
+	return render_template('liturgy/index.html')
 
 @liturgy_bp.route('/liturgy/<string:name>/edit', methods=['GET','POST'])
 def edit_prayer(name):

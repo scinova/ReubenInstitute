@@ -72,6 +72,13 @@ div#menu {
 	position: absolute;
 	top: 0;
 	width: 100%;
+	padding: 10px 0;
+	}
+
+div#menu a {
+	display: inline-block;
+	float: right;
+	margin-right: .25em;
 	}
 
 div#footer {
@@ -141,8 +148,19 @@ button {
 	background-color: #0099cc;
 	color: white;
 	border: none;
-	padding: 5px 20px;
+	padding: 5px;
 	border-radius: 4px;
+	}
+
+div.buttonbar {
+	margin: 10px 0;
+	}
+
+div.buttonbar button {
+	width: 1em;
+	float: right;
+	height: 1.5em;
+	margin-left: 5px;
 	}
 
 table {

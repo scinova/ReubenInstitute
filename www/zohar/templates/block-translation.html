@@ -1,0 +1,27 @@
+{%- for span in spans -%}
+	{% set value = span.value %}
+	{#% if span.kind not in [SpanKind.SCRIPTURE, SpanKind.NONLITERAL] %}
+		{% set value = common.remove_points(value) %}
+	{% endif %#}
+	{%- if span.kind == SpanKind.H1 -%}
+		<h1>{{value}}</h1>
+	{%- elif span.kind == SpanKind.NONLITERAL -%}
+		<span class="nonliteral">{{value}}</span>
+	{%- elif span.kind == SpanKind.SYNONYM -%}
+		<span class="synonym">(={{value}})</span>
+	{%- elif span.kind == SpanKind.EXPLANATION -%}
+		<span class="explanation">({{value}})</span>
+	{%- elif span.kind == SpanKind.CORRECTION -%}
+		<span class="correction">{{value}}</span>
+	{%- elif span.kind == SpanKind.SCRIPTURE -%}
+		<span class="scripture">“{{re.sub('\#([^#]+)\#', '<span class="completion">\\1</span>', value)|safe}}”</span>
+	{%- elif span.kind == SpanKind.LINK -%}
+		<span class="link">({{value.replace(' ', common.NARROWNOBREAKSPACE)}})</span>
+	{%- elif span.kind == SpanKind.ALTERNATIVE -%}
+		<span class="alternative">{{value}}</span>
+	{%- elif span.kind == SpanKind.PLAIN -%}
+		<span class="plain">{{value}}</span>
+	{%- else -%}
+		<span class="unknown">{{value}}</span>
+	{%- endif -%}
+{%- endfor -%}

@@ -1,12 +1,6 @@
 from flask import Flask, g
 from flask import render_template, send_from_directory, request, redirect
-
-#import hebrew_numbers
 import re
-#import unicodedata
-#import os
-
-
 
 import sys
 sys.path.append('..')
@@ -24,10 +18,12 @@ class User:
 
 def create_app():
 	app = Flask(__name__)
-	app.jinja_options['trim_blocks'] = True
-	app.jinja_options['lstrip_blocks'] = True
-	app.jinja_env.lstrip_blocks = True
-	app.jinja_env.trim_blocks = True
+	#app.jinja_options['trim_blocks'] = True
+	#app.jinja_options['lstrip_blocks'] = True
+	print(app.jinja_env.globals)
+	app.jinja_env.globals['lstrip_blocks'] = True
+	app.jinja_env.globals['trim_blocks'] = True
+	print(app.jinja_env.globals)
 	with app.app_context():
 		from .zohar import zohar
 		app.register_blueprint(zohar.zohar_bp)
@@ -39,7 +35,6 @@ def create_app():
 		app.register_blueprint(mishnah.mishnah_bp)
 		from .liturgy import liturgy
 		app.register_blueprint(liturgy.liturgy_bp)
-
 
 	@app.before_request
 	def before_request():
@@ -55,14 +50,11 @@ def create_app():
 		Person=Aramaic.Person, Gender=Aramaic.Gender, Count=Aramaic.Count,
 		Tense=Aramaic.Tense, Stem=Aramaic.Stem,
 		Noun=Aramaic.Noun, Number=Aramaic.Number, Pronoun=Aramaic.Pronoun, Verb=Aramaic.Verb, Name=Aramaic.Name,
-		#random=random, 
 		type=type, re=re, dir=dir, len=len, int=int, ord=ord, chr=chr, list=list,
 		enumerate=enumerate,
 		Span=common.Span, SpanKind=common.SpanKind,
 		VerseKind=Tanakh.VerseKind,
 		request=request, common=common,
-		#aramaic=aramaic,
-		#user=user
 		Zohar=Zohar, Liturgy=Liturgy
 		)
 

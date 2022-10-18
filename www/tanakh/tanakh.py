@@ -1,5 +1,5 @@
 from flask import Blueprint, g, render_template, send_from_directory, request, redirect
-
+import unicodedata
 import sys
 sys.path.append('..')
 import common
@@ -26,7 +26,7 @@ def psalms():
 
 @tanakh_bp.route('/tanakh/')
 def tanakh_main():
-	return render_template('tanakh/main.html')#, enumerate=enumerate)
+	return render_template('tanakh/index.html')
 
 @tanakh_bp.route('/tanakh/<int:book_no>/<int:chapter_no>')
 def tanakh_chapter_view(book_no, chapter_no):
