@@ -93,7 +93,7 @@ class Verse:
 		self.chapter = chapter
 		self._mishnah_text = mishnah_text
 		self._bartenura_text = bartenura_text
-		self.hebrew_number = hebrew_numbers.int_to_gematria(number, gershayim=False)
+		self.hebrew_clean_number = hebrew_numbers.int_to_gematria(number, gershayim=False)
 		self.hebrew_number = hebrew_numbers.int_to_gematria(number)
 
 	@property

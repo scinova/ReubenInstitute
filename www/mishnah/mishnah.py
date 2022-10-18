@@ -13,6 +13,15 @@ def view_tractate(order_no, tractate_no):
 	tractate = Mishnah.orders[order_no - 1].tractates[tractate_no - 1]
 	return render_template('mishnah/tractate.html', tractate=tractate)
 
+@mishnah_bp.route('/mishnah/full')
+def view_full():
+	return render_template('mishnah/full.html')
+
+@mishnah_bp.route('/mishnah/<int:order_no>')
+def view_order(order_no):
+	order = Mishnah.orders[order_no - 1]
+	return render_template('mishnah/order.html', order=order)
+
 @mishnah_bp.route('/mishnah/<int:order_no>/<int:tractate_no>/<int:chapter_no>/edit/<int:verse_no>', methods=['GET'])
 def edit_verse(order_no, tractate_no, chapter_no, verse_no):
 	verse = Mishnah.orders[order_no - 1].tractates[tractate_no - 1].chapters[chapter_no - 1].verses[verse_no - 1]

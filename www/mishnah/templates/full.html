@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}{% endblock %}
+{% block header %}<link rel="stylesheet" href="/@@/Mishnah.css" />{% endblock %}
+{% block content %}
+<div class="mishnah">
+	{% for order in Mishnah.orders %}
+		<h1>סדר {{order.name}}</h1>
+		{%- for tractate in order.tractates -%}
+			<h2>{{tractate.name}}</h2>
+			{%- for chapter in tractate.chapters -%}
+				<h3>פרק {{chapter.hebrew_number}}</h3>
+				{%- for verse in chapter.verses -%}
+					<div class="verse justify">
+						{% include 'mishnah/block-verse-mishnah.html' %}
+					</div>
+				{%- endfor -%}
+			{%- endfor -%}
+		{%- endfor -%}
+	{% endfor %}
+</div>
+{% endblock %}

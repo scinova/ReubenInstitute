@@ -1,0 +1,12 @@
+{%- for span in verse.bartenura -%}
+	{%- if not loop.first %} {% endif -%}
+	{%- if span.kind == SpanKind.LEGEND -%}
+		<span class="legend">{{span.value}}:</span>
+	{%- elif span.kind == SpanKind.SCRIPTURE -%}
+		<span class="scripture">{{span.value}}</span><!--“”-->
+	{%- elif span.kind == SpanKind.LINK -%}
+		<span class="link">({{span.value}})</span>
+	{%- else -%}
+		<span class="plain">{{span.value}}</span>
+	{%- endif -%}
+{%- endfor -%}

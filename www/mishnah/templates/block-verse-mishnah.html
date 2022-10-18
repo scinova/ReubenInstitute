@@ -1,0 +1,11 @@
+<span class="verseno"><a name="{{chapter.number}}.{{verse.number}}" href="/mishnah/{{tractate.order.number}}/{{tractate.number}}/{{chapter.number}}/edit/{{verse.number}}">{{verse.hebrew_clean_number}}</a></span>
+{%- for span in verse.mishnah -%}
+	{%- if span.kind == SpanKind.SCRIPTURE -%}
+		<span class="scripture">{{span.value}}</span><!--“”-->
+	{%- elif span.kind == SpanKind.LINK -%}
+		<span class="link">({{span.value}})</span>
+	{%- else -%}
+		{% set value = re.sub('(”[^”]+”)', '<span class="citation">\\1</span>', span.value) %}
+	<span class="plain">{{value|safe}}</span>
+	{%- endif -%}
+{%- endfor -%}

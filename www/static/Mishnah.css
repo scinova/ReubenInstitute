@@ -9,8 +9,14 @@ span.verseno {
 	color: white;
 	padding: 1px 4px;
 	border-radius: 3px;
-	margin-left: .5em;
 	}
+
+span.verseno a {
+	display: inline-block;
+	width: 1em;
+	text-align: center;
+	}
+
 
 span.scripture {
 	font-family: scripture;
@@ -29,4 +35,14 @@ span.legend {
 span.citation {
 	font-style: italic;
 	color: brown;
+	}
+
+div.mishnah h1 {
+	font-weight: normal;
+	color: orange;
+	}
+
+div.mishnah h2 {
+	font-weight: normal;
+	color: orange;
 	}
