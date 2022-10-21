@@ -1,6 +1,8 @@
 from flask import Blueprint, g, render_template, request, redirect, send_from_directory
 import sys
 sys.path.append('..')
+import os
+import re
 import Zohar
 import common
 
@@ -13,7 +15,21 @@ def main():
 @zohar_bp.route('/zohar/<int:book_number>/<int:chapter_number>')
 def view_chapter(book_number, chapter_number):
 	chapter = Zohar.books[book_number - 1].chapters[chapter_number - 1]
+	filename = '%s/db/zohar/%d.%02d.txt'%(os.getcwd(), book_number, chapter_number)
 	return render_template('zohar/chapter.html', chapter=chapter)
+
+@zohar_bp.route('/zohar/<int:book_number>/<int:chapter_number>/edit', methods=['GET'])
+def edit_chapter(book_number, chapter_number):
+	book = Zohar.books[book_number - 1]
+	chapter = book.chapters[chapter_number - 1]
+	return render_template('zohar/chapter-edit.html', chapter=chapter)
+
+@zohar_bp.route('/zohar/<int:book_number>/<int:chapter_number>/edit', methods=['POST'])
+def save_chapter(book_number, chapter_number):
+	book = Zohar.books[book_number - 1]
+	chapter = book.chapters[chapter_number - 1]
+	chapter.text = re.sub('(\r\n)+', '\n', request.form['text'])
+	return redirect('/zohar/%d/%d'%(book.number, chapter.number))
 
 @zohar_bp.route('/zohar/<int:book_number>/<int:chapter_number>/<int:article_number>')
 def view_article(book_number, chapter_number, article_number):

@@ -43,6 +43,9 @@ div.zohar h1 {
 	font-weight: normal;
 	}
 
+div.zohar span.verseno {
+	color: #aaa;
+	}
 
 div.zohar span.correction {
 	color: #aaa;

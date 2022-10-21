@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}{% endblock %}
+{% block content %}
+<form method="post">
+	<textarea rows="20" name="text">{{chapter.text.replace('\n', '\n\n')}}</textarea>
+	<button type="submit">שמור</button>
+<form>
+{% include 'block-buttons.html' %}
+{% endblock %}

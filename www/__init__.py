@@ -1,7 +1,7 @@
 from flask import Flask, g
 from flask import render_template, send_from_directory, request, redirect
 import re
-
+import hebrew_numbers
 import sys
 sys.path.append('..')
 import common
@@ -20,10 +20,10 @@ def create_app():
 	app = Flask(__name__)
 	#app.jinja_options['trim_blocks'] = True
 	#app.jinja_options['lstrip_blocks'] = True
-	print(app.jinja_env.globals)
+	#print(app.jinja_env.globals)
 	app.jinja_env.globals['lstrip_blocks'] = True
 	app.jinja_env.globals['trim_blocks'] = True
-	print(app.jinja_env.globals)
+	#print(app.jinja_env.globals)
 	with app.app_context():
 		from .zohar import zohar
 		app.register_blueprint(zohar.zohar_bp)
@@ -51,7 +51,7 @@ def create_app():
 		Tense=Aramaic.Tense, Stem=Aramaic.Stem,
 		Noun=Aramaic.Noun, Number=Aramaic.Number, Pronoun=Aramaic.Pronoun, Verb=Aramaic.Verb, Name=Aramaic.Name,
 		type=type, re=re, dir=dir, len=len, int=int, ord=ord, chr=chr, list=list,
-		enumerate=enumerate,
+		enumerate=enumerate, int_to_gematria=hebrew_numbers.int_to_gematria,
 		Span=common.Span, SpanKind=common.SpanKind,
 		VerseKind=Tanakh.VerseKind,
 		request=request, common=common,

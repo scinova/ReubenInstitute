@@ -228,15 +228,71 @@ class Article:
 	def translation_sections(self):
 		return [[parse(line) for line in part.split('\n')] for part in self.translation.split('\n\n')]
 
+class Verse:
+	def __init__(self, number, chapter, text):
+		self.number = number
+		self.chapter = chapter
+		self.text = self.otfix(text)
+
+	def otfix(self, text):
+		subs = [
+			#['', ''],
+			["הֵ''א", 'הֵ״א'],
+			["ה''א", 'הֵ״א'],
+			["וָא''ו", 'וָא״ו'],
+			["וא''ו", 'וָא״ו'],
+			["יוֹ''ד", 'יוֹ״ד'],
+			["יו''ד", 'יוֹ״ד'],
+
+			['כְּנֶסֶת יִשְׂרָאֵל', 'כְּנֶסֶת־יִשְׂרָאֵל'],
+			['בַר נָשׁ', 'בַר־נָשׁ'],
+			['בְּנֵי נָשָׁא', 'בְּנֵי־נָשָׁא'],
+			['רִבִּי', 'רַבִּי'],
+			['פָּתַח וְאָמַר,', 'פְּתַח וַאֲמַר:'],
+			['תָּא חֲזֵי, ', 'תָּא, חֲזִי! '],
+			['דְּאוּקְמוּהָ', 'דְּאוּקְמוּהַ'],
+
+			['\(דברי הימים ', '(דברי־הימים־'],
+			['\(שיר השירים ', '(שיר־השירים '],
+			['\(מלכים א ', '(מלכים־א '],
+			['\(מלכים ב ', '(מלכים־ב '],
+			['תהילים', 'תהלים'],
+			['ישעיהו', 'ישעיה'],
+			["\(ס''א ([^)]+)\)", '[|\\1]'],
+			["\(נ''א ([^)]+)\)", '[|\\1]'],
+			["וְגוֹ'", '…'],
+			["יְיָ'", 'יהוה'],
+			["יְיָ", 'יהוה'],
+			["''", ''],
+			]
+		for src, dst in subs:
+			text = re.sub(src, dst, text)
+		return text
+
+	@property
+	def spans(self):
+		return parse(self.text)
+
 class Chapter:
 	def __init__(self, book, number, title):
 		self.book = book
 		self.number = number
 		self.title = title
-		#self.hebrew_number = hebrew_numbers.int_to_gematria(number)
-		#self.hebrew_number_nog = hebrew_numbers.int_to_gematria(number, gershayim=False)
-#		self.start_daf, self.start_amud, self.start_verse, self.end_daf, self.end_amud, self.end_verse, name = DATA[book.number - 1][number - 1]
 		self.articles = []
+
+	@property
+	def text(self):
+		filename = os.path.join(DB_PATH, '%d.%02d.txt'%(self.book.number, self.number))
+		return open(filename).read()
+
+	@text.setter
+	def text(self, value):
+		filename = os.path.join(DB_PATH, '%d.%02d.txt'%(self.book.number, self.number))
+		open(filename, 'w').write(value)
+
+	@property
+	def verses(self):
+		return [Verse(nr, self, text) for nr, text in enumerate(self.text.split('\n'), start=1)]
 
 class Book:
 	def __init__(self, number, title):

@@ -1,14 +1,19 @@
 {% extends "base.html" %}
 {% block title %}{% endblock %}
 {% block content %}
-	<a href="/zohar">זהר</a>
-	<br />
+<div class="zohar">
 	<h1>{{chapter.title}}</h1>
 	{% for article in chapter.articles %}
 		{{loop.index}} <!--{{article.text|length}} {{article.translation|length}}-->
 		<a href="/zohar/{{article.book.number}}/{{article.chapter.number}}/{{article.number}}">{{article.title}}</a><br />
 	{% endfor %}
-	{% for line in data %}
-		<div style="font-family:reuven;padding:1em;text-align:justify">{{line}}</div>
+	{% for verse in chapter.verses %}
+		<div style="font-family:reuven;padding:.5em 0;text-align:justify">
+			<span class="verseno">{{int_to_gematria(verse.number)}}<!--{{verse.number}}--></span>
+			{% set spans = verse.spans %}
+			{% include "zohar/block-zohar.html" %}
+		</div>
 	{% endfor %}
+	<a href="/zohar/{{chapter.book.number}}/{{chapter.number}}/edit">edit<a>
+</div>
 {% endblock %}
